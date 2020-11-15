@@ -17,6 +17,8 @@ public class main {
 		Student s1 = new Student("prz", "ime", "dat", "adr", 123, "email", 1, 2, 3, stat, 2, lista2, lista1 );		
 		*/
 		
+		Menu menu = new Menu();
+		menu.setVisible(true);
 		
 	}
 }
