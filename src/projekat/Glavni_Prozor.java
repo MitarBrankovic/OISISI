@@ -1,9 +1,10 @@
 package projekat;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.*;
 
 
 public class Glavni_Prozor extends JFrame{
@@ -16,8 +17,12 @@ public class Glavni_Prozor extends JFrame{
 		setSize(screenWidth * 3/4, screenHeight * 3/4);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		setVisible(true);
 		setTitle("Studentska služba");
+	
+		MenuKonfiguracija menu = new MenuKonfiguracija();
+		setJMenuBar(menu);
+		
+		setVisible(true);
 	}
 	
 }

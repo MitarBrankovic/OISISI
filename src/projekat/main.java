@@ -19,8 +19,8 @@ public class main {
 		*/
 		Glavni_Prozor prozor = new Glavni_Prozor();
 		
-		Menu menu = new Menu();
+		/*Menu menu = new Menu();
 		menu.setVisible(true);
-		
+		*/
 	}
 }
