@@ -1,6 +1,7 @@
 package projekat;
 
 import java.util.*;
+import javax.swing.JFrame;
 
 public class main {
 
@@ -16,6 +17,7 @@ public class main {
 		Status stat = Status.B;
 		Student s1 = new Student("prz", "ime", "dat", "adr", 123, "email", 1, 2, 3, stat, 2, lista2, lista1 );		
 		*/
+		Glavni_Prozor prozor = new Glavni_Prozor();
 		
 		
 	}
