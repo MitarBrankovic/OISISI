@@ -22,5 +22,7 @@ public class main {
 		/*Menu menu = new Menu();
 		menu.setVisible(true);
 		*/
+		
+		//StatusBar statusBar = new StatusBar();
 	}
 }

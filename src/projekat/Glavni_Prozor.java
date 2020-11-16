@@ -2,6 +2,7 @@ package projekat;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.awt.*;
@@ -21,11 +22,22 @@ public class Glavni_Prozor extends JFrame{
 		
 		MenuKonfiguracija menu = new MenuKonfiguracija();
 		setJMenuBar(menu);
+			
+		
+		JPanel panBottom=new JPanel();
+		StatusBar status = new StatusBar();
+		//panBottom.setPreferredSize(new Dimension(100,30));
+		panBottom.setBackground(Color.LIGHT_GRAY);
+		panBottom.add(status);
+		
+		add(panBottom, BorderLayout.SOUTH);
 		
 		Toolbar toolbar1 = new Toolbar();
 		add(toolbar1, BorderLayout.NORTH);
 		
 		setVisible(true);
+		
+		
 	}
 	
 }
