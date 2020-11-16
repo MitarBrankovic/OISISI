@@ -18,9 +18,12 @@ public class Glavni_Prozor extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setTitle("Studentska služba");
-	
+		
 		MenuKonfiguracija menu = new MenuKonfiguracija();
 		setJMenuBar(menu);
+		
+		Toolbar toolbar1 = new Toolbar();
+		add(toolbar1, BorderLayout.NORTH);
 		
 		setVisible(true);
 	}
