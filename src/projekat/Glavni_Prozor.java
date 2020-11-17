@@ -24,13 +24,9 @@ public class Glavni_Prozor extends JFrame{
 		setJMenuBar(menu);
 			
 		
-		JPanel panBottom=new JPanel();
-		StatusBar status = new StatusBar();
-		//panBottom.setPreferredSize(new Dimension(100,30));
-		panBottom.setBackground(Color.LIGHT_GRAY);
-		panBottom.add(status);
-		
-		add(panBottom, BorderLayout.SOUTH);
+
+		StatusBar status = new StatusBar();		
+		add(status, BorderLayout.SOUTH);
 		
 		Toolbar toolbar1 = new Toolbar();
 		add(toolbar1, BorderLayout.NORTH);
