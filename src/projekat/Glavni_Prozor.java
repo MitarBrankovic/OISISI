@@ -24,11 +24,14 @@ public class Glavni_Prozor extends JFrame{
 		setJMenuBar(menu);
 			
 		
+
+		StatusBar status = new StatusBar();		
+		add(status, BorderLayout.SOUTH);
+		
+
 		Toolbar toolbar1 = new Toolbar();
 		add(toolbar1, BorderLayout.NORTH);
 		
-		StatusBar status = new StatusBar();
-		add(status, BorderLayout.SOUTH);
 		
 		setVisible(true);
 		

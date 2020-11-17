@@ -12,7 +12,6 @@ public class StatusBar extends JPanel {
 
 	public StatusBar() {
 		setLayout(new BorderLayout());
-		setPreferredSize(new Dimension(1400,23));
 		setBorder(new BevelBorder(BevelBorder.LOWERED));
 		
 		JLabel txtLabela = new JLabel("Studentska sluzba ");

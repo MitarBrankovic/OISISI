@@ -16,13 +16,14 @@ public class Student {
 	int trenutnaGodina;
 	Status status;
 	double prosecnaOcena;
-	List<Integer> spisakPolozenihPredmeta;
-	List<String> spisakNepolozenihPredmeta;
+	List<Ocena> spisakPolozenihPredmeta;
+	List<Ocena> spisakNepolozenihPredmeta;
 	
 	
+
 	public Student(String ime, String prezime, String datumRodjenja, String adresa, int kontakt, String email,
 			int brojIndeksa, int godinaUpisa, int trenutnaGodina, Status status, double prosecnaOcena,
-			List<Integer> spisakPolozenihPredmeta, List<String> spisakNepolozenihPredmeta) {
+			List<Ocena> spisakPolozenihPredmeta, List<Ocena> spisakNepolozenihPredmeta) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -40,18 +41,36 @@ public class Student {
 	}
 	
 	
-	public List<Integer> getSpisakPolozenihPredmeta() {
+	public int getBrojIndeksa() {
+		return brojIndeksa;
+	}
+
+
+	public void setBrojIndeksa(int brojIndeksa) {
+		this.brojIndeksa = brojIndeksa;
+	}
+
+
+	public List<Ocena> getSpisakPolozenihPredmeta() {
 		return spisakPolozenihPredmeta;
 	}
-	public void setSpisakPolozenihPredmeta(List<Integer> spisakPolozenihPredmeta) {
+
+
+	public void setSpisakPolozenihPredmeta(List<Ocena> spisakPolozenihPredmeta) {
 		this.spisakPolozenihPredmeta = spisakPolozenihPredmeta;
 	}
-	public List<String> getSpisakNepolozenihPredmeta() {
+
+
+	public List<Ocena> getSpisakNepolozenihPredmeta() {
 		return spisakNepolozenihPredmeta;
 	}
-	public void setSpisakNepolozenihPredmeta(List<String> spisakNepolozenihPredmeta) {
+
+
+	public void setSpisakNepolozenihPredmeta(List<Ocena> spisakNepolozenihPredmeta) {
 		this.spisakNepolozenihPredmeta = spisakNepolozenihPredmeta;
-	}	
+	}
+
+
 	public String getIme() {
 		return ime;
 	}
