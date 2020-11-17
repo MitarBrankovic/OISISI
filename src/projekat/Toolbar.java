@@ -21,21 +21,19 @@ public class Toolbar extends JToolBar{
 		panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
 		
 		JButton btnOpen = new JButton();
-		//btnOpen.setPreferredSize(new Dimension(20,20));
 		btnOpen.setToolTipText("Open");
+		btnOpen.setIcon(new ImageIcon("images/add.jpg"));
 		panel.add(btnOpen);
 		
 		addSeparator();
 		
 		JButton btnEdit = new JButton();
-		//btnEdit.setPreferredSize(new Dimension(20,20));
 		btnEdit.setToolTipText("Edit");
 		panel.add(btnEdit);
-		
+		btnEdit.setIcon(new ImageIcon("images/edit.jpg"));
 		addSeparator();
 		
 		JButton btnDelete = new JButton();
-		//btnDelete.setPreferredSize(new Dimension(20,20));
 		btnDelete.setToolTipText("Delete");
 		btnDelete.setIcon(new ImageIcon("images/delete1.jpg"));
 		panel.add(btnDelete);
@@ -45,8 +43,7 @@ public class Toolbar extends JToolBar{
 		panel.add(Box.createHorizontalGlue());
 		
 		JTextField searchArea = new JTextField();
-		//searchArea.setBounds(5, 5, 100, 100);
-		searchArea.setPreferredSize(new Dimension(300,25));
+		searchArea.setPreferredSize(new Dimension(200,25));
 		searchArea.setMaximumSize(searchArea.getPreferredSize());
 		panel.add(searchArea);
 		
@@ -54,6 +51,7 @@ public class Toolbar extends JToolBar{
 		
 		JButton btnSearch = new JButton();
 		btnSearch.setToolTipText("Search");
+		btnSearch.setIcon(new ImageIcon("images/search.jpg"));
 		panel.add(btnSearch);
 		
 		add(panel);

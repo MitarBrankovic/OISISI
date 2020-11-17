@@ -5,7 +5,6 @@ import java.awt.event.*;
 import java.util.Calendar;
 import java.sql.Date;
 import javax.swing.*;
-import javax.swing.Timer;
 import javax.swing.border.BevelBorder;
 import java.text.*;
 
@@ -36,7 +35,7 @@ public class StatusBar extends JPanel {
 		
 		add(txtLabela, BorderLayout.WEST);
 		add(vremeLabela, BorderLayout.EAST);
-
+				
 	}
 		
 }
