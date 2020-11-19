@@ -10,6 +10,8 @@ import java.text.*;
 
 public class StatusBar extends JPanel {
 
+	private static final long serialVersionUID = -8008135208076960055L;
+
 	public StatusBar() {
 		setLayout(new BorderLayout());
 		setBorder(new BevelBorder(BevelBorder.LOWERED));

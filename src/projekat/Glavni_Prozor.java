@@ -1,14 +1,13 @@
 package projekat;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
+import javax.swing.*;
 import java.awt.*;
 
 
 public class Glavni_Prozor extends JFrame{
+	
+	private static final long serialVersionUID = 1681906113857801298L;
+
 	public Glavni_Prozor() {
 		super();
 		Toolkit kit = Toolkit.getDefaultToolkit();

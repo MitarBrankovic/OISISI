@@ -1,19 +1,22 @@
 package projekat;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 
+import java.awt.Dimension;
+//import java.awt.BorderLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
+//import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
+//import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
 public class Toolbar extends JToolBar{
+
+	private static final long serialVersionUID = -5468997179840595624L;
+
 	public Toolbar() {
 		
 		JPanel panel = new JPanel();
