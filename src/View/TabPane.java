@@ -1,4 +1,4 @@
-package projekat;
+package View;
 
 import java.awt.Color;
 
@@ -9,7 +9,7 @@ public class TabPane extends JTabbedPane {
 		
 	public TabPane() {
 		
-		setBackground(Color.LIGHT_GRAY);
+		
 		
 		JPanel pStudenti = new JPanel();
 		JPanel pProfesori = new JPanel();

@@ -1,6 +1,7 @@
-package projekat;
+package View;
 
 import javax.swing.*;
+
 import java.awt.*;
 
 
