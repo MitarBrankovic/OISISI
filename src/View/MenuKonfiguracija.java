@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 //import javax.swing.ButtonGroup;
@@ -48,11 +49,32 @@ public class MenuKonfiguracija extends JMenuBar {
 		help.setMnemonic(KeyEvent.VK_H);
 		
 		JMenuItem hHelp = new JMenuItem("Help");
+		hHelp.setIcon(new ImageIcon("images/help1.png"));
+		hHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
 		JMenuItem hAbout = new JMenuItem("About");
+		hAbout.setIcon(new ImageIcon("images/about1.png"));
+		hAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
 		
 		help.add(hHelp);
 		help.addSeparator();
 		help.add(hAbout);
+		
+		hHelp.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				HelpFrame helpf = new HelpFrame();
+			}
+		});
+		
+		hAbout.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				AboutFrame aboutf = new AboutFrame();
+			}
+		});
+	
 
 		add(file);
 		add(edit);
