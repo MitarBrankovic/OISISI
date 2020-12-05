@@ -1,8 +1,8 @@
-package projekat;
+package model;
 
 import java.util.*;
 
-enum Status {B, S;} // budzet - samofinansiranje
+//enum Status {B, S;} // budzet - samofinansiranje
 
 public class Student {
 	String ime;
@@ -14,16 +14,18 @@ public class Student {
 	int brojIndeksa;
 	int godinaUpisa;
 	int trenutnaGodina;
-	Status status;
+	StudentStatus status;
 	double prosecnaOcena;
 	List<Ocena> spisakPolozenihPredmeta;
 	List<Ocena> spisakNepolozenihPredmeta;
 	
 	
+	public Student() {}	
+	
+	
 
 	public Student(String ime, String prezime, String datumRodjenja, String adresa, int kontakt, String email,
-			int brojIndeksa, int godinaUpisa, int trenutnaGodina, Status status, double prosecnaOcena,
-			List<Ocena> spisakPolozenihPredmeta, List<Ocena> spisakNepolozenihPredmeta) {
+			int brojIndeksa, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -36,11 +38,24 @@ public class Student {
 		this.trenutnaGodina = trenutnaGodina;
 		this.status = status;
 		this.prosecnaOcena = prosecnaOcena;
-		this.spisakPolozenihPredmeta = spisakPolozenihPredmeta;
-		this.spisakNepolozenihPredmeta = spisakNepolozenihPredmeta;
 	}
-	
-	
+
+
+	public Student(String ime2, String prezime2, String datumRodjenja2, String adresa2, int indeks2, int i,
+			String mail2, int godinaUpisa2, int trenutnaGodina2, StudentStatus b, double prosecnaOcena2) {
+		this.ime = ime2;
+		this.prezime = prezime2;
+		this.datumRodjenja = datumRodjenja2;
+		this.adresa = adresa2;
+		this.kontakt = i;
+		this.email = mail2;
+		this.brojIndeksa = indeks2;
+		this.godinaUpisa = godinaUpisa2;
+		this.trenutnaGodina = trenutnaGodina2;
+		this.status = StudentStatus.B;
+		this.prosecnaOcena = prosecnaOcena2;
+	}
+
 	public int getBrojIndeksa() {
 		return brojIndeksa;
 	}
@@ -119,10 +134,10 @@ public class Student {
 	public void setTrenutnaGodina(int trenutnaGodina) {
 		this.trenutnaGodina = trenutnaGodina;
 	}
-	public Status getStatus() {
+	public StudentStatus getStatus() {
 		return status;
 	}
-	public void setStatus(Status status) {
+	public void setStatus(StudentStatus status) {
 		this.status = status;
 	}
 	public double getProsecnaOcena() {

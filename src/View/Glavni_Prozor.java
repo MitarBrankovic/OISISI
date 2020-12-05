@@ -1,6 +1,7 @@
-package projekat;
+package View;
 
 import javax.swing.*;
+
 import java.awt.*;
 
 
@@ -31,6 +32,8 @@ public class Glavni_Prozor extends JFrame{
 		Toolbar toolbar1 = new Toolbar();
 		add(toolbar1, BorderLayout.NORTH);
 		
+		TabPane tabpane = new TabPane();
+		add(tabpane, BorderLayout.CENTER);
 		
 		setVisible(true);
 		

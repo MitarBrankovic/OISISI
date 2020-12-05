@@ -1,4 +1,4 @@
-package projekat;
+package model;
 
 public class Ocena {
 	Student student;
