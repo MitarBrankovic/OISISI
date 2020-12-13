@@ -15,6 +15,8 @@ public class TabPane extends JTabbedPane {
 	
 	private static StudentiJTable tabelaStudenata;
 	
+	private static PredmetiJTable tabelaPredmeta;
+	
 	private static TabPane instance = null;
 	
 	public static TabPane getInstance() {
@@ -29,7 +31,8 @@ public class TabPane extends JTabbedPane {
 		tabelaStudenata = StudentiJTable.getInstance();
 		JScrollPane skrolStudenti=new JScrollPane(tabelaStudenata);
 		
-		
+		tabelaPredmeta = PredmetiJTable.getInstance();
+		JScrollPane skrolPredmeti = new JScrollPane(tabelaPredmeta);
 		
 		//JPanel pStudenti = new JPanel();
 		JPanel pProfesori = new JPanel();
@@ -37,7 +40,7 @@ public class TabPane extends JTabbedPane {
 		
 		addTab("Studenti", skrolStudenti);
 		addTab("Profesori", pProfesori);
-		addTab("Predmeti", pPredmeti);
+		addTab("Predmeti", skrolPredmeti);
 		
 		}
 	
