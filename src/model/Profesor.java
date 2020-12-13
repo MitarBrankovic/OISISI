@@ -15,7 +15,7 @@ public class Profesor {
 	String zvanje;		//enum?
 	List<String> spisakPredmeta;	//spisak predmeta na kojima je profesor
 	
-	public Profesor(String prezime, String ime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
+	/*public Profesor(String prezime, String ime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
 			String email, String adresaKancelarije, int brojLicneKarte, String titula, String zvanje,
 			List<String> spisakPredmeta) {
 		super();
@@ -30,7 +30,24 @@ public class Profesor {
 		this.titula = titula;
 		this.zvanje = zvanje;
 		this.spisakPredmeta = spisakPredmeta;
+	}*/
+	
+	
+	public Profesor(String prezime, String ime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
+			String email, String adresaKancelarije, int brojLicneKarte, String titula, String zvanje) {
+		super();
+		this.prezime = prezime;
+		this.ime = ime;
+		this.datumRodjenja = datumRodjenja;
+		this.adresaStanovanja = adresaStanovanja;
+		this.kontaktTelefon = kontaktTelefon;
+		this.email = email;
+		this.adresaKancelarije = adresaKancelarije;
+		this.brojLicneKarte = brojLicneKarte;
+		this.titula = titula;
+		this.zvanje = zvanje;
 	}
+	
 
 	public String getPrezime() {
 		return prezime;
