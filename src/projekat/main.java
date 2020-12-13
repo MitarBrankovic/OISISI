@@ -3,7 +3,7 @@ package projekat;
 import java.util.*;
 import javax.swing.JFrame;
 
-import View.Glavni_Prozor;
+import view.Glavni_Prozor;
 
 public class main {
 

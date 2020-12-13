@@ -1,8 +1,8 @@
 package controller;
 
-import View.TabPane;
 import model.BazaStudenata;
 import model.StudentStatus;
+import view.TabPane;
 
 public class StudentiController {
 

@@ -1,5 +1,11 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
@@ -40,9 +46,38 @@ public class BazaStudenata {
 	
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
-		studenti.add(new Student("Mitar", "Bran", "1.1.1111.", "NekaUlica",198, 12312312, "mail@gmail.", 2018, 2020, StudentStatus.B, 9.01));
-		studenti.add(new Student("Mitar", "Bran", "1.1.1111.", "NekaUlica",198, 12312312, "mail@gmail.", 2018, 2020, StudentStatus.B, 9.01));
-		//studenti.add(new Student("Zika", "Zikic", "FMP"));
+		String kolone[];
+		String naredni;
+		BufferedReader reader = null;
+		
+		try {
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream("tabele" + File.separator + "Studenti.txt")));
+		} catch (FileNotFoundException exception) {
+			exception.printStackTrace();
+		}
+		
+		
+		try {
+			while((naredni = reader.readLine()) != null) {
+				if(naredni.equals(""))	continue;
+				
+				kolone = naredni.split("\\,");
+				
+				StudentStatus status;
+				if(kolone[9].trim().equals("B"))
+					status = StudentStatus.B;
+				else
+					status = StudentStatus.S;
+				
+				studenti.add(new Student( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), Integer.parseInt(kolone[4].trim()), Integer.parseInt(kolone[5].trim()), kolone[6].trim(), Integer.parseInt(kolone[7].trim()), Integer.parseInt(kolone[8].trim()), status, Double.parseDouble(kolone[10].trim())));
+				
+			}
+			
+			String s = reader.readLine();
+			System.out.println(s);
+		} catch(IOException exception) {
+			exception.printStackTrace();
+		}
 	}
 	
 	
@@ -95,8 +130,6 @@ public class BazaStudenata {
 				return "Budzet";
 			else if (student.getStatus() == StudentStatus.S)
 				return "Samofinansiranje";
-			else
-				return "Nepoznato";
 		case 10:
 			return Double.toString(student.getProsecnaOcena());
 		default:

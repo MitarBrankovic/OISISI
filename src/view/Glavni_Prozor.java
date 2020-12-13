@@ -1,4 +1,4 @@
-package View;
+package view;
 
 import javax.swing.*;
 
@@ -18,7 +18,7 @@ public class Glavni_Prozor extends JFrame{
 		setSize(screenWidth * 3/4, screenHeight * 3/4);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		setTitle("Studentska služba");
+		setTitle("Studentska sluï¿½ba");
 		
 		MenuKonfiguracija menu = new MenuKonfiguracija();
 		setJMenuBar(menu);
