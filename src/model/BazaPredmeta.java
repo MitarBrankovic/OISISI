@@ -36,16 +36,6 @@ public class BazaPredmeta {
 	}
 	
 	private void initPredmete() {
-		/*this.predmeti = new ArrayList<Predmet>();
-		//	public Predmet(String sifraPredmeta, String nazivPredmeta, int godinaStudija, Profesor predmetniProfesor, int espb) {
-		predmeti.add(new Predmet("E231","Elektronika", 2, "Jasar Ahmedovski", 8, semestar.letnji));
-		predmeti.add(new Predmet("E2S1","Analiza 1", 1, "Rale Mrale", 9, semestar.zimski));
-		predmeti.add(new Predmet("E2S1","Analiza 1", 1, "Rale Mrale", 9, semestar.zimski));
-		predmeti.add(new Predmet("E2S1","Analiza 1", 1, "Rale Mrale", 9, semestar.zimski));
-		predmeti.add(new Predmet("E2S1","Analiza 1", 1, "Rale Mrale", 9, semestar.zimski));
-		predmeti.add(new Predmet("E2S1","Analiza 1", 1, "Rale Mrale", 9, semestar.zimski));
-		predmeti.add(new Predmet("E2S1","Analiza 1", 1, "Rale Mrale", 9, semestar.zimski));
-		*/
 		
 		this.predmeti = new ArrayList<Predmet>();
 		String kolone[];
@@ -53,7 +43,7 @@ public class BazaPredmeta {
 		BufferedReader reader = null;
 		
 		try {
-			reader = new BufferedReader(new InputStreamReader(new FileInputStream("tabele" + File.separator + "Predmeti.txt")));
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream("tabele" + File.separator + "predmeti.txt")));
 		} catch (FileNotFoundException exception) {
 			exception.printStackTrace();
 		}
@@ -66,17 +56,16 @@ public class BazaPredmeta {
 				kolone = naredni.split("\\,");
 				
 				semestar semestar1;
-				if(kolone[5].trim().equals("zimski"))
+				if(kolone[2].trim().equals("ZIMSKI"))
 					semestar1 = semestar.zimski;
 				else
 					semestar1 = semestar.letnji;
 				
-				predmeti.add(new Predmet( kolone[0].trim(), kolone[1].trim(), Integer.parseInt(kolone[2].trim()), kolone[3].trim(), Integer.parseInt(kolone[4].trim()), semestar1));
+				predmeti.add(new Predmet( kolone[0].trim(), kolone[1].trim(), semestar1, Integer.parseInt(kolone[3].trim()), Integer.parseInt(kolone[4].trim()), kolone[5].trim()));
 				
 			}
 			
-			String s = reader.readLine();
-			System.out.println(s);
+			reader.close();
 		} catch(IOException exception) {
 			exception.printStackTrace();
 		}
@@ -126,8 +115,8 @@ public class BazaPredmeta {
 		}
 	}
 	
-	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, int godinaStudija, String predmetniProfesor, int espb, semestar sem) {
-		this.predmeti.add(new Predmet(sifraPredmeta, nazivPredmeta, godinaStudija, predmetniProfesor, espb, sem));
+	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, semestar sem, int godinaStudija, int espb, String predmetniProfesor) {
+		this.predmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
 	}
 	
 	public void izbrisiPredmet(String indeks) {

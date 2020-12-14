@@ -1,9 +1,21 @@
-E231, Analiza1, 1, Rale Mrale, 9, zimski
-S231, Matematika, 1, David David, 5, zimski
-T231, PJISP, 1, Rale Mrale, 9, letnji
-E231, Objektno Programiranje, 1, Ivan Ivan, 8, zimski
-A231, OISISI, 1, Rale Mrale, 6, letnji
-G231, Metode Optimizacije, 4, Rale Mrale, 9, zimski
-H231, Programski Prevodioci, 3, Rale Mrale, 9, zimski
-J231, Verovatnoca, 3, Rale Mrale, 6, letnji
-I231, Analiza2, 2, Rale Mrale, 6, zimski
+eng1, Engleski 1, LETNJI, 1, 3, Masa Pavlovic
+nans, Numericki algoritmi i numericki softver, LETNJI, 3, 4, Ana Djordjevic
+fiz, Fizika, LETNJI, 3, 9, Petar Ivanovic
+pjisp, Programski jezici i strukture podataka, ZIMSKI, 1, 9, Sara Dimitrijevic
+miss, Modeliranje i simulacija sistema, LETNJI, 1, 8, Petar Cvetkovic
+visp, Verovatnoca i slucajni procesi, ZIMSKI, 1, 5, Una Djordjevic
+arh, Arhitektura racunara, LETNJI, 1, 9,  Una Djordjevic
+sppurv1, Sistemska programska podrska u realnom vremenu 1, LETNJI, 2, 6, Luka Markovic
+eng2, Engleski 2, LETNJI, 2, 3, Mila Markovic
+ma2, Matematicka analiza 2, LETNJI, 3, 8, Ognjen Ivanovic
+alg, Algebra, LETNJI, 1, 9, Masa Jankovic
+oet, Osnovi elektrotehnike, ZIMSKI, 3, 9, Bogdan Dimitrijevic
+lprs1, Logicko projektovanje racunarskih sistema 1, ZIMSKI, 1, 6, Filip Pavlovic
+ma1, Matematicka analiza 1, LETNJI, 3, 9, Lazar Kostic
+oisisi, Osnovi informacionih sistema i softverskog inzenjerstva, LETNJI, 3, 6, Lazar Kostic
+mo, Metode optimizacije, LETNJI, 1, 8, Luka Djordjevic
+os, Operativni sistemi, ZIMSKI, 3, 8, Andrej Jovanovic
+bp1, Baze podataka 1, LETNJI, 1, 8, Una Milosevic
+sau, Sistemi automatskog upravljanja, LETNJI, 1, 8, Lazar, Tomic
+sat, Socioloski aspekti tehnickog razvoja, ZIMSKI, 3, 3, Lazar Tomic
+op, Objektno programiranje, LETNJI, 2, 8, Kosta, Kovacevic

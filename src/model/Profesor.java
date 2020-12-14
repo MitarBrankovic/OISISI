@@ -33,7 +33,7 @@ public class Profesor {
 	}*/
 	
 	
-	public Profesor(String prezime, String ime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
+	public Profesor(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
 			String email, String adresaKancelarije, int brojLicneKarte, String titula, String zvanje) {
 		super();
 		this.prezime = prezime;

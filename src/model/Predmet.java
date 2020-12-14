@@ -29,7 +29,7 @@ public class Predmet {
 		this.studentiNisuPolozili = studentiNisuPolozili;
 	}*/
 	
-	public Predmet(String sifraPredmeta, String nazivPredmeta, int godinaStudija, String predmetniProfesor, int espb, semestar sem) {
+	public Predmet(String sifraPredmeta, String nazivPredmeta, semestar sem, int godinaStudija, int espb, String predmetniProfesor) {
 		super();
 		this.sifraPredmeta = sifraPredmeta;
 		this.nazivPredmeta = nazivPredmeta;
