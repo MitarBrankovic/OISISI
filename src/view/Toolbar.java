@@ -2,20 +2,16 @@ package view;
 
 
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
+import java.io.File;
 
 //import java.awt.BorderLayout;
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 //import javax.swing.JFrame;
-import javax.swing.JPanel;
 //import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
-import javax.swing.KeyStroke;
 
 public class Toolbar extends JToolBar{
 
@@ -28,7 +24,7 @@ public class Toolbar extends JToolBar{
 		
 		JButton btnOpen = new JButton();
 		btnOpen.setToolTipText("Open");
-		btnOpen.setIcon(new ImageIcon("images/add.jpg"));
+		btnOpen.setIcon(new ImageIcon("images" + File.separator + "add.jpg"));
 		
 		add(btnOpen);
 		
@@ -37,12 +33,12 @@ public class Toolbar extends JToolBar{
 		JButton btnEdit = new JButton();
 		btnEdit.setToolTipText("Edit");
 		add(btnEdit);
-		btnEdit.setIcon(new ImageIcon("images/edit.jpg"));
+		btnEdit.setIcon(new ImageIcon("images" + File.separator + "edit.jpg"));
 		addSeparator();
 		
 		JButton btnDelete = new JButton();
 		btnDelete.setToolTipText("Delete");
-		btnDelete.setIcon(new ImageIcon("images/delete1.jpg"));
+		btnDelete.setIcon(new ImageIcon("images" + File.separator + "delete1.jpg"));
 		add(btnDelete);
 		
 		addSeparator();
@@ -58,7 +54,7 @@ public class Toolbar extends JToolBar{
 		
 		JButton btnSearch = new JButton();
 		btnSearch.setToolTipText("Search");
-		btnSearch.setIcon(new ImageIcon("images/search.jpg"));
+		btnSearch.setIcon(new ImageIcon("images" + File.separator + "search.jpg"));
 		add(btnSearch);
 		
 		

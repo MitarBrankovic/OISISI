@@ -8,6 +8,10 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
 public class ProfesoriJTable extends JTable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1292371854849166398L;
 	private static ProfesoriJTable instance = null;
 	public static ProfesoriJTable getInstance() {
 		if(instance == null) {

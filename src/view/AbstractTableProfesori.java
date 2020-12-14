@@ -7,6 +7,11 @@ import model.BazaStudenata;
 
 public class AbstractTableProfesori extends AbstractTableModel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4636756793761246564L;
+
 	public AbstractTableProfesori() {}
 
 	@Override

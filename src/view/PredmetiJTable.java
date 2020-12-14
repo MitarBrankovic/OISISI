@@ -8,6 +8,10 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
 public class PredmetiJTable extends JTable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5328240906758154652L;
 	private static PredmetiJTable instance = null;
 	public static PredmetiJTable getInstance() {
 		if(instance == null) {

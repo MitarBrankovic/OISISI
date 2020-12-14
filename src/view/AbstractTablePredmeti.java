@@ -6,6 +6,11 @@ import model.BazaPredmeta;
 
 public class AbstractTablePredmeti extends AbstractTableModel{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3599256610720218865L;
+
 	public AbstractTablePredmeti() {
 		// TODO Auto-generated constructor stub
 	}
