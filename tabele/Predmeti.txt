@@ -1,0 +1,9 @@
+E231, Analiza1, 1, Rale Mrale, 9, zimski
+S231, Matematika, 1, David David, 5, zimski
+T231, PJISP, 1, Rale Mrale, 9, letnji
+E231, Objektno Programiranje, 1, Ivan Ivan, 8, zimski
+A231, OISISI, 1, Rale Mrale, 6, letnji
+G231, Metode Optimizacije, 4, Rale Mrale, 9, zimski
+H231, Programski Prevodioci, 3, Rale Mrale, 9, zimski
+J231, Verovatnoca, 3, Rale Mrale, 6, letnji
+I231, Analiza2, 2, Rale Mrale, 6, zimski
