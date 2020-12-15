@@ -6,6 +6,8 @@ package view;
 //import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 
@@ -18,6 +20,9 @@ public class TabPane extends JTabbedPane {
 	private static PredmetiJTable tabelaPredmeta;
 	
 	private static ProfesoriJTable tabelaProfesora;
+	
+	public static int stanje = 0;
+	
 	
 	private static TabPane instance = null;
 	
@@ -43,11 +48,35 @@ public class TabPane extends JTabbedPane {
 		addTab("Profesori", skrolProfesori);
 		addTab("Predmeti", skrolPredmeti);
 		
+		addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				// TODO Auto-generated method stub
+				//System.out.println("Tab: " + getSelectedIndex());
+				stanje = getSelectedIndex();
+				//System.out.println(stanje);
+			}
+		});
+		
+		
 		}
 	
 	public void azurirajStudenti() {
 		AbstractTableStudenti model=(AbstractTableStudenti)tabelaStudenata.getModel();
 		model.fireTableDataChanged();
 		validate();
+	}
+	
+	
+	public void azurirajProfesori() {
+		AbstractTableProfesori model=(AbstractTableProfesori)tabelaProfesora.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
+	
+	
+	public static int getStanje() {
+		return stanje;
 	}
 }

@@ -14,9 +14,14 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
 //import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+//import javafx.scene.control.TabPane;
 
 public class MenuKonfiguracija extends JMenuBar {
 
@@ -31,13 +36,27 @@ public class MenuKonfiguracija extends JMenuBar {
 		fNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		fNew.setMnemonic(KeyEvent.VK_N);
 		
+		
 		fNew.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				AddStudentFrame asf = new AddStudentFrame();				
+				
+				if(TabPane.getStanje() == 0) {
+					AddStudentFrame asf = new AddStudentFrame();
+					asf.setVisible(true);
+					System.out.println("0");
+				}else if(TabPane.getStanje() == 1) {
+					AddProfesorFrame apf = new AddProfesorFrame();
+					apf.setVisible(true);
+					System.out.println("1");
+				}else {
+					System.out.println("nista");
+				}
+				
 			}
-		});
+		}); 
+		
 		
 		JMenuItem fClose = new JMenuItem("Close");
 		fClose.setIcon(new ImageIcon("images" + File.separator + "close.jpg"));
