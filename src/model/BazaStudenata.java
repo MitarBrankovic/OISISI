@@ -69,12 +69,11 @@ public class BazaStudenata {
 				else
 					status = StudentStatus.S;
 				
-				studenti.add(new Student( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), Integer.parseInt(kolone[4].trim()), Integer.parseInt(kolone[5].trim()), kolone[6].trim(), Integer.parseInt(kolone[7].trim()), Integer.parseInt(kolone[8].trim()), status, Double.parseDouble(kolone[10].trim())));
+				studenti.add(new Student( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), Integer.parseInt(kolone[7].trim()), Integer.parseInt(kolone[8].trim()), status, Double.parseDouble(kolone[10].trim())));
 				
 			}
 			
-			String s = reader.readLine();
-			System.out.println(s);
+			reader.close();
 		} catch(IOException exception) {
 			exception.printStackTrace();
 		}
@@ -108,7 +107,7 @@ public class BazaStudenata {
 		Student student = this.studenti.get(row);
 		switch (column) {
 		case 0:
-			return Integer.toString(student.getBrojIndeksa());
+			return student.getBrojIndeksa();
 		case 1:
 			return student.getIme();
 		case 2:
@@ -118,7 +117,7 @@ public class BazaStudenata {
 		case 4:
 			return student.getAdresa();
 		case 5:
-			return Integer.toString(student.getKontakt());
+			return student.getKontakt();
 		case 6:
 			return student.getEmail();
 		case 7:
@@ -138,11 +137,11 @@ public class BazaStudenata {
 	}
 	
 	
-	public void dodajStudenta(String ime, String prezime, String datumRodjenja, String adresa, int indeks, int i,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
-		this.studenti.add(new Student(ime,prezime, datumRodjenja, adresa, indeks, i,mail, godinaUpisa, trenutnaGodina, status, prosecnaOcena));
+	public void dodajStudenta(String ime, String prezime, String datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
+		this.studenti.add(new Student(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status, prosecnaOcena));
 	}
 
-	public void izbrisiStudenta(int indeks) {
+	public void izbrisiStudenta(String indeks) {
 		for (Student i : studenti) {
 			if (i.getBrojIndeksa() == indeks) {
 				studenti.remove(i);

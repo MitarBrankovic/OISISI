@@ -18,9 +18,9 @@ public class StudentiController {
 	private StudentiController() {}
 	
 	
-	public void addStudent(String ime, String prezime, String datumRodjenja, String adresa, int indeks, int i,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) 
+	public void addStudent(String ime, String prezime, String datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) 
 	{
-		BazaStudenata.getInstance().dodajStudenta(ime,prezime, datumRodjenja, adresa, indeks, i,mail, godinaUpisa, trenutnaGodina, status, prosecnaOcena);
+		BazaStudenata.getInstance().dodajStudenta(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status, prosecnaOcena);
 		TabPane.getInstance().azurirajStudenti();
 	}
 	

@@ -9,9 +9,9 @@ public class Student {
 	String prezime;
 	String datumRodjenja;
 	String adresa;
-	int kontakt;
+	String kontakt;
 	String email;
-	int brojIndeksa;
+	String brojIndeksa;
 	int godinaUpisa;
 	int trenutnaGodina;
 	StudentStatus status;
@@ -21,47 +21,28 @@ public class Student {
 	
 	
 	public Student() {}	
-	
-	
 
-	public Student(String ime, String prezime, String datumRodjenja, String adresa, int kontakt, String email,
-			int brojIndeksa, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
-		super();
+	public Student(String ime, String prezime, String datumRodjenja, String adresa, String indeks, String kontakt,
+			String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status1, double prosecnaOcena) {
 		this.ime = ime;
 		this.prezime = prezime;
 		this.datumRodjenja = datumRodjenja;
 		this.adresa = adresa;
 		this.kontakt = kontakt;
-		this.email = email;
-		this.brojIndeksa = brojIndeksa;
+		this.email = mail;
+		this.brojIndeksa = indeks;
 		this.godinaUpisa = godinaUpisa;
 		this.trenutnaGodina = trenutnaGodina;
-		this.status = status;
+		this.status = status1;
 		this.prosecnaOcena = prosecnaOcena;
 	}
 
-
-	public Student(String ime2, String prezime2, String datumRodjenja2, String adresa2, int indeks2, int i,
-			String mail2, int godinaUpisa2, int trenutnaGodina2, StudentStatus b, double prosecnaOcena2) {
-		this.ime = ime2;
-		this.prezime = prezime2;
-		this.datumRodjenja = datumRodjenja2;
-		this.adresa = adresa2;
-		this.kontakt = i;
-		this.email = mail2;
-		this.brojIndeksa = indeks2;
-		this.godinaUpisa = godinaUpisa2;
-		this.trenutnaGodina = trenutnaGodina2;
-		this.status = StudentStatus.B;
-		this.prosecnaOcena = prosecnaOcena2;
-	}
-
-	public int getBrojIndeksa() {
+	public String getBrojIndeksa() {
 		return brojIndeksa;
 	}
 
 
-	public void setBrojIndeksa(int brojIndeksa) {
+	public void setBrojIndeksa(String brojIndeksa) {
 		this.brojIndeksa = brojIndeksa;
 	}
 
@@ -110,10 +91,10 @@ public class Student {
 	public void setAdresa(String adresa) {
 		this.adresa = adresa;
 	}
-	public int getKontakt() {
+	public String getKontakt() {
 		return kontakt;
 	}
-	public void setKontakt(int kontakt) {
+	public void setKontakt(String kontakt) {
 		this.kontakt = kontakt;
 	}
 	public String getEmail() {
