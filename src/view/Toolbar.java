@@ -2,6 +2,8 @@ package view;
 
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
 //import java.awt.BorderLayout;
@@ -20,15 +22,31 @@ public class Toolbar extends JToolBar{
 	public Toolbar() {
 		
 		
-		//panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
-		
 		JButton btnOpen = new JButton();
 		btnOpen.setToolTipText("Open");
 		btnOpen.setIcon(new ImageIcon("images" + File.separator + "add.jpg"));
 		
+		btnOpen.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(TabPane.getStanje() == 0) {
+					AddStudentFrame asf = new AddStudentFrame();
+					asf.setVisible(true);
+				}else if(TabPane.getStanje() == 1) {
+					AddProfesorFrame apf = new AddProfesorFrame();
+					apf.setVisible(true);
+				}else if(TabPane.getStanje() == 2){
+					AddPredmetFrame aprf = new AddPredmetFrame();
+					aprf.setVisible(true);
+				}				
+			}					
+		});		
+		
 		add(btnOpen);
 		
 		addSeparator();
+		
 		
 		JButton btnEdit = new JButton();
 		btnEdit.setToolTipText("Edit");

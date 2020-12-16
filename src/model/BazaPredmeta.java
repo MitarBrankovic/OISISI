@@ -55,11 +55,11 @@ public class BazaPredmeta {
 				
 				kolone = naredni.split("\\,");
 				
-				semestar semestar1;
+				ProfesorSemestar semestar1;
 				if(kolone[2].trim().equals("ZIMSKI"))
-					semestar1 = semestar.zimski;
+					semestar1 = ProfesorSemestar.zimski;
 				else
-					semestar1 = semestar.letnji;
+					semestar1 = ProfesorSemestar.letnji;
 				
 				predmeti.add(new Predmet( kolone[0].trim(), kolone[1].trim(), semestar1, Integer.parseInt(kolone[3].trim()), Integer.parseInt(kolone[4].trim()), kolone[5].trim()));
 				
@@ -100,9 +100,9 @@ public class BazaPredmeta {
 		case 1:
 			return predmet.getNazivPredmeta();
 		case 2:
-			if(predmet.getSemestar() == semestar.letnji)
+			if(predmet.getSemestar() == ProfesorSemestar.letnji)
 				return "Letnji";
-			else if(predmet.getSemestar() == semestar.zimski)
+			else if(predmet.getSemestar() == ProfesorSemestar.zimski)
 				return "Zimski";
 			else
 				return "Nepoznato";	
@@ -115,7 +115,7 @@ public class BazaPredmeta {
 		}
 	}
 	
-	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, semestar sem, int godinaStudija, int espb, String predmetniProfesor) {
+	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, ProfesorSemestar sem, int godinaStudija, int espb, String predmetniProfesor) {
 		this.predmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
 	}
 	

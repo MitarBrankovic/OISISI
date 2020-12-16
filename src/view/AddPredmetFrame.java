@@ -5,17 +5,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import listeners.FocusListener1;
 import javax.swing.*;
+import controller.PredmetController;
+import model.ProfesorSemestar;
 
-public class AddPredmetFrame extends JFrame{
+public class AddPredmetFrame extends JDialog{
 
 	private static final long serialVersionUID = 3867794288855849609L;
 
+	private ProfesorSemestar sem;
 	
 	public AddPredmetFrame() {
+		/*setVisible je stavljen u komentar zato sto istu funkciju pozivamo u MenuKonfiguracija/Toolbar
+		 *  pa da ne bi iskakala dva prozora, a da omogucimo da dijalog bude modalan*/
+		
 		
 		setTitle("Dodavanje Predmeta");
 		setSize(400, 300);
-		setVisible(true);
+		setModal(true);
+		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		new BorderLayout();
@@ -108,6 +115,42 @@ public class AddPredmetFrame extends JFrame{
 				setVisible(false);
 				dispose();
 			}	
+		});
+		
+		potvrdi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int god;
+				String godina = godine.getSelectedItem().toString();
+				if(godina.equals("I (prva)")) {
+					god=1;
+				}else if(godina.equals("II (druga)")){
+					god=2;
+				}else if(godina.equals("III (treca)")){
+					god=3;
+				}else {
+					god=4;
+				}
+				
+				
+				String semestar1 = semestri.getSelectedItem().toString();
+				if(semestar1.equals("Letnji")) {
+					sem = ProfesorSemestar.letnji;
+				}else if(semestar1.equals("Zimski")) {
+					sem = ProfesorSemestar.zimski;
+				}
+				
+				PredmetController.getInstance().addPredmet(txtSifra.getText(), txtNaziv.getText(),sem, god, Integer.parseInt(txtEpsb.getText()), txtPredmetniProfesor.getText());
+				
+				setVisible(false);
+				dispose();
+				
+			}
+			
+			
+			
 		});
 		
 		donjiPanel.add(potvrdi);

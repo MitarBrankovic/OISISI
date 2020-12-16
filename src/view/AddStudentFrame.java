@@ -10,16 +10,20 @@ import javax.swing.*;
 import controller.StudentiController;
 import model.*;
 
-public class AddStudentFrame extends JFrame {
+public class AddStudentFrame extends JDialog {
 	
 	private static final long serialVersionUID = -7995869934266012394L;
 	private StudentStatus st;
 	
 	public AddStudentFrame() {
+		/*setVisible je stavljen u komentar zato sto istu funkciju pozivamo u MenuKonfiguracija/Toolbar
+		 *  pa da ne bi iskakala dva prozora, a da omogucimo da dijalog bude modalan*/
+		
 		
 		setTitle("Dodavanje Studenta");
 		setSize(400, 500);
-		setVisible(true);
+		setModal(true);
+		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		new BorderLayout();

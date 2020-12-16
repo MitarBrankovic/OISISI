@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-enum semestar {zimski, letnji;}
+//enum semestar {zimski, letnji;}
 
 public class Predmet {
 	String sifraPredmeta;
@@ -11,7 +11,7 @@ public class Predmet {
 	//Profesor predmetniProfesor;
 	String predmetniProfesor;
 	int espb;
-	semestar semestar;
+	ProfesorSemestar semestar;
 	List<Student> studentiPolozili;
 	List<Student> studentiNisuPolozili;
 	
@@ -29,7 +29,7 @@ public class Predmet {
 		this.studentiNisuPolozili = studentiNisuPolozili;
 	}*/
 	
-	public Predmet(String sifraPredmeta, String nazivPredmeta, semestar sem, int godinaStudija, int espb, String predmetniProfesor) {
+	public Predmet(String sifraPredmeta, String nazivPredmeta, ProfesorSemestar sem, int godinaStudija, int espb, String predmetniProfesor) {
 		super();
 		this.sifraPredmeta = sifraPredmeta;
 		this.nazivPredmeta = nazivPredmeta;
@@ -71,10 +71,10 @@ public class Predmet {
 		this.predmetniProfesor = predmetniProfesor;
 	}*/
 
-	public semestar getSemestar() {
+	public ProfesorSemestar getSemestar() {
 		return semestar;
 	}
-	public void setSemestar(semestar semestar) {
+	public void setSemestar(ProfesorSemestar semestar) {
 		this.semestar = semestar;
 	}
 	

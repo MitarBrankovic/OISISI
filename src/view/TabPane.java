@@ -58,8 +58,6 @@ public class TabPane extends JTabbedPane {
 				//System.out.println(stanje);
 			}
 		});
-		
-		
 		}
 	
 	public void azurirajStudenti() {
@@ -71,6 +69,13 @@ public class TabPane extends JTabbedPane {
 	
 	public void azurirajProfesori() {
 		AbstractTableProfesori model=(AbstractTableProfesori)tabelaProfesora.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
+	
+	
+	public void azurirajPredmeti() {
+		AbstractTablePredmeti model=(AbstractTablePredmeti)tabelaPredmeta.getModel();
 		model.fireTableDataChanged();
 		validate();
 	}

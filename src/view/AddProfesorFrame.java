@@ -1,35 +1,35 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+//import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusListener;
-
+//import java.awt.event.FocusListener;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import listeners.FocusListener1;
 
-public class AddProfesorFrame extends JFrame{
+public class AddProfesorFrame extends JDialog{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7316982662937273530L;
 	
 	public AddProfesorFrame() {
+		/*setVisible je stavljen u komentar zato sto istu funkciju pozivamo u MenuKonfiguracija/Toolbar
+		 *  pa da ne bi iskakala dva prozora, a da omogucimo da dijalog bude modalan*/
+		
 		
 		setTitle("Dodavanje Profesora");
 		setSize(400, 500);
-		setVisible(true);
+		setModal(true);
+		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		new BorderLayout();

@@ -32,7 +32,7 @@ public class Glavni_Prozor extends JFrame{
 		Toolbar toolbar1 = new Toolbar();
 		add(toolbar1, BorderLayout.NORTH);
 		
-		TabPane tabpane = new TabPane();
+		TabPane tabpane = TabPane.getInstance();		//ovde je bila greska, ne radi sa new TabPane()
 		add(tabpane, BorderLayout.CENTER);
 		
 		setVisible(true);
