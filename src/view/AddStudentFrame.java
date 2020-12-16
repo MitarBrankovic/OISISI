@@ -7,10 +7,13 @@ import listeners.FocusListener1;
 
 import javax.swing.*;
 
+import controller.StudentiController;
+import model.*;
+
 public class AddStudentFrame extends JFrame {
 	
 	private static final long serialVersionUID = -7995869934266012394L;
-	
+	private StudentStatus st;
 	
 	public AddStudentFrame() {
 		
@@ -150,7 +153,8 @@ public class AddStudentFrame extends JFrame {
 		String [] lista = {"I (prva)","II (druga)","III (treca)","IV (cetvrta)"};
 		JComboBox<Object> godine = new JComboBox<Object>(lista);
 	    JPanel pGodinaStudija = new JPanel(new FlowLayout(FlowLayout.LEFT));
-	    JLabel lGodinaStudija = new JLabel("Godina studija*:                     ");
+	    JLabel lGodinaStudija = new JLabel("Godina studija*:");
+	    lGodinaStudija.setPreferredSize(dim);
 	    pGodinaStudija.add(lGodinaStudija);
 	    pGodinaStudija.add(godine);
 		
@@ -170,7 +174,8 @@ public class AddStudentFrame extends JFrame {
 		String [] lista2 = {"Budžet","Samofinansiranje"};
 		JComboBox<Object> status = new JComboBox<Object>(lista2);
 	    JPanel pStatus = new JPanel(new FlowLayout(FlowLayout.LEFT));
-	    JLabel lStatus = new JLabel("Status*:                                   ");
+	    JLabel lStatus = new JLabel("Status*:");
+	    lStatus.setPreferredSize(dim);
 	    pStatus.add(lStatus);
 	    pStatus.add(status);
 		
@@ -199,6 +204,42 @@ public class AddStudentFrame extends JFrame {
 				setVisible(false);
 				dispose();
 			}	
+		});
+		
+		potvrdi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int god;
+				String godina = godine.getSelectedItem().toString();
+				if(godina.equals("I (prva)")) {
+					god=1;
+				}else if(godina.equals("II (druga)")){
+					god=2;
+				}else if(godina.equals("III (treca)")){
+					god=3;
+				}else {
+					god=4;
+				}
+				
+
+				String status1 = status.getSelectedItem().toString();
+				if(status1.equals("Budžet")) {
+					st = StudentStatus.B;
+				}else if(status1.equals("Samofinansiranje")) {
+					st = StudentStatus.S;
+				}
+				
+				StudentiController.getInstance().addStudent(txtIme.getText(), txtPrezime.getText(),txtDatum.getText(), txtAdresa.getText(), txtTelefon.getText(),
+						txtEmail.getText(),txtIndeks.getText(),Integer.parseInt(txtDatumUpisa.getText()),god, st, Double.parseDouble(txtProsek.getText()));
+				
+				setVisible(false);
+				dispose();
+			}
+			
+			
+			
 		});
 		
 		donjiPanel.add(potvrdi);

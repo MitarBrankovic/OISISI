@@ -21,6 +21,8 @@ import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import model.*;
+
 //import javafx.scene.control.TabPane;
 
 public class MenuKonfiguracija extends JMenuBar {
@@ -45,15 +47,13 @@ public class MenuKonfiguracija extends JMenuBar {
 				if(TabPane.getStanje() == 0) {
 					AddStudentFrame asf = new AddStudentFrame();
 					asf.setVisible(true);
-					System.out.println("0");
 				}else if(TabPane.getStanje() == 1) {
 					AddProfesorFrame apf = new AddProfesorFrame();
 					apf.setVisible(true);
-					System.out.println("1");
-				}else {
-					System.out.println("nista");
-				}
-				
+				}else if(TabPane.getStanje() == 2){
+					AddPredmetFrame aprf = new AddPredmetFrame();
+					aprf.setVisible(true);
+				}			
 			}
 		}); 
 		

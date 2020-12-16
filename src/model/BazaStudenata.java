@@ -69,7 +69,8 @@ public class BazaStudenata {
 				else
 					status = StudentStatus.S;
 				
-				studenti.add(new Student( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), Integer.parseInt(kolone[7].trim()), Integer.parseInt(kolone[8].trim()), status, Double.parseDouble(kolone[10].trim())));
+				studenti.add(new Student( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), kolone[4].trim(), kolone[5].trim(),
+						kolone[6].trim(), Integer.parseInt(kolone[7].trim()), Integer.parseInt(kolone[8].trim()), status, Double.parseDouble(kolone[10].trim())));
 				
 			}
 			
