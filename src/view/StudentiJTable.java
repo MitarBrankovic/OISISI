@@ -12,7 +12,7 @@ public class StudentiJTable extends JTable{
 
 	private static final long serialVersionUID = -612773620886765780L;
 	
-	
+	private static JTable tabela = null;
 	private static StudentiJTable instance = null;
 	public static StudentiJTable getInstance() {
 		if (instance == null) {
@@ -27,6 +27,7 @@ public class StudentiJTable extends JTable{
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableStudenti());
+		tabela = this;
 	}
 
 
@@ -43,6 +44,11 @@ public class StudentiJTable extends JTable{
 	}
 	
 	
-	
+	public int getSelektovanRed() {
+		if(tabela.getSelectedRow()!=-1)
+			return tabela.convertRowIndexToModel(tabela.getSelectedRow());
+		else 
+			return -1;
+	}
 	
 }

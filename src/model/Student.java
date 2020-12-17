@@ -36,6 +36,23 @@ public class Student {
 		this.status = status1;
 		this.prosecnaOcena = prosecnaOcena;
 	}
+	
+	
+	public Student(Student s) {
+		this.ime = s.getIme();
+		this.prezime = s.getPrezime();
+		this.datumRodjenja = s.getDatumRodjenja();
+		this.adresa = s.getAdresa();
+		this.kontakt = s.getKontakt();
+		this.email = s.getEmail();
+		this.brojIndeksa = s.getBrojIndeksa();
+		this.godinaUpisa = s.getGodinaUpisa();
+		this.trenutnaGodina = s.getTrenutnaGodina();
+		this.status = s.getStatus();
+		this.prosecnaOcena = s.getProsecnaOcena();
+		
+		
+	}
 
 	public String getBrojIndeksa() {
 		return brojIndeksa;

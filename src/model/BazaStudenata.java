@@ -142,6 +142,26 @@ public class BazaStudenata {
 		this.studenti.add(new Student(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status, prosecnaOcena));
 	}
 
+
+	public void izmeniStudenta(String ime, String prezime, String datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
+		for (Student i : studenti) {
+			if (i.getBrojIndeksa() == indeks) {
+				i.setIme(ime);
+				i.setPrezime(prezime);
+				i.setDatumRodjenja(datumRodjenja);
+				i.setAdresa(adresa);
+				i.setBrojIndeksa(indeks);
+				i.setKontakt(kontakt);
+				i.setEmail(mail);
+				i.setGodinaUpisa(godinaUpisa);
+				i.setTrenutnaGodina(trenutnaGodina);
+				i.setStatus(status);
+				i.setProsecnaOcena(prosecnaOcena);
+			}
+		}
+	}
+	
+	
 	public void izbrisiStudenta(String indeks) {
 		for (Student i : studenti) {
 			if (i.getBrojIndeksa() == indeks) {

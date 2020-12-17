@@ -24,4 +24,9 @@ public class StudentiController {
 		TabPane.getInstance().azurirajStudenti();
 	}
 	
+	
+	public void editStudent(String ime, String prezime, String datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
+		BazaStudenata.getInstance().izmeniStudenta(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status, prosecnaOcena);
+		TabPane.getInstance().azurirajStudenti();	
+	}
 }

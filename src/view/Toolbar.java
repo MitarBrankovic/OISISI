@@ -50,6 +50,28 @@ public class Toolbar extends JToolBar{
 		
 		JButton btnEdit = new JButton();
 		btnEdit.setToolTipText("Edit");
+		
+		btnEdit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(TabPane.getStanje() == 0) {
+					EditStudentFrame esf = new EditStudentFrame();
+					esf.setVisible(true);
+				}/*else if(TabPane.getStanje() == 1) {
+					AddProfesorFrame apf = new AddProfesorFrame();
+					apf.setVisible(true);
+				}else if(TabPane.getStanje() == 2){
+					AddPredmetFrame aprf = new AddPredmetFrame();
+					aprf.setVisible(true);
+				}*/
+				
+			}
+			
+			
+		});
+		
+		
 		add(btnEdit);
 		btnEdit.setIcon(new ImageIcon("images" + File.separator + "edit.jpg"));
 		addSeparator();
