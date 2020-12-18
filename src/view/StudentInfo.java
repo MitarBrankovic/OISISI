@@ -5,17 +5,12 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.format.DateTimeFormatter;
-
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import controller.StudentiController;
 import listeners.FocusListener1;
 import model.BazaStudenata;
@@ -26,7 +21,6 @@ public class StudentInfo extends JPanel{
 
 	private static final long serialVersionUID = -3544959051691239610L;
 	private StudentStatus studStat;
-	
 	
 	private static StudentInfo instance = null;
 	public static StudentInfo getInstance() {
@@ -214,16 +208,22 @@ public class StudentInfo extends JPanel{
 		
 		
 		
-		Student st = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelektovanRed()));
+		Student st = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
 		txtIme.setText(st.getIme());
 		txtPrezime.setText(st.getPrezime());
 		txtDatum.setText(st.getDatumRodjenja());
 		txtAdresa.setText(st.getAdresa());
+		txtIndeks.setText(st.getBrojIndeksa());
 		txtTelefon.setText(st.getKontakt());
 		txtEmail.setText(st.getEmail());
-		txtIndeks.setText(st.getBrojIndeksa());
 		txtDatumUpisa.setText(String.valueOf(st.getGodinaUpisa()));
 		txtProsek.setText(String.valueOf(st.getProsecnaOcena()));
+		
+		if(st.getStatus() == StudentStatus.B) {
+			status.setSelectedItem("Budžet");
+		}else if (st.getStatus() == StudentStatus.S) {
+			status.setSelectedItem("Samofinansiranje");			
+		}		
 		if(st.getTrenutnaGodina() == 1)
 			godine.setSelectedItem("I (prva)");
 		else if(st.getTrenutnaGodina() == 2)
@@ -231,26 +231,7 @@ public class StudentInfo extends JPanel{
 		else if(st.getTrenutnaGodina() == 3)
 			godine.setSelectedItem("III (treca)");
 		else
-			godine.setSelectedItem("IV (cetvrta)");
-		
-		if(st.getStatus() == StudentStatus.B) {
-			status.setSelectedItem("Budžet");
-		}else if (st.getStatus() == StudentStatus.S) {
-			status.setSelectedItem("Samofinansiranje");			
-		}
-		
-		/*int god = 0;
-		String godina = godine.getSelectedItem().toString();
-		if(godina.equals("I (prva)")) {
-			god=1;
-		}else if(godina.equals("II (druga)")){
-			god=2;
-		}else if(godina.equals("III (treca)")){
-			god=3;
-		}else {
-			god=4;
-		}*/
-		
+			godine.setSelectedItem("IV (cetvrta)");	
 		
 		
 		
@@ -262,8 +243,7 @@ public class StudentInfo extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				//dispose();
+				EditStudentFrame.getInstance().setVisible(false);
 			}	
 		});
 		
@@ -292,11 +272,10 @@ public class StudentInfo extends JPanel{
 					studStat = StudentStatus.S;
 				}
 				
-				StudentiController.getInstance().editStudent(txtIme.getText(), txtPrezime.getText(),txtDatum.getText(), txtAdresa.getText(), txtTelefon.getText(),
-						txtEmail.getText(),txtIndeks.getText(),Integer.parseInt(txtDatumUpisa.getText()),god, studStat, Double.parseDouble(txtProsek.getText()));
+				StudentiController.getInstance().editStudent(txtIme.getText(), txtPrezime.getText(),txtDatum.getText(), txtAdresa.getText(),txtIndeks.getText(), txtTelefon.getText(),
+						txtEmail.getText(),Integer.parseInt(txtDatumUpisa.getText()),god, studStat, Double.parseDouble(txtProsek.getText()));
 				
-				setVisible(false);
-				//dispose();
+				EditStudentFrame.getInstance().setVisible(false);
 			}
 			
 			

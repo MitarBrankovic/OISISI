@@ -82,6 +82,29 @@ public class MenuKonfiguracija extends JMenuBar {
 		eEdit.setIcon(new ImageIcon("images" + File.separator + "edit.jpg"));
 		eEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		eEdit.setMnemonic(KeyEvent.VK_E);
+		
+		eEdit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(TabPane.getStanje() == 0) {
+					EditStudentFrame esf = EditStudentFrame.getInstance();
+					esf.setVisible(true);
+				}/*else if(TabPane.getStanje() == 1) {
+					EditStudentFrame esf = EditProfesorFrame.getInstance();
+					epf.setVisible(true);
+				}*/else if(TabPane.getStanje() == 2){
+					EditPredmetFrame eprf = EditPredmetFrame.getInstance();
+					eprf.setVisible(true);
+				}
+				
+			}
+			
+			
+		});
+		
+		
+		
 		JMenuItem eDelete = new JMenuItem("Delete");
 		eDelete.setIcon(new ImageIcon("images" + File.separator + "delete1.jpg"));
 		eDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));

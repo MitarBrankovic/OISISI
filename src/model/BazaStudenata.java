@@ -145,7 +145,7 @@ public class BazaStudenata {
 
 	public void izmeniStudenta(String ime, String prezime, String datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
 		for (Student i : studenti) {
-			if (i.getBrojIndeksa() == indeks) {
+			if (i.getBrojIndeksa().equals(indeks)) {
 				i.setIme(ime);
 				i.setPrezime(prezime);
 				i.setDatumRodjenja(datumRodjenja);

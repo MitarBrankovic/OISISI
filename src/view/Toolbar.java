@@ -56,19 +56,17 @@ public class Toolbar extends JToolBar{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(TabPane.getStanje() == 0) {
-					EditStudentFrame esf = new EditStudentFrame();
+					EditStudentFrame esf = EditStudentFrame.getInstance();
 					esf.setVisible(true);
 				}/*else if(TabPane.getStanje() == 1) {
-					AddProfesorFrame apf = new AddProfesorFrame();
-					apf.setVisible(true);
-				}else if(TabPane.getStanje() == 2){
-					AddPredmetFrame aprf = new AddPredmetFrame();
-					aprf.setVisible(true);
-				}*/
+					EditStudentFrame esf = EditProfesorFrame.getInstance();
+					epf.setVisible(true);
+				}*/else if(TabPane.getStanje() == 2){
+					EditPredmetFrame eprf = EditPredmetFrame.getInstance();
+					eprf.setVisible(true);
+				}
 				
 			}
-			
-			
 		});
 		
 		

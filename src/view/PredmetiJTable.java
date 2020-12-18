@@ -37,7 +37,6 @@ public class PredmetiJTable extends JTable{
 		
 		return c;
 	}
-	
-	
+
 	
 }

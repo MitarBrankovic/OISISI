@@ -13,7 +13,7 @@ import model.*;
 public class AddStudentFrame extends JDialog {
 	
 	private static final long serialVersionUID = -7995869934266012394L;
-	private StudentStatus st;
+	private StudentStatus stat;
 	
 	public AddStudentFrame() {
 		/*setVisible je stavljen u komentar zato sto istu funkciju pozivamo u MenuKonfiguracija/Toolbar
@@ -230,13 +230,13 @@ public class AddStudentFrame extends JDialog {
 
 				String status1 = status.getSelectedItem().toString();
 				if(status1.equals("Budžet")) {
-					st = StudentStatus.B;
+					stat = StudentStatus.B;
 				}else if(status1.equals("Samofinansiranje")) {
-					st = StudentStatus.S;
+					stat = StudentStatus.S;
 				}
 				
 				StudentiController.getInstance().addStudent(txtIme.getText(), txtPrezime.getText(),txtDatum.getText(), txtAdresa.getText(), txtTelefon.getText(),
-						txtEmail.getText(),txtIndeks.getText(),Integer.parseInt(txtDatumUpisa.getText()),god, st, Double.parseDouble(txtProsek.getText()));
+						txtEmail.getText(),txtIndeks.getText(),Integer.parseInt(txtDatumUpisa.getText()),god, stat, Double.parseDouble(txtProsek.getText()));
 				
 				setVisible(false);
 				dispose();

@@ -1,30 +1,42 @@
 package view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import listeners.FocusListener1;
-import javax.swing.*;
+
+import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import controller.PredmetController;
+import listeners.FocusListener1;
+import model.BazaPredmeta;
+import model.Predmet;
 import model.PredmetSemestar;
 
-public class AddPredmetFrame extends JDialog{
 
-	private static final long serialVersionUID = 3867794288855849609L;
 
+
+public class PredmetInfo extends JPanel{
+
+	private static final long serialVersionUID = -8584785040635552212L;
+	
+	private static PredmetInfo instance = null;
+	public static PredmetInfo getInstance() {
+		if (instance == null) {
+			instance = new PredmetInfo();
+		}		
+		return instance;
+	}
+	
 	private PredmetSemestar sem;
 	
-	public AddPredmetFrame() {
-		/*setVisible je stavljen u komentar zato sto istu funkciju pozivamo u MenuKonfiguracija/Toolbar
-		 *  pa da ne bi iskakala dva prozora, a da omogucimo da dijalog bude modalan*/
-		
-		
-		setTitle("Dodavanje Predmeta");
-		setSize(400, 300);
-		setModal(true);
-		//setVisible(true);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+	public PredmetInfo() {
 		new BorderLayout();
 		Dimension dim  = new Dimension(150,20);
 		FocusListener1 focus = new FocusListener1();
@@ -36,6 +48,7 @@ public class AddPredmetFrame extends JDialog{
 		txtSifra.setPreferredSize(dim);
 		txtSifra.setName("tekst");
 		txtSifra.setToolTipText("npr. oisisi");
+		txtSifra.setEnabled(false);
 		txtSifra.addFocusListener(focus);
 		
 		pSifra.add(lSifra);
@@ -77,17 +90,17 @@ public class AddPredmetFrame extends JDialog{
 		
 		
 		
-		JPanel pEpsb = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel lEpsb = new JLabel("EPSB*: ");
-		lEpsb.setPreferredSize(dim);
-		JTextField txtEpsb = new JTextField();
-		txtEpsb.setPreferredSize(dim);
-		txtEpsb.setName("tekst");
-		txtEpsb.setToolTipText("npr. 6");
-		txtEpsb.addFocusListener(focus);
+		JPanel pEspb = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel lEspb = new JLabel("Espb*: ");
+		lEspb.setPreferredSize(dim);
+		JTextField txtEspb = new JTextField();
+		txtEspb.setPreferredSize(dim);
+		txtEspb.setName("tekst");
+		txtEspb.setToolTipText("npr. 6");
+		txtEspb.addFocusListener(focus);
 		
-		pEpsb.add(lEpsb);
-		pEpsb.add(txtEpsb);
+		pEspb.add(lEspb);
+		pEspb.add(txtEspb);
 		
 		
 		
@@ -105,6 +118,32 @@ public class AddPredmetFrame extends JDialog{
 		
 		
 		
+		
+		Predmet pred = new Predmet(BazaPredmeta.getInstance().getRow(PredmetiJTable.getInstance().getSelectedRow()));
+		txtSifra.setText(pred.getSifraPredmeta());
+		txtNaziv.setText(pred.getNazivPredmeta());
+		
+		if(pred.getSemestar() == PredmetSemestar.letnji) {
+			semestri.setSelectedItem("Letnji");
+		}else if(pred.getSemestar() == PredmetSemestar.zimski)
+			semestri.setSelectedItem("Zimski");
+		
+		if(pred.getGodinaStudija() == 1)
+			godine.setSelectedItem("I (prva)");
+		else if(pred.getGodinaStudija() == 2)
+			godine.setSelectedItem("II (druga)");
+		else if(pred.getGodinaStudija() == 3)
+			godine.setSelectedItem("III (treca)");
+		else
+			godine.setSelectedItem("IV (cetvrta)");
+		
+		txtEspb.setText(String.valueOf(pred.getEspb()));
+		txtPredmetniProfesor.setText(pred.getPredmetniProfesor());
+		
+		
+		
+		
+		
 		JPanel donjiPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JButton potvrdi = new JButton("Potvrdi");
 		JButton odustani = new JButton("Odustani");
@@ -112,8 +151,8 @@ public class AddPredmetFrame extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				dispose();
+				EditPredmetFrame.getInstance().setVisible(false);
+				//dispose();
 			}	
 		});
 		
@@ -142,10 +181,9 @@ public class AddPredmetFrame extends JDialog{
 					sem = PredmetSemestar.zimski;
 				}
 				
-				PredmetController.getInstance().addPredmet(txtSifra.getText(), txtNaziv.getText(),sem, god, Integer.parseInt(txtEpsb.getText()), txtPredmetniProfesor.getText());
+				PredmetController.getInstance().editPredmet(txtSifra.getText(), txtNaziv.getText(),sem, god, Integer.parseInt(txtEspb.getText()), txtPredmetniProfesor.getText());
 				
-				setVisible(false);
-				dispose();
+				EditPredmetFrame.getInstance().setVisible(false);
 				
 			}
 			
@@ -163,7 +201,7 @@ public class AddPredmetFrame extends JDialog{
 		boxPredmet.add(pNaziv);
 		boxPredmet.add(pSemestar);
 		boxPredmet.add(pGodinaStudija);
-		boxPredmet.add(pEpsb);
+		boxPredmet.add(pEspb);
 		boxPredmet.add(pPredmetniProfesor);
 		boxPredmet.add(Box.createGlue());
 		
@@ -171,8 +209,6 @@ public class AddPredmetFrame extends JDialog{
 		add(boxPredmet, BorderLayout.CENTER);
 		add(donjiPanel, BorderLayout.SOUTH);
 		
-		setLocationRelativeTo(null);
-		
-		}
-		
+	}
+	
 }

@@ -10,6 +10,14 @@ public class EditStudentFrame extends JDialog {
 
 	private static final long serialVersionUID = -1126183099640299201L;
 
+	private static EditStudentFrame instance = null;
+    public static EditStudentFrame getInstance() {
+        if (instance == null) {
+            instance = new EditStudentFrame();
+        }
+        return instance;
+    }
+	
 	public EditStudentFrame() {
 		
 		setTitle("Izmena Studenta");

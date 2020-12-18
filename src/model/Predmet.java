@@ -11,7 +11,7 @@ public class Predmet {
 	//Profesor predmetniProfesor;
 	String predmetniProfesor;
 	int espb;
-	ProfesorSemestar semestar;
+	PredmetSemestar semestar;
 	List<Student> studentiPolozili;
 	List<Student> studentiNisuPolozili;
 	
@@ -29,7 +29,7 @@ public class Predmet {
 		this.studentiNisuPolozili = studentiNisuPolozili;
 	}*/
 	
-	public Predmet(String sifraPredmeta, String nazivPredmeta, ProfesorSemestar sem, int godinaStudija, int espb, String predmetniProfesor) {
+	public Predmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, String predmetniProfesor) {
 		super();
 		this.sifraPredmeta = sifraPredmeta;
 		this.nazivPredmeta = nazivPredmeta;
@@ -38,6 +38,18 @@ public class Predmet {
 		this.espb = espb;
 		this.semestar = sem;
 		}
+	
+	
+	public Predmet(Predmet p) {
+		this.sifraPredmeta = p.getSifraPredmeta();
+		this.nazivPredmeta = p.getNazivPredmeta();
+		this.godinaStudija = p.getGodinaStudija();
+		this.predmetniProfesor = p.getPredmetniProfesor();
+		this.espb = p.getEspb();
+		this.semestar = p.getSemestar();
+	}
+	
+	
 
 	public String getSifraPredmeta() {
 		return sifraPredmeta;
@@ -63,18 +75,18 @@ public class Predmet {
 		this.godinaStudija = godinaStudija;
 	}
 
-	/*public Profesor getPredmetniProfesor() {
+	public String getPredmetniProfesor() {
 		return predmetniProfesor;
 	}
 
-	public void setPredmetniProfesor(Profesor predmetniProfesor) {
+	public void setPredmetniProfesor(String predmetniProfesor) {
 		this.predmetniProfesor = predmetniProfesor;
-	}*/
+	}
 
-	public ProfesorSemestar getSemestar() {
+	public PredmetSemestar getSemestar() {
 		return semestar;
 	}
-	public void setSemestar(ProfesorSemestar semestar) {
+	public void setSemestar(PredmetSemestar semestar) {
 		this.semestar = semestar;
 	}
 	

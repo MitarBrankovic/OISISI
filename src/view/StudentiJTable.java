@@ -2,6 +2,8 @@ package view;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -12,7 +14,6 @@ public class StudentiJTable extends JTable{
 
 	private static final long serialVersionUID = -612773620886765780L;
 	
-	private static JTable tabela = null;
 	private static StudentiJTable instance = null;
 	public static StudentiJTable getInstance() {
 		if (instance == null) {
@@ -27,13 +28,11 @@ public class StudentiJTable extends JTable{
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableStudenti());
-		tabela = this;
 	}
 
 
 	@Override
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
-		// TODO Auto-generated method stub
 		Component c = super.prepareRenderer(renderer, row, column);
 		if (isRowSelected(row)) {
 			c.setBackground(Color.LIGHT_GRAY);
@@ -41,14 +40,6 @@ public class StudentiJTable extends JTable{
 			c.setBackground(Color.WHITE);
 		}
 		return c;
-	}
-	
-	
-	public int getSelektovanRed() {
-		if(tabela.getSelectedRow()!=-1)
-			return tabela.convertRowIndexToModel(tabela.getSelectedRow());
-		else 
-			return -1;
 	}
 	
 }

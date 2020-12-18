@@ -1,5 +1,5 @@
 package model;
 
-public enum ProfesorSemestar {
+public enum PredmetSemestar {
 	letnji,zimski;
 }
