@@ -164,7 +164,7 @@ public class BazaStudenata {
 	
 	public void izbrisiStudenta(String indeks) {
 		for (Student i : studenti) {
-			if (i.getBrojIndeksa() == indeks) {
+			if (i.getBrojIndeksa().equals(indeks)) {
 				studenti.remove(i);
 				break;
 			}

@@ -198,6 +198,7 @@ public class AddStudentFrame extends JDialog {
 		
 		
 		
+		
 		JPanel donjiPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JButton potvrdi = new JButton("Potvrdi");
 		JButton odustani = new JButton("Odustani");

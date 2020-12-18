@@ -21,6 +21,7 @@ import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import controller.StudentiController;
 import model.*;
 
 //import javafx.scene.control.TabPane;
@@ -88,13 +89,13 @@ public class MenuKonfiguracija extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(TabPane.getStanje() == 0) {
-					EditStudentFrame esf = EditStudentFrame.getInstance();
+					EditStudentFrame esf = new EditStudentFrame();
 					esf.setVisible(true);
 				}/*else if(TabPane.getStanje() == 1) {
 					EditStudentFrame esf = EditProfesorFrame.getInstance();
 					epf.setVisible(true);
 				}*/else if(TabPane.getStanje() == 2){
-					EditPredmetFrame eprf = EditPredmetFrame.getInstance();
+					EditPredmetFrame eprf = new EditPredmetFrame();
 					eprf.setVisible(true);
 				}
 				
@@ -109,6 +110,35 @@ public class MenuKonfiguracija extends JMenuBar {
 		eDelete.setIcon(new ImageIcon("images" + File.separator + "delete1.jpg"));
 		eDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		eDelete.setMnemonic(KeyEvent.VK_D);
+		
+		eDelete.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(TabPane.getStanje() == 0) {
+					try {
+						int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete?","Brisanje studenta?",JOptionPane.YES_NO_OPTION);
+						if(option == JOptionPane.YES_OPTION) {
+						
+							StudentiController.getInstance().removeStudent(StudentiJTable.getInstance().getSelectedRow());
+						}
+					}catch (Exception e) {
+						JOptionPane.showMessageDialog(null, "Morate selektovati studenta!","",JOptionPane.ERROR_MESSAGE);
+						System.out.println(e.getMessage());	
+					}	
+
+
+				}/*else if(TabPane.getStanje() == 1) {
+					EditStudentFrame esf = EditProfesorFrame.getInstance();
+					epf.setVisible(true);
+				}*/else if(TabPane.getStanje() == 2){
+					//EditPredmetFrame eprf = new EditPredmetFrame();
+					//eprf.setVisible(true);
+				}
+				
+			}
+			
+		});
 		
 		
 		edit.add(eEdit);
