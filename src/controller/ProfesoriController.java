@@ -1,8 +1,8 @@
 package controller;
 
+
 import model.BazaProfesora;
-import model.BazaStudenata;
-import model.StudentStatus;
+import model.Profesor;
 import view.TabPane;
 
 public class ProfesoriController {
@@ -30,5 +30,12 @@ private static ProfesoriController instance = null;
 			String email, String adresaKancelarije, int brojLicneKarte, String titula, String zvanje) {
 		BazaProfesora.getInstance().izmeniProfesora(ime,prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email,adresaKancelarije, brojLicneKarte, titula, zvanje);
 		TabPane.getInstance().azurirajProfesori();	
+	}
+	
+	
+	public void removeProfesor(int rowSelectedIndex) {
+		Profesor prof = BazaProfesora.getInstance().getRow(rowSelectedIndex);
+		BazaProfesora.getInstance().izbrisiProfesora(prof.getBrojLicneKarte());
+		TabPane.getInstance().azurirajProfesori();
 	}
 }

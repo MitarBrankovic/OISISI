@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
+import controller.ProfesoriController;
 import controller.StudentiController;
 
 public class Toolbar extends JToolBar{
@@ -59,8 +60,13 @@ public class Toolbar extends JToolBar{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(TabPane.getStanje() == 0) {
-					EditStudentFrame esf = new EditStudentFrame();
-					esf.setVisible(true);
+					if(StudentiJTable.getInstance().getSelectedRow() == -1) {
+					    JOptionPane.showMessageDialog(null, "Nije selektovan ni jedan student","",JOptionPane.ERROR_MESSAGE);
+						}else {
+							EditStudentFrame esf = new EditStudentFrame();
+							esf.setVisible(true);
+						}
+					
 				}else if(TabPane.getStanje() == 1) {
 					
 					if(ProfesoriJTable.getInstance().getSelectedRow() == -1) {
@@ -71,8 +77,13 @@ public class Toolbar extends JToolBar{
 						}
 					
 				}else if(TabPane.getStanje() == 2){
-					EditPredmetFrame eprf = new EditPredmetFrame();
-					eprf.setVisible(true);
+					
+					if(PredmetiJTable.getInstance().getSelectedRow() == -1) {
+					    JOptionPane.showMessageDialog(null, "Nije selektovan ni jedan predmet","",JOptionPane.ERROR_MESSAGE);
+						}else {
+							EditPredmetFrame eprf = new EditPredmetFrame();
+							eprf.setVisible(true);
+						}			
 				}
 				
 			}
@@ -105,10 +116,19 @@ public class Toolbar extends JToolBar{
 					}	
 
 
-				}/*else if(TabPane.getStanje() == 1) {
-					EditStudentFrame esf = EditProfesorFrame.getInstance();
-					epf.setVisible(true);
-				}*/else if(TabPane.getStanje() == 2){
+				}else if(TabPane.getStanje() == 1) {
+					try {
+						int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete?","Brisanje profesora?",JOptionPane.YES_NO_OPTION);
+						if(option == JOptionPane.YES_OPTION) {
+						
+							ProfesoriController.getInstance().removeProfesor(ProfesoriJTable.getInstance().getSelectedRow());
+						}
+					}catch (Exception e) {
+						JOptionPane.showMessageDialog(null, "Morate selektovati profesora!","",JOptionPane.ERROR_MESSAGE);
+						System.out.println(e.getMessage());	
+					}
+										
+				}else if(TabPane.getStanje() == 2){
 					//EditPredmetFrame eprf = new EditPredmetFrame();
 					//eprf.setVisible(true);
 				}

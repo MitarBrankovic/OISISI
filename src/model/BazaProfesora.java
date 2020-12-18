@@ -108,7 +108,7 @@ public class BazaProfesora {
 	public void izbrisiProfesora(int indeks) {
 		for(Profesor i : profesori) {
 			if(i.getBrojLicneKarte() == indeks) {
-				profesori.remove(indeks);
+				profesori.remove(i);
 				break;
 			}
 		}
