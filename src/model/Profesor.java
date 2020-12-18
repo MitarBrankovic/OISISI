@@ -48,6 +48,19 @@ public class Profesor {
 		this.zvanje = zvanje;
 	}
 	
+	public Profesor(Profesor p) {
+		this.prezime = p.getPrezime();
+		this.ime = p.getIme();
+		this.datumRodjenja = p.getDatumRodjenja();
+		this.adresaStanovanja = p.getAdresaStanovanja();
+		this.kontaktTelefon = p.getKontaktTelefon();
+		this.email = p.getEmail();
+		this.adresaKancelarije = p.getAdresaKancelarije();
+		this.brojLicneKarte = p.getBrojLicneKarte();
+		this.titula = p.getTitula();
+		this.zvanje = p.getZvanje();
+	}
+	
 
 	public String getPrezime() {
 		return prezime;

@@ -91,10 +91,17 @@ public class MenuKonfiguracija extends JMenuBar {
 				if(TabPane.getStanje() == 0) {
 					EditStudentFrame esf = new EditStudentFrame();
 					esf.setVisible(true);
-				}/*else if(TabPane.getStanje() == 1) {
-					EditStudentFrame esf = EditProfesorFrame.getInstance();
-					epf.setVisible(true);
-				}*/else if(TabPane.getStanje() == 2){
+				
+				}else if(TabPane.getStanje() == 1) {
+				    
+					if(ProfesoriJTable.getInstance().getSelectedRow() == -1) {
+				    JOptionPane.showMessageDialog(null, "Nije selektovan ni jedan profesor","",JOptionPane.ERROR_MESSAGE);
+					}else {
+						EditProfesorFrame epf = new EditProfesorFrame();					
+						epf.setVisible(true);
+					}
+					
+				}else if(TabPane.getStanje() == 2){
 					EditPredmetFrame eprf = new EditPredmetFrame();
 					eprf.setVisible(true);
 				}

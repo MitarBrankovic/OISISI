@@ -1,12 +1,11 @@
 package view;
 
 import java.awt.BorderLayout;
-//import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import java.awt.event.FocusListener;
+
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,18 +14,21 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
-
-import com.sun.org.apache.xerces.internal.util.Status;
 
 import controller.ProfesoriController;
 import listeners.FocusListener1;
+import model.BazaProfesora;
+import model.Profesor;
+import model.StudentStatus;
 
-public class AddProfesorFrame extends JDialog{
+public class EditProfesorFrame extends JDialog{
 
-	private static final long serialVersionUID = 7316982662937273530L;
+
+	private static final long serialVersionUID = -4447068004097483905L;
 	
-	public AddProfesorFrame() {
+	public EditProfesorFrame() {
 		/*setVisible je stavljen u komentar zato sto istu funkciju pozivamo u MenuKonfiguracija/Toolbar
 		 *  pa da ne bi iskakala dva prozora, a da omogucimo da dijalog bude modalan*/
 		
@@ -36,6 +38,8 @@ public class AddProfesorFrame extends JDialog{
 		setModal(true);
 		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
+
 		
 		new BorderLayout();
 		Dimension dim = new Dimension(150,20);
@@ -161,9 +165,28 @@ public class AddProfesorFrame extends JDialog{
 	    pZvanje.add(zvanje);
 	    
 	    
-	    JPanel donjiPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	    
+	    Profesor pr = new Profesor(BazaProfesora.getInstance().getRow(ProfesoriJTable.getInstance().getSelectedRow()));
+	    txtIme.setText(pr.getIme());
+	    txtPrezime.setText(pr.getPrezime());
+	    txtDatum.setText(pr.getDatumRodjenja());
+	    txtAdresa.setText(pr.getAdresaStanovanja());
+	    txtTelefon.setText(String.valueOf(pr.getKontaktTelefon()));
+	    txtEmail.setText(pr.getEmail());
+	    txtAdresaKancelarije.setText(pr.getAdresaKancelarije());
+	    txtLicna.setText(String.valueOf(pr.getBrojLicneKarte()));
+	    
+	    titula.setSelectedItem(pr.getTitula());
+	    zvanje.setSelectedItem(pr.getZvanje());
+
+	    
+		validate();
+	    
+	    
+		JPanel donjiPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	    JButton potvrdi = new JButton("Potvrdi");
 	    JButton odustani = new JButton("Odustani");
+	    
 	    odustani.addActionListener(new ActionListener() {
 			
 			@Override
@@ -179,35 +202,14 @@ public class AddProfesorFrame extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				if(txtIme.getText().equals("") || txtPrezime.getText().equals("") || txtDatum.getText().equals("") || txtAdresa.getText().equals("") || 
-						txtTelefon.getText().equals("") || txtEmail.getText().equals("") || txtAdresaKancelarije.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Niste popunili sva polja!", "",JOptionPane.ERROR_MESSAGE);
-				}else if(txtIme.getText().matches("[A-Z][a-z]+") == false) {
-						JOptionPane.showMessageDialog(null, "Ime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtPrezime.getText().matches("[A-Z][a-z]+") == false) {
-					JOptionPane.showMessageDialog(null, "Prezime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);	
-				}else if(validDate(txtDatum.getText()) == false) {
-					JOptionPane.showMessageDialog(null, "Datum nije dobro unet","",JOptionPane.ERROR_MESSAGE);		
-				}else if(isNumber(txtTelefon.getText()) == false) {
-					JOptionPane.showMessageDialog(null, "Broj telefona nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtEmail.getText().matches("[a-zA-z0-9]+@[a-zA-z]+[.][a-zA-Z]+") == false) {
-					JOptionPane.showMessageDialog(null, "Email nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtLicna.getText().length() != 6) {
-					JOptionPane.showMessageDialog(null, "Broj lične karte nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				}else if(isNumber(txtLicna.getText()) == false){
-					JOptionPane.showMessageDialog(null, "Licna karta sadrzi slova","",JOptionPane.ERROR_MESSAGE);
-				}else {
+				
 					String titulaSt = titula.getSelectedItem().toString();
 					String zvanjeSt = zvanje.getSelectedItem().toString();
-					ProfesoriController.getInstance().addProfesor(txtIme.getText(), txtPrezime.getText(), txtDatum.getText(), txtAdresa.getText(), 
+					ProfesoriController.getInstance().editProfesor(txtIme.getText(), txtPrezime.getText(), txtDatum.getText(), txtAdresa.getText(), 
 							Integer.parseInt(txtTelefon.getText()), txtEmail.getText(), txtAdresaKancelarije.getText(), Integer.parseInt(txtLicna.getText()), titulaSt, zvanjeSt);
 					setVisible(false);
 				}
-				
-				
-									
-			}
+						
 		});
 	    
 	    
@@ -231,55 +233,17 @@ public class AddProfesorFrame extends JDialog{
 		boxProfesor.add(Box.createGlue());
 		//boxProfesor.add(Box.createRigidArea(new Dimension(5,0)));
 		
-
-		add(boxProfesor, BorderLayout.CENTER);
-		add(donjiPanel, BorderLayout.SOUTH);
+		JPanel profesorInfo = new JPanel();
 		
+		profesorInfo.add(boxProfesor, BorderLayout.CENTER);
+		profesorInfo.add(donjiPanel, BorderLayout.SOUTH);
 		
+		JTabbedPane profesorin = new JTabbedPane();
+		profesorin.add("Informacije", profesorInfo);
 		
-		setLocationRelativeTo(null);
-		
+		add(profesorin, BorderLayout.CENTER);
+				
 	}
 	
-	public boolean isNumber(String st) {
-		try {
-			Integer.parseInt(st);
-			return true;
-		}catch(NumberFormatException ex){
-			return false;
-		}
-	}
 	
-	public boolean validDate(String st) {
-		String[] datum = st.split("\\.");
-		int dan = Integer.parseInt(datum[0]);
-		int mesec = Integer.parseInt(datum[1]);
-		
-		if(datum[2].length() != 4) {
-			return false;
-		}else if(datum[2] == null) {
-			return false;
-		}
-
-		
-		
-		if(mesec > 12 || mesec < 1) {
-			return false;
-		}else if(dan < 1) {
-			return false;
-		}else if(mesec == 2) {
-			if(dan > 29) {
-				return false;
-			}
-		}else if(mesec==1 || mesec==3 || mesec==5 || mesec==7 ||mesec==8 || mesec==10 || mesec==12) {
-			if(dan>31) {
-				return false;
-			}
-		}else if(mesec==4 || mesec==6 || mesec==9 || mesec==11) {
-			if(dan>30) {
-				return false;
-			}
-		}
-		return true;
-	}
 }

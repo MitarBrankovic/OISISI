@@ -113,4 +113,23 @@ public class BazaProfesora {
 			}
 		}
 	}
+	
+	public void izmeniProfesora(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
+			String email, String adresaKancelarije, int brojLicneKarte, String titula, String zvanje) {
+		for(Profesor i : profesori) {
+			if(i.getBrojLicneKarte() == brojLicneKarte) {
+				i.setIme(ime);
+				i.setPrezime(prezime);
+				i.setDatumRodjenja(datumRodjenja);
+				i.setAdresaStanovanja(adresaStanovanja);
+				i.setKontaktTelefon(kontaktTelefon);
+				i.setEmail(email);
+				i.setAdresaKancelarije(adresaKancelarije);
+				i.setBrojLicneKarte(brojLicneKarte);
+				i.setTitula(titula);
+				i.setZvanje(zvanje);
+
+			}
+		}
+	}
 }
