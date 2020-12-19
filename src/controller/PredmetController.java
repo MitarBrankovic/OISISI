@@ -28,4 +28,10 @@ public class PredmetController {
 		BazaPredmeta.getInstance().izmeniPredmet(sifraPredmeta, nazivPredmeta, sem, godinaStudija, espb, predmetniProfesor);
 		TabPane.getInstance().azurirajPredmeti();	
 	}
+	
+	public void removePredmet(int rowSelectedIndex) {
+		Predmet pred = BazaPredmeta.getInstance().getRow(rowSelectedIndex);
+		BazaPredmeta.getInstance().izbrisiPredmet(pred.getSifraPredmeta());
+		TabPane.getInstance().azurirajPredmeti();
+	}
 }

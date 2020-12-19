@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
+import controller.PredmetController;
 import controller.ProfesoriController;
 import controller.StudentiController;
 
@@ -129,8 +130,16 @@ public class Toolbar extends JToolBar{
 					}
 										
 				}else if(TabPane.getStanje() == 2){
-					//EditPredmetFrame eprf = new EditPredmetFrame();
-					//eprf.setVisible(true);
+					try {
+						int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete?","Brisanje profesora?",JOptionPane.YES_NO_OPTION);
+						if(option == JOptionPane.YES_OPTION) {
+						
+							PredmetController.getInstance().removePredmet(PredmetiJTable.getInstance().getSelectedRow());
+						}
+					}catch (Exception e) {
+						JOptionPane.showMessageDialog(null, "Morate selektovati predmet!","",JOptionPane.ERROR_MESSAGE);
+						System.out.println(e.getMessage());	
+					}
 				}
 				
 			}

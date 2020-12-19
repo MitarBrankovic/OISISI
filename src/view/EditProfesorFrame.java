@@ -33,7 +33,7 @@ public class EditProfesorFrame extends JDialog{
 		 *  pa da ne bi iskakala dva prozora, a da omogucimo da dijalog bude modalan*/
 		
 		
-		setTitle("Dodavanje Profesora");
+		setTitle("Izmena Profesora");
 		setSize(400, 500);
 		setModal(true);
 		//setVisible(true);
