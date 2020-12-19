@@ -9,10 +9,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import view.StudentiJTable;
+//import view.StudentiJTable;
 
 public class BazaOcena {
-	
+    
 	private static BazaOcena instance = null;
 	
 	public static BazaOcena getInstance() {
@@ -22,16 +22,12 @@ public class BazaOcena {
 		return instance;
 	}
 	
-	private String indeks;
-	
-	public void setIndkes(String brojIndeksa) {
-		this.indeks = brojIndeksa;
-	}
 	
 	private ArrayList<Ocena> ocene;
 	private List<String> kolonePolozeni;
-	private ArrayList<Ocena> spisakPolozenih;
-	List<Ocena> spisakNepolozenih = new ArrayList<Ocena>();
+	
+	private ArrayList<Ocena> listaPolozenih;
+
 	
 	private BazaOcena() {
 		
@@ -49,7 +45,7 @@ public class BazaOcena {
 	
 	private void initOcene(){
 		this.ocene = new ArrayList<Ocena>();
-		this.spisakPolozenih = new ArrayList<Ocena>();
+
 		
 		String kolone[] = null;
 		String naredni = null;
@@ -57,9 +53,7 @@ public class BazaOcena {
 		String indeks = null;
 		int ocena;
 		String datum = null;
-		
-		//List<Ocena> spisakPolozenih = new ArrayList<Ocena>();
-		//List<Ocena> spisakNepolozenih = new ArrayList<Ocena>();
+
 		
 		BufferedReader reader = null;
 		
@@ -78,7 +72,6 @@ public class BazaOcena {
 				Predmet objPredmet = null;
 				Student objStudent = null;
 				
-
 				
 				sifra = kolone[0].trim();
 				indeks = kolone[1].trim();
@@ -101,12 +94,7 @@ public class BazaOcena {
 				
 				Ocena objOcena = new Ocena(objStudent, objPredmet, ocena, datum);
 				ocene.add(objOcena);
-				
-				if(ocena > 5) {
-					spisakPolozenih.add(objOcena);
-				}else {
-					spisakNepolozenih.add(objOcena);
-				}
+
 				
 			}
 			reader.close();
@@ -116,8 +104,8 @@ public class BazaOcena {
 
 		
 		for(Student s : BazaStudenata.getInstance().getStudenti()) {
-			List<Ocena> spisakPolozenihStudent = new ArrayList<Ocena>();
-			List<Ocena> spisakNepolozenihStudent = new ArrayList<Ocena>();
+			ArrayList<Ocena> spisakPolozenihStudent = new ArrayList<Ocena>();
+			ArrayList<Ocena> spisakNepolozenihStudent = new ArrayList<Ocena>();
 
 			for(Ocena o : ocene) {
 				if(o.getStudent() == s) {
@@ -149,30 +137,32 @@ public class BazaOcena {
 			}
 			p.setStudentiNisuPolozili(spisakStudentiNisuPolozili);
 			p.setStudentiPolozili(spisakStudentiPolozili);
-		}
+		}	
+		
 		
 	}
 	
 	
-	public ArrayList<Ocena> novaLista() {
-		ArrayList<Ocena> ocenee = null;
-		for(Ocena o: spisakPolozenih) {
-			if(o.getStudent().getBrojIndeksa() == indeks) {
-				ocenee.add(o);
-				
+
+	private String indeks;
+	public void setIndkes(String brojIndeksa) {
+		this.indeks = brojIndeksa;
+		this.listaPolozenih = new ArrayList<Ocena>();
+		
+		for(Student st : BazaStudenata.getInstance().getStudenti()) {
+			if(st.getBrojIndeksa().equals(indeks)) {
+				listaPolozenih = st.getSpisakPolozenihPredmeta();
 			}
 		}
-		return ocenee;
 	}
 	
-	
 	public ArrayList<Ocena> getOcene() {
-		return spisakPolozenih;
+		return listaPolozenih;
 	}
 
 
 	public void setOcene(ArrayList<Ocena> spisakPolozenih) {
-		this.spisakPolozenih = spisakPolozenih;
+		this.listaPolozenih = spisakPolozenih;
 	}
 	
 
@@ -185,13 +175,12 @@ public class BazaOcena {
 	}
 
 	public Ocena getRow(int rowIndex) {
-		return this.spisakPolozenih.get(rowIndex);
+		return this.listaPolozenih.get(rowIndex);
 	}
 	
 	public String getValueAt(int row, int column) {
 		
-		Ocena ocena = this.spisakPolozenih.get(row);
-		//List<Ocena> spisakPolozenih 
+		Ocena ocena = this.listaPolozenih.get(row); 
 
 		switch (column) {
 		case 0:

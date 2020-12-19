@@ -16,8 +16,8 @@ public class Student {
 	int trenutnaGodina;
 	StudentStatus status;
 	double prosecnaOcena;
-	List<Ocena> spisakPolozenihPredmeta;
-	List<Ocena> spisakNepolozenihPredmeta;
+	ArrayList<Ocena> spisakPolozenihPredmeta;
+	ArrayList<Ocena> spisakNepolozenihPredmeta;
 	
 	
 	public Student() {}	
@@ -68,22 +68,22 @@ public class Student {
 	}
 
 
-	public List<Ocena> getSpisakPolozenihPredmeta() {
+	public ArrayList<Ocena> getSpisakPolozenihPredmeta() {
 		return spisakPolozenihPredmeta;
 	}
 
 
-	public void setSpisakPolozenihPredmeta(List<Ocena> spisakPolozenihPredmeta) {
+	public void setSpisakPolozenihPredmeta(ArrayList<Ocena> spisakPolozenihPredmeta) {
 		this.spisakPolozenihPredmeta = spisakPolozenihPredmeta;
 	}
 
 
-	public List<Ocena> getSpisakNepolozenihPredmeta() {
+	public ArrayList<Ocena> getSpisakNepolozenihPredmeta() {
 		return spisakNepolozenihPredmeta;
 	}
 
 
-	public void setSpisakNepolozenihPredmeta(List<Ocena> spisakNepolozenihPredmeta) {
+	public void setSpisakNepolozenihPredmeta(ArrayList<Ocena> spisakNepolozenihPredmeta) {
 		this.spisakNepolozenihPredmeta = spisakNepolozenihPredmeta;
 	}
 

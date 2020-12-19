@@ -400,6 +400,16 @@ public class EditStudentFrame extends JDialog {
 		
 		
 		
+		//***************************************************************************************NEPOLOZENI TAB**************************************************************************************
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		JTabbedPane studentin = new JTabbedPane();
 		studentin.addTab("Informacije", studentInfo);
 		studentin.addTab("Polozeni", polozeni);
