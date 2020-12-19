@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import view.StudentiJTable;
+
 public class BazaOcena {
 	
 	private static BazaOcena instance = null;
@@ -20,20 +22,44 @@ public class BazaOcena {
 		return instance;
 	}
 	
-	private ArrayList<Ocena> ocene;
+	private String indeks;
 	
-	private BazaOcena(){
+	public void setIndkes(String brojIndeksa) {
+		this.indeks = brojIndeksa;
+	}
+	
+	private ArrayList<Ocena> ocene;
+	private List<String> kolonePolozeni;
+	private ArrayList<Ocena> spisakPolozenih;
+	List<Ocena> spisakNepolozenih = new ArrayList<Ocena>();
+	
+	private BazaOcena() {
+		
+		this.kolonePolozeni = new ArrayList<String>();
+		this.kolonePolozeni.add("SIFRA PREDMETA");
+		this.kolonePolozeni.add("NAZIV PREDMETA");
+		this.kolonePolozeni.add("ESPB");
+		this.kolonePolozeni.add("OCENE");
+		this.kolonePolozeni.add("DATUM");
+		
+		initOcene();
+	}
+	
+	
+	
+	private void initOcene(){
 		this.ocene = new ArrayList<Ocena>();
+		this.spisakPolozenih = new ArrayList<Ocena>();
 		
-		String kolone[];
-		String naredni;
-		String sifra;
-		String indeks;
+		String kolone[] = null;
+		String naredni = null;
+		String sifra = null;
+		String indeks = null;
 		int ocena;
-		String datum;
+		String datum = null;
 		
-		/*List<Ocena> spisakPolozenih = new ArrayList<Ocena>();
-		List<Ocena> spisakNepolozenih = new ArrayList<Ocena>();*/
+		//List<Ocena> spisakPolozenih = new ArrayList<Ocena>();
+		//List<Ocena> spisakNepolozenih = new ArrayList<Ocena>();
 		
 		BufferedReader reader = null;
 		
@@ -76,26 +102,18 @@ public class BazaOcena {
 				Ocena objOcena = new Ocena(objStudent, objPredmet, ocena, datum);
 				ocene.add(objOcena);
 				
-				/*if(ocena > 5) {
+				if(ocena > 5) {
 					spisakPolozenih.add(objOcena);
 				}else {
 					spisakNepolozenih.add(objOcena);
-				}*/
+				}
 				
 			}
 			reader.close();
 		}catch(IOException exception) {
 			exception.printStackTrace();
 		}
-		
-		/*for(Ocena o : ocene) {
-			for(Student s : BazaStudenata.getInstance().getStudenti()) {
-				if(s == o.getStudent()) {}
-			}
-			
-			o.getStudent().setSpisakNepolozenihPredmeta(spisakNepolozenih);
-			o.getStudent().setSpisakPolozenihPredmeta(spisakPolozenih);
-		}*/
+
 		
 		for(Student s : BazaStudenata.getInstance().getStudenti()) {
 			List<Ocena> spisakPolozenihStudent = new ArrayList<Ocena>();
@@ -134,4 +152,62 @@ public class BazaOcena {
 		}
 		
 	}
+	
+	
+	public ArrayList<Ocena> novaLista() {
+		ArrayList<Ocena> ocenee = null;
+		for(Ocena o: spisakPolozenih) {
+			if(o.getStudent().getBrojIndeksa() == indeks) {
+				ocenee.add(o);
+				
+			}
+		}
+		return ocenee;
+	}
+	
+	
+	public ArrayList<Ocena> getOcene() {
+		return spisakPolozenih;
+	}
+
+
+	public void setOcene(ArrayList<Ocena> spisakPolozenih) {
+		this.spisakPolozenih = spisakPolozenih;
+	}
+	
+
+	public int getColumnCount() {
+		return 5;
+	}
+	
+	public String getColumnName(int index) {
+		return this.kolonePolozeni.get(index);
+	}
+
+	public Ocena getRow(int rowIndex) {
+		return this.spisakPolozenih.get(rowIndex);
+	}
+	
+	public String getValueAt(int row, int column) {
+		
+		Ocena ocena = this.spisakPolozenih.get(row);
+		//List<Ocena> spisakPolozenih 
+
+		switch (column) {
+		case 0:
+			return ocena.getPredmet().getSifraPredmeta();
+		case 1:
+			return ocena.getPredmet().getNazivPredmeta();
+		case 2:
+			return Integer.toString(ocena.getPredmet().getEspb());
+		case 3:
+			return Integer.toString(ocena.getVrednostOcene());
+		case 4:
+			return ocena.getDatumPolaganja();
+		default:
+			return null;
+		}
+	}
+	
+	
 }

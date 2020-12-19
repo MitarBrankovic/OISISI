@@ -7,18 +7,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import controller.StudentiController;
 import listeners.FocusListener1;
+import model.BazaOcena;
 import model.BazaStudenata;
+import model.Ocena;
+import model.Predmet;
 import model.Student;
 import model.StudentStatus;
 
@@ -34,12 +39,14 @@ public class EditStudentFrame extends JDialog {
         return instance;
     }*/
 	private StudentStatus studStat;
-	
+	//private static PredmetiJTable tabelaPredmeta;
+	private static PolozeniJTable tabelaPolozenih;
+
 	
 	public EditStudentFrame() {
 		
 		setTitle("Izmena Studenta");
-		setSize(400, 500);
+		setSize(500, 650);
 		setModal(true);
 		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -222,7 +229,6 @@ public class EditStudentFrame extends JDialog {
 		
 		
 		
-		
 		Student st = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
 		txtIme.setText(st.getIme());
 		txtPrezime.setText(st.getPrezime());
@@ -249,6 +255,15 @@ public class EditStudentFrame extends JDialog {
 			godine.setSelectedItem("IV (cetvrta)");	
 		validate();
 		
+		
+		
+		BazaOcena.getInstance().setIndkes(st.getBrojIndeksa());
+		
+		/*DefaultListModel<String> tx = new DefaultListModel<String>();
+		int k = 0;
+		for(Ocena o : st.getSpisakPolozenihPredmeta()) {
+			tx.add(k++,o.getPredmet().getSifraPredmeta());
+		}*/
 		
 		
 		JPanel donjiPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -323,11 +338,73 @@ public class EditStudentFrame extends JDialog {
 
 		
 		
+		
+		
+		
+	//***************************************POLOZENI TAB************************************************	
+		
+		
+		
+		JPanel ponistiPanel = new JPanel();
+		JButton ponistiButton = new JButton("Ponisti");
+		ponistiPanel.add(ponistiButton);
+		
+		tabelaPolozenih = PolozeniJTable.getInstance();
+		JScrollPane skrolPredmeti = new JScrollPane(tabelaPolozenih);
+		
+		JPanel prosecnaOcenaPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		JLabel lProsecnaOcena = new JLabel("Prosecna Ocena: ");
+		lProsecnaOcena.setPreferredSize(dim);
+		
+		double sum = 0;
+		for(int i = 0; i< tabelaPolozenih.getRowCount();i++) {
+			sum = sum + Integer.parseInt(tabelaPolozenih.getValueAt(i, 3).toString());
+		}
+		double avg = sum / tabelaPolozenih.getRowCount();
+		//String avg1 = String.valueOf(avg);
+		String result = String.format("%.2f", avg);
+		JLabel lAvgOcena = new JLabel(result);
+		
+		prosecnaOcenaPanel.add(lProsecnaOcena);
+		prosecnaOcenaPanel.add(lAvgOcena);
+		
+		
+		JPanel ukupnoEspbPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		JLabel lUkupnoEspb = new JLabel("Ukupno ESPB: ");
+		lUkupnoEspb.setPreferredSize(dim);
+		
+		double sum1 = 0;
+		for(int i = 0; i< tabelaPolozenih.getRowCount();i++) {
+			sum1 = sum1 + Integer.parseInt(tabelaPolozenih.getValueAt(i, 2).toString());
+		}
+		String ukupnoEspb = String.valueOf(sum1);
+		JLabel lUkupEspb = new JLabel(ukupnoEspb);
+		
+		ukupnoEspbPanel.add(lUkupnoEspb);
+		ukupnoEspbPanel.add(lUkupEspb);
+		
+		
+		Box boxProsecni = Box.createVerticalBox();
+		boxProsecni.add(Box.createVerticalStrut(20));
+		boxProsecni.add(prosecnaOcenaPanel);
+		boxProsecni.add(ukupnoEspbPanel);
+		boxProsecni.add(Box.createGlue());
+		
+		
+		JPanel polozeni = new JPanel();
+		polozeni.add(ponistiPanel, BorderLayout.NORTH);
+		polozeni.add(skrolPredmeti, BorderLayout.CENTER);
+		polozeni.add(boxProsecni, BorderLayout.SOUTH);
+		
+		
+		
+		
+		
 		JTabbedPane studentin = new JTabbedPane();
 		studentin.addTab("Informacije", studentInfo);
+		studentin.addTab("Polozeni", polozeni);
 		
 		add(studentin, BorderLayout.CENTER);
 	}
-	
 	
 }
