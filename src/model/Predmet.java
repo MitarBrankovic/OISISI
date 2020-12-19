@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //enum semestar {zimski, letnji;}
@@ -37,7 +38,10 @@ public class Predmet {
 		this.predmetniProfesor = predmetniProfesor;
 		this.espb = espb;
 		this.semestar = sem;
-		}
+		
+		List<Student> studentiPolozili = new ArrayList<Student>();
+		List<Student> studentiNisuPolozili = new ArrayList<Student>();
+	}
 	
 	
 	public Predmet(Predmet p) {

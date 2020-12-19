@@ -3,10 +3,10 @@ package model;
 public class Ocena {
 	Student student;
 	Predmet predmet;
-	int[] vrednostOcene = {6, 7, 8, 9, 10};
+	int vrednostOcene;
 	String datumPolaganja;
 		
-	public Ocena(Student student, Predmet predmet, int[] vrednostOcene, String datumPolaganja) {
+	public Ocena(Student student, Predmet predmet, int vrednostOcene, String datumPolaganja) {
 		super();
 		this.student = student;
 		this.predmet = predmet;
@@ -27,10 +27,10 @@ public class Ocena {
 	public void setPredmet(Predmet predmet) {
 		this.predmet = predmet;
 	}
-	public int[] getVrednostOcene() {
+	public int getVrednostOcene() {
 		return vrednostOcene;
 	}
-	public void setVrednostOcene(int[] vrednostOcene) {
+	public void setVrednostOcene(int vrednostOcene) {
 		this.vrednostOcene = vrednostOcene;
 	}
 	public String getDatumPolaganja() {

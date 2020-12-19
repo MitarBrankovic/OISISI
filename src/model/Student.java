@@ -35,6 +35,10 @@ public class Student {
 		this.trenutnaGodina = trenutnaGodina;
 		this.status = status1;
 		this.prosecnaOcena = prosecnaOcena;
+		
+		this.spisakPolozenihPredmeta = new ArrayList<Ocena>();
+		this.spisakNepolozenihPredmeta = new ArrayList<Ocena>();
+
 	}
 	
 	

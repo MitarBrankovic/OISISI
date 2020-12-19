@@ -9,6 +9,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import model.BazaOcena;
+
 
 
 public class TabPane extends JTabbedPane {
@@ -43,6 +45,8 @@ public class TabPane extends JTabbedPane {
 		
 		tabelaProfesora = ProfesoriJTable.getInstance();
 		JScrollPane skrolProfesori = new JScrollPane(tabelaProfesora);
+		
+		BazaOcena.getInstance();
 		
 		addTab("Studenti", skrolStudenti);
 		addTab("Profesori", skrolProfesori);
