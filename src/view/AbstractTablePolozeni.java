@@ -13,22 +13,22 @@ public class AbstractTablePolozeni extends AbstractTableModel{
 
 	@Override
 	public int getColumnCount() {
-		return BazaOcena.getInstance().getColumnCount();
+		return BazaOcena.getInstance().getColumnCountPolozeni();
 	}
 
 	@Override
 	public int getRowCount() {
-		return BazaOcena.getInstance().getOcene().size();
+		return BazaOcena.getInstance().getOcenePolozeni().size();
 	}
 
 	@Override
 	public Object getValueAt(int row, int column) {
-		return BazaOcena.getInstance().getValueAt(row, column);
+		return BazaOcena.getInstance().getValueAPolozenit(row, column);
 	}
 
 	@Override
 	public String getColumnName(int column) {
-		return BazaOcena.getInstance().getColumnName(column);
+		return BazaOcena.getInstance().getColumnNamePolozeni(column);
 	}
 
 }

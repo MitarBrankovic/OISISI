@@ -25,9 +25,10 @@ public class BazaOcena {
 	
 	private ArrayList<Ocena> ocene;
 	private List<String> kolonePolozeni;
+	private List<String> koloneNepolozeni;
 	
 	private ArrayList<Ocena> listaPolozenih;
-
+	private ArrayList<Ocena> listaNepolozenih;
 	
 	private BazaOcena() {
 		
@@ -37,6 +38,14 @@ public class BazaOcena {
 		this.kolonePolozeni.add("ESPB");
 		this.kolonePolozeni.add("OCENE");
 		this.kolonePolozeni.add("DATUM");
+		
+		
+		this.koloneNepolozeni = new ArrayList<String>();
+		this.koloneNepolozeni.add("SIFRA PREDMETA");
+		this.koloneNepolozeni.add("NAZIV PREDMETA");
+		this.koloneNepolozeni.add("ESPB");
+		this.koloneNepolozeni.add("GODINA STUDIJA");
+		this.koloneNepolozeni.add("SEMESTAR");
 		
 		initOcene();
 	}
@@ -152,35 +161,80 @@ public class BazaOcena {
 		for(Student st : BazaStudenata.getInstance().getStudenti()) {
 			if(st.getBrojIndeksa().equals(indeks)) {
 				listaPolozenih = st.getSpisakPolozenihPredmeta();
+				listaNepolozenih = st.getSpisakNepolozenihPredmeta();
 			}
 		}
 	}
 	
-	public ArrayList<Ocena> getOcene() {
+	public ArrayList<Ocena> getOcenePolozeni() {
 		return listaPolozenih;
 	}
 
 
-	public void setOcene(ArrayList<Ocena> spisakPolozenih) {
+	public void setOcenePolozeni(ArrayList<Ocena> spisakPolozenih) {
 		this.listaPolozenih = spisakPolozenih;
 	}
 	
 
-	public int getColumnCount() {
+	public int getColumnCountPolozeni() {
 		return 5;
 	}
 	
-	public String getColumnName(int index) {
+	public String getColumnNamePolozeni(int index) {
 		return this.kolonePolozeni.get(index);
 	}
 
-	public Ocena getRow(int rowIndex) {
+	public Ocena getRowPolozeni(int rowIndex) {
 		return this.listaPolozenih.get(rowIndex);
 	}
 	
-	public String getValueAt(int row, int column) {
+	public String getValueAPolozenit(int row, int column) {
 		
 		Ocena ocena = this.listaPolozenih.get(row); 
+
+		switch (column) {
+		case 0:
+			return ocena.getPredmet().getSifraPredmeta();
+		case 1:
+			return ocena.getPredmet().getNazivPredmeta();
+		case 2:
+			return Integer.toString(ocena.getPredmet().getEspb());
+		case 3:
+			return Integer.toString(ocena.getVrednostOcene());
+		case 4:
+			return ocena.getDatumPolaganja();
+		default:
+			return null;
+		}
+	}
+	
+/*	------------------------------------------------------	*/
+	
+	public ArrayList<Ocena> getOceneNepolozeni() {
+		return listaNepolozenih;
+	}
+
+
+	public void setOceneNepolozeni(ArrayList<Ocena> spisakNepolozenih) {
+		this.listaNepolozenih = spisakNepolozenih;
+	}
+	
+
+	public int getColumnCountNepolozeni() {
+		return 5;
+	}
+	
+	public String getColumnNameNepolozeni(int index) {
+		return this.koloneNepolozeni.get(index);
+	}
+
+	public Ocena getRowNepolozeni(int rowIndex) {
+		return this.listaNepolozenih.get(rowIndex);
+	}
+	
+	public String getValueAtNepolozeni(int row, int column) {
+		
+		Ocena ocena = this.listaNepolozenih.get(row); 
 
 		switch (column) {
 		case 0:

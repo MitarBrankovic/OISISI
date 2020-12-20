@@ -18,6 +18,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
+import com.sun.xml.internal.ws.api.server.Container;
+
 import controller.StudentiController;
 import listeners.FocusListener1;
 import model.BazaOcena;
@@ -41,6 +43,7 @@ public class EditStudentFrame extends JDialog {
 	private StudentStatus studStat;
 	//private static PredmetiJTable tabelaPredmeta;
 	private static PolozeniJTable tabelaPolozenih;
+	private static NepolozeniJTable tabelaNepolozenih;
 
 	
 	public EditStudentFrame() {
@@ -51,7 +54,6 @@ public class EditStudentFrame extends JDialog {
 		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
-		
 		
 		
 		
@@ -402,17 +404,38 @@ public class EditStudentFrame extends JDialog {
 		
 		//***************************************************************************************NEPOLOZENI TAB**************************************************************************************
 		
+		JPanel ponistiPanel2 = new JPanel();
+		ponistiPanel2.setLayout(new FlowLayout(FlowLayout.LEFT));
+		JButton ponistiButton2 = new JButton("Ponisti");
+		JButton obrisi = new JButton("Obrisi");
+		JButton polaganje = new JButton("Polaganje");
+		
+		
+		ponistiPanel2.add(ponistiButton2);
+		ponistiPanel2.add(obrisi);
+		ponistiPanel2.add(polaganje);
+
+		
+		
+		tabelaNepolozenih = NepolozeniJTable.getInstance();
+		JScrollPane skrolNepolozeni = new JScrollPane(tabelaNepolozenih);
 		
 		
 		
 		
 		
+		JPanel nepolozeni = new JPanel();
+		nepolozeni.add(ponistiPanel2, BorderLayout.NORTH);
+		nepolozeni.add(skrolNepolozeni, BorderLayout.CENTER);
+		//Nepolozeni.add(boxProsecni, BorderLayout.SOUTH);
 		
 		
+
 		
 		JTabbedPane studentin = new JTabbedPane();
 		studentin.addTab("Informacije", studentInfo);
 		studentin.addTab("Polozeni", polozeni);
+		studentin.addTab("Nepolozeni", nepolozeni);
 		
 		add(studentin, BorderLayout.CENTER);
 	}
