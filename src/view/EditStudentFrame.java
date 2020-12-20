@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -15,11 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
-
-import com.sun.xml.internal.ws.api.server.Container;
-
 import controller.StudentiController;
 import listeners.FocusListener1;
 import model.BazaOcena;
@@ -347,14 +344,21 @@ public class EditStudentFrame extends JDialog {
 		
 		
 		
-		JPanel ponistiPanel = new JPanel();
+		JPanel ponistiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		ponistiPanel.setPreferredSize(new Dimension(450,50));					//malo je neprakticno
+		//JSeparator sep = new JSeparator();
+		//sep.setPreferredSize(new Dimension(50, 1));
 		JButton ponistiButton = new JButton("Ponisti");
+		//ponistiPanel.add(sep);
 		ponistiPanel.add(ponistiButton);
+		
+		
 		
 		tabelaPolozenih = PolozeniJTable.getInstance();
 		JScrollPane skrolPredmeti = new JScrollPane(tabelaPolozenih);
 		
 		JPanel prosecnaOcenaPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		prosecnaOcenaPanel.setPreferredSize(new Dimension(450,50));
 		JLabel lProsecnaOcena = new JLabel("Prosecna Ocena: ");
 		lProsecnaOcena.setPreferredSize(dim);
 		
@@ -372,6 +376,7 @@ public class EditStudentFrame extends JDialog {
 		
 		
 		JPanel ukupnoEspbPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		ukupnoEspbPanel.setPreferredSize(new Dimension(450,50));
 		JLabel lUkupnoEspb = new JLabel("Ukupno ESPB: ");
 		lUkupnoEspb.setPreferredSize(dim);
 		
@@ -387,7 +392,7 @@ public class EditStudentFrame extends JDialog {
 		
 		
 		Box boxProsecni = Box.createVerticalBox();
-		boxProsecni.add(Box.createVerticalStrut(20));
+		boxProsecni.add(Box.createVerticalStrut(5));
 		boxProsecni.add(prosecnaOcenaPanel);
 		boxProsecni.add(ukupnoEspbPanel);
 		boxProsecni.add(Box.createGlue());
@@ -405,13 +410,28 @@ public class EditStudentFrame extends JDialog {
 		//***************************************************************************************NEPOLOZENI TAB**************************************************************************************
 		
 		JPanel ponistiPanel2 = new JPanel();
+		ponistiPanel2.setPreferredSize(new Dimension(450,50));
 		ponistiPanel2.setLayout(new FlowLayout(FlowLayout.LEFT));
-		JButton ponistiButton2 = new JButton("Ponisti");
+		JButton dodaj = new JButton("Dodaj");
 		JButton obrisi = new JButton("Obrisi");
 		JButton polaganje = new JButton("Polaganje");
 		
 		
-		ponistiPanel2.add(ponistiButton2);
+		dodaj.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				AddPredmetStudFrame apsf = new AddPredmetStudFrame();
+				apsf.setVisible(true);
+			}
+			
+			
+			
+		});
+		
+		
+		ponistiPanel2.add(dodaj);
 		ponistiPanel2.add(obrisi);
 		ponistiPanel2.add(polaganje);
 

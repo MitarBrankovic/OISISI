@@ -244,7 +244,7 @@ public class BazaOcena {
 		case 2:
 			return Integer.toString(ocena.getPredmet().getEspb());
 		case 3:
-			return Integer.toString(ocena.getVrednostOcene());
+			return Integer.toString(ocena.getPredmet().getGodinaStudija());
 		case 4:
 			return ocena.getDatumPolaganja();
 		default:
