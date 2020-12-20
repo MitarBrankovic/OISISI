@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Profesor {
@@ -13,24 +14,7 @@ public class Profesor {
 	int brojLicneKarte;
 	String titula;		//enum?
 	String zvanje;		//enum?
-	List<String> spisakPredmeta;	//spisak predmeta na kojima je profesor
-	
-	/*public Profesor(String prezime, String ime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
-			String email, String adresaKancelarije, int brojLicneKarte, String titula, String zvanje,
-			List<String> spisakPredmeta) {
-		super();
-		this.prezime = prezime;
-		this.ime = ime;
-		this.datumRodjenja = datumRodjenja;
-		this.adresaStanovanja = adresaStanovanja;
-		this.kontaktTelefon = kontaktTelefon;
-		this.email = email;
-		this.adresaKancelarije = adresaKancelarije;
-		this.brojLicneKarte = brojLicneKarte;
-		this.titula = titula;
-		this.zvanje = zvanje;
-		this.spisakPredmeta = spisakPredmeta;
-	}*/
+	ArrayList<String> spisakPredmeta;	//spisak predmeta na kojima je profesor
 	
 	
 	public Profesor(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
@@ -46,6 +30,8 @@ public class Profesor {
 		this.brojLicneKarte = brojLicneKarte;
 		this.titula = titula;
 		this.zvanje = zvanje;
+		
+		this.spisakPredmeta = new ArrayList<String>();
 	}
 	
 	public Profesor(Profesor p) {
@@ -59,6 +45,9 @@ public class Profesor {
 		this.brojLicneKarte = p.getBrojLicneKarte();
 		this.titula = p.getTitula();
 		this.zvanje = p.getZvanje();
+	
+		this.spisakPredmeta = new ArrayList<String>();
+
 	}
 	
 
@@ -142,11 +131,11 @@ public class Profesor {
 		this.zvanje = zvanje;
 	}
 
-	public List<String> getSpisakPredmeta() {
+	public ArrayList<String> getSpisakPredmeta() {
 		return spisakPredmeta;
 	}
 
-	public void setSpisakPredmeta(List<String> spisakPredmeta) {
+	public void setSpisakPredmeta(ArrayList<String> spisakPredmeta) {
 		this.spisakPredmeta = spisakPredmeta;
 	}
 }

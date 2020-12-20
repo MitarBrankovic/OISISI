@@ -246,7 +246,12 @@ public class BazaOcena {
 		case 3:
 			return Integer.toString(ocena.getPredmet().getGodinaStudija());
 		case 4:
-			return ocena.getDatumPolaganja();
+			if(ocena.getPredmet().getSemestar() == PredmetSemestar.letnji)
+				return "Letnji";
+			else if(ocena.getPredmet().getSemestar() == PredmetSemestar.zimski)
+				return "Zimski";
+			else
+				return "Nepoznato";			
 		default:
 			return null;
 		}
