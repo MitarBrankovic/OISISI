@@ -12,11 +12,14 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+
+import controller.NepolozeniController;
 import controller.StudentiController;
 import listeners.FocusListener1;
 import model.BazaOcena;
@@ -30,13 +33,13 @@ public class EditStudentFrame extends JDialog {
 
 	private static final long serialVersionUID = -1126183099640299201L;
 
-	/*private static EditStudentFrame instance = null;
+	private static EditStudentFrame instance = null;
     public static EditStudentFrame getInstance() {
         if (instance == null) {
             instance = new EditStudentFrame();
         }
         return instance;
-    }*/
+    }
 	private StudentStatus studStat;
 	//private static PredmetiJTable tabelaPredmeta;
 	private static PolozeniJTable tabelaPolozenih;
@@ -431,6 +434,29 @@ public class EditStudentFrame extends JDialog {
 		});
 		
 		
+	
+		obrisi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+			
+				try {	
+					int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da uklonite predmet?","Uklanjanje predmeta?",JOptionPane.YES_NO_OPTION);
+					if(option == JOptionPane.YES_OPTION) {
+				
+					NepolozeniController.getInstance().removeNepolozeni(NepolozeniJTable.getInstance().getSelectedRow());
+					//StudentiController.getInstance().removeStudent(StudentiJTable.getInstance().getSelectedRow());
+					}
+				}catch (Exception e) {
+					JOptionPane.showMessageDialog(null, "Morate selektovati predmet!","",JOptionPane.ERROR_MESSAGE);
+					System.out.println(e.getMessage());	
+				}	
+			}
+			
+			
+			
+		});
+		
 		ponistiPanel2.add(dodaj);
 		ponistiPanel2.add(obrisi);
 		ponistiPanel2.add(polaganje);
@@ -458,6 +484,13 @@ public class EditStudentFrame extends JDialog {
 		studentin.addTab("Nepolozeni", nepolozeni);
 		
 		add(studentin, BorderLayout.CENTER);
+	}
+	
+	public void azurirajNepolozene() {
+		AbstractTableNepolozeni model=(AbstractTableNepolozeni)tabelaNepolozenih.getModel();
+		model.fireTableDataChanged();
+		//validate();
+		
 	}
 	
 }

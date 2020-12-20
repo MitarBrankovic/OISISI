@@ -252,5 +252,20 @@ public class BazaOcena {
 		}
 	}
 	
+	public void dodajNepolozeni(Student s, Predmet p, int vrednostOcene, String datum) {
+		this.listaNepolozenih.add(new Ocena(s, p, vrednostOcene, datum));
+	}
+	
+	
+	
+	public void izbrisiNepolozeni(String indeks) {
+		for(Ocena i : listaNepolozenih) {
+			if(i.getPredmet().getSifraPredmeta() == indeks) {
+				listaNepolozenih.remove(i);
+				break;
+			}
+		}
+	}
+	
 	
 }

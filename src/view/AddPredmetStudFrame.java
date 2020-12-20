@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -40,6 +41,27 @@ public class AddPredmetStudFrame extends JDialog{
 		int i = 0;
  
 		
+		ArrayList<Ocena> polInepol = new ArrayList<Ocena>();
+		for(Ocena o: stud.getSpisakPolozenihPredmeta()) {
+			polInepol.add(o);
+			lista.add(i++,o.getPredmet().getSifraPredmeta());
+		}
+		for(Ocena o: stud.getSpisakNepolozenihPredmeta()) {
+			polInepol.add(o);
+			lista.add(i++,o.getPredmet().getSifraPredmeta());
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		/*for(Predmet p: BazaPredmeta.getInstance().getPredmeti()) {
 			
 			
@@ -47,7 +69,7 @@ public class AddPredmetStudFrame extends JDialog{
 		}*/
 		
 		
-		for(Ocena temp : stud.getSpisakPolozenihPredmeta()) {
+		/*for(Ocena temp : stud.getSpisakPolozenihPredmeta()) {
 			//if(temp.getPredmet().getSifraPredmeta() != sviPredmeti.getSifraPredmeta()) {
 				//for(Ocena temp1: stud.getSpisakNepolozenihPredmeta()) {
 					//if(temp1.getPredmet().getSifraPredmeta() != sviPredmeti.getSifraPredmeta()) {
@@ -56,7 +78,7 @@ public class AddPredmetStudFrame extends JDialog{
 				//}
 				
 			//}
-		}
+		}*/
 		JList<String> lista1 = new JList<String>(lista);
 		lista1.setPreferredSize(new Dimension(200,300));
 		JScrollPane scrollPane = new JScrollPane();
