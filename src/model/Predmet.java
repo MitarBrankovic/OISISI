@@ -16,19 +16,7 @@ public class Predmet {
 	List<Student> studentiPolozili;
 	List<Student> studentiNisuPolozili;
 	
-	
-	
-	/*public Predmet(String sifraPredmeta, String nazivPredmeta, int godinaStudija, Profesor predmetniProfesor, int espb,
-			List<Student> studentiPolozili, List<Student> studentiNisuPolozili) {
-		super();
-		this.sifraPredmeta = sifraPredmeta;
-		this.nazivPredmeta = nazivPredmeta;
-		this.godinaStudija = godinaStudija;
-		this.predmetniProfesor = predmetniProfesor;
-		this.espb = espb;
-		this.studentiPolozili = studentiPolozili;
-		this.studentiNisuPolozili = studentiNisuPolozili;
-	}*/
+
 	
 	public Predmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, String predmetniProfesor) {
 		super();
@@ -51,6 +39,9 @@ public class Predmet {
 		this.predmetniProfesor = p.getPredmetniProfesor();
 		this.espb = p.getEspb();
 		this.semestar = p.getSemestar();
+		
+		List<Student> studentiPolozili = new ArrayList<Student>();
+		List<Student> studentiNisuPolozili = new ArrayList<Student>();
 	}
 	
 	
