@@ -55,7 +55,8 @@ public class Student {
 		this.status = s.getStatus();
 		this.prosecnaOcena = s.getProsecnaOcena();
 		
-		
+		this.spisakPolozenihPredmeta = new ArrayList<Ocena>();
+		this.spisakNepolozenihPredmeta = new ArrayList<Ocena>();
 	}
 
 	public String getBrojIndeksa() {
