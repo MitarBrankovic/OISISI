@@ -257,9 +257,38 @@ public class BazaOcena {
 		}
 	}
 	
-	public void dodajNepolozeni(Student s, Predmet p, int vrednostOcene, String datum) {
-		this.listaNepolozenih.add(new Ocena(s, p, vrednostOcene, datum));
+	public void dodajNepolozeni(String indeks, String sifra) { //String sifraPred, String naziv, int espb, int godina, PredmetSemestar semestar
+			/*for(Predmet pred: BazaPredmeta.getInstance().getPredmeti()) {
+				if(pred.getSifraPredmeta().equals(indeks)) {
+					pred.setNazivPredmeta(naziv);
+					pred.setEspb(espb);
+					pred.setGodinaStudija(godina);
+					pred.setSemestar(semestar);
+				}
+				
+			}*/
+		Student st = new Student();
+		Predmet pr = new Predmet();
+	
+		
+		
+		for(Student i : BazaStudenata.getInstance().getStudenti()) {
+				if(i.getBrojIndeksa().equals(indeks)) {
+					st = i;
+				}
+		}
+		
+		for(Predmet p: BazaPredmeta.getInstance().getPredmeti()) {
+			if(p.getSifraPredmeta().equals(sifra)) {
+				pr = p;
+			}
+			
+		}
+		Ocena oc = new Ocena(st,pr, 0, null);
+		st.getSpisakNepolozenihPredmeta().add(oc);
+		
 	}
+		
 	
 	
 	

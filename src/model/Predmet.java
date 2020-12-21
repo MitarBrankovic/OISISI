@@ -17,6 +17,11 @@ public class Predmet {
 	List<Student> studentiNisuPolozili;
 	
 
+	Predmet(){
+		List<Student> studentiPolozili = new ArrayList<Student>();
+		List<Student> studentiNisuPolozili = new ArrayList<Student>();
+		
+	}
 	
 	public Predmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, String predmetniProfesor) {
 		super();

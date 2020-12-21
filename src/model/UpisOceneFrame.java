@@ -83,7 +83,8 @@ public class UpisOceneFrame extends JDialog{
 		pDatum.add(txtDatum);
 	    
 		Student stud = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
-		Predmet pred = new Predmet(BazaPredmeta.getInstance().getRow(NepolozeniJTable.getInstance().getSelectedRow()));
+		Ocena ocen = new Ocena(BazaOcena.getInstance().getRowNepolozeni(NepolozeniJTable.getInstance().getSelectedRow()));
+		Predmet pred = ocen.getPredmet();
 		txtSifra.setText(pred.getSifraPredmeta());
 		txtNaziv.setText(pred.getNazivPredmeta());
 		

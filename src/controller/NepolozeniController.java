@@ -3,6 +3,7 @@ package controller;
 import model.BazaOcena;
 import model.Ocena;
 import model.Predmet;
+import model.PredmetSemestar;
 import model.Student;
 import view.EditStudentFrame;
 
@@ -22,8 +23,8 @@ public class NepolozeniController {
 	
 	
 	
-	public void addNepolozeni(Student s, Predmet p, int vrednostOcene, String datum) {
-		BazaOcena.getInstance().dodajNepolozeni(s, p, vrednostOcene, datum);
+	public void addNepolozeni(String indeks, String sifra) {
+		BazaOcena.getInstance().dodajNepolozeni(indeks, sifra);
 		EditStudentFrame.getInstance().azurirajNepolozene();	
 	}
 	

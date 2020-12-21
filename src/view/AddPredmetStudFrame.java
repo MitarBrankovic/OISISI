@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,9 +13,11 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import controller.NepolozeniController;
 import model.BazaOcena;
 import model.BazaPredmeta;
 import model.BazaStudenata;
@@ -29,7 +32,7 @@ public class AddPredmetStudFrame extends JDialog{
 	public AddPredmetStudFrame() {
 		
 		setTitle("Dodavanje predmeta");
-		setSize(300, 400);
+		setSize(300, 450);
 		setModal(true);
 		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -40,87 +43,41 @@ public class AddPredmetStudFrame extends JDialog{
 
 		DefaultListModel<String> lista = new DefaultListModel<String>();
 		Student stud = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
-		//Predmet sviPredmeti = new Predmet(BazaPredmeta.getInstance().getPredmeti());
 		int i = 0;
  
 		
-		//u ovu listu stavljamo sve predmete koje je student ili pao ili polozio
-		ArrayList<Ocena> polozeniInepolozeni = new ArrayList<Ocena>();
+		
+		
+		ArrayList<Predmet> polozeniInepolozeni = new ArrayList<Predmet>();
 		for(Ocena o : BazaOcena.getInstance().getOcenePolozeni()) {
-			polozeniInepolozeni.add(o);
-			lista.add(i++,o.getPredmet().getNazivPredmeta());
+			//if(stud.getTrenutnaGodina() >= o.getPredmet().getGodinaStudija()) {
+			polozeniInepolozeni.add(o.getPredmet());
 		}
 		for(Ocena o : BazaOcena.getInstance().getOceneNepolozeni()) {
-			polozeniInepolozeni.add(o);
-			lista.add(i++,o.getPredmet().getNazivPredmeta());
+			polozeniInepolozeni.add(o.getPredmet());
 		}
 		
-		/*for(Ocena oc: polozeniInepolozeni) {
-			if(oc != polozeniInepolozeni)
-				lista.add(i++,oc.getPredmet().getNazivPredmeta());
-		}*/
 		
+		ArrayList<Predmet> sviPredmeti = new ArrayList<Predmet>();
 		
-		
-		
-		
-		
-		
-		
-		
-		ArrayList<Ocena> slusaniPredmeti = new ArrayList<Ocena>();
-		slusaniPredmeti.addAll(stud.getSpisakNepolozenihPredmeta());
-		slusaniPredmeti.addAll(stud.getSpisakPolozenihPredmeta());
-		
-		//ArrayList<Predmet> sviPredmeti = new ArrayList<Predmet>();
-		//sviPredmeti = BazaPredmeta.getInstance().getPredmeti();
-		
-		
-		//sviPredmeti.removeAll(polozeniInepolozeni);
-		
-		
-		/*//ArrayList<Ocena> nijeSlusao = new ArrayList<Ocena>();
-		for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
-			for(Ocena o : polozeniInepolozeni) {
-			
-			}
+		for(Predmet p: BazaPredmeta.getInstance().getPredmeti()) {
+			sviPredmeti.add(p);
 		}
 		
-		for(Ocena o : polozeniInepolozeni) {
-			for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
-				if(o.getPredmet() == p) {
-					break;
-				}
-			}
-		}*/
+		//Collection<Predmet> razlika = CollectionUtils.substract(sviPredmeti,polozeniInepolozeni);
+		
+		sviPredmeti.removeAll(polozeniInepolozeni);
+		
+		for(Predmet p: sviPredmeti) {
+			lista.add(i++,p.getNazivPredmeta());
+			//lista.add(i++,String.valueOf(p.getGodinaStudija()));
+		}
+		
+
+		
+		//if(stud.getTrenutnaGodina() <= lista1.getSelectedValue()) {}
 		
 		
-		
-		//Predmet sviPredmeti = new Predmet(BazaPredmeta.getInstance().getPredmeti());
-		//int i = 0;
- 
-		
-		/*for(Predmet p: BazaPredmeta.getInstance().getPredmeti()) {
-			
-			
-			lista.add(i++,p.getSifraPredmeta());
-		}*/
-		
-		
-		/*for(Ocena temp : stud.getSpisakPolozenihPredmeta()) {
-			//if(temp.getPredmet().getSifraPredmeta() != sviPredmeti.getSifraPredmeta()) {
-				//for(Ocena temp1: stud.getSpisakNepolozenihPredmeta()) {
-					//if(temp1.getPredmet().getSifraPredmeta() != sviPredmeti.getSifraPredmeta()) {
-						lista.add(i++,temp.getPredmet().getSifraPredmeta());
-					//}
-				//}
-				
-			//}
-		}*/
-		
-		//for(Predmet p : polozeniInepolozeni) {
-			//lista.add(i++, p.getNazivPredmeta());
-		//}
 		JList<String> lista1 = new JList<String>(lista);
 		lista1.setPreferredSize(new Dimension(200,300));
 		JScrollPane scrollPane = new JScrollPane();
@@ -133,6 +90,34 @@ public class AddPredmetStudFrame extends JDialog{
 		//donjiPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		JButton dodaj = new JButton("Dodaj");
 		JButton odustani = new JButton("Odustani");
+		
+		dodaj.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(lista1.getSelectedIndex() == -1) {
+					JOptionPane.showMessageDialog(null,"Oznacite predmet koji zelite da dodate!","",JOptionPane.ERROR_MESSAGE);
+				}else {
+					int option = JOptionPane.showConfirmDialog(null,"Da li ste sigurni?","Dodavanje ",JOptionPane.YES_NO_OPTION);
+					if(option == JOptionPane.YES_OPTION) {
+
+						for(Predmet pr: BazaPredmeta.getInstance().getPredmeti()) {
+							if(pr.getNazivPredmeta().equals(lista1.getSelectedValue())){
+								if(stud.getGodinaUpisa() >= pr.getGodinaStudija()) {
+									NepolozeniController.getInstance().addNepolozeni(stud.getBrojIndeksa(), pr.getSifraPredmeta());
+									setVisible(false);
+								}
+								
+							}
+						}
+						
+						
+					}					
+				}
+			}	
+		});
+		
+		
 		
 		odustani.addActionListener(new ActionListener() {
 			
