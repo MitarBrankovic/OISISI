@@ -3,6 +3,7 @@ package controller;
 import model.BazaStudenata;
 import model.Student;
 import model.StudentStatus;
+import view.EditStudentFrame;
 import view.TabPane;
 
 public class StudentiController {
@@ -35,5 +36,12 @@ public class StudentiController {
 		Student stud = BazaStudenata.getInstance().getRow(rowSelectedIndex);
 		BazaStudenata.getInstance().izbrisiStudenta(stud.getBrojIndeksa());
 		TabPane.getInstance().azurirajStudenti();
+	}
+	
+	public void upisiOcenu(String indeks, String sifraPredmeta, String ocena, String datum) {
+		BazaStudenata.getInstance().upisiOcenu(indeks, sifraPredmeta, ocena, datum);
+		EditStudentFrame.getInstance().azurirajNepolozene();
+		EditStudentFrame.getInstance().azurirajPolozene();
+		
 	}
 }

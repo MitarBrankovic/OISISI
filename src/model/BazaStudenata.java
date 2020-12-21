@@ -171,4 +171,20 @@ public class BazaStudenata {
 		}
 	}
 	
+	public void upisiOcenu(String indeks, String sifraPredmeta, String ocena, String datum) {
+		for(Student i : studenti) {
+			if(i.getBrojIndeksa().equals(indeks)) {
+				for(Ocena o : i.getSpisakNepolozenihPredmeta()) {
+					if(o.getPredmet().getSifraPredmeta().equals(sifraPredmeta)) {
+						i.getSpisakNepolozenihPredmeta().remove(o);
+						o.setDatumPolaganja(datum);
+						o.setVrednostOcene(Integer.parseInt(ocena));
+						i.getSpisakPolozenihPredmeta().add(o);
+						break;
+					}
+				}
+			}
+		}
+	}
+	
 }

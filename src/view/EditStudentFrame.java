@@ -28,6 +28,7 @@ import model.Ocena;
 import model.Predmet;
 import model.Student;
 import model.StudentStatus;
+import model.UpisOceneFrame;
 
 public class EditStudentFrame extends JDialog {
 
@@ -434,6 +435,22 @@ public class EditStudentFrame extends JDialog {
 		});
 		
 		
+		polaganje.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(NepolozeniJTable.getInstance().getSelectedRow() == -1) {
+				    JOptionPane.showMessageDialog(null, "Nije selektovan ni jedan predmet","",JOptionPane.ERROR_MESSAGE);
+					}else {
+						UpisOceneFrame uof = new UpisOceneFrame();
+						uof.setVisible(true);
+					}				
+					
+			}
+		});
+		
+		
 	
 		obrisi.addActionListener(new ActionListener() {
 
@@ -492,5 +509,11 @@ public class EditStudentFrame extends JDialog {
 		//validate();
 		
 	}
+	
+	public void azurirajPolozene() {
+		AbstractTablePolozeni model = (AbstractTablePolozeni)tabelaPolozenih.getModel();
+		model.fireTableDataChanged();
+	}
+
 	
 }
