@@ -14,7 +14,6 @@ public class Ocena {
 		this.datumPolaganja = datumPolaganja;
 	}
 	
-	
 	public Student getStudent() {
 		return student;
 	}

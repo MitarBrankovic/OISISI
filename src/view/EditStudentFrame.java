@@ -462,6 +462,7 @@ public class EditStudentFrame extends JDialog {
 					if(option == JOptionPane.YES_OPTION) {
 				
 					NepolozeniController.getInstance().removeNepolozeni(NepolozeniJTable.getInstance().getSelectedRow());
+					//setVisible(false);
 					//StudentiController.getInstance().removeStudent(StudentiJTable.getInstance().getSelectedRow());
 					}
 				}catch (Exception e) {
