@@ -1,4 +1,4 @@
-package model;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -18,9 +18,11 @@ import javax.swing.JTextField;
 import controller.PredmetController;
 import controller.StudentiController;
 import listeners.FocusListener1;
-import view.NepolozeniJTable;
-import view.PredmetiJTable;
-import view.StudentiJTable;
+import model.BazaOcena;
+import model.BazaStudenata;
+import model.Ocena;
+import model.Predmet;
+import model.Student;
 
 public class UpisOceneFrame extends JDialog{
 

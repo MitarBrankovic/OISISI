@@ -28,7 +28,6 @@ import model.Ocena;
 import model.Predmet;
 import model.Student;
 import model.StudentStatus;
-import model.UpisOceneFrame;
 
 public class EditStudentFrame extends JDialog {
 
@@ -345,15 +344,38 @@ public class EditStudentFrame extends JDialog {
 		
 		
 	//***************************************POLOZENI TAB************************************************	
-		
+
 		
 		
 		JPanel ponistiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		ponistiPanel.setPreferredSize(new Dimension(450,50));					//malo je neprakticno
 		//JSeparator sep = new JSeparator();
 		//sep.setPreferredSize(new Dimension(50, 1));
-		JButton ponistiButton = new JButton("Ponisti");
+		JButton ponistiButton = new JButton("Ponisti ocenu");
 		//ponistiPanel.add(sep);
+		
+		ponistiButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(PolozeniJTable.getInstance().getSelectedRow() == -1) {
+				    JOptionPane.showMessageDialog(null, "Nije selektovan ni jedan predmet","",JOptionPane.ERROR_MESSAGE);
+					}else {
+						int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da uklonite ocenu?","Ponistavanje ocene",JOptionPane.YES_NO_OPTION);
+						if(option == JOptionPane.YES_OPTION) {
+							Student stud = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
+							Ocena ocen = new Ocena(BazaOcena.getInstance().getRowPolozeni(PolozeniJTable.getInstance().getSelectedRow()));
+							Predmet pred = ocen.getPredmet();
+							
+							StudentiController.getInstance().ponistiOcenu(stud.getBrojIndeksa(), pred.getSifraPredmeta());
+						//NepolozeniController.getInstance().removeNepolozeni(NepolozeniJTable.getInstance().getSelectedRow());
+						}
+						
+					}				
+			}			
+		});
+		
 		ponistiPanel.add(ponistiButton);
 		
 		

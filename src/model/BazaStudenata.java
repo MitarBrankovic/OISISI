@@ -187,4 +187,20 @@ public class BazaStudenata {
 		}
 	}
 	
+	public void ponistiOcenu(String indeks, String sifraPredmeta) {
+		for(Student i : studenti) {
+			if(i.getBrojIndeksa().equals(indeks)) {
+				for(Ocena o : i.getSpisakPolozenihPredmeta()) {
+					if(o.getPredmet().getSifraPredmeta().equals(sifraPredmeta)) {
+						o.setVrednostOcene(5);
+						i.getSpisakPolozenihPredmeta().remove(o);
+						i.getSpisakNepolozenihPredmeta().add(o);
+						break;
+					}
+				}
+			}
+		}
+		
+	}
+	
 }

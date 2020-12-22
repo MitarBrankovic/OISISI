@@ -50,7 +50,6 @@ public class AddPredmetStudFrame extends JDialog{
 		
 		ArrayList<Predmet> polozeniInepolozeni = new ArrayList<Predmet>();
 		for(Ocena o : BazaOcena.getInstance().getOcenePolozeni()) {
-			//if(stud.getTrenutnaGodina() >= o.getPredmet().getGodinaStudija()) {
 			polozeniInepolozeni.add(o.getPredmet());
 		}
 		for(Ocena o : BazaOcena.getInstance().getOceneNepolozeni()) {
@@ -63,19 +62,16 @@ public class AddPredmetStudFrame extends JDialog{
 		for(Predmet p: BazaPredmeta.getInstance().getPredmeti()) {
 			sviPredmeti.add(p);
 		}
-		
-		//Collection<Predmet> razlika = CollectionUtils.substract(sviPredmeti,polozeniInepolozeni);
+
 		
 		sviPredmeti.removeAll(polozeniInepolozeni);
 		
 		for(Predmet p: sviPredmeti) {
-			lista.add(i++,p.getNazivPredmeta());
-			//lista.add(i++,String.valueOf(p.getGodinaStudija()));
+				if(stud.getTrenutnaGodina() >= p.getGodinaStudija()) {
+					lista.add(i++,p.getNazivPredmeta());
+				}
 		}
-		
 
-		
-		//if(stud.getTrenutnaGodina() <= lista1.getSelectedValue()) {}
 		
 		
 		JList<String> lista1 = new JList<String>(lista);
@@ -103,15 +99,15 @@ public class AddPredmetStudFrame extends JDialog{
 
 						for(Predmet pr: BazaPredmeta.getInstance().getPredmeti()) {
 							if(pr.getNazivPredmeta().equals(lista1.getSelectedValue())){
-								if(stud.getGodinaUpisa() >= pr.getGodinaStudija()) {
+								if(stud.getTrenutnaGodina() >= pr.getGodinaStudija()) {
 									NepolozeniController.getInstance().addNepolozeni(stud.getBrojIndeksa(), pr.getSifraPredmeta());
 									setVisible(false);
+								}else {
+									JOptionPane.showMessageDialog(null,"Predmet je na visoj godini nego student!","",JOptionPane.ERROR_MESSAGE);
 								}
 								
 							}
 						}
-						
-						
 					}					
 				}
 			}	
