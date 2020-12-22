@@ -30,11 +30,11 @@ public class BazaStudenata {
 		this.kolone.add("INDEKS");
 		this.kolone.add("IME");
 		this.kolone.add("PREZIME");
-		this.kolone.add("DAT. RODJENJA");
+		//this.kolone.add("DAT. RODJENJA");
 		this.kolone.add("ADRESA");
 		this.kolone.add("TEL.");
 		this.kolone.add("EMAIL");
-		this.kolone.add("DAT. UPISA");
+		this.kolone.add("GOD. UPISA");
 		this.kolone.add("GOD. STUDIJA");
 		this.kolone.add("STATUS");
 		this.kolone.add("PROSEK");
@@ -93,7 +93,7 @@ public class BazaStudenata {
 	
 
 	public int getColumnCount() {
-		return 11;
+		return 10;
 	}
 
 	public String getColumnName(int index) {
@@ -114,23 +114,21 @@ public class BazaStudenata {
 		case 2:
 			return student.getPrezime();
 		case 3:
-			return student.getDatumRodjenja();
-		case 4:
 			return student.getAdresa();
-		case 5:
+		case 4:
 			return student.getKontakt();
-		case 6:
+		case 5:
 			return student.getEmail();
-		case 7:
+		case 6:
 			return Integer.toString(student.getGodinaUpisa());
-		case 8:
+		case 7:
 			return Integer.toString(student.getTrenutnaGodina());
-		case 9:
+		case 8:
 			if(student.getStatus() == StudentStatus.B)
 				return "Budzet";
 			else if (student.getStatus() == StudentStatus.S)
 				return "Samofinansiranje";
-		case 10:
+		case 9:
 			return Double.toString(student.getProsecnaOcena());
 		default:
 			return null;
