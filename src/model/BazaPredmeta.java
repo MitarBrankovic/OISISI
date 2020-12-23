@@ -69,7 +69,6 @@ public class BazaPredmeta {
 		} catch(IOException exception) {
 			exception.printStackTrace();
 		}
-
 	}
 	
 	public ArrayList<Predmet> getPredmeti() {

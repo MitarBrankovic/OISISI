@@ -16,6 +16,6 @@ oisisi, Osnovi informacionih sistema i softverskog inzenjerstva, LETNJI, 3, 6, L
 mo, Metode optimizacije, LETNJI, 1, 8, Luka Djordjevic
 os, Operativni sistemi, ZIMSKI, 3, 8, Andrej Jovanovic
 bp1, Baze podataka 1, LETNJI, 1, 8, Una Milosevic
-sau, Sistemi automatskog upravljanja, LETNJI, 1, 8, Lazar Tomic
+sau, Sistemi automatskog upravljanja, LETNJI, 1, 7, Lazar Tomic
 sat, Socioloski aspekti tehnickog razvoja, ZIMSKI, 3, 3, Lazar Tomic
 op, Objektno programiranje, LETNJI, 2, 8, Kosta Kovacevic

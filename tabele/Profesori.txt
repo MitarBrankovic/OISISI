@@ -14,7 +14,7 @@ Filip, Pavlovic, 8.8.1962., Bulevar kneza Milosa 3, 021433753, FilipPavlovic3@gm
 Lazar, Kostic, 23.11.1974., Dr Sime Milosevica 33, 021942119, LazarKostic5@gmail.com, Bulevar Evrope 94, 434939, magistar, vanredni profesor
 Luka, Djordjevic, 23.6.1971., Dr Sime Milosevica 94, 021107563, LukaDjordjevic9@gmail.com, Vojvodjanska 83, 838397, doktor nauka, vanredni profesor
 Andrej, Jovanovic, 1.1.1984., Podgoricka 79, 021986475, AndrejJovanovic2@gmail.com, Sekspirova 24, 672331, doktor nauka, vanredni profesor
-Una, Milosevic, 19.2.1984., Drage Spasic 80, 021488280, UnaMilosevic2@gmail.com, Bulevar kneza Milosa 51, 864527, magistar, redovni profesor
+Una, Milosevic, 15.2.1984., Drage Spasic 80, 021488280, UnaMilosevic2@gmail.com, Bulevar kneza Milosa 51, 864527, magistar, redovni profesor
 Lazar, Tomic, 7.3.1973., Danila Kisa 74, 021787834, LazarTomic11@gmail.com, Suboticki bulevar 73, 947057, doktor nauka, vanredni profesor
 Kosta, Kovacevic, 24.2.1969., Bulevar Jase Tomica 30, 021678850, KostaKovacevic1@gmail.com, Lasla Gala 90, 508479, magistar, vanredni profesor
 Sofija, Todorovic, 7.7.1978., Dragise Brašovana 62, 021128880, SofijaTodorovic12@gmail.com, Vojvode Knicanina 48, 283700, doktor nauka, redovni profesor

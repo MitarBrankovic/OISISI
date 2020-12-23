@@ -103,7 +103,6 @@ public class BazaOcena {
 				
 				Ocena objOcena = new Ocena(objStudent, objPredmet, ocena, datum);
 				ocene.add(objOcena);
-
 				
 			}
 			reader.close();

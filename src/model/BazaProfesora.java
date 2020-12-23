@@ -54,9 +54,7 @@ public class BazaProfesora {
 				
 				profesori.add(new Profesor( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), Integer.parseInt(kolone[4].trim()), kolone[5].trim(), kolone[6].trim(), Integer.parseInt(kolone[7].trim()), kolone[8].trim(), kolone[9].trim()));
 			}
-		
-
-			
+	
 			reader.close();
 		
 		}catch(IOException exception) {
