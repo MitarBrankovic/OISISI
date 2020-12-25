@@ -156,17 +156,17 @@ public class EditStudentFrame extends JDialog {
 		
 		
 		
-		JPanel pDatumUpisa = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel lDatumUpisa = new JLabel("DatumUpisa*: ");
-		lDatumUpisa.setPreferredSize(dim);
-		JTextField txtDatumUpisa = new JTextField();
-		txtDatumUpisa.setPreferredSize(dim);
-		txtDatumUpisa.setName("tekst");
-		txtDatumUpisa.setToolTipText("npr. 2020");
-		txtDatumUpisa.addFocusListener(focus);
+		JPanel pGodinaUpisa = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel lGodinaUpisa = new JLabel("GodinaUpisa*: ");
+		lGodinaUpisa.setPreferredSize(dim);
+		JTextField txtGodinaUpisa = new JTextField();
+		txtGodinaUpisa.setPreferredSize(dim);
+		txtGodinaUpisa.setName("tekst");
+		txtGodinaUpisa.setToolTipText("npr. 2020");
+		txtGodinaUpisa.addFocusListener(focus);
 		
-		pDatumUpisa.add(lDatumUpisa);
-		pDatumUpisa.add(txtDatumUpisa);
+		pGodinaUpisa.add(lGodinaUpisa);
+		pGodinaUpisa.add(txtGodinaUpisa);
 
 		
 		/*
@@ -239,7 +239,7 @@ public class EditStudentFrame extends JDialog {
 		txtIndeks.setText(st.getBrojIndeksa());
 		txtTelefon.setText(st.getKontakt());
 		txtEmail.setText(st.getEmail());
-		txtDatumUpisa.setText(String.valueOf(st.getGodinaUpisa()));
+		txtGodinaUpisa.setText(String.valueOf(st.getGodinaUpisa()));
 		txtProsek.setText(String.valueOf(st.getProsecnaOcena()));
 		
 		if(st.getStatus() == StudentStatus.B) {
@@ -285,33 +285,51 @@ public class EditStudentFrame extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				int god;
-				String godina = godine.getSelectedItem().toString();
-				if(godina.equals("I (prva)")) {
-					god=1;
-				}else if(godina.equals("II (druga)")){
-					god=2;
-				}else if(godina.equals("III (treca)")){
-					god=3;
+				if(txtIme.getText().equals("") || txtPrezime.getText().equals("") || txtDatum.getText().equals("") || txtAdresa.getText().equals("") || 
+						txtTelefon.getText().equals("") || txtEmail.getText().equals("") || txtIndeks.getText().equals("") || txtGodinaUpisa.getText().equals(""))  {
+					JOptionPane.showMessageDialog(null, "Niste popunili sva polja!", "",JOptionPane.ERROR_MESSAGE);
+				}else if(txtIme.getText().matches("[A-Z][a-z]+") == false) {
+						JOptionPane.showMessageDialog(null, "Ime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);
+				}else if(txtPrezime.getText().matches("[A-Z][a-z]+") == false) {
+					JOptionPane.showMessageDialog(null, "Prezime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);	
+				}else if(validDate(txtDatum.getText()) == false) {
+					JOptionPane.showMessageDialog(null, "Datum nije dobro unet","",JOptionPane.ERROR_MESSAGE);	
+				}else if(txtAdresa.getText().trim().matches("[a-žA-Ž0-9 ]*") == false) {
+					JOptionPane.showMessageDialog(null, "Adresa nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
+				}else if(isNumber(txtTelefon.getText()) == false) {
+					JOptionPane.showMessageDialog(null, "Broj telefona nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+				}else if(txtEmail.getText().matches("[a-zA-z0-9]+@[a-zA-z]+[.][a-zA-Z]+") == false) {
+					JOptionPane.showMessageDialog(null, "Email nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+				}else if(txtIndeks.getText().matches("[A-Z]+/[0-9]+") == false) {
+					JOptionPane.showMessageDialog(null, "Indeks nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+				//}else if(validDate(txtGodinaUpisa.getText()) == false){
+					//JOptionPane.showMessageDialog(null, "Datum upisa nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 				}else {
-					god=4;
-				}
-				
+					int god;
+					String godina = godine.getSelectedItem().toString();
+					if(godina.equals("I (prva)")) {
+						god=1;
+					}else if(godina.equals("II (druga)")){
+						god=2;
+					}else if(godina.equals("III (treca)")){
+						god=3;
+					}else {
+						god=4;
+					}
+					
 
-				String status1 = status.getSelectedItem().toString();
-				if(status1.equals("Budžet")) {
-					studStat = StudentStatus.B;
-				}else if(status1.equals("Samofinansiranje")) {
-					studStat = StudentStatus.S;
-				}
-				
-				StudentiController.getInstance().editStudent(txtIme.getText(), txtPrezime.getText(),txtDatum.getText(), txtAdresa.getText(),txtIndeks.getText(), txtTelefon.getText(),
-						txtEmail.getText(),Integer.parseInt(txtDatumUpisa.getText()),god, studStat, Double.parseDouble(txtProsek.getText()));
-				setVisible(false);
+					String status1 = status.getSelectedItem().toString();
+					if(status1.equals("Budžet")) {
+						studStat = StudentStatus.B;
+					}else if(status1.equals("Samofinansiranje")) {
+						studStat = StudentStatus.S;
+					}
+					
+					StudentiController.getInstance().editStudent(txtIme.getText(), txtPrezime.getText(),txtDatum.getText(), txtAdresa.getText(),txtIndeks.getText(), txtTelefon.getText(),
+							txtEmail.getText(),Integer.parseInt(txtGodinaUpisa.getText()),god, studStat, Double.parseDouble(txtProsek.getText()));
+					setVisible(false);
+				}				
 			}
-			
-			
-			
 		});
 		
 		donjiPanel.add(potvrdi);
@@ -329,7 +347,7 @@ public class EditStudentFrame extends JDialog {
 		boxStudent.add(pTelefon);
 		boxStudent.add(pEmail);
 		boxStudent.add(pIndeks);
-		boxStudent.add(pDatumUpisa);
+		boxStudent.add(pGodinaUpisa);
 		boxStudent.add(pGodinaStudija);
 		boxStudent.add(pStatus);
 		boxStudent.add(pProsek);
@@ -538,5 +556,46 @@ public class EditStudentFrame extends JDialog {
 		model.fireTableDataChanged();
 	}
 
+	public boolean isNumber(String st) {
+		try {
+			Integer.parseInt(st);
+			return true;
+		}catch(NumberFormatException ex){
+			return false;
+		}
+	}
+	
+	public boolean validDate(String st) {
+		String[] datum = st.split("\\.");
+		int dan = Integer.parseInt(datum[0]);
+		int mesec = Integer.parseInt(datum[1]);
+		
+		if(datum[2].length() != 4) {
+			return false;
+		}else if(datum[2] == null) {
+			return false;
+		}
+
+		
+		
+		if(mesec > 12 || mesec < 1) {
+			return false;
+		}else if(dan < 1) {
+			return false;
+		}else if(mesec == 2) {
+			if(dan > 29) {
+				return false;
+			}
+		}else if(mesec==1 || mesec==3 || mesec==5 || mesec==7 ||mesec==8 || mesec==10 || mesec==12) {
+			if(dan>31) {
+				return false;
+			}
+		}else if(mesec==4 || mesec==6 || mesec==9 || mesec==11) {
+			if(dan>30) {
+				return false;
+			}
+		}
+		return true;
+	}
 	
 }

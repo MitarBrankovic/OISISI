@@ -16,9 +16,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import com.sun.org.apache.xerces.internal.util.Status;
-
 import controller.ProfesoriController;
 import listeners.FocusListener1;
 

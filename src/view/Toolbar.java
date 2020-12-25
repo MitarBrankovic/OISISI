@@ -162,6 +162,25 @@ public class Toolbar extends JToolBar{
 		JButton btnSearch = new JButton();
 		btnSearch.setToolTipText("Search");
 		btnSearch.setIcon(new ImageIcon("images" + File.separator + "search.jpg"));
+		
+		
+		String searchTxt = searchArea.getText();
+		
+		btnSearch.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(TabPane.getStanje() == 0) {
+					
+				}else if(TabPane.getStanje() == 1) {
+					//
+				}else if(TabPane.getStanje() == 2){
+					//
+				}				
+			}					
+		});	
+		
+		
 		add(btnSearch);
 		
 		

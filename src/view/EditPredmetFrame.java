@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
@@ -173,33 +174,42 @@ public class EditPredmetFrame extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				int god;
-				String godina = godine.getSelectedItem().toString();
-				if(godina.equals("I (prva)")) {
-					god=1;
-				}else if(godina.equals("II (druga)")){
-					god=2;
-				}else if(godina.equals("III (treca)")){
-					god=3;
+				if(txtSifra.getText().equals("") || txtNaziv.getText().equals("") || txtEspb.getText().equals("") || txtPredmetniProfesor.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Niste popunili sva polja!", "",JOptionPane.ERROR_MESSAGE);
+				}else if(txtSifra.getText().matches("[a-žA-Ž0-9]+") == false) {
+						JOptionPane.showMessageDialog(null, "Sifra nije dobro uneta","",JOptionPane.ERROR_MESSAGE);
+				}else if(txtNaziv.getText().matches("[a-žA-Ž ]*[0-9]*") == false) {
+					JOptionPane.showMessageDialog(null, "Naziv nije dobro unet","",JOptionPane.ERROR_MESSAGE);	
+				}else if(isNumber(txtEspb.getText()) == false) {
+					JOptionPane.showMessageDialog(null, "ESPB nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+				}else if(txtPredmetniProfesor.getText().matches("[a-žA-Ž ]*") == false) {
+					JOptionPane.showMessageDialog(null, "Profesor nije dobro unet","",JOptionPane.ERROR_MESSAGE);	
 				}else {
-					god=4;
-				}
-				
-				
-				String semestar1 = semestri.getSelectedItem().toString();
-				if(semestar1.equals("Letnji")) {
-					sem = PredmetSemestar.letnji;
-				}else if(semestar1.equals("Zimski")) {
-					sem = PredmetSemestar.zimski;
-				}
-				
-				PredmetController.getInstance().editPredmet(txtSifra.getText(), txtNaziv.getText(),sem, god, Integer.parseInt(txtEspb.getText()), txtPredmetniProfesor.getText());
-				setVisible(false);
-				
-			}
-			
-			
-			
+
+					int god;
+					String godina = godine.getSelectedItem().toString();
+					if(godina.equals("I (prva)")) {
+						god=1;
+					}else if(godina.equals("II (druga)")){
+						god=2;
+					}else if(godina.equals("III (treca)")){
+						god=3;
+					}else {
+						god=4;
+					}
+					
+					
+					String semestar1 = semestri.getSelectedItem().toString();
+					if(semestar1.equals("Letnji")) {
+						sem = PredmetSemestar.letnji;
+					}else if(semestar1.equals("Zimski")) {
+						sem = PredmetSemestar.zimski;
+					}
+					
+					PredmetController.getInstance().editPredmet(txtSifra.getText(), txtNaziv.getText(),sem, god, Integer.parseInt(txtEspb.getText()), txtPredmetniProfesor.getText());
+					setVisible(false);
+				}				
+			}									
 		});
 		
 		donjiPanel.add(potvrdi);
@@ -231,5 +241,14 @@ public class EditPredmetFrame extends JDialog {
 		add(predmetIn, BorderLayout.CENTER);
 
 		
+	}
+	
+	public boolean isNumber(String st) {
+		try {
+			Integer.parseInt(st);
+			return true;
+		}catch(NumberFormatException ex){
+			return false;
+		}
 	}
 }

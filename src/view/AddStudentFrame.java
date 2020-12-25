@@ -4,9 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import listeners.FocusListener1;
-
 import javax.swing.*;
-
 import controller.StudentiController;
 import model.*;
 
@@ -58,7 +56,7 @@ public class AddStudentFrame extends JDialog {
 		
 		
 		JPanel pDatum = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel lDatum = new JLabel("DatumRodj*: ");
+		JLabel lDatum = new JLabel("Datum rodjenja*: ");
 		lDatum.setPreferredSize(dim);
 		JTextField txtDatum = new JTextField();
 		txtDatum.setPreferredSize(dim);
@@ -115,7 +113,7 @@ public class AddStudentFrame extends JDialog {
 		JTextField txtIndeks = new JTextField();
 		txtIndeks.setPreferredSize(dim);
 		txtIndeks.setName("tekst");
-		txtIndeks.setToolTipText("npr. RA/123");
+		txtIndeks.setToolTipText("npr. RA/132");
 		txtIndeks.addFocusListener(focus);
 		
 		pIndeks.add(lIndeks);
@@ -123,17 +121,17 @@ public class AddStudentFrame extends JDialog {
 		
 		
 		
-		JPanel pDatumUpisa = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel lDatumUpisa = new JLabel("DatumUpisa*: ");
-		lDatumUpisa.setPreferredSize(dim);
-		JTextField txtDatumUpisa = new JTextField();
-		txtDatumUpisa.setPreferredSize(dim);
-		txtDatumUpisa.setName("tekst");
-		txtDatumUpisa.setToolTipText("npr. 2020");
-		txtDatumUpisa.addFocusListener(focus);
+		JPanel pGodinaUpisa = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel lGodinaUpisa = new JLabel("Godina upisa*: ");
+		lGodinaUpisa.setPreferredSize(dim);
+		JTextField txtGodinaUpisa = new JTextField();
+		txtGodinaUpisa.setPreferredSize(dim);
+		txtGodinaUpisa.setName("tekst");
+		txtGodinaUpisa.setToolTipText("npr. 2020");
+		txtGodinaUpisa.addFocusListener(focus);
 		
-		pDatumUpisa.add(lDatumUpisa);
-		pDatumUpisa.add(txtDatumUpisa);
+		pGodinaUpisa.add(lGodinaUpisa);
+		pGodinaUpisa.add(txtGodinaUpisa);
 
 		
 		/*
@@ -184,7 +182,7 @@ public class AddStudentFrame extends JDialog {
 	    pStatus.add(status);
 		
 		
-		JPanel pProsek = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		/*JPanel pProsek = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lProsek = new JLabel("Prosek*: ");
 		lProsek.setPreferredSize(dim);
 		JTextField txtProsek = new JTextField();
@@ -194,7 +192,7 @@ public class AddStudentFrame extends JDialog {
 		txtProsek.addFocusListener(focus);
 		
 		pProsek.add(lProsek);
-		pProsek.add(txtProsek);	
+		pProsek.add(txtProsek);*/
 		
 		
 		
@@ -216,31 +214,62 @@ public class AddStudentFrame extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				int god;
-				String godina = godine.getSelectedItem().toString();
-				if(godina.equals("I (prva)")) {
-					god=1;
-				}else if(godina.equals("II (druga)")){
-					god=2;
-				}else if(godina.equals("III (treca)")){
-					god=3;
+				
+				boolean vecPostoji = false;
+				for(Student stud : BazaStudenata.getInstance().getStudenti()) {
+					if(stud.getBrojIndeksa().equals(txtIndeks.getText().trim())) {
+						vecPostoji = true;
+					}
+				}
+				
+				if(txtIme.getText().equals("") || txtPrezime.getText().equals("") || txtDatum.getText().equals("") || txtAdresa.getText().equals("") || 
+						txtTelefon.getText().equals("") || txtEmail.getText().equals("") || txtIndeks.getText().equals("") || txtGodinaUpisa.getText().equals(""))  {
+					JOptionPane.showMessageDialog(null, "Niste popunili sva polja!", "",JOptionPane.ERROR_MESSAGE);
+				}else if(txtIme.getText().matches("[A-Z][a-z]+") == false) {
+						JOptionPane.showMessageDialog(null, "Ime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);
+				}else if(txtPrezime.getText().matches("[A-Z][a-z]+") == false) {
+					JOptionPane.showMessageDialog(null, "Prezime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);	
+				}else if(validDate(txtDatum.getText()) == false) {
+					JOptionPane.showMessageDialog(null, "Datum nije dobro unet","",JOptionPane.ERROR_MESSAGE);	
+				}else if(txtAdresa.getText().trim().matches("[a-žA-Ž0-9 ]*") == false) {
+					JOptionPane.showMessageDialog(null, "Adresa nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
+				}else if(isNumber(txtTelefon.getText()) == false) {
+					JOptionPane.showMessageDialog(null, "Broj telefona nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+				}else if(txtEmail.getText().matches("[a-zA-z0-9]+@[a-zA-z]+[.][a-zA-Z]+") == false) {
+					JOptionPane.showMessageDialog(null, "Email nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+				}else if(txtIndeks.getText().matches("[A-Z]+/[0-9]+") == false) {
+					JOptionPane.showMessageDialog(null, "Indeks nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+				//}else if(isNumber(txtGodinaUpisa.getText()) == false){
+					//JOptionPane.showMessageDialog(null, "Godina upisa nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+				}else if(vecPostoji){
+					JOptionPane.showMessageDialog(null, "Vec postoji student sa istim indeksom","",JOptionPane.ERROR_MESSAGE);
 				}else {
-					god=4;
-				}
-				
+					int god;
+					String godina = godine.getSelectedItem().toString();
+					if(godina.equals("I (prva)")) {
+						god=1;
+					}else if(godina.equals("II (druga)")){
+						god=2;
+					}else if(godina.equals("III (treca)")){
+						god=3;
+					}else {
+						god=4;
+					}
+					
 
-				String status1 = status.getSelectedItem().toString();
-				if(status1.equals("Budžet")) {
-					stat = StudentStatus.B;
-				}else if(status1.equals("Samofinansiranje")) {
-					stat = StudentStatus.S;
+					String status1 = status.getSelectedItem().toString();
+					if(status1.equals("Budžet")) {
+						stat = StudentStatus.B;
+					}else if(status1.equals("Samofinansiranje")) {
+						stat = StudentStatus.S;
+					}
+					
+					StudentiController.getInstance().addStudent(txtIme.getText(), txtPrezime.getText(),txtDatum.getText(), txtAdresa.getText(), txtIndeks.getText(),
+							txtTelefon.getText(),txtEmail.getText(),Integer.parseInt(txtGodinaUpisa.getText()),god, stat, 5);
+					
+					setVisible(false);
+					dispose();
 				}
-				
-				StudentiController.getInstance().addStudent(txtIme.getText(), txtPrezime.getText(),txtDatum.getText(), txtAdresa.getText(), txtTelefon.getText(),
-						txtEmail.getText(),txtIndeks.getText(),Integer.parseInt(txtDatumUpisa.getText()),god, stat, Double.parseDouble(txtProsek.getText()));
-				
-				setVisible(false);
-				dispose();
 			}
 			
 			
@@ -260,10 +289,10 @@ public class AddStudentFrame extends JDialog {
 		boxStudent.add(pTelefon);
 		boxStudent.add(pEmail);
 		boxStudent.add(pIndeks);
-		boxStudent.add(pDatumUpisa);
+		boxStudent.add(pGodinaUpisa);
 		boxStudent.add(pGodinaStudija);
 		boxStudent.add(pStatus);
-		boxStudent.add(pProsek);
+		//boxStudent.add(pProsek);
 		boxStudent.add(Box.createGlue());
 		
 		add(boxStudent, BorderLayout.CENTER);
@@ -272,4 +301,47 @@ public class AddStudentFrame extends JDialog {
 		setLocationRelativeTo(null);
 		
 	}	
+	
+	
+	public boolean isNumber(String st) {
+		try {
+			Integer.parseInt(st);
+			return true;
+		}catch(NumberFormatException ex){
+			return false;
+		}
+	}
+	
+	public boolean validDate(String st) {
+		String[] datum = st.split("\\.");
+		int dan = Integer.parseInt(datum[0]);
+		int mesec = Integer.parseInt(datum[1]);
+		
+		if(datum[2].length() != 4) {
+			return false;
+		}else if(datum[2] == null) {
+			return false;
+		}
+
+		
+		
+		if(mesec > 12 || mesec < 1) {
+			return false;
+		}else if(dan < 1) {
+			return false;
+		}else if(mesec == 2) {
+			if(dan > 29) {
+				return false;
+			}
+		}else if(mesec==1 || mesec==3 || mesec==5 || mesec==7 ||mesec==8 || mesec==10 || mesec==12) {
+			if(dan>31) {
+				return false;
+			}
+		}else if(mesec==4 || mesec==6 || mesec==9 || mesec==11) {
+			if(dan>30) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

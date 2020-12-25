@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import listeners.FocusListener1;
 import javax.swing.*;
 import controller.PredmetController;
+import model.BazaPredmeta;
+import model.Predmet;
 import model.PredmetSemestar;
 
 public class AddPredmetFrame extends JDialog{
@@ -77,17 +79,17 @@ public class AddPredmetFrame extends JDialog{
 		
 		
 		
-		JPanel pEpsb = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel lEpsb = new JLabel("EPSB*: ");
-		lEpsb.setPreferredSize(dim);
-		JTextField txtEpsb = new JTextField();
-		txtEpsb.setPreferredSize(dim);
-		txtEpsb.setName("tekst");
-		txtEpsb.setToolTipText("npr. 6");
-		txtEpsb.addFocusListener(focus);
+		JPanel pEspb = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel lEspb = new JLabel("Espb*: ");
+		lEspb.setPreferredSize(dim);
+		JTextField txtEspb = new JTextField();
+		txtEspb.setPreferredSize(dim);
+		txtEspb.setName("tekst");
+		txtEspb.setToolTipText("npr. 6");
+		txtEspb.addFocusListener(focus);
 		
-		pEpsb.add(lEpsb);
-		pEpsb.add(txtEpsb);
+		pEspb.add(lEspb);
+		pEspb.add(txtEspb);
 		
 		
 		
@@ -122,35 +124,56 @@ public class AddPredmetFrame extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				int god;
-				String godina = godine.getSelectedItem().toString();
-				if(godina.equals("I (prva)")) {
-					god=1;
-				}else if(godina.equals("II (druga)")){
-					god=2;
-				}else if(godina.equals("III (treca)")){
-					god=3;
+				boolean vecPostoji = false;
+				for(Predmet pred : BazaPredmeta.getInstance().getPredmeti()) {
+					if(pred.getSifraPredmeta().equals(txtSifra.getText().trim())) {
+						vecPostoji = true;
+					}
+				}
+				
+				
+				if(txtSifra.getText().equals("") || txtNaziv.getText().equals("") || txtEspb.getText().equals("") || txtPredmetniProfesor.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Niste popunili sva polja!", "",JOptionPane.ERROR_MESSAGE);
+				}else if(txtSifra.getText().matches("[a-žA-Ž0-9]+") == false) {
+						JOptionPane.showMessageDialog(null, "Sifra nije dobro uneta","",JOptionPane.ERROR_MESSAGE);
+				}else if(txtNaziv.getText().matches("[a-žA-Ž ]*[0-9]*") == false) {
+					JOptionPane.showMessageDialog(null, "Naziv nije dobro unet","",JOptionPane.ERROR_MESSAGE);	
+				}else if(isNumber(txtEspb.getText()) == false) {
+					JOptionPane.showMessageDialog(null, "ESPB nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+				}else if(txtPredmetniProfesor.getText().matches("[a-žA-Ž ]*") == false) {
+					JOptionPane.showMessageDialog(null, "Profesor nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+				}else if(vecPostoji){
+					JOptionPane.showMessageDialog(null, "Vec postoji predmet sa istom sifrom","",JOptionPane.ERROR_MESSAGE);
 				}else {
-					god=4;
-				}
-				
-				
-				String semestar1 = semestri.getSelectedItem().toString();
-				if(semestar1.equals("Letnji")) {
-					sem = PredmetSemestar.letnji;
-				}else if(semestar1.equals("Zimski")) {
-					sem = PredmetSemestar.zimski;
-				}
-				
-				PredmetController.getInstance().addPredmet(txtSifra.getText(), txtNaziv.getText(),sem, god, Integer.parseInt(txtEpsb.getText()), txtPredmetniProfesor.getText());
-				
-				setVisible(false);
-				dispose();
-				
-			}
-			
-			
-			
+					
+					
+					int god;
+					String godina = godine.getSelectedItem().toString();
+					if(godina.equals("I (prva)")) {
+						god=1;
+					}else if(godina.equals("II (druga)")){
+						god=2;
+					}else if(godina.equals("III (treca)")){
+						god=3;
+					}else {
+						god=4;
+					}
+					
+					
+					String semestar1 = semestri.getSelectedItem().toString();
+					if(semestar1.equals("Letnji")) {
+						sem = PredmetSemestar.letnji;
+					}else if(semestar1.equals("Zimski")) {
+						sem = PredmetSemestar.zimski;
+					}
+					
+					PredmetController.getInstance().addPredmet(txtSifra.getText(), txtNaziv.getText(),sem, god, Integer.parseInt(txtEspb.getText()), txtPredmetniProfesor.getText());
+					
+					setVisible(false);
+					dispose();
+					
+				}			
+			}				
 		});
 		
 		donjiPanel.add(potvrdi);
@@ -163,7 +186,7 @@ public class AddPredmetFrame extends JDialog{
 		boxPredmet.add(pNaziv);
 		boxPredmet.add(pSemestar);
 		boxPredmet.add(pGodinaStudija);
-		boxPredmet.add(pEpsb);
+		boxPredmet.add(pEspb);
 		boxPredmet.add(pPredmetniProfesor);
 		boxPredmet.add(Box.createGlue());
 		
@@ -175,4 +198,12 @@ public class AddPredmetFrame extends JDialog{
 		
 		}
 		
+	public boolean isNumber(String st) {
+		try {
+			Integer.parseInt(st);
+			return true;
+		}catch(NumberFormatException ex){
+			return false;
+		}
+	}
 }

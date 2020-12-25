@@ -135,7 +135,7 @@ public class BazaStudenata {
 	
 	
 	public void dodajStudenta(String ime, String prezime, String datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
-		this.studenti.add(new Student(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status, prosecnaOcena));
+		this.studenti.add(new Student(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status,  5));
 	}
 
 
