@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
@@ -27,6 +28,8 @@ public class EditProfesorFrame extends JDialog{
 
 
 	private static final long serialVersionUID = -4447068004097483905L;
+	
+	private static ProfesorPredmetiJTable tabelaProfesorPredmeti;
 	
 	public EditProfesorFrame() {
 		/*setVisible je stavljen u komentar zato sto istu funkciju pozivamo u MenuKonfiguracija/Toolbar
@@ -182,7 +185,8 @@ public class EditProfesorFrame extends JDialog{
 	    
 		validate();
 	    
-	    
+	    BazaProfesora.getInstance().setBrojLicne(pr.getBrojLicneKarte());
+		
 		JPanel donjiPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	    JButton potvrdi = new JButton("Potvrdi");
 	    JButton odustani = new JButton("Odustani");
@@ -238,9 +242,42 @@ public class EditProfesorFrame extends JDialog{
 		profesorInfo.add(boxProfesor, BorderLayout.CENTER);
 		profesorInfo.add(donjiPanel, BorderLayout.SOUTH);
 		
+		
+		
+/****************************************** predmeti koje profesor predaje *********************************/
+		
+		JPanel predmeti = new JPanel();
+		predmeti.setPreferredSize(new Dimension(370,50));
+		predmeti.setLayout(new FlowLayout(FlowLayout.LEFT));
+		JButton dodaj = new JButton("Dodaj predmet");
+		JButton ukloni = new JButton("Ukloni predmet");
+		
+		
+		dodaj.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				
+			}
+		});
+		
+		
+		
+		
+		predmeti.add(dodaj);
+		predmeti.add(ukloni);
+		
+		tabelaProfesorPredmeti = ProfesorPredmetiJTable.getInstance();
+		JScrollPane skrolPredmeti = new JScrollPane(tabelaProfesorPredmeti);
+		skrolPredmeti.setPreferredSize(new Dimension(370, 300));
+		JPanel predmetiTab = new JPanel();
+		predmetiTab.add(predmeti, BorderLayout.NORTH);
+		predmetiTab.add(skrolPredmeti, BorderLayout.CENTER);
+		
 		JTabbedPane profesorin = new JTabbedPane();
 		profesorin.add("Informacije", profesorInfo);
-		
+		profesorin.add("Predmeti", predmetiTab);
 		add(profesorin, BorderLayout.CENTER);
 				
 	}

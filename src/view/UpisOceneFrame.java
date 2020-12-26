@@ -99,6 +99,7 @@ public class UpisOceneFrame extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				
 			}	
 		});
 		
@@ -106,11 +107,9 @@ public class UpisOceneFrame extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//nepolozenom predmetu dodeliti ocenu i datum i prebaciti ga u polozene
 				String ocena1 = ocena.getSelectedItem().toString();
 				StudentiController.getInstance().upisiOcenu(stud.getBrojIndeksa(), pred.getSifraPredmeta(), ocena1, txtDatum.getText());
-				setVisible(false);
-			}
+				setVisible(false);			}
 		});
 		
 		

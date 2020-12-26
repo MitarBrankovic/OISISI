@@ -33,13 +33,14 @@ public class EditStudentFrame extends JDialog {
 
 	private static final long serialVersionUID = -1126183099640299201L;
 
-	
     double avg;
 	private StudentStatus studStat;
 	//private static PredmetiJTable tabelaPredmeta;
 	private static PolozeniJTable tabelaPolozenih;
 	private static NepolozeniJTable tabelaNepolozenih;
-
+	
+	
+	
 	public static void azurirajNepolozene() {
 		AbstractTableNepolozeni model=(AbstractTableNepolozeni)tabelaNepolozenih.getModel();
 		model.fireTableDataChanged();
@@ -497,7 +498,6 @@ public class EditStudentFrame extends JDialog {
 			}
 		});
 		
-		
 	
 		obrisi.addActionListener(new ActionListener() {
 
@@ -593,5 +593,6 @@ public class EditStudentFrame extends JDialog {
 		}
 		return true;
 	}
-	
+
 }
+

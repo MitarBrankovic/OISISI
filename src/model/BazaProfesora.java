@@ -20,14 +20,22 @@ public class BazaProfesora {
 	}
 	
 	private ArrayList<Profesor> profesori;
-	private ArrayList<String> kolone;
-	
+	private ArrayList<String> kolone1;
+	private ArrayList<String> kolone2;
+	private ArrayList<Predmet> listaPredmeta;
+
 	private BazaProfesora() {
-		this.kolone = new ArrayList<String>();
-		this.kolone.add("IME");
-		this.kolone.add("PREZIME");
-		this.kolone.add("TITULA");
-		this.kolone.add("ZVANJE");
+		this.kolone1 = new ArrayList<String>();
+		this.kolone1.add("IME");
+		this.kolone1.add("PREZIME");
+		this.kolone1.add("TITULA");
+		this.kolone1.add("ZVANJE");
+		
+		this.kolone2 = new ArrayList<String>();
+		this.kolone2.add("SIFRA");
+		this.kolone2.add("NAZIV");
+		this.kolone2.add("GODINA STUDIJA");
+		this.kolone2.add("SEMESTAR");
 		
 		initProfesore();
 	}
@@ -75,7 +83,7 @@ public class BazaProfesora {
 	}
 	
 	public String getColumnName(int index) {
-		return this.kolone.get(index);
+		return this.kolone1.get(index);
 	}
 	
 	public Profesor getRow(int rowIndex) {
@@ -98,6 +106,78 @@ public class BazaProfesora {
 			return null;
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//private int brojLicne;
+	public void setBrojLicne(int brojLicneKarte) {
+		this.listaPredmeta = new ArrayList<Predmet>();
+		
+		for(Profesor pr : BazaProfesora.getInstance().getProfesori()) {
+			if(pr.getBrojLicneKarte() == brojLicneKarte) {
+				listaPredmeta = pr.getSpisakPredmeta();
+			}
+		}
+	}
+	
+	
+	public ArrayList<Predmet> getProfesoriPredmet() {
+		return listaPredmeta;
+	}
+	
+	public void setProfesoriPredmet(ArrayList<Predmet> listaPredmeta) {
+		this.listaPredmeta = listaPredmeta;
+	}
+	
+	public int getColumnCountProfesoriPredmet() {
+		return 4;
+	}
+	
+	public String getColumnNameProfesoriPredmet(int index) {
+		return this.kolone2.get(index);
+	}
+	
+	public Predmet getRowProfesoriPredmet(int rowIndex) {
+		return this.listaPredmeta.get(rowIndex);
+	}
+	
+	public String getValueAtProfesoriPredmet(int row, int column) {
+		Predmet predmeti = this.listaPredmeta.get(row);
+		switch (column) {
+		case 0:
+			return predmeti.getSifraPredmeta();
+		case 1:
+			return predmeti.getNazivPredmeta();
+		case 2:
+			return Integer.toString(predmeti.getGodinaStudija());
+		case 3:
+			if(predmeti.getSemestar() == PredmetSemestar.letnji)
+				return "Letnji";
+			else if(predmeti.getSemestar() == PredmetSemestar.zimski)
+				return "Zimski";
+			else
+				return "Nepoznato";	
+		
+		default:
+			return null;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	public void dodajProfesora(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,String email, String adresaKancelarije, int brojLicneKarte, String titula, String zvanje) {
 		this.profesori.add(new Profesor(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email, adresaKancelarije, brojLicneKarte, titula, zvanje));

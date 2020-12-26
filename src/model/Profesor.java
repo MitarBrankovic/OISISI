@@ -14,7 +14,7 @@ public class Profesor {
 	int brojLicneKarte;
 	String titula;		//enum?
 	String zvanje;		//enum?
-	ArrayList<String> spisakPredmeta;	//spisak predmeta na kojima je profesor
+	ArrayList<Predmet> spisakPredmeta;	//spisak predmeta na kojima je profesor
 	
 	
 	public Profesor(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
@@ -31,7 +31,7 @@ public class Profesor {
 		this.titula = titula;
 		this.zvanje = zvanje;
 		
-		this.spisakPredmeta = new ArrayList<String>();
+		this.spisakPredmeta = new ArrayList<Predmet>();
 	}
 	
 	public Profesor(Profesor p) {
@@ -46,7 +46,7 @@ public class Profesor {
 		this.titula = p.getTitula();
 		this.zvanje = p.getZvanje();
 	
-		this.spisakPredmeta = new ArrayList<String>();
+		this.spisakPredmeta = new ArrayList<Predmet>();
 
 	}
 	
@@ -135,11 +135,11 @@ public class Profesor {
 		this.zvanje = zvanje;
 	}
 
-	public ArrayList<String> getSpisakPredmeta() {
+	public ArrayList<Predmet> getSpisakPredmeta() {
 		return spisakPredmeta;
 	}
 
-	public void setSpisakPredmeta(ArrayList<String> spisakPredmeta) {
+	public void setSpisakPredmeta(ArrayList<Predmet> spisakPredmeta) {
 		this.spisakPredmeta = spisakPredmeta;
 	}
 }

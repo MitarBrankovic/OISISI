@@ -72,8 +72,10 @@ public class BazaPredmeta {
 				}
 				
 				
-				predmeti.add(new Predmet( kolone[0].trim(), kolone[1].trim(), semestar1, Integer.parseInt(kolone[3].trim()), Integer.parseInt(kolone[4].trim()), objProfesor));
-				
+
+				Predmet pred = new Predmet( kolone[0].trim(), kolone[1].trim(), semestar1, Integer.parseInt(kolone[3].trim()), Integer.parseInt(kolone[4].trim()), objProfesor);
+				predmeti.add(pred);
+				objProfesor.getSpisakPredmeta().add(pred);
 			}
 			
 			reader.close();
