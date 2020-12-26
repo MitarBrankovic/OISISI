@@ -296,9 +296,9 @@ public class EditStudentFrame extends JDialog {
 				if(txtIme.getText().equals("") || txtPrezime.getText().equals("") || txtDatum.getText().equals("") || txtAdresa.getText().equals("") || 
 						txtTelefon.getText().equals("") || txtEmail.getText().equals("") || txtIndeks.getText().equals("") || txtGodinaUpisa.getText().equals(""))  {
 					JOptionPane.showMessageDialog(null, "Niste popunili sva polja!", "",JOptionPane.ERROR_MESSAGE);
-				}else if(txtIme.getText().matches("[A-Z][a-z]+") == false) {
+				}else if(txtIme.getText().matches("[A-Ž][a-ž]+") == false) {
 						JOptionPane.showMessageDialog(null, "Ime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtPrezime.getText().matches("[A-Z][a-z]+") == false) {
+				}else if(txtPrezime.getText().matches("[A-Ž][a-ž]+") == false) {
 					JOptionPane.showMessageDialog(null, "Prezime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);	
 				}else if(validDate(txtDatum.getText()) == false) {
 					JOptionPane.showMessageDialog(null, "Datum nije dobro unet","",JOptionPane.ERROR_MESSAGE);	
@@ -306,9 +306,9 @@ public class EditStudentFrame extends JDialog {
 					JOptionPane.showMessageDialog(null, "Adresa nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(isNumber(txtTelefon.getText()) == false) {
 					JOptionPane.showMessageDialog(null, "Broj telefona nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtEmail.getText().matches("[a-zA-z0-9]+@[a-zA-z]+[.][a-zA-Z]+") == false) {
+				}else if(txtEmail.getText().matches("[a-žA-ž0-9]+@[a-žA-ž]+[.][a-žA-Ž]+") == false) {
 					JOptionPane.showMessageDialog(null, "Email nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtIndeks.getText().matches("[A-Z]+/[0-9]+") == false) {
+				}else if(txtIndeks.getText().matches("[A-Ž]+/[0-9]+") == false) {
 					JOptionPane.showMessageDialog(null, "Indeks nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 				//}else if(validDate(txtGodinaUpisa.getText()) == false){
 					//JOptionPane.showMessageDialog(null, "Datum upisa nije dobro unet","",JOptionPane.ERROR_MESSAGE);

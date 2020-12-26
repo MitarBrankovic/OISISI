@@ -52,7 +52,7 @@ public class AboutFrame extends JFrame {
 		this.add(paneli,BorderLayout.SOUTH);
 		setSize(800, 400);
 		setLocationRelativeTo(null);
-		setVisible(true);
+		//setVisible(true);
 
 	}
 
