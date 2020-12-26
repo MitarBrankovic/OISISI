@@ -25,7 +25,6 @@ public class NepolozeniController {
 	
 	public void addNepolozeni(String indeks, String sifra) {
 		BazaOcena.getInstance().dodajNepolozeni(indeks, sifra);
-		//EditStudentFrame.getInstance().azurirajNepolozene();	
 		EditStudentFrame.azurirajNepolozene();
 	}
 	
@@ -33,7 +32,6 @@ public class NepolozeniController {
 	public void removeNepolozeni(int rowSelectedIndex) {
 		Ocena oc = BazaOcena.getInstance().getRowNepolozeni(rowSelectedIndex);
 		BazaOcena.getInstance().izbrisiNepolozeni(oc.getPredmet().getSifraPredmeta());
-		//EditStudentFrame.getInstance().azurirajNepolozene();
 		EditStudentFrame.azurirajNepolozene();
 	}
 }

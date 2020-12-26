@@ -40,16 +40,12 @@ public class StudentiController {
 	
 	public void upisiOcenu(String indeks, String sifraPredmeta, String ocena, String datum) {
 		BazaStudenata.getInstance().upisiOcenu(indeks, sifraPredmeta, ocena, datum);
-		/*EditStudentFrame.getInstance().azurirajNepolozene();
-		EditStudentFrame.getInstance().azurirajPolozene();	*/
 		EditStudentFrame.azurirajNepolozene();
 		EditStudentFrame.azurirajPolozene();
 	}
 	
 	public void ponistiOcenu(String indeks, String sifraPredmeta) {
 		BazaStudenata.getInstance().ponistiOcenu(indeks, sifraPredmeta);
-		/*EditStudentFrame.getInstance().azurirajNepolozene();
-		EditStudentFrame.getInstance().azurirajPolozene();	*/
 		EditStudentFrame.azurirajNepolozene();
 		EditStudentFrame.azurirajPolozene();
 		

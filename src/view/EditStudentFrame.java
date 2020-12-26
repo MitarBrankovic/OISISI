@@ -33,13 +33,7 @@ public class EditStudentFrame extends JDialog {
 
 	private static final long serialVersionUID = -1126183099640299201L;
 
-	/*private static EditStudentFrame instance = null;
-    public static EditStudentFrame getInstance() {
-        if (instance == null) {
-            instance = new EditStudentFrame();
-        }
-        return instance;
-    }*/
+	
     double avg;
 	private StudentStatus studStat;
 	//private static PredmetiJTable tabelaPredmeta;
@@ -557,17 +551,6 @@ public class EditStudentFrame extends JDialog {
 		add(studentin, BorderLayout.CENTER);
 	}
 	
-	/*public void azurirajNepolozene() {
-		AbstractTableNepolozeni model=(AbstractTableNepolozeni)tabelaNepolozenih.getModel();
-		model.fireTableDataChanged();
-		//validate();
-		
-	}
-	
-	public void azurirajPolozene() {
-		AbstractTablePolozeni model = (AbstractTablePolozeni)tabelaPolozenih.getModel();
-		model.fireTableDataChanged();
-	}*/
 
 	public boolean isNumber(String st) {
 		try {
