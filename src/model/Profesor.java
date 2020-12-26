@@ -50,6 +50,10 @@ public class Profesor {
 
 	}
 	
+	public String getImePrezime() {			//koristi se u AddProfePredFrame
+		return ime + " " + prezime;
+	}
+	
 
 	public String getPrezime() {
 		return prezime;

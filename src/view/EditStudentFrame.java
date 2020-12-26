@@ -40,6 +40,7 @@ public class EditStudentFrame extends JDialog {
         }
         return instance;
     }
+    double avg;
 	private StudentStatus studStat;
 	//private static PredmetiJTable tabelaPredmeta;
 	private static PolozeniJTable tabelaPolozenih;
@@ -223,6 +224,7 @@ public class EditStudentFrame extends JDialog {
 		JTextField txtProsek = new JTextField();
 		txtProsek.setPreferredSize(dim);
 		txtProsek.setName("tekst");
+		txtProsek.setEnabled(false);
 		txtProsek.setToolTipText("npr. 9.11");
 		txtProsek.addFocusListener(focus);
 		
@@ -326,7 +328,7 @@ public class EditStudentFrame extends JDialog {
 					}
 					
 					StudentiController.getInstance().editStudent(txtIme.getText(), txtPrezime.getText(),txtDatum.getText(), txtAdresa.getText(),txtIndeks.getText(), txtTelefon.getText(),
-							txtEmail.getText(),Integer.parseInt(txtGodinaUpisa.getText()),god, studStat, Double.parseDouble(txtProsek.getText()));
+							txtEmail.getText(),Integer.parseInt(txtGodinaUpisa.getText()),god, studStat, avg);
 					setVisible(false);
 				}				
 			}
@@ -410,7 +412,7 @@ public class EditStudentFrame extends JDialog {
 		for(int i = 0; i< tabelaPolozenih.getRowCount();i++) {
 			sum = sum + Integer.parseInt(tabelaPolozenih.getValueAt(i, 3).toString());
 		}
-		double avg = sum / tabelaPolozenih.getRowCount();
+		avg = sum / tabelaPolozenih.getRowCount();
 		//String avg1 = String.valueOf(avg);
 		String result = String.format("%.2f", avg);
 		JLabel lAvgOcena = new JLabel(result);

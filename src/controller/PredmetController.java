@@ -16,16 +16,27 @@ public class PredmetController {
 	
 	private PredmetController() {}
 	
+	Profesor objProfesor = null;
 	
 	public void addPredmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, String predmetniProfesor) 
 	{
-		BazaPredmeta.getInstance().dodajPredmet(sifraPredmeta, nazivPredmeta, sem, godinaStudija, espb, predmetniProfesor);
+		for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
+			if(p.getImePrezime().equals(predmetniProfesor) == true) {
+				objProfesor = p;
+			}
+		}
+		BazaPredmeta.getInstance().dodajPredmet(sifraPredmeta, nazivPredmeta, sem, godinaStudija, espb, objProfesor);
 		TabPane.getInstance().azurirajPredmeti();
 	}
 	
 	
 	public void editPredmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, String predmetniProfesor) {
-		BazaPredmeta.getInstance().izmeniPredmet(sifraPredmeta, nazivPredmeta, sem, godinaStudija, espb, predmetniProfesor);
+		for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
+			if(p.getImePrezime().equals(predmetniProfesor) == true) {
+				objProfesor = p;
+			}
+		}
+		BazaPredmeta.getInstance().izmeniPredmet(sifraPredmeta, nazivPredmeta, sem, godinaStudija, espb, objProfesor);
 		TabPane.getInstance().azurirajPredmeti();	
 	}
 	

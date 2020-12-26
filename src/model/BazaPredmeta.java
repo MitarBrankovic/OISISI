@@ -61,7 +61,18 @@ public class BazaPredmeta {
 				else
 					semestar1 = PredmetSemestar.letnji;
 				
-				predmeti.add(new Predmet( kolone[0].trim(), kolone[1].trim(), semestar1, Integer.parseInt(kolone[3].trim()), Integer.parseInt(kolone[4].trim()), kolone[5].trim()));
+				
+				Profesor objProfesor = null;
+				String profImePrezime = kolone[5].trim();
+				
+				for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
+					if(p.getImePrezime().equals(profImePrezime) == true) {
+						objProfesor = p;
+					}
+				}
+				
+				
+				predmeti.add(new Predmet( kolone[0].trim(), kolone[1].trim(), semestar1, Integer.parseInt(kolone[3].trim()), Integer.parseInt(kolone[4].trim()), objProfesor));
 				
 			}
 			
@@ -114,12 +125,12 @@ public class BazaPredmeta {
 		}
 	}
 	
-	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, String predmetniProfesor) {
+	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, Profesor predmetniProfesor) {
 		this.predmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
 	}
 	
 	
-	public void izmeniPredmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, String predmetniProfesor) {
+	public void izmeniPredmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, Profesor predmetniProfesor) {
 		for (Predmet i : predmeti) {
 			if (i.getSifraPredmeta().equals(sifraPredmeta)) {
 				i.setSifraPredmeta(sifraPredmeta);

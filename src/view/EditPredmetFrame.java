@@ -35,14 +35,15 @@ public class EditPredmetFrame extends JDialog {
         }
         return instance;
     }*/
-	
+	public String profa = null;
 	private PredmetSemestar sem;
+	public static JTextField txtPredmetniProfesor;
 	
 	public EditPredmetFrame() {
 		
 		
 		setTitle("Izmena Predmeta");
-		setSize(400, 400);
+		setSize(440, 400);
 		setModal(true);
 		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -51,7 +52,7 @@ public class EditPredmetFrame extends JDialog {
 		
 		
 		new BorderLayout();
-		Dimension dim  = new Dimension(150,20);
+		Dimension dim  = new Dimension(170,20);
 		FocusListener1 focus = new FocusListener1();
 		
 		JPanel pSifra = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -120,15 +121,40 @@ public class EditPredmetFrame extends JDialog {
 		JPanel pPredmetniProfesor = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lPredmetniProfesor = new JLabel("Predmetni profesor*: ");
 		lPredmetniProfesor.setPreferredSize(dim);
-		JTextField txtPredmetniProfesor = new JTextField();
-		txtPredmetniProfesor.setPreferredSize(dim);
+		txtPredmetniProfesor = new JTextField();
+		txtPredmetniProfesor.setPreferredSize(new Dimension(130, 20));
 		txtPredmetniProfesor.setName("tekst");
 		txtPredmetniProfesor.setToolTipText("npr. Kosta Kovacevic");
-		txtPredmetniProfesor.addFocusListener(focus);
+		//txtPredmetniProfesor.addFocusListener(focus);
+		
+		JButton btnAddProfesor = new JButton("+");
+		
+		btnAddProfesor.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(txtPredmetniProfesor.getText().isEmpty()){
+					AddProfPredFrame apf = new AddProfPredFrame();
+					apf.setVisible(true);
+				}	
+			}				
+		});
+		
+		
+		JButton btnDeleteProfesor = new JButton("-");
+		
+		btnDeleteProfesor.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				txtPredmetniProfesor.setText("");			
+			}				
+		});
 		
 		pPredmetniProfesor.add(lPredmetniProfesor);
 		pPredmetniProfesor.add(txtPredmetniProfesor);
-		
+		pPredmetniProfesor.add(btnAddProfesor);
+		pPredmetniProfesor.add(btnDeleteProfesor);
 		
 		
 		
@@ -151,8 +177,8 @@ public class EditPredmetFrame extends JDialog {
 			godine.setSelectedItem("IV (cetvrta)");
 		
 		txtEspb.setText(String.valueOf(pred.getEspb()));
-		txtPredmetniProfesor.setText(pred.getPredmetniProfesor());
-		
+		//txtPredmetniProfesor.setText(String.valueOf(pred.getPredmetniProfesor()));
+		txtPredmetniProfesor.setText(pred.getPredmetniProfesor().getImePrezime());
 		
 		
 		
@@ -251,4 +277,8 @@ public class EditPredmetFrame extends JDialog {
 			return false;
 		}
 	}
+	
+	//public void setProfa(String profa1) {
+		//profa = profa1;
+	//}
 }
