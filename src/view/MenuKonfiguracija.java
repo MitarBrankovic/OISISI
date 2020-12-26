@@ -201,6 +201,7 @@ public class MenuKonfiguracija extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				HelpFrame helpf = new HelpFrame();
+				helpf.setVisible(true);
 			}
 		});
 		
@@ -209,6 +210,7 @@ public class MenuKonfiguracija extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				AboutFrame aboutf = new AboutFrame();
+				aboutf.setVisible(true);
 			}
 		});
 	

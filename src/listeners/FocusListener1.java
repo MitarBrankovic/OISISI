@@ -1,5 +1,8 @@
 package listeners;
 
+/* REFERENCIRAN KOD: pojedini delovi koda preuzeti sa vezbi 4
+*/
+
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;

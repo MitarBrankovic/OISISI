@@ -1,5 +1,8 @@
 package view;
 
+/* REFERENCIRAN KOD: pojedini delovi koda preuzeti sa vezbi 5
+*/
+
 import javax.swing.table.AbstractTableModel;
 
 import model.BazaOcena;

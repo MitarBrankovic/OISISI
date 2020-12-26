@@ -1,5 +1,8 @@
 package controller;
 
+/* REFERENCIRAN KOD: pojedini delovi koda preuzeti sa vezbi 5
+*/
+
 import model.BazaOcena;
 import model.Ocena;
 import model.Predmet;
