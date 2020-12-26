@@ -18,6 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import controller.ProfesoriController;
 import listeners.FocusListener1;
+import model.BazaProfesora;
+import model.BazaStudenata;
+import model.Profesor;
+import model.Student;
 
 public class AddProfesorFrame extends JDialog{
 
@@ -177,12 +181,20 @@ public class AddProfesorFrame extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
+				boolean vecPostoji = false;
+				for(Profesor prof : BazaProfesora.getInstance().getProfesori()) {
+					if(prof.getBrojLicneKarte() == Integer.parseInt(txtLicna.getText())) {
+						vecPostoji = true;
+					}
+				}
+				
 				if(txtIme.getText().equals("") || txtPrezime.getText().equals("") || txtDatum.getText().equals("") || txtAdresa.getText().equals("") || 
 						txtTelefon.getText().equals("") || txtEmail.getText().equals("") || txtAdresaKancelarije.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Niste popunili sva polja!", "",JOptionPane.ERROR_MESSAGE);
-				}else if(txtIme.getText().matches("[A-Z][a-z]+") == false) {
+				}else if(txtIme.getText().matches("[A-Ž][a-ž]+") == false) {
 						JOptionPane.showMessageDialog(null, "Ime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtPrezime.getText().matches("[A-Z][a-z]+") == false) {
+				}else if(txtPrezime.getText().matches("[A-Ž][a-ž]+") == false) {
 					JOptionPane.showMessageDialog(null, "Prezime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);	
 				}else if(validDate(txtDatum.getText()) == false) {
 					JOptionPane.showMessageDialog(null, "Datum nije dobro unet","",JOptionPane.ERROR_MESSAGE);		
@@ -194,6 +206,8 @@ public class AddProfesorFrame extends JDialog{
 					JOptionPane.showMessageDialog(null, "Broj lične karte nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 				}else if(isNumber(txtLicna.getText()) == false){
 					JOptionPane.showMessageDialog(null, "Licna karta sadrzi slova","",JOptionPane.ERROR_MESSAGE);
+				}else if(vecPostoji){
+					JOptionPane.showMessageDialog(null, "Profesor vec postoji","",JOptionPane.ERROR_MESSAGE);
 				}else {
 					String titulaSt = titula.getSelectedItem().toString();
 					String zvanjeSt = zvanje.getSelectedItem().toString();
