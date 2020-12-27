@@ -1,5 +1,8 @@
 package controller;
 
+/* REFERENCIRAN KOD: pojedini delovi koda preuzeti sa vezbi 5
+*/
+
 import model.*;
 import view.TabPane;
 

@@ -1,5 +1,8 @@
 package model;
 
+/* REFERENCIRAN KOD: pojedini delovi koda preuzeti sa vezbi 5
+*/
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;

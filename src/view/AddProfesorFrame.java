@@ -254,7 +254,7 @@ public class AddProfesorFrame extends JDialog{
 		
 		
 		
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(Glavni_Prozor.getInstance());
 		
 	}
 	
