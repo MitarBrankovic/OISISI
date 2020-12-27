@@ -194,7 +194,7 @@ public class AddPredmetFrame extends JDialog{
 		add(boxPredmet, BorderLayout.CENTER);
 		add(donjiPanel, BorderLayout.SOUTH);
 		
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(Glavni_Prozor.getInstance());
 		
 		}
 		

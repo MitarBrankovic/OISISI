@@ -17,7 +17,6 @@ public class AddStudentFrame extends JDialog {
 		/*setVisible je stavljen u komentar zato sto istu funkciju pozivamo u MenuKonfiguracija/Toolbar
 		 *  pa da ne bi iskakala dva prozora, a da omogucimo da dijalog bude modalan*/
 		
-		
 		setTitle("Dodavanje Studenta");
 		setSize(400, 500);
 		setModal(true);
@@ -298,8 +297,7 @@ public class AddStudentFrame extends JDialog {
 		add(boxStudent, BorderLayout.CENTER);
 		add(donjiPanel, BorderLayout.SOUTH);
 		
-		setLocationRelativeTo(null);
-		
+		setLocationRelativeTo(Glavni_Prozor.getInstance());
 	}	
 	
 	
@@ -314,9 +312,27 @@ public class AddStudentFrame extends JDialog {
 	
 	public boolean validDate(String st) {
 		String[] datum = st.split("\\.");
-		int dan = Integer.parseInt(datum[0]);
-		int mesec = Integer.parseInt(datum[1]);
+		int dan;
+		int mesec;
 		
+		try {
+			dan = Integer.parseInt(datum[0]);
+		}catch(Exception e) {
+			return false;
+		}
+		
+		try {
+			mesec = Integer.parseInt(datum[1]);
+		}catch(Exception e) {
+			return false;
+		}	
+		
+		try {
+			 Integer.parseInt(datum[2]);
+		}catch(Exception e) {
+			return false;
+		}	
+			
 		if(datum[2].length() != 4) {
 			return false;
 		}else if(datum[2] == null) {

@@ -11,7 +11,7 @@ public class main {
 		// TODO Auto-generated method stub
 	
 
-		Glavni_Prozor prozor = new Glavni_Prozor();
+		Glavni_Prozor prozor = Glavni_Prozor.getInstance();
 
 	}
 }

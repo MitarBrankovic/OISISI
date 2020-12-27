@@ -9,6 +9,15 @@ public class Glavni_Prozor extends JFrame{
 	
 	private static final long serialVersionUID = 1681906113857801298L;
 
+	private static Glavni_Prozor instance = null;
+    public static Glavni_Prozor getInstance() {
+        if (instance == null) {
+            instance = new Glavni_Prozor();
+        }
+        return instance;
+    }
+	
+	
 	public Glavni_Prozor() {
 		super();
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -40,4 +49,9 @@ public class Glavni_Prozor extends JFrame{
 		
 	}
 	
+	public Glavni_Prozor getProzor() {
+		
+		return this;
+		
+	}
 }

@@ -47,7 +47,7 @@ public class EditPredmetFrame extends JDialog {
 		setModal(true);
 		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(Glavni_Prozor.getInstance());
 		
 		
 		

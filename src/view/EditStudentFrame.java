@@ -60,7 +60,7 @@ public class EditStudentFrame extends JDialog {
 		setModal(true);
 		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(Glavni_Prozor.getInstance());
 		
 		
 		
@@ -563,9 +563,27 @@ public class EditStudentFrame extends JDialog {
 	
 	public boolean validDate(String st) {
 		String[] datum = st.split("\\.");
-		int dan = Integer.parseInt(datum[0]);
-		int mesec = Integer.parseInt(datum[1]);
+		int dan;
+		int mesec;
 		
+		try {
+			dan = Integer.parseInt(datum[0]);
+		}catch(Exception e) {
+			return false;
+		}
+		
+		try {
+			mesec = Integer.parseInt(datum[1]);
+		}catch(Exception e) {
+			return false;
+		}	
+		
+		try {
+			 Integer.parseInt(datum[2]);
+		}catch(Exception e) {
+			return false;
+		}	
+			
 		if(datum[2].length() != 4) {
 			return false;
 		}else if(datum[2] == null) {
