@@ -212,16 +212,38 @@ public class EditProfesorFrame extends JDialog{
 	    potvrdi.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-					String titulaSt = titula.getSelectedItem().toString();
-					String zvanjeSt = zvanje.getSelectedItem().toString();
-					ProfesoriController.getInstance().editProfesor(txtIme.getText(), txtPrezime.getText(), txtDatum.getText(), txtAdresa.getText(), 
-							Integer.parseInt(txtTelefon.getText()), txtEmail.getText(), txtAdresaKancelarije.getText(), Integer.parseInt(txtLicna.getText()), titulaSt, zvanjeSt);
-					setVisible(false);
+			public void actionPerformed(ActionEvent e) {		
+					
+					if(txtIme.getText().equals("") || txtPrezime.getText().equals("") || txtDatum.getText().equals("") || txtAdresa.getText().equals("") || 
+							txtTelefon.getText().equals("") || txtEmail.getText().equals("") || txtAdresaKancelarije.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Niste popunili sva polja!", "",JOptionPane.ERROR_MESSAGE);
+					}else if(txtIme.getText().matches("[A-Ž][a-ž]+") == false) {
+							JOptionPane.showMessageDialog(null, "Ime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);
+					}else if(txtPrezime.getText().matches("[A-Ž][a-ž]+") == false) {
+						JOptionPane.showMessageDialog(null, "Prezime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);	
+					}else if(validDate(txtDatum.getText()) == false) {
+						JOptionPane.showMessageDialog(null, "Datum nije dobro unet","",JOptionPane.ERROR_MESSAGE);		
+					}else if(isNumber(txtTelefon.getText()) == false) {
+						JOptionPane.showMessageDialog(null, "Broj telefona nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+					}else if(txtEmail.getText().matches("[a-zA-z0-9]+@[a-zA-z]+[.][a-zA-Z]+") == false) {
+						JOptionPane.showMessageDialog(null, "Email nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+					}else if(txtLicna.getText().length() != 6) {
+						JOptionPane.showMessageDialog(null, "Broj lične karte nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+					}else if(isNumber(txtLicna.getText()) == false){
+						JOptionPane.showMessageDialog(null, "Licna karta sadrzi slova","",JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						String titulaSt = titula.getSelectedItem().toString();
+						String zvanjeSt = zvanje.getSelectedItem().toString();
+						ProfesoriController.getInstance().editProfesor(txtIme.getText(), txtPrezime.getText(), txtDatum.getText(), txtAdresa.getText(), 
+								Integer.parseInt(txtTelefon.getText()), txtEmail.getText(), txtAdresaKancelarije.getText(), Integer.parseInt(txtLicna.getText()), titulaSt, zvanjeSt);
+						setVisible(false);
+					}
 				}
 						
 		});
+	    
+	    
 	    
 	    
 	    
@@ -289,5 +311,63 @@ public class EditProfesorFrame extends JDialog{
 				
 	}
 	
+	public boolean isNumber(String st) {
+		try {
+			Integer.parseInt(st);
+			return true;
+		}catch(NumberFormatException ex){
+			return false;
+		}
+	}
 	
+	public boolean validDate(String st) {
+		String[] datum = st.split("\\.");
+		int dan;
+		int mesec;
+		
+		try {
+			dan = Integer.parseInt(datum[0]);
+		}catch(Exception e) {
+			return false;
+		}
+		
+		try {
+			mesec = Integer.parseInt(datum[1]);
+		}catch(Exception e) {
+			return false;
+		}	
+		
+		try {
+			 Integer.parseInt(datum[2]);
+		}catch(Exception e) {
+			return false;
+		}	
+			
+		if(datum[2].length() != 4) {
+			return false;
+		}else if(datum[2] == null) {
+			return false;
+		}
+
+		
+		
+		if(mesec > 12 || mesec < 1) {
+			return false;
+		}else if(dan < 1) {
+			return false;
+		}else if(mesec == 2) {
+			if(dan > 29) {
+				return false;
+			}
+		}else if(mesec==1 || mesec==3 || mesec==5 || mesec==7 ||mesec==8 || mesec==10 || mesec==12) {
+			if(dan>31) {
+				return false;
+			}
+		}else if(mesec==4 || mesec==6 || mesec==9 || mesec==11) {
+			if(dan>30) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

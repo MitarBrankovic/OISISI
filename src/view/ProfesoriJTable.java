@@ -1,5 +1,9 @@
 package view;
 
+/* REFERENCIRAN KOD: pojedini delovi koda preuzeti sa vezbi 5
+*/
+
+
 import java.awt.Color;
 import java.awt.Component;
 

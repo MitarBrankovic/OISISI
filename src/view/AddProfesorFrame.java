@@ -184,11 +184,11 @@ public class AddProfesorFrame extends JDialog{
 				
 				boolean vecPostoji = false;
 				
-				/*for(Profesor prof : BazaProfesora.getInstance().getProfesori()) {
+				for(Profesor prof : BazaProfesora.getInstance().getProfesori()) {
 					if(prof.getBrojLicneKarte() == Integer.parseInt(txtLicna.getText())) {
 						vecPostoji = true;
 					}
-				}*/
+				}
 				
 				if(txtIme.getText().equals("") || txtPrezime.getText().equals("") || txtDatum.getText().equals("") || txtAdresa.getText().equals("") || 
 						txtTelefon.getText().equals("") || txtEmail.getText().equals("") || txtAdresaKancelarije.getText().equals("")) {
@@ -207,13 +207,13 @@ public class AddProfesorFrame extends JDialog{
 					JOptionPane.showMessageDialog(null, "Broj lične karte nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 				}else if(isNumber(txtLicna.getText()) == false){
 					JOptionPane.showMessageDialog(null, "Licna karta sadrzi slova","",JOptionPane.ERROR_MESSAGE);
-				}else if(isNumber(txtLicna.getText()) == true) {
+				}/*else if(isNumber(txtLicna.getText()) == true) {
 					for(Profesor prof : BazaProfesora.getInstance().getProfesori()) {
 						if(prof.getBrojLicneKarte() == Integer.parseInt(txtLicna.getText())) {
 							vecPostoji = true;
 						}
 					}
-				}else if(vecPostoji){
+				}*/else if(vecPostoji){
 					JOptionPane.showMessageDialog(null, "Profesor vec postoji","",JOptionPane.ERROR_MESSAGE);
 				}else {
 					String titulaSt = titula.getSelectedItem().toString();
