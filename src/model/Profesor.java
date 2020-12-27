@@ -34,6 +34,10 @@ public class Profesor {
 		this.spisakPredmeta = new ArrayList<Predmet>();
 	}
 	
+	public Profesor() {
+		this.spisakPredmeta = new ArrayList<Predmet>();
+	}
+	
 	public Profesor(Profesor p) {
 		this.prezime = p.getPrezime();
 		this.ime = p.getIme();

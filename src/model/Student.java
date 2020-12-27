@@ -20,7 +20,11 @@ public class Student {
 	ArrayList<Ocena> spisakNepolozenihPredmeta;
 	
 	
-	public Student() {}	
+	public Student() {
+		this.spisakPolozenihPredmeta = new ArrayList<Ocena>();
+		this.spisakNepolozenihPredmeta = new ArrayList<Ocena>();
+
+	}	
 
 	public Student(String ime, String prezime, String datumRodjenja, String adresa, String indeks, String kontakt,
 			String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status1, double prosecnaOcena) {

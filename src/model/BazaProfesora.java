@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import view.AbstractTableNepolozeni;
+
 public class BazaProfesora {
 	
 	private static BazaProfesora instance = null;
@@ -210,4 +212,24 @@ public class BazaProfesora {
 			}
 		}
 	}
+	
+	public void dodajPredmet(String sifra, int brLicne) {
+		Profesor prof = new Profesor();
+		Predmet pred = new Predmet();
+		
+		for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+			if(p.getSifraPredmeta().equals(sifra)) {
+				pred = p;
+			}
+		}
+		
+		for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
+			if(p.getBrojLicneKarte() == brLicne) {
+				prof = p;
+			}
+		}
+		
+		prof.getSpisakPredmeta().add(pred);
+	}
+	
 }

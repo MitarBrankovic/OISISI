@@ -31,6 +31,13 @@ public class EditProfesorFrame extends JDialog{
 	
 	private static ProfesorPredmetiJTable tabelaProfesorPredmeti;
 	
+	public static void azurirajPredmete() {
+		AbstractTableProfesorPredmeti model=(AbstractTableProfesorPredmeti)tabelaProfesorPredmeti.getModel();
+		model.fireTableDataChanged();
+		//validate();
+		
+	}
+	
 	public EditProfesorFrame() {
 		/*setVisible je stavljen u komentar zato sto istu funkciju pozivamo u MenuKonfiguracija/Toolbar
 		 *  pa da ne bi iskakala dva prozora, a da omogucimo da dijalog bude modalan*/
@@ -257,8 +264,8 @@ public class EditProfesorFrame extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				
+				AddPredmetProfFrame appf = new AddPredmetProfFrame();
+				appf.setVisible(true);
 			}
 		});
 		
