@@ -46,7 +46,7 @@ public class BazaPredmeta {
 		BufferedReader reader = null;
 		
 		try {
-			reader = new BufferedReader(new InputStreamReader(new FileInputStream("tabele" + File.separator + "predmeti.txt")));
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream("tabele" + File.separator + "Predmeti.txt")));
 		} catch (FileNotFoundException exception) {
 			exception.printStackTrace();
 		}

@@ -234,9 +234,9 @@ public class AddStudentFrame extends JDialog {
 					JOptionPane.showMessageDialog(null, "Adresa nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(isNumber(txtTelefon.getText()) == false) {
 					JOptionPane.showMessageDialog(null, "Broj telefona nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtEmail.getText().matches("[a-žA-ž0-9]+@[a-žA-ž]+[.][a-žA-Ž]+") == false) {
+				}else if(txtEmail.getText().matches("[a-žA-Ž0-9.]+@[a-žA-Ž0-9.]+") == false) {
 					JOptionPane.showMessageDialog(null, "Email nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtIndeks.getText().matches("[A-Ž]+/[0-9]+") == false) {
+				}else if(txtIndeks.getText().matches("[A-Ž]+[0-9]+/[0-9]+") == false) {
 					JOptionPane.showMessageDialog(null, "Indeks nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 				//}else if(isNumber(txtGodinaUpisa.getText()) == false){
 					//JOptionPane.showMessageDialog(null, "Godina upisa nije dobro unet","",JOptionPane.ERROR_MESSAGE);

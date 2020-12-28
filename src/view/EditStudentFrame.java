@@ -306,9 +306,9 @@ public class EditStudentFrame extends JDialog {
 					JOptionPane.showMessageDialog(null, "Adresa nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(isNumber(txtTelefon.getText()) == false) {
 					JOptionPane.showMessageDialog(null, "Broj telefona nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtEmail.getText().matches("[a-zA-z0-9]+@[a-zA-z]+[.][a-zA-Z]+") == false) {
+				}else if(txtEmail.getText().matches("[a-žA-Ž0-9.]+@[a-žA-Ž0-9.]+") == false) {
 					JOptionPane.showMessageDialog(null, "Email nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtIndeks.getText().matches("[A-Z]+/[0-9]+") == false) {
+				}else if(txtIndeks.getText().matches("[A-Ž]+[0-9]+/[0-9]+") == false) {
 					JOptionPane.showMessageDialog(null, "Indeks nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 				//}else if(validDate(txtGodinaUpisa.getText()) == false){
 					//JOptionPane.showMessageDialog(null, "Datum upisa nije dobro unet","",JOptionPane.ERROR_MESSAGE);
