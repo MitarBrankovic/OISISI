@@ -53,4 +53,14 @@ public class StudentiController {
 		EditStudentFrame.azurirajPolozene();
 		
 	}
+	
+	public Student nadjiStudenta(String indeks) {
+		Student stud = null;
+		for(Student s : BazaStudenata.getInstance().getStudenti()) {
+			if(s.getBrojIndeksa().equals(indeks) == true) {
+				stud = s;
+			}
+		}
+		return stud;
+	}
 }

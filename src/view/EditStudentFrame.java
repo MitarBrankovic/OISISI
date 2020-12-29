@@ -38,7 +38,7 @@ public class EditStudentFrame extends JDialog {
 	//private static PredmetiJTable tabelaPredmeta;
 	private static PolozeniJTable tabelaPolozenih;
 	private static NepolozeniJTable tabelaNepolozenih;
-	
+	private static int trenutniRed;
 	
 	
 	public static void azurirajNepolozene() {
@@ -238,8 +238,11 @@ public class EditStudentFrame extends JDialog {
 		pProsek.add(txtProsek);	
 		
 		
+		trenutniRed = StudentiJTable.getInstance().getSelectedRow();
+		String editStud = (String)StudentiJTable.getInstance().getValueAt(trenutniRed, 0);
+		Student st = StudentiController.getInstance().nadjiStudenta(editStud);
+		//Student st = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
 		
-		Student st = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
 		txtIme.setText(st.getIme());
 		txtPrezime.setText(st.getPrezime());
 		txtDatum.setText(st.getDatumRodjenja());
