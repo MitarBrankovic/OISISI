@@ -236,7 +236,7 @@ public class EditProfesorFrame extends JDialog{
 						String titulaSt = titula.getSelectedItem().toString();
 						String zvanjeSt = zvanje.getSelectedItem().toString();
 						ProfesoriController.getInstance().editProfesor(txtIme.getText(), txtPrezime.getText(), txtDatum.getText(), txtAdresa.getText(), 
-								Integer.parseInt(txtTelefon.getText()), txtEmail.getText(), txtAdresaKancelarije.getText(), Integer.parseInt(txtLicna.getText()), titulaSt, zvanjeSt);
+								Integer.parseInt(txtTelefon.getText()), txtEmail.getText(), txtAdresaKancelarije.getText(), txtLicna.getText(), titulaSt, zvanjeSt);
 						setVisible(false);
 					}
 				}

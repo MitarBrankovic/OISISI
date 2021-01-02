@@ -185,7 +185,7 @@ public class AddProfesorFrame extends JDialog{
 				boolean vecPostoji = false;
 				
 				for(Profesor prof : BazaProfesora.getInstance().getProfesori()) {
-					if(prof.getBrojLicneKarte() == Integer.parseInt(txtLicna.getText())) {
+					if(prof.getBrojLicneKarte().equals(txtLicna.getText())) {
 						vecPostoji = true;
 					}
 				}
@@ -219,7 +219,7 @@ public class AddProfesorFrame extends JDialog{
 					String titulaSt = titula.getSelectedItem().toString();
 					String zvanjeSt = zvanje.getSelectedItem().toString();
 					ProfesoriController.getInstance().addProfesor(txtIme.getText(), txtPrezime.getText(), txtDatum.getText(), txtAdresa.getText(), 
-							Integer.parseInt(txtTelefon.getText()), txtEmail.getText(), txtAdresaKancelarije.getText(), Integer.parseInt(txtLicna.getText()), titulaSt, zvanjeSt);
+							Integer.parseInt(txtTelefon.getText()), txtEmail.getText(), txtAdresaKancelarije.getText(), txtLicna.getText(), titulaSt, zvanjeSt);
 					setVisible(false);
 				}
 				

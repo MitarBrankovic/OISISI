@@ -62,7 +62,7 @@ public class BazaProfesora {
 				
 				kolone = naredni.split("\\,");
 				
-				profesori.add(new Profesor( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), Integer.parseInt(kolone[4].trim()), kolone[5].trim(), kolone[6].trim(), Integer.parseInt(kolone[7].trim()), kolone[8].trim(), kolone[9].trim()));
+				profesori.add(new Profesor( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), Integer.parseInt(kolone[4].trim()), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[8].trim(), kolone[9].trim()));
 			}
 	
 			reader.close();
@@ -121,11 +121,11 @@ public class BazaProfesora {
 	
 	
 	//private int brojLicne;
-	public void setBrojLicne(int brojLicneKarte) {
+	public void setBrojLicne(String brojLicneKarte) {
 		this.listaPredmeta = new ArrayList<Predmet>();
 		
 		for(Profesor pr : BazaProfesora.getInstance().getProfesori()) {
-			if(pr.getBrojLicneKarte() == brojLicneKarte) {
+			if(pr.getBrojLicneKarte().equals(brojLicneKarte)) {
 				listaPredmeta = pr.getSpisakPredmeta();
 			}
 		}
@@ -181,13 +181,13 @@ public class BazaProfesora {
 	
 	
 	
-	public void dodajProfesora(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,String email, String adresaKancelarije, int brojLicneKarte, String titula, String zvanje) {
+	public void dodajProfesora(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
 		this.profesori.add(new Profesor(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email, adresaKancelarije, brojLicneKarte, titula, zvanje));
 	}
 	
-	public void izbrisiProfesora(int indeks) {
+	public void izbrisiProfesora(String indeks) {
 		for(Profesor i : profesori) {
-			if(i.getBrojLicneKarte() == indeks) {
+			if(i.getBrojLicneKarte().equals(indeks)) {
 				profesori.remove(i);
 				break;
 			}
@@ -195,9 +195,9 @@ public class BazaProfesora {
 	}
 	
 	public void izmeniProfesora(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
-			String email, String adresaKancelarije, int brojLicneKarte, String titula, String zvanje) {
+			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
 		for(Profesor i : profesori) {
-			if(i.getBrojLicneKarte() == brojLicneKarte) {
+			if(i.getBrojLicneKarte().equals(brojLicneKarte)) {
 				i.setIme(ime);
 				i.setPrezime(prezime);
 				i.setDatumRodjenja(datumRodjenja);
@@ -213,7 +213,7 @@ public class BazaProfesora {
 		}
 	}
 	
-	public void dodajPredmet(String sifra, int brLicne) {
+	public void dodajPredmet(String sifra, String brLicne) {
 		Profesor prof = new Profesor();
 		Predmet pred = new Predmet();
 		
@@ -224,7 +224,7 @@ public class BazaProfesora {
 		}
 		
 		for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
-			if(p.getBrojLicneKarte() == brLicne) {
+			if(p.getBrojLicneKarte().equals(brLicne)) {
 				prof = p;
 			}
 		}

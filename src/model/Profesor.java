@@ -11,14 +11,14 @@ public class Profesor {
 	int kontaktTelefon;
 	String email;
 	String adresaKancelarije;
-	int brojLicneKarte;
+	String brojLicneKarte;
 	String titula;		//enum?
 	String zvanje;		//enum?
 	ArrayList<Predmet> spisakPredmeta;	//spisak predmeta na kojima je profesor
 	
 	
 	public Profesor(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
-			String email, String adresaKancelarije, int brojLicneKarte, String titula, String zvanje) {
+			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
 		super();
 		this.prezime = prezime;
 		this.ime = ime;
@@ -115,11 +115,11 @@ public class Profesor {
 		this.adresaKancelarije = adresaKancelarije;
 	}
 
-	public int getBrojLicneKarte() {
+	public String getBrojLicneKarte() {
 		return brojLicneKarte;
 	}
 
-	public void setBrojLicneKarte(int brojLicneKarte) {
+	public void setBrojLicneKarte(String brojLicneKarte) {
 		this.brojLicneKarte = brojLicneKarte;
 	}
 
