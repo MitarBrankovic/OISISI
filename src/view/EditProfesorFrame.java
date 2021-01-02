@@ -18,10 +18,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
+import controller.NepolozeniController;
 import controller.ProfesoriController;
 import listeners.FocusListener1;
+import model.BazaPredmeta;
 import model.BazaProfesora;
+import model.BazaStudenata;
+import model.Predmet;
 import model.Profesor;
+import model.Student;
 import model.StudentStatus;
 
 public class EditProfesorFrame extends JDialog{
@@ -48,7 +53,7 @@ public class EditProfesorFrame extends JDialog{
 		setModal(true);
 		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(Glavni_Prozor.getInstance());
 
 		
 		new BorderLayout();
@@ -225,7 +230,7 @@ public class EditProfesorFrame extends JDialog{
 						JOptionPane.showMessageDialog(null, "Datum nije dobro unet","",JOptionPane.ERROR_MESSAGE);		
 					}else if(isNumber(txtTelefon.getText()) == false) {
 						JOptionPane.showMessageDialog(null, "Broj telefona nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-					}else if(txtEmail.getText().matches("[a-zA-z0-9]+@[a-zA-z]+[.][a-zA-Z]+") == false) {
+					}else if(txtEmail.getText().matches("[a-žA-Ž0-9.]+@[a-žA-Ž0-9.]+") == false) {
 						JOptionPane.showMessageDialog(null, "Email nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 					}else if(txtLicna.getText().length() != 6) {
 						JOptionPane.showMessageDialog(null, "Broj lične karte nije dobro unet","",JOptionPane.ERROR_MESSAGE);
@@ -280,6 +285,26 @@ public class EditProfesorFrame extends JDialog{
 		predmeti.setLayout(new FlowLayout(FlowLayout.LEFT));
 		JButton dodaj = new JButton("Dodaj predmet");
 		JButton ukloni = new JButton("Ukloni predmet");
+		
+		ukloni.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {	
+					int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da uklonite predmet?","Uklanjanje predmeta?",JOptionPane.YES_NO_OPTION);
+					if(option == JOptionPane.YES_OPTION) {
+						Profesor prof = new Profesor(BazaProfesora.getInstance().getRow(ProfesoriJTable.getInstance().getSelectedRow()));
+						Predmet pred = new Predmet(BazaPredmeta.getInstance().getRow(ProfesorPredmetiJTable.getInstance().getSelectedRow()));
+
+						ProfesoriController.getInstance().ukloniPredmet(pred.getSifraPredmeta(), prof.getBrojLicneKarte());
+
+					}
+				}catch (Exception exc) {
+					JOptionPane.showMessageDialog(null, "Morate selektovati predmet!","",JOptionPane.ERROR_MESSAGE);
+					System.out.println(exc.getMessage());	
+				}	;
+			}
+		});
 		
 		
 		dodaj.addActionListener(new ActionListener() {
@@ -370,4 +395,5 @@ public class EditProfesorFrame extends JDialog{
 		}
 		return true;
 	}
+
 }

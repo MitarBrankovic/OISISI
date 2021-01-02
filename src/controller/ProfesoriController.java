@@ -1,8 +1,13 @@
 package controller;
 
 
+/* REFERENCIRAN KOD: pojedini delovi koda preuzeti sa vezbi 5
+*/
+
 import model.BazaProfesora;
+import model.BazaStudenata;
 import model.Profesor;
+import view.EditProfesorFrame;
 import view.TabPane;
 
 public class ProfesoriController {
@@ -38,4 +43,15 @@ private static ProfesoriController instance = null;
 		BazaProfesora.getInstance().izbrisiProfesora(prof.getBrojLicneKarte());
 		TabPane.getInstance().azurirajProfesori();
 	}
+	
+	public void removeProfesor2(int brojLicneKarte) {
+		BazaProfesora.getInstance().izbrisiProfesora(brojLicneKarte);
+		TabPane.getInstance().azurirajStudenti();
+	}
+	
+	public void ukloniPredmet(String sifra, int brLicne) {
+		BazaProfesora.getInstance().ukloniPredmet(sifra, brLicne);
+		EditProfesorFrame.azurirajPredmete();
+	}
+
 }

@@ -9,6 +9,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,7 +90,8 @@ public class BazaOcena {
 				indeks = kolone[1].trim();
 				ocena = Integer.parseInt(kolone[2].trim());
 				datum = kolone[3].trim();
-				
+
+				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 				
 				for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
 					if(p.getSifraPredmeta().equals(sifra) == true) {
@@ -103,7 +106,7 @@ public class BazaOcena {
 				}
 				
 				
-				Ocena objOcena = new Ocena(objStudent, objPredmet, ocena, datum);
+				Ocena objOcena = new Ocena(objStudent, objPredmet, ocena, LocalDate.parse(datum, formatiran));
 				ocene.add(objOcena);
 				
 			}
@@ -203,7 +206,7 @@ public class BazaOcena {
 		case 3:
 			return Integer.toString(ocena.getVrednostOcene());
 		case 4:
-			return ocena.getDatumPolaganja();
+			return String.valueOf(ocena.getDatumPolaganja());
 		default:
 			return null;
 		}

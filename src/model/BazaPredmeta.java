@@ -1,5 +1,8 @@
 package model;
 
+/* REFERENCIRAN KOD: pojedini delovi koda preuzeti sa vezbi 5
+*/
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -43,7 +46,7 @@ public class BazaPredmeta {
 		BufferedReader reader = null;
 		
 		try {
-			reader = new BufferedReader(new InputStreamReader(new FileInputStream("tabele" + File.separator + "predmeti.txt")));
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream("tabele" + File.separator + "Predmeti.txt")));
 		} catch (FileNotFoundException exception) {
 			exception.printStackTrace();
 		}

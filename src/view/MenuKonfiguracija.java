@@ -139,7 +139,11 @@ public class MenuKonfiguracija extends JMenuBar {
 						int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete?","Brisanje studenta?",JOptionPane.YES_NO_OPTION);
 						if(option == JOptionPane.YES_OPTION) {
 						
-							StudentiController.getInstance().removeStudent(StudentiJTable.getInstance().getSelectedRow());
+							int trenutniRed = StudentiJTable.getInstance().getSelectedRow();
+							String oznaceniStudent = (String)StudentiJTable.getInstance().getValueAt(trenutniRed, 0);
+							StudentiController.getInstance().removeStudent2(oznaceniStudent);
+							
+							//StudentiController.getInstance().removeStudent(StudentiJTable.getInstance().getSelectedRow());
 						}
 					}catch (Exception e) {
 						JOptionPane.showMessageDialog(null, "Morate selektovati studenta!","",JOptionPane.ERROR_MESSAGE);
@@ -151,8 +155,13 @@ public class MenuKonfiguracija extends JMenuBar {
 					try {
 						int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete?","Brisanje profesora?",JOptionPane.YES_NO_OPTION);
 						if(option == JOptionPane.YES_OPTION) {
-						
-							ProfesoriController.getInstance().removeProfesor(ProfesoriJTable.getInstance().getSelectedRow());
+							
+							int trenutniRed = ProfesoriJTable.getInstance().getSelectedRow();
+							String oznaceniProfesor = (String)ProfesoriJTable.getInstance().getValueAt(trenutniRed, 0);
+							//ProfesoriController.getInstance().removeProfesor2(oznaceniProfesor);
+							
+							
+							//ProfesoriController.getInstance().removeProfesor(ProfesoriJTable.getInstance().getSelectedRow());
 						}
 					}catch (Exception e) {
 						JOptionPane.showMessageDialog(null, "Morate selektovati profesora!","",JOptionPane.ERROR_MESSAGE);

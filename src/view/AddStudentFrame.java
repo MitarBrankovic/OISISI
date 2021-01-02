@@ -3,6 +3,9 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import listeners.FocusListener1;
 import javax.swing.*;
 import controller.StudentiController;
@@ -60,7 +63,7 @@ public class AddStudentFrame extends JDialog {
 		JTextField txtDatum = new JTextField();
 		txtDatum.setPreferredSize(dim);
 		txtDatum.setName("tekst");
-		txtDatum.setToolTipText("npr. 10.7.1856.");
+		txtDatum.setToolTipText("npr. 10.07.1856.");
 		txtDatum.addFocusListener(focus);
 		
 		pDatum.add(lDatum);
@@ -221,6 +224,10 @@ public class AddStudentFrame extends JDialog {
 					}
 				}
 				
+				//String[] datumRodj = txtDatum.getText().split("\\.");
+				//LocalDate lDate = LocalDate.of(Integer.parseInt(datumRodj[2]), Integer.parseInt(datumRodj[1]), Integer.parseInt(datumRodj[0]));
+				
+				
 				if(txtIme.getText().equals("") || txtPrezime.getText().equals("") || txtDatum.getText().equals("") || txtAdresa.getText().equals("") || 
 						txtTelefon.getText().equals("") || txtEmail.getText().equals("") || txtIndeks.getText().equals("") || txtGodinaUpisa.getText().equals(""))  {
 					JOptionPane.showMessageDialog(null, "Niste popunili sva polja!", "",JOptionPane.ERROR_MESSAGE);
@@ -234,9 +241,9 @@ public class AddStudentFrame extends JDialog {
 					JOptionPane.showMessageDialog(null, "Adresa nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 				}else if(isNumber(txtTelefon.getText()) == false) {
 					JOptionPane.showMessageDialog(null, "Broj telefona nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtEmail.getText().matches("[a-žA-ž0-9]+@[a-žA-ž]+[.][a-žA-Ž]+") == false) {
+				}else if(txtEmail.getText().matches("[a-žA-Ž0-9.]+@[a-žA-Ž0-9.]+") == false) {
 					JOptionPane.showMessageDialog(null, "Email nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtIndeks.getText().matches("[A-Ž]+/[0-9]+") == false) {
+				}else if(txtIndeks.getText().matches("[A-Ž]+[0-9]+/[0-9]+") == false) {
 					JOptionPane.showMessageDialog(null, "Indeks nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 				//}else if(isNumber(txtGodinaUpisa.getText()) == false){
 					//JOptionPane.showMessageDialog(null, "Godina upisa nije dobro unet","",JOptionPane.ERROR_MESSAGE);
@@ -263,7 +270,10 @@ public class AddStudentFrame extends JDialog {
 						stat = StudentStatus.S;
 					}
 					
-					StudentiController.getInstance().addStudent(txtIme.getText(), txtPrezime.getText(),txtDatum.getText(), txtAdresa.getText(), txtIndeks.getText(),
+					String datumRodj = txtDatum.getText();
+					DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+					
+					StudentiController.getInstance().addStudent(txtIme.getText(), txtPrezime.getText(),LocalDate.parse(datumRodj, formatiran), txtAdresa.getText(), txtIndeks.getText(),
 							txtTelefon.getText(),txtEmail.getText(),Integer.parseInt(txtGodinaUpisa.getText()),god, stat, 5);
 					
 					setVisible(false);

@@ -1,20 +1,20 @@
-Aleksa, Ivanovic, 24.1.1988., Sekspirova 14,RA/1 ,021366788, AleksaIvanovic6@gmail.com, 2011, 3, B, 7.02
-Mila, Filipovic, 23.11.1988., Bulevar kneza Milosa 98,RA/2, 021320551, MilaFilipovic5@gmail.com, 2016, 1, B, 8.6
-Nikolina, Todorovic, 3.7.1992., Sekspirova 4,RA/12, 021985188, NikolinaTodorovic1@gmail.com,2014, 2, B, 7.6
-Ognjen, Zivkovic, 21.7.2000., Balzakova 28,RA/13, 021737622, OgnjenZivkovic4@gmail.com, 2016, 1, B, 8.62
-Milica, Petrovic, 11.7.1997., Resavska 31,RA/21, 021374838, MilicaPetrovic20@gmail.com, 2017, 1, S, 6.48
-Masa, Jankovic, 4.1.1998., Bulevar vojvode Stepe 75,RA/52, 021626065, MasaJankovic11@gmail.com, 2015, 3, B, 7.39
-Tara, Krstic, 11.9.1999., Bulevar Jovana Ducica 57,RA/22, 021495810, TaraKrstic8@gmail.com, 2013, 1, B, 7.85
-Aleksa, Milosevic, 17.11.1987., Mise Dimitrijevica 57,RA/112, 021308042, AleksaMilosevic14@gmail.com, 2013, 1, B, 7.18
-Ognjen, Jankovic, 19.5.1989., Resavska 94,RA/79, 021700278, OgnjenJankovic1@gmail.com, 2012, 3, S, 6.31
-Helena, Kovacevic, 15.2.1985., Bulevar despota Stefana 40,RA/251, 021364592, HelenaKovacevic13@gmail.com, 2020, 2, S, 7.13
-Masa, Ilic, 3.7.1999., Vojvodjanska 11,RA/76, 021964015, MasaIlic16@gmail.com, 2016, 1, B, 6.29
-Mila, Ilic, 14.10.1995., Bulevar cara Lazara 80,RA/88, 021747482, MilaIlic18@gmail.com, 2017, 2, B, 8.91
-Aleksa, Milosevic, 5.7.1995., Bulevar Jase Tomica 25,RA/90, 021885510, AleksaMilosevic10@gmail.com, 2015, 1, S, 6.72
-Tara, Krstic, 7.5.1982., Mise Dimitrijevica 43,RA/64, 021249290, TaraKrstic15@gmail.com, 2017, 2, B, 8.48
-Nadja, Kovacevic, 13.3.1994., Sekspirova 73,RA/35, 021772199, NadjaKovacevic15@gmail.com, 2018, 3, B, 7.35
-Dusan, Jankovic, 26.7.1981., Lasla Gala 64,RA/92, 021130023, DusanJankovic1@gmail.com, 2016, 2, S, 6.09
-Helena, Filipovic, 23.3.1985., Fruskogorska 56,RA/119, 021331817, HelenaFilipovic20@gmail.com, 2015, 1, B, 8.11
-Teodora, Dimitrijevic, 2.6.1991., Ravanicka 46,RA/59, 021700910, TeodoraDimitrijevic18@gmail.com, 2015, 2, B, 8.79
-Una, Petrovic, 15.7.1997., Iva Andrica 2,RA/28, 021804471, UnaPetrovic4@gmail.com, 2020, 1, B, 7.13
-Pavle, Nikolic, 10.7.1988., Tolstojeva 57,RA/48, 021870586, PavleNikolic5@gmail.com, 2011, 2, B, 8.09
+Aleksa, Ivanovic,24.01.1988., Sekspirova 14,RA1/2018 ,021366788, AleksaIvanovic6@gmail.com, 2018, 3, B, 7.02
+Mila, Filipovic,23.11.1988., Bulevar kneza Milosa 98,RA2/2016, 021320551, MilaFilipovic5@gmail.com, 2016, 1, B, 8.6
+Nikolina, Todorovic,03.07.1992., Sekspirova 4,RA12/2014, 021985188, NikolinaTodorovic1@gmail.com,2014, 2, B, 7.6
+Ognjen, Zivkovic,21.07.2000., Balzakova 28,RA13/2016, 021737622, OgnjenZivkovic4@gmail.com, 2016, 1, B, 8.62
+Milica, Petrovic,11.07.1997., Resavska 31,RA21/2017, 021374838, MilicaPetrovic20@gmail.com, 2017, 1, S, 6.48
+Masa, Jankovic,04.01.1998., Bulevar vojvode Stepe 75,RA52/2015, 021626065, MasaJankovic11@gmail.com, 2015, 3, B, 7.39
+Tara, Krstic,11.09.1999., Bulevar Jovana Ducica 57,RA22/2013, 021495810, TaraKrstic8@gmail.com, 2013, 1, B, 7.85
+Aleksa, Milosevic,17.11.1981., Mise Dimitrijevica 57,RA112/2018, 021308042, AleksaMilosevic14@gmail.com, 2018, 1, B, 7.18
+Ognjen, Jankovic,19.05.1989., Resavska 94,RA79/2018, 021700278, OgnjenJankovic1@gmail.com, 2012, 3, S, 6.31
+Helena, Kovacevic,15.02.1985., Bulevar despota Stefana 40,RA251/2020, 021364592, HelenaKovacevic13@gmail.com, 2020, 2, S, 7.13
+Masa, Ilic,03.07.1999., Vojvodjanska 11,RA76/2018, 021964015, MasaIlic16@gmail.com, 2018, 1, B, 6.29
+Mila, Ilic,14.10.1995., Bulevar cara Lazara 80,RA88/2018, 021747482, MilaIlic18@gmail.com, 2018, 2, B, 8.91
+Aleksa, Milosevic,05.07.1995., Bulevar Jase Tomica 25,RA90/2018, 021885510, AleksaMilosevic10@gmail.com, 2018, 1, S, 6.72
+Tara, Krstic,07.05.1982., Mise Dimitrijevica 43,RA64/2017, 021249290, TaraKrstic15@gmail.com, 2017, 2, B, 8.48
+Nadja, Kovacevic,13.03.1994., Sekspirova 73,RA35/2018, 021772199, NadjaKovacevic15@gmail.com, 2018, 3, B, 7.35
+Dusan, Jankovic,26.07.1981., Lasla Gala 64,RA92/2016, 021130023, DusanJankovic1@gmail.com, 2016, 2, S, 6.09
+Helena, Filipovic,23.03.1985., Fruskogorska 56,RA119/2015, 021331817, HelenaFilipovic20@gmail.com, 2015, 1, B, 8.11
+Teodora, Dimitrijevic,02.06.1991., Ravanicka 46,RA59/2015, 021700910, TeodoraDimitrijevic18@gmail.com, 2015, 2, B, 8.79
+Una, Petrovic,15.07.1997., Iva Andrica 2,RA28/2020, 021804471, UnaPetrovic4@gmail.com, 2020, 1, B, 7.13
+Pavle, Nikolic,10.07.1988., Tolstojeva 57,RA48/2018, 021870586, PavleNikolic5@gmail.com, 2018, 2, B, 8.09

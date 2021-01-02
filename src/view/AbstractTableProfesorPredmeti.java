@@ -10,6 +10,8 @@ import model.BazaProfesora;
 
 public class AbstractTableProfesorPredmeti extends AbstractTableModel{
 
+	private static final long serialVersionUID = -7759782128183792134L;
+
 	public AbstractTableProfesorPredmeti() {}
 	@Override
 	public int getColumnCount() {

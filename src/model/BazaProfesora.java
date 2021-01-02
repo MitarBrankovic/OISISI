@@ -1,5 +1,8 @@
 package model;
 
+/* REFERENCIRAN KOD: pojedini delovi koda preuzeti sa vezbi 5
+*/
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -51,7 +54,7 @@ public class BazaProfesora {
 		BufferedReader reader = null;
 		
 		try {
-			reader = new BufferedReader(new InputStreamReader(new FileInputStream("tabele" + File.separator + "profesori.txt")));
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream("tabele" + File.separator + "Profesori.txt")));
 		}catch (FileNotFoundException exception) {
 			exception.printStackTrace();
 		}
@@ -173,12 +176,7 @@ public class BazaProfesora {
 			return null;
 		}
 	}
-	
-	
-	
-	
-	
-	
+		
 	
 	
 	public void dodajProfesora(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
@@ -230,6 +228,26 @@ public class BazaProfesora {
 		}
 		
 		prof.getSpisakPredmeta().add(pred);
+	}
+	
+	public void ukloniPredmet(String sifra, int brLicne) {
+		Profesor prof = new Profesor();
+		Predmet pred = new Predmet();
+		
+		for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+			if(p.getSifraPredmeta().equals(sifra)) {
+				pred = p;
+			}
+		}
+		
+		for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
+			if(p.getBrojLicneKarte() == brLicne) {
+				prof = p;
+			}
+		}
+		
+		prof.getSpisakPredmeta().remove(pred);
+		
 	}
 	
 }

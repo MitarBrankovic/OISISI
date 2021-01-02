@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -108,7 +110,9 @@ public class UpisOceneFrame extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String ocena1 = ocena.getSelectedItem().toString();
-				StudentiController.getInstance().upisiOcenu(stud.getBrojIndeksa(), pred.getSifraPredmeta(), ocena1, txtDatum.getText());
+				String datum = txtDatum.getText();
+				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+				StudentiController.getInstance().upisiOcenu(stud.getBrojIndeksa(), pred.getSifraPredmeta(), ocena1, LocalDate.parse(datum, formatiran));
 				setVisible(false);			}
 		});
 		
