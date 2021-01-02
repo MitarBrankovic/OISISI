@@ -48,4 +48,14 @@ public class PredmetController {
 		BazaPredmeta.getInstance().izbrisiPredmet(pred.getSifraPredmeta());
 		TabPane.getInstance().azurirajPredmeti();
 	}
+	
+	public Predmet nadjiPredmet(String sifra) {
+		Predmet pred = null;
+		for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+			if(p.getSifraPredmeta().equals(sifra) == true) {
+				pred = p;
+			}
+		}
+		return pred;
+	}
 }

@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 
 import controller.NepolozeniController;
 import controller.ProfesoriController;
+import controller.StudentiController;
 import listeners.FocusListener1;
 import model.BazaPredmeta;
 import model.BazaProfesora;
@@ -35,6 +36,7 @@ public class EditProfesorFrame extends JDialog{
 	private static final long serialVersionUID = -4447068004097483905L;
 	
 	private static ProfesorPredmetiJTable tabelaProfesorPredmeti;
+	private static int trenutniRed;
 	
 	public static void azurirajPredmete() {
 		AbstractTableProfesorPredmeti model=(AbstractTableProfesorPredmeti)tabelaProfesorPredmeti.getModel();
@@ -179,9 +181,19 @@ public class EditProfesorFrame extends JDialog{
 	    pZvanje.add(lZvanje);
 	    pZvanje.add(zvanje);
 	    
+	    trenutniRed = ProfesoriJTable.getInstance().getSelectedRow();
+	    String profIme = (String)ProfesoriJTable.getInstance().getValueAt(trenutniRed, 0);
+	    String profPrezime = (String)ProfesoriJTable.getInstance().getValueAt(trenutniRed, 1);
+	    String editProf = null;
+	    for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
+	    	if(p.getImePrezime().equals(profIme + " " + profPrezime)) {
+	    		editProf = p.getBrojLicneKarte();
+	    	}
+	    }
 	    
+		Profesor pr = ProfesoriController.getInstance().nadjiProfesora(editProf);
 	    
-	    Profesor pr = new Profesor(BazaProfesora.getInstance().getRow(ProfesoriJTable.getInstance().getSelectedRow()));
+	   // Profesor pr = new Profesor(BazaProfesora.getInstance().getRow(ProfesoriJTable.getInstance().getSelectedRow()));
 	    txtIme.setText(pr.getIme());
 	    txtPrezime.setText(pr.getPrezime());
 	    txtDatum.setText(pr.getDatumRodjenja());
@@ -232,7 +244,7 @@ public class EditProfesorFrame extends JDialog{
 						JOptionPane.showMessageDialog(null, "Broj telefona nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 					}else if(txtEmail.getText().matches("[a-žA-Ž0-9.]+@[a-žA-Ž0-9.]+") == false) {
 						JOptionPane.showMessageDialog(null, "Email nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-					}else if(txtLicna.getText().length() != 6) {
+					}else if(txtLicna.getText().length() != 9) {
 						JOptionPane.showMessageDialog(null, "Broj lične karte nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 					}else if(isNumber(txtLicna.getText()) == false){
 						JOptionPane.showMessageDialog(null, "Licna karta sadrzi slova","",JOptionPane.ERROR_MESSAGE);

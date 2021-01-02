@@ -161,7 +161,7 @@ public class MenuKonfiguracija extends JMenuBar {
 							//ProfesoriController.getInstance().removeProfesor2(oznaceniProfesor);
 							
 							
-							//ProfesoriController.getInstance().removeProfesor(ProfesoriJTable.getInstance().getSelectedRow());
+							ProfesoriController.getInstance().removeProfesor(ProfesoriJTable.getInstance().getSelectedRow());
 						}
 					}catch (Exception e) {
 						JOptionPane.showMessageDialog(null, "Morate selektovati profesora!","",JOptionPane.ERROR_MESSAGE);

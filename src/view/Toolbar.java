@@ -130,7 +130,7 @@ public class Toolbar extends JToolBar{
 							String oznaceniProfesor = (String)ProfesoriJTable.getInstance().getValueAt(trenutniRed, 0);
 							//ProfesoriController.getInstance().removeProfesor2(oznaceniProfesor);
 							
-							//ProfesoriController.getInstance().removeProfesor(ProfesoriJTable.getInstance().getSelectedRow());
+							ProfesoriController.getInstance().removeProfesor(ProfesoriJTable.getInstance().getSelectedRow());
 						}
 					}catch (Exception e) {
 						JOptionPane.showMessageDialog(null, "Morate selektovati profesora!","",JOptionPane.ERROR_MESSAGE);

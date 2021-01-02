@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import controller.NepolozeniController;
+import controller.PredmetiProfesorController;
 import model.BazaOcena;
 import model.BazaPredmeta;
 import model.BazaProfesora;
@@ -47,12 +48,16 @@ public class AddPredmetProfFrame extends JDialog{
 		
 		
 		ArrayList<Predmet> sviPredmeti = new ArrayList<Predmet>();
-
 		for(Predmet p: BazaPredmeta.getInstance().getPredmeti()) {
 			sviPredmeti.add(p);
 		}
+
+		ArrayList<Predmet> predmetiPredaje = new ArrayList<Predmet>();
+		for(Predmet pred : BazaProfesora.getInstance().getProfesoriPredmet()) {
+			predmetiPredaje.add(pred);
+		}
 		
-		sviPredmeti.removeAll(pr.getSpisakPredmeta());
+		sviPredmeti.removeAll(predmetiPredaje);
 		
 		for(Predmet p: sviPredmeti) {
 			lista.add(i++,p.getNazivPredmeta());
@@ -84,8 +89,7 @@ public class AddPredmetProfFrame extends JDialog{
 						for(Predmet pred: BazaPredmeta.getInstance().getPredmeti()) {
 							if(pred.getNazivPredmeta().equals(lista1.getSelectedValue())){
 								
-								BazaProfesora.getInstance().dodajPredmet(pred.getSifraPredmeta(), pr.getBrojLicneKarte());
-								EditProfesorFrame.azurirajPredmete();
+								PredmetiProfesorController.getInstance().addPredmet(pr.getBrojLicneKarte(), pred.getSifraPredmeta());
 								setVisible(false);
 							}
 						}

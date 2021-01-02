@@ -7,6 +7,7 @@ package controller;
 import model.BazaProfesora;
 import model.BazaStudenata;
 import model.Profesor;
+import model.Student;
 import view.EditProfesorFrame;
 import view.TabPane;
 
@@ -52,6 +53,16 @@ private static ProfesoriController instance = null;
 	public void ukloniPredmet(String sifra, String brLicne) {
 		BazaProfesora.getInstance().ukloniPredmet(sifra, brLicne);
 		EditProfesorFrame.azurirajPredmete();
+	}
+	
+	public Profesor nadjiProfesora(String brLicne) {
+		Profesor prof = null;
+		for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
+			if(p.getBrojLicneKarte().equals(brLicne) == true) {
+				prof = p;
+			}
+		}
+		return prof;
 	}
 
 }

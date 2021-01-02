@@ -18,16 +18,18 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import controller.PredmetController;
+import controller.StudentiController;
 import listeners.FocusListener1;
 import model.BazaPredmeta;
 import model.Predmet;
 import model.PredmetSemestar;
+import model.Student;
 
 public class EditPredmetFrame extends JDialog {
 
 
 	private static final long serialVersionUID = 9105513801690139962L;
-	
+	private static int trenutniRed;
 	/*private static EditPredmetFrame instance = null;
     public static EditPredmetFrame getInstance() {
         if (instance == null) {
@@ -157,8 +159,11 @@ public class EditPredmetFrame extends JDialog {
 		pPredmetniProfesor.add(btnDeleteProfesor);
 		
 		
+		trenutniRed = PredmetiJTable.getInstance().getSelectedRow();
+		String editPred = (String)PredmetiJTable.getInstance().getValueAt(trenutniRed, 0);
+		Predmet pred = PredmetController.getInstance().nadjiPredmet(editPred);
 		
-		Predmet pred = new Predmet(BazaPredmeta.getInstance().getRow(PredmetiJTable.getInstance().getSelectedRow()));
+		//Predmet pred = new Predmet(BazaPredmeta.getInstance().getRow(PredmetiJTable.getInstance().getSelectedRow()));
 		txtSifra.setText(pred.getSifraPredmeta());
 		txtNaziv.setText(pred.getNazivPredmeta());
 		

@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -81,7 +82,7 @@ public class UpisOceneFrame extends JDialog{
 		JTextField txtDatum = new JTextField();
 		txtDatum.setPreferredSize(dim);
 		txtDatum.setName("tekst");
-		txtDatum.setToolTipText("npr. Fizika");
+		txtDatum.setToolTipText("npr. 01.01.2020.");
 		
 		pDatum.add(lDatum);
 		pDatum.add(txtDatum);
@@ -112,8 +113,16 @@ public class UpisOceneFrame extends JDialog{
 				String ocena1 = ocena.getSelectedItem().toString();
 				String datum = txtDatum.getText();
 				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
-				StudentiController.getInstance().upisiOcenu(stud.getBrojIndeksa(), pred.getSifraPredmeta(), ocena1, LocalDate.parse(datum, formatiran));
-				setVisible(false);			}
+				
+				if(validDate(datum)) {
+					StudentiController.getInstance().upisiOcenu(stud.getBrojIndeksa(), pred.getSifraPredmeta(), ocena1, LocalDate.parse(datum, formatiran));
+					setVisible(false);			
+				}else {
+					JOptionPane.showMessageDialog(null, "Datum nije dobro unet!","",JOptionPane.ERROR_MESSAGE);
+
+				}
+			}
+			
 		});
 		
 		
@@ -134,5 +143,56 @@ public class UpisOceneFrame extends JDialog{
 		upisOcene.add(donjiPanel);
 		add(upisOcene);
 		
+	}
+	
+	public boolean validDate(String st) {
+		String[] datum = st.split("\\.");
+		int dan;
+		int mesec;
+		
+		try {
+			dan = Integer.parseInt(datum[0]);
+		}catch(Exception e) {
+			return false;
+		}
+		
+		try {
+			mesec = Integer.parseInt(datum[1]);
+		}catch(Exception e) {
+			return false;
+		}	
+		
+		try {
+			 Integer.parseInt(datum[2]);
+		}catch(Exception e) {
+			return false;
+		}	
+			
+		if(datum[2].length() != 4) {
+			return false;
+		}else if(datum[2] == null) {
+			return false;
+		}
+
+		
+		
+		if(mesec > 12 || mesec < 1) {
+			return false;
+		}else if(dan < 1) {
+			return false;
+		}else if(mesec == 2) {
+			if(dan > 29) {
+				return false;
+			}
+		}else if(mesec==1 || mesec==3 || mesec==5 || mesec==7 ||mesec==8 || mesec==10 || mesec==12) {
+			if(dan>31) {
+				return false;
+			}
+		}else if(mesec==4 || mesec==6 || mesec==9 || mesec==11) {
+			if(dan>30) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

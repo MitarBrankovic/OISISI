@@ -123,7 +123,7 @@ public class BazaProfesora {
 	
 	
 	
-	//private int brojLicne;
+	
 	public void setBrojLicne(String brojLicneKarte) {
 		this.listaPredmeta = new ArrayList<Predmet>();
 		
