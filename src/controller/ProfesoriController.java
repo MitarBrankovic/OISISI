@@ -5,6 +5,7 @@ package controller;
 */
 
 import model.BazaProfesora;
+import model.BazaStudenata;
 import model.Profesor;
 import view.EditProfesorFrame;
 import view.TabPane;
@@ -41,6 +42,11 @@ private static ProfesoriController instance = null;
 		Profesor prof = BazaProfesora.getInstance().getRow(rowSelectedIndex);
 		BazaProfesora.getInstance().izbrisiProfesora(prof.getBrojLicneKarte());
 		TabPane.getInstance().azurirajProfesori();
+	}
+	
+	public void removeProfesor2(int brojLicneKarte) {
+		BazaProfesora.getInstance().izbrisiProfesora(brojLicneKarte);
+		TabPane.getInstance().azurirajStudenti();
 	}
 	
 	public void ukloniPredmet(String sifra, int brLicne) {

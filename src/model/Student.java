@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.*;
 
 //enum Status {B, S;} // budzet - samofinansiranje
@@ -7,7 +8,7 @@ import java.util.*;
 public class Student {
 	String ime;
 	String prezime;
-	String datumRodjenja;
+	LocalDate datumRodjenja;
 	String adresa;
 	String kontakt;
 	String email;
@@ -23,10 +24,9 @@ public class Student {
 	public Student() {
 		this.spisakPolozenihPredmeta = new ArrayList<Ocena>();
 		this.spisakNepolozenihPredmeta = new ArrayList<Ocena>();
-
 	}	
 
-	public Student(String ime, String prezime, String datumRodjenja, String adresa, String indeks, String kontakt,
+	public Student(String ime, String prezime, LocalDate datumRodjenja, String adresa, String indeks, String kontakt,
 			String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status1, double prosecnaOcena) {
 		this.ime = ime;
 		this.prezime = prezime;
@@ -105,10 +105,10 @@ public class Student {
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
 	}
-	public String getDatumRodjenja() {
+	public LocalDate getDatumRodjenja() {
 		return datumRodjenja;
 	}
-	public void setDatumRodjenja(String datumRodjenja) {
+	public void setDatumRodjenja(LocalDate datumRodjenja) {
 		this.datumRodjenja = datumRodjenja;
 	}
 	public String getAdresa() {

@@ -9,6 +9,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
@@ -46,6 +48,7 @@ public class BazaStudenata {
 		String kolone[];
 		String naredni;
 		BufferedReader reader = null;
+		String datumRodj;
 		
 		try {
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream("tabele" + File.separator + "Studenti.txt")));
@@ -65,7 +68,12 @@ public class BazaStudenata {
 				else
 					status = StudentStatus.S;
 				
-				studenti.add(new Student( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), kolone[4].trim(), kolone[5].trim(),
+				//datumRodj = kolone[2].split("\\.");
+				//LocalDate lDate = LocalDate.of(Integer.parseInt(datumRodj[2]), Integer.parseInt(datumRodj[1]), Integer.parseInt(datumRodj[0]));
+				datumRodj = kolone[2];
+				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+				
+				studenti.add(new Student( kolone[0].trim(), kolone[1].trim(), LocalDate.parse(datumRodj, formatiran), kolone[3].trim(), kolone[4].trim(), kolone[5].trim(),
 						kolone[6].trim(), Integer.parseInt(kolone[7].trim()), Integer.parseInt(kolone[8].trim()), status, Double.parseDouble(kolone[10].trim())));
 				
 			}
@@ -124,12 +132,12 @@ public class BazaStudenata {
 	}
 	
 	
-	public void dodajStudenta(String ime, String prezime, String datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
+	public void dodajStudenta(String ime, String prezime, LocalDate datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
 		this.studenti.add(new Student(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status,  5));
 	}
 
 
-	public void izmeniStudenta(String ime, String prezime, String datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
+	public void izmeniStudenta(String ime, String prezime, LocalDate datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
 		for (Student i : studenti) {
 			if (i.getBrojIndeksa().equals(indeks)) {
 				i.setIme(ime);
@@ -157,7 +165,7 @@ public class BazaStudenata {
 		}
 	}
 	
-	public void upisiOcenu(String indeks, String sifraPredmeta, String ocena, String datum) {
+	public void upisiOcenu(String indeks, String sifraPredmeta, String ocena, LocalDate datum) {
 		for(Student i : studenti) {
 			if(i.getBrojIndeksa().equals(indeks)) {
 				for(Ocena o : i.getSpisakNepolozenihPredmeta()) {

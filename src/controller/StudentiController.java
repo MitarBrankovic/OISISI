@@ -1,5 +1,7 @@
 package controller;
 
+import java.time.LocalDate;
+
 /* REFERENCIRAN KOD: pojedini delovi koda preuzeti sa vezbi 5
 */
 
@@ -23,14 +25,14 @@ public class StudentiController {
 	private StudentiController() {}
 	
 	
-	public void addStudent(String ime, String prezime, String datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) 
+	public void addStudent(String ime, String prezime, LocalDate datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) 
 	{
 		BazaStudenata.getInstance().dodajStudenta(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status, prosecnaOcena);
 		TabPane.getInstance().azurirajStudenti();
 	}
 	
 	
-	public void editStudent(String ime, String prezime, String datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
+	public void editStudent(String ime, String prezime, LocalDate datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
 		BazaStudenata.getInstance().izmeniStudenta(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status, prosecnaOcena);
 		TabPane.getInstance().azurirajStudenti();	
 	}
@@ -41,7 +43,12 @@ public class StudentiController {
 		TabPane.getInstance().azurirajStudenti();
 	}
 	
-	public void upisiOcenu(String indeks, String sifraPredmeta, String ocena, String datum) {
+	public void removeStudent2(String indeks) {
+		BazaStudenata.getInstance().izbrisiStudenta(indeks);
+		TabPane.getInstance().azurirajStudenti();
+	}
+	
+	public void upisiOcenu(String indeks, String sifraPredmeta, String ocena, LocalDate datum) {
 		BazaStudenata.getInstance().upisiOcenu(indeks, sifraPredmeta, ocena, datum);
 		EditStudentFrame.azurirajNepolozene();
 		EditStudentFrame.azurirajPolozene();

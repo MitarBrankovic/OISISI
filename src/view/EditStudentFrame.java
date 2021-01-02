@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -102,7 +104,7 @@ public class EditStudentFrame extends JDialog {
 		JTextField txtDatum = new JTextField();
 		txtDatum.setPreferredSize(dim);
 		txtDatum.setName("tekst");
-		txtDatum.setToolTipText("npr. 10.7.1856.");
+		txtDatum.setToolTipText("npr. 10.07.1856.");
 		txtDatum.addFocusListener(focus);
 		
 		pDatum.add(lDatum);
@@ -243,9 +245,11 @@ public class EditStudentFrame extends JDialog {
 		Student st = StudentiController.getInstance().nadjiStudenta(editStud);
 		//Student st = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
 		
+		DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+		
 		txtIme.setText(st.getIme());
 		txtPrezime.setText(st.getPrezime());
-		txtDatum.setText(st.getDatumRodjenja());
+		txtDatum.setText(formatiran.format(st.getDatumRodjenja()));
 		txtAdresa.setText(st.getAdresa());
 		txtIndeks.setText(st.getBrojIndeksa());
 		txtTelefon.setText(st.getKontakt());
@@ -336,7 +340,13 @@ public class EditStudentFrame extends JDialog {
 						studStat = StudentStatus.S;
 					}
 					
-					StudentiController.getInstance().editStudent(txtIme.getText(), txtPrezime.getText(),txtDatum.getText(), txtAdresa.getText(),txtIndeks.getText(), txtTelefon.getText(),
+					//String[] datumRodj = txtDatum.getText().split("\\.");
+					//LocalDate lDate = LocalDate.of(Integer.parseInt(datumRodj[2]), Integer.parseInt(datumRodj[1]), Integer.parseInt(datumRodj[0]));
+					
+					String datumRodj = txtDatum.getText();
+					DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+					
+					StudentiController.getInstance().editStudent(txtIme.getText(), txtPrezime.getText(),LocalDate.parse(datumRodj, formatiran), txtAdresa.getText(),txtIndeks.getText(), txtTelefon.getText(),
 							txtEmail.getText(),Integer.parseInt(txtGodinaUpisa.getText()),god, studStat, avg);
 					setVisible(false);
 				}				
