@@ -230,7 +230,7 @@ public class BazaProfesora {
 		prof.getSpisakPredmeta().add(pred);
 	}
 	
-	public void ukloniPredmet(String sifra, int brLicne) {
+	public void ukloniPredmet(String sifra, String brLicne) {
 		Profesor prof = new Profesor();
 		Predmet pred = new Predmet();
 		
@@ -241,7 +241,7 @@ public class BazaProfesora {
 		}
 		
 		for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
-			if(p.getBrojLicneKarte() == brLicne) {
+			if(p.getBrojLicneKarte().equals(brLicne)) {
 				prof = p;
 			}
 		}

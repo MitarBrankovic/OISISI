@@ -44,12 +44,12 @@ private static ProfesoriController instance = null;
 		TabPane.getInstance().azurirajProfesori();
 	}
 	
-	public void removeProfesor2(int brojLicneKarte) {
+	public void removeProfesor2(String brojLicneKarte) {
 		BazaProfesora.getInstance().izbrisiProfesora(brojLicneKarte);
 		TabPane.getInstance().azurirajStudenti();
 	}
 	
-	public void ukloniPredmet(String sifra, int brLicne) {
+	public void ukloniPredmet(String sifra, String brLicne) {
 		BazaProfesora.getInstance().ukloniPredmet(sifra, brLicne);
 		EditProfesorFrame.azurirajPredmete();
 	}
