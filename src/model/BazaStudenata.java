@@ -26,6 +26,7 @@ public class BazaStudenata {
 	}
 
 	private ArrayList<Student> studenti;
+	private ArrayList<Student> tmpStudenti;
 	private ArrayList<String> kolone;
 	
 	
@@ -45,6 +46,7 @@ public class BazaStudenata {
 	
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
+		this.tmpStudenti = new ArrayList<Student>();
 		String kolone[];
 		String naredni;
 		BufferedReader reader = null;
@@ -75,7 +77,8 @@ public class BazaStudenata {
 				
 				studenti.add(new Student( kolone[0].trim(), kolone[1].trim(), LocalDate.parse(datumRodj, formatiran), kolone[3].trim(), kolone[4].trim(), kolone[5].trim(),
 						kolone[6].trim(), Integer.parseInt(kolone[7].trim()), Integer.parseInt(kolone[8].trim()), status, Double.parseDouble(kolone[10].trim())));
-				
+				tmpStudenti.add(new Student( kolone[0].trim(), kolone[1].trim(), LocalDate.parse(datumRodj, formatiran), kolone[3].trim(), kolone[4].trim(), kolone[5].trim(),
+						kolone[6].trim(), Integer.parseInt(kolone[7].trim()), Integer.parseInt(kolone[8].trim()), status, Double.parseDouble(kolone[10].trim())));
 			}
 			
 			reader.close();
@@ -84,10 +87,22 @@ public class BazaStudenata {
 		}
 	}
 	
+	public void setStudentiLista(ArrayList<Student> lista) {
+		studenti = lista;
+	}
+	
+	public void restart() {
+		studenti = tmpStudenti;
+	}
+	
 	
 	
 	public ArrayList<Student> getStudenti() {
 		return studenti;
+	}
+	
+	public ArrayList<Student> getSviStudenti() {
+		return tmpStudenti;
 	}
 
 
@@ -134,6 +149,7 @@ public class BazaStudenata {
 	
 	public void dodajStudenta(String ime, String prezime, LocalDate datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
 		this.studenti.add(new Student(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status,  5));
+		this.tmpStudenti.add(new Student(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status,  5));
 	}
 
 
@@ -153,6 +169,25 @@ public class BazaStudenata {
 				i.setProsecnaOcena(prosecnaOcena);
 			}
 		}
+		try {
+			for (Student i : tmpStudenti) {
+				if (i.getBrojIndeksa().equals(indeks)) {
+					i.setIme(ime);
+					i.setPrezime(prezime);
+					i.setDatumRodjenja(datumRodjenja);
+					i.setAdresa(adresa);
+					i.setBrojIndeksa(indeks);
+					i.setKontakt(kontakt);
+					i.setEmail(mail);
+					i.setGodinaUpisa(godinaUpisa);
+					i.setTrenutnaGodina(trenutnaGodina);
+					i.setStatus(status);
+					i.setProsecnaOcena(prosecnaOcena);
+				}
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	
@@ -163,7 +198,35 @@ public class BazaStudenata {
 				break;
 			}
 		}
+		try {
+			for (Student i : tmpStudenti) {
+				if (i.getBrojIndeksa().equals(indeks)) {
+					studenti.remove(i);
+					break;
+				}
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
+	
+	ArrayList<Student> listaStudenata = new ArrayList<Student>();
+	
+	public void searchStudent(String tekst) {
+		
+		if(tekst.equals("")) {
+			this.studenti=this.tmpStudenti;
+			listaStudenata.removeAll(listaStudenata);
+		}else {
+			for(Student s : BazaStudenata.getInstance().getStudenti()) {
+				if(s.getPrezime().contains(tekst)) {
+					listaStudenata.add(s);
+				}
+			}
+		BazaStudenata.getInstance().setStudentiLista(listaStudenata);
+		}
+	}
+	
 	
 	public void upisiOcenu(String indeks, String sifraPredmeta, String ocena, LocalDate datum) {
 		for(Student i : studenti) {

@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 
 //import java.awt.BorderLayout;
 import javax.swing.Box;
@@ -20,11 +21,13 @@ import controller.PredmetController;
 import controller.ProfesoriController;
 import controller.StudentiController;
 import model.BazaStudenata;
+import model.Student;
 
 public class Toolbar extends JToolBar{
 
 	private static final long serialVersionUID = -5468997179840595624L;
-
+	private JTextField searchArea;
+	
 	public Toolbar() {
 		
 		
@@ -162,7 +165,7 @@ public class Toolbar extends JToolBar{
 		
 		add(Box.createHorizontalGlue());
 		
-		JTextField searchArea = new JTextField();
+		searchArea = new JTextField(50);
 		searchArea.setPreferredSize(new Dimension(200,25));
 		searchArea.setMaximumSize(searchArea.getPreferredSize());
 		add(searchArea);
@@ -173,15 +176,18 @@ public class Toolbar extends JToolBar{
 		btnSearch.setToolTipText("Search");
 		btnSearch.setIcon(new ImageIcon("images" + File.separator + "search.jpg"));
 		
-		
-		String searchTxt = searchArea.getText();
+
 		
 		btnSearch.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(TabPane.getStanje() == 0) {
-					
+					try {
+					StudentiController.getInstance().searchStudent(getSearchText());
+					}catch(Exception e) {
+						JOptionPane.showMessageDialog(null, "Obrisite tekst iz pretrage i pokusajte ponovo","",JOptionPane.ERROR_MESSAGE);
+					}
 				}else if(TabPane.getStanje() == 1) {
 					//
 				}else if(TabPane.getStanje() == 2){
@@ -195,5 +201,9 @@ public class Toolbar extends JToolBar{
 		
 		
 		setFloatable(false);
+	}
+	
+	public String getSearchText() {
+		return searchArea.getText();
 	}
 }

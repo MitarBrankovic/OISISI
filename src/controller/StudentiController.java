@@ -48,6 +48,11 @@ public class StudentiController {
 		TabPane.getInstance().azurirajStudenti();
 	}
 	
+	public void searchStudent(String text) {
+		BazaStudenata.getInstance().searchStudent(text);
+		TabPane.getInstance().azurirajStudenti();
+	}
+	
 	public void upisiOcenu(String indeks, String sifraPredmeta, String ocena, LocalDate datum) {
 		BazaStudenata.getInstance().upisiOcenu(indeks, sifraPredmeta, ocena, datum);
 		EditStudentFrame.azurirajNepolozene();
