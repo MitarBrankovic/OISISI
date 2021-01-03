@@ -47,7 +47,7 @@ private static ProfesoriController instance = null;
 	
 	public void removeProfesor2(String brojLicneKarte) {
 		BazaProfesora.getInstance().izbrisiProfesora(brojLicneKarte);
-		TabPane.getInstance().azurirajStudenti();
+		TabPane.getInstance().azurirajProfesori();
 	}
 	
 	public void ukloniPredmet(String sifra, String brLicne) {

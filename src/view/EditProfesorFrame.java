@@ -182,16 +182,9 @@ public class EditProfesorFrame extends JDialog{
 	    pZvanje.add(zvanje);
 	    
 	    trenutniRed = ProfesoriJTable.getInstance().getSelectedRow();
-	    String profIme = (String)ProfesoriJTable.getInstance().getValueAt(trenutniRed, 0);
-	    String profPrezime = (String)ProfesoriJTable.getInstance().getValueAt(trenutniRed, 1);
-	    String editProf = null;
-	    for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
-	    	if(p.getImePrezime().equals(profIme + " " + profPrezime)) {
-	    		editProf = p.getBrojLicneKarte();
-	    	}
-	    }
+	    String profEdit = (String)ProfesoriJTable.getInstance().getValueAt(trenutniRed, 0);
 	    
-		Profesor pr = ProfesoriController.getInstance().nadjiProfesora(editProf);
+		Profesor pr = ProfesoriController.getInstance().nadjiProfesora(profEdit);
 	    
 	   // Profesor pr = new Profesor(BazaProfesora.getInstance().getRow(ProfesoriJTable.getInstance().getSelectedRow()));
 	    txtIme.setText(pr.getIme());

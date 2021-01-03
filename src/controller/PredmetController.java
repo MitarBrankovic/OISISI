@@ -49,6 +49,11 @@ public class PredmetController {
 		TabPane.getInstance().azurirajPredmeti();
 	}
 	
+	public void removePredmet2(String sifra) {
+		BazaPredmeta.getInstance().izbrisiPredmet(sifra);
+		TabPane.getInstance().azurirajPredmeti();
+	}
+	
 	public Predmet nadjiPredmet(String sifra) {
 		Predmet pred = null;
 		for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {

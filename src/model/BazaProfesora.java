@@ -31,6 +31,7 @@ public class BazaProfesora {
 
 	private BazaProfesora() {
 		this.kolone1 = new ArrayList<String>();
+		this.kolone1.add("BROJ LICNE KARTE");
 		this.kolone1.add("IME");
 		this.kolone1.add("PREZIME");
 		this.kolone1.add("TITULA");
@@ -84,7 +85,7 @@ public class BazaProfesora {
 	}
 	
 	public int getColumnCount() {
-		return 4;
+		return 5;
 	}
 	
 	public String getColumnName(int index) {
@@ -99,12 +100,14 @@ public class BazaProfesora {
 		Profesor profesori = this.profesori.get(row);
 		switch (column) {
 		case 0:
+			return profesori.getBrojLicneKarte();
+		case 1:	
 			return profesori.getIme();
-		case 1:
-			return profesori.getPrezime();
 		case 2:
-			return profesori.getTitula();
+			return profesori.getPrezime();
 		case 3:
+			return profesori.getTitula();
+		case 4:
 			return profesori.getZvanje();
 		
 		default:

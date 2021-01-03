@@ -128,9 +128,9 @@ public class Toolbar extends JToolBar{
 						
 							int trenutniRed = ProfesoriJTable.getInstance().getSelectedRow();
 							String oznaceniProfesor = (String)ProfesoriJTable.getInstance().getValueAt(trenutniRed, 0);
-							//ProfesoriController.getInstance().removeProfesor2(oznaceniProfesor);
+							ProfesoriController.getInstance().removeProfesor2(oznaceniProfesor);
 							
-							ProfesoriController.getInstance().removeProfesor(ProfesoriJTable.getInstance().getSelectedRow());
+							//ProfesoriController.getInstance().removeProfesor(ProfesoriJTable.getInstance().getSelectedRow());
 						}
 					}catch (Exception e) {
 						JOptionPane.showMessageDialog(null, "Morate selektovati profesora!","",JOptionPane.ERROR_MESSAGE);
@@ -141,8 +141,10 @@ public class Toolbar extends JToolBar{
 					try {
 						int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete?","Brisanje profesora?",JOptionPane.YES_NO_OPTION);
 						if(option == JOptionPane.YES_OPTION) {
-						
-							PredmetController.getInstance().removePredmet(PredmetiJTable.getInstance().getSelectedRow());
+													
+							int trenutniRed = PredmetiJTable.getInstance().getSelectedRow();
+							String oznaceniPredmet = (String)PredmetiJTable.getInstance().getValueAt(trenutniRed, 0);
+							PredmetController.getInstance().removePredmet2(oznaceniPredmet);
 						}
 					}catch (Exception e) {
 						JOptionPane.showMessageDialog(null, "Morate selektovati predmet!","",JOptionPane.ERROR_MESSAGE);
