@@ -189,9 +189,17 @@ public class Toolbar extends JToolBar{
 						JOptionPane.showMessageDialog(null, "Obrisite tekst iz pretrage i pokusajte ponovo","",JOptionPane.ERROR_MESSAGE);
 					}
 				}else if(TabPane.getStanje() == 1) {
-					//
+					try {
+						ProfesoriController.getInstance().searchProfesor(getSearchText());
+						}catch(Exception e) {
+							JOptionPane.showMessageDialog(null, "Obrisite tekst iz pretrage i pokusajte ponovo","",JOptionPane.ERROR_MESSAGE);
+						}
 				}else if(TabPane.getStanje() == 2){
-					//
+					try {
+						PredmetController.getInstance().searchPredmet(getSearchText());
+						}catch(Exception e) {
+							JOptionPane.showMessageDialog(null, "Obrisite tekst iz pretrage i pokusajte ponovo","",JOptionPane.ERROR_MESSAGE);
+						}
 				}				
 			}					
 		});	

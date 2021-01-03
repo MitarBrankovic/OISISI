@@ -201,7 +201,7 @@ public class BazaStudenata {
 		try {
 			for (Student i : tmpStudenti) {
 				if (i.getBrojIndeksa().equals(indeks)) {
-					studenti.remove(i);
+					tmpStudenti.remove(i);
 					break;
 				}
 			}
@@ -219,7 +219,7 @@ public class BazaStudenata {
 			listaStudenata.removeAll(listaStudenata);
 		}else {
 			for(Student s : BazaStudenata.getInstance().getStudenti()) {
-				if(s.getPrezime().contains(tekst)) {
+				if(s.getPrezime().toLowerCase().contains(tekst.toLowerCase())) {
 					listaStudenata.add(s);
 				}
 			}

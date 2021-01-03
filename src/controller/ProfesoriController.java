@@ -64,5 +64,10 @@ private static ProfesoriController instance = null;
 		}
 		return prof;
 	}
+	
+	public void searchProfesor(String text) {
+		BazaProfesora.getInstance().searchProfesor(text);
+		TabPane.getInstance().azurirajProfesori();
+	}
 
 }

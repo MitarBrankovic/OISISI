@@ -25,6 +25,7 @@ public class BazaProfesora {
 	}
 	
 	private ArrayList<Profesor> profesori;
+	private ArrayList<Profesor> tmpProfesori;
 	private ArrayList<String> kolone1;
 	private ArrayList<String> kolone2;
 	private ArrayList<Predmet> listaPredmeta;
@@ -50,6 +51,7 @@ public class BazaProfesora {
 	private void initProfesore() {
 		
 		this.profesori = new ArrayList<Profesor>();
+		this.tmpProfesori = new ArrayList<Profesor>();
 		String kolone[];
 		String naredni;
 		BufferedReader reader = null;
@@ -67,6 +69,8 @@ public class BazaProfesora {
 				kolone = naredni.split("\\,");
 				
 				profesori.add(new Profesor( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), Integer.parseInt(kolone[4].trim()), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[8].trim(), kolone[9].trim()));
+				tmpProfesori.add(new Profesor( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), Integer.parseInt(kolone[4].trim()), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[8].trim(), kolone[9].trim()));
+
 			}
 	
 			reader.close();
@@ -76,8 +80,20 @@ public class BazaProfesora {
 		}
 	}
 	
+	public void setProfesoriLista(ArrayList<Profesor> lista) {
+		profesori = lista;
+	}
+	
+	public void restart() {
+		profesori = tmpProfesori;
+	}
+	
 	public ArrayList<Profesor> getProfesori() {
 		return profesori;
+	}
+	
+	public ArrayList<Profesor> getSviProfesori() {
+		return tmpProfesori;
 	}
 	
 	public void setProfesori(ArrayList<Profesor> profesori) {
@@ -184,6 +200,8 @@ public class BazaProfesora {
 	
 	public void dodajProfesora(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
 		this.profesori.add(new Profesor(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email, adresaKancelarije, brojLicneKarte, titula, zvanje));
+		this.tmpProfesori.add(new Profesor(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email, adresaKancelarije, brojLicneKarte, titula, zvanje));
+
 	}
 	
 	public void izbrisiProfesora(String indeks) {
@@ -193,7 +211,37 @@ public class BazaProfesora {
 				break;
 			}
 		}
+		
+		try {
+			for(Profesor i : tmpProfesori) {
+				if(i.getBrojLicneKarte().equals(indeks)) {
+					tmpProfesori.remove(i);
+					break;
+				}
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
+	
+	ArrayList<Profesor> listaProfesora = new ArrayList<Profesor>();
+	
+	public void searchProfesor(String tekst) {
+		
+		if(tekst.equals("")) {
+			this.profesori=this.tmpProfesori;
+			listaProfesora.removeAll(listaProfesora);
+		}else {
+			for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
+				if(p.getPrezime().toLowerCase().contains(tekst.toLowerCase())) {
+					listaProfesora.add(p);
+				}
+			}
+		BazaProfesora.getInstance().setProfesoriLista(listaProfesora);
+		}
+	}
+	
 	
 	public void izmeniProfesora(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
 			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
@@ -211,6 +259,25 @@ public class BazaProfesora {
 				i.setZvanje(zvanje);
 
 			}
+		}
+		try {
+			for(Profesor i : tmpProfesori) {
+				if(i.getBrojLicneKarte().equals(brojLicneKarte)) {
+					i.setIme(ime);
+					i.setPrezime(prezime);
+					i.setDatumRodjenja(datumRodjenja);
+					i.setAdresaStanovanja(adresaStanovanja);
+					i.setKontaktTelefon(kontaktTelefon);
+					i.setEmail(email);
+					i.setAdresaKancelarije(adresaKancelarije);
+					i.setBrojLicneKarte(brojLicneKarte);
+					i.setTitula(titula);
+					i.setZvanje(zvanje);
+
+				}
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	

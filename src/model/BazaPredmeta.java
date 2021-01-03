@@ -23,6 +23,8 @@ public class BazaPredmeta {
 	}
 	
 	private ArrayList<Predmet> predmeti;
+	private ArrayList<Predmet> tmpPredmeti;
+
 	private ArrayList<String> kolone;
 	
 	private BazaPredmeta(){
@@ -41,6 +43,8 @@ public class BazaPredmeta {
 	private void initPredmete() {
 		
 		this.predmeti = new ArrayList<Predmet>();
+		this.tmpPredmeti = new ArrayList<Predmet>();
+
 		String kolone[];
 		String naredni;
 		BufferedReader reader = null;
@@ -78,6 +82,7 @@ public class BazaPredmeta {
 				
 				Predmet pred = new Predmet( kolone[0].trim(), kolone[1].trim(), semestar1, Integer.parseInt(kolone[3].trim()), Integer.parseInt(kolone[4].trim()), objProfesor);
 				predmeti.add(pred);
+				tmpPredmeti.add(pred);
 				objProfesor.getSpisakPredmeta().add(pred);
 			}
 			
@@ -85,6 +90,18 @@ public class BazaPredmeta {
 		} catch(IOException exception) {
 			exception.printStackTrace();
 		}
+	}
+	
+	public void setPredmetiLista(ArrayList<Predmet> lista) {
+		predmeti = lista;
+	}
+	
+	public void restart() {
+		predmeti = tmpPredmeti;
+	}
+	
+	public ArrayList<Predmet> getSviPredmeti() {
+		return tmpPredmeti;
 	}
 	
 	public ArrayList<Predmet> getPredmeti() {
@@ -132,6 +149,7 @@ public class BazaPredmeta {
 	
 	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, Profesor predmetniProfesor) {
 		this.predmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
+		this.tmpPredmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
 	}
 	
 	
@@ -146,6 +164,20 @@ public class BazaPredmeta {
 				i.setPredmetniProfesor(predmetniProfesor);				
 			}
 		}
+		try {
+			for (Predmet i : tmpPredmeti) {
+				if (i.getSifraPredmeta().equals(sifraPredmeta)) {
+					i.setSifraPredmeta(sifraPredmeta);
+					i.setNazivPredmeta(nazivPredmeta);
+					i.setSemestar(sem);
+					i.setGodinaStudija(godinaStudija);
+					i.setEspb(espb);
+					i.setPredmetniProfesor(predmetniProfesor);				
+				}
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	
@@ -156,6 +188,34 @@ public class BazaPredmeta {
 				break;
 			}
 		}
+		try {
+			for(Predmet i : tmpPredmeti) {
+				if(i.getSifraPredmeta() == indeks) {
+					tmpPredmeti.remove(i);
+					break;
+				}
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
+	
 
+	
+	ArrayList<Predmet> listaPredmeta = new ArrayList<Predmet>();
+	
+	public void searchPredmet(String tekst) {
+		
+		if(tekst.equals("")) {
+			this.predmeti=this.tmpPredmeti;
+			listaPredmeta.removeAll(listaPredmeta);
+		}else {
+			for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+				if(p.getNazivPredmeta().toLowerCase().contains(tekst.toLowerCase())) {
+					listaPredmeta.add(p);
+				}
+			}
+		BazaPredmeta.getInstance().setPredmetiLista(listaPredmeta);
+		}
+	}
 }

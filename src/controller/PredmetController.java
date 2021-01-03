@@ -63,4 +63,9 @@ public class PredmetController {
 		}
 		return pred;
 	}
+	
+	public void searchPredmet(String text) {
+		BazaPredmeta.getInstance().searchPredmet(text);
+		TabPane.getInstance().azurirajPredmeti();
+	}
 }
