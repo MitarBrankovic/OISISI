@@ -180,6 +180,24 @@ public class BazaPredmeta {
 		}
 	}
 	
+	public void izbrisiProfesoraSaPredmeta(String sifra) {
+		for(Predmet i : predmeti) {
+			if(i.getSifraPredmeta().equals(sifra)) {
+				i.setPredmetniProfesor(null);
+				break;
+			}
+		}
+		try {
+			for(Predmet i : tmpPredmeti) {
+				if(i.getSifraPredmeta().equals(sifra)) {
+					i.setPredmetniProfesor(null);
+					break;
+				}
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	
 	public void izbrisiPredmet(String indeks) {
 		for(Predmet i : predmeti) {

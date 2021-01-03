@@ -129,6 +129,10 @@ public class EditPredmetFrame extends JDialog {
 		txtPredmetniProfesor.setToolTipText("npr. Kosta Kovacevic");
 		//txtPredmetniProfesor.addFocusListener(focus);
 		
+		trenutniRed = PredmetiJTable.getInstance().getSelectedRow();
+		String editPred = (String)PredmetiJTable.getInstance().getValueAt(trenutniRed, 0);
+		Predmet pred = PredmetController.getInstance().nadjiPredmet(editPred);
+		
 		JButton btnAddProfesor = new JButton("+");
 		
 		btnAddProfesor.addActionListener(new ActionListener() {
@@ -149,7 +153,8 @@ public class EditPredmetFrame extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				txtPredmetniProfesor.setText("");			
+				txtPredmetniProfesor.setText("");
+				PredmetController.getInstance().ukloniProfesora(editPred);
 			}				
 		});
 		
@@ -159,9 +164,6 @@ public class EditPredmetFrame extends JDialog {
 		pPredmetniProfesor.add(btnDeleteProfesor);
 		
 		
-		trenutniRed = PredmetiJTable.getInstance().getSelectedRow();
-		String editPred = (String)PredmetiJTable.getInstance().getValueAt(trenutniRed, 0);
-		Predmet pred = PredmetController.getInstance().nadjiPredmet(editPred);
 		
 		//Predmet pred = new Predmet(BazaPredmeta.getInstance().getRow(PredmetiJTable.getInstance().getSelectedRow()));
 		txtSifra.setText(pred.getSifraPredmeta());

@@ -68,4 +68,9 @@ public class PredmetController {
 		BazaPredmeta.getInstance().searchPredmet(text);
 		TabPane.getInstance().azurirajPredmeti();
 	}
+	
+	public void ukloniProfesora(String sifra) {
+		BazaPredmeta.getInstance().izbrisiProfesoraSaPredmeta(sifra);
+		//TabPane.getInstance().azurirajPredmeti();
+	}
 }
