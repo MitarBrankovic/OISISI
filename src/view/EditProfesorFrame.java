@@ -19,6 +19,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import controller.NepolozeniController;
+import controller.PredmetiProfesorController;
 import controller.ProfesoriController;
 import controller.StudentiController;
 import listeners.FocusListener1;
@@ -299,15 +300,15 @@ public class EditProfesorFrame extends JDialog{
 					int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da uklonite predmet?","Uklanjanje predmeta?",JOptionPane.YES_NO_OPTION);
 					if(option == JOptionPane.YES_OPTION) {
 						Profesor prof = new Profesor(BazaProfesora.getInstance().getRow(ProfesoriJTable.getInstance().getSelectedRow()));
-						Predmet pred = new Predmet(BazaPredmeta.getInstance().getRow(ProfesorPredmetiJTable.getInstance().getSelectedRow()));
+						Predmet predm = new Predmet(BazaProfesora.getInstance().getRowProfesoriPredmet(ProfesorPredmetiJTable.getInstance().getSelectedRow()));
 
-						ProfesoriController.getInstance().ukloniPredmet(pred.getSifraPredmeta(), prof.getBrojLicneKarte());
+						PredmetiProfesorController.getInstance().ukloniPredmet(predm.getSifraPredmeta(), prof.getBrojLicneKarte());
 
 					}
 				}catch (Exception exc) {
 					JOptionPane.showMessageDialog(null, "Morate selektovati predmet!","",JOptionPane.ERROR_MESSAGE);
 					System.out.println(exc.getMessage());	
-				}	;
+				};
 			}
 		});
 		

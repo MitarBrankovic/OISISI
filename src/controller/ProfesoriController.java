@@ -50,10 +50,6 @@ private static ProfesoriController instance = null;
 		TabPane.getInstance().azurirajProfesori();
 	}
 	
-	public void ukloniPredmet(String sifra, String brLicne) {
-		BazaProfesora.getInstance().ukloniPredmet(sifra, brLicne);
-		EditProfesorFrame.azurirajPredmete();
-	}
 	
 	public Profesor nadjiProfesora(String brLicne) {
 		Profesor prof = null;

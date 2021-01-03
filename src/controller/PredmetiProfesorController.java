@@ -20,4 +20,9 @@ public class PredmetiProfesorController {
 		BazaProfesora.getInstance().dodajPredmet(sifra, brLicne);
 		EditProfesorFrame.azurirajPredmete();
 	}
+	
+	public void ukloniPredmet(String sifra, String brLicne) {
+		BazaProfesora.getInstance().ukloniPredmet(sifra, brLicne);
+		EditProfesorFrame.azurirajPredmete();
+	}
 }
