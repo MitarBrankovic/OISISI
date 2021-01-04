@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -75,8 +76,11 @@ public class UpisPodatakaController {
 		try {
 			for (Profesor profesor : profesori) {
 				
+				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+
+				
 				StringBuilder s = new StringBuilder("");
-				s.append(profesor.getIme() + ", " + profesor.getPrezime() + ", " + profesor.getDatumRodjenja() + ", "
+				s.append(profesor.getIme() + ", " + profesor.getPrezime() + ", " + profesor.getDatumRodjenja().format(formatiran) + ", "
 						+ profesor.getAdresaStanovanja() + ", " + profesor.getKontaktTelefon() + ", " + profesor.getEmail()
 						+ ", " + profesor.getAdresaKancelarije() + ", " + profesor.getBrojLicneKarte() + ", " + profesor.getTitula()
 						+ ", " + profesor.getZvanje());	
@@ -113,8 +117,9 @@ public class UpisPodatakaController {
 					status = "S";
 				}
 				
-				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-				
+				//DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+
 				StringBuilder s = new StringBuilder("");
 				s.append(student.getIme() + ", " + student.getPrezime() + ", " + student.getDatumRodjenja().format(formatiran) + ", " + student.getAdresa()
 				 + ", " + student.getBrojIndeksa() + ", " + student.getKontakt() + ", " + student.getEmail() + ", " + student.getGodinaUpisa()
@@ -145,8 +150,15 @@ public class UpisPodatakaController {
 		}
 		try {
 			for (Ocena ocena : ocene) {
-				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+				
+				//String date = null;
+				//if(ocena.getStudent().getBrojIndeksa() == null) {
+				//	date = "null";
+				//}else {
+				//	date =(String) ocena.getDatumPolaganja().format(formatiran);
 
+				//}
 				StringBuilder s = new StringBuilder("");
 				s.append(ocena.getPredmet().getSifraPredmeta() + ", " + ocena.getStudent().getBrojIndeksa() + ", " + 
 						ocena.getVrednostOcene() + ", " + ocena.getDatumPolaganja().format(formatiran));	

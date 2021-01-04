@@ -91,7 +91,7 @@ public class BazaOcena {
 				ocena = Integer.parseInt(kolone[2].trim());
 				datum = kolone[3].trim();
 
-				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 				
 				for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
 					if(p.getSifraPredmeta().equals(sifra) == true) {
@@ -291,7 +291,10 @@ public class BazaOcena {
 			}
 			
 		}
-		Ocena oc = new Ocena(st,pr, 0, null);
+		String date = "11.11.1111.";
+		DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+		Ocena oc = new Ocena(st,pr, 5, LocalDate.parse(date, formatiran));
+		BazaOcena.getInstance().getOcene().add(oc);
 		st.getSpisakNepolozenihPredmeta().add(oc);
 		
 	}

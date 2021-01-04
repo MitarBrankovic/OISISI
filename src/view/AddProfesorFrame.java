@@ -6,6 +6,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 //import java.awt.event.FocusListener;
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -218,8 +221,12 @@ public class AddProfesorFrame extends JDialog{
 				}else {
 					String titulaSt = titula.getSelectedItem().toString();
 					String zvanjeSt = zvanje.getSelectedItem().toString();
-					ProfesoriController.getInstance().addProfesor(txtIme.getText(), txtPrezime.getText(), txtDatum.getText(), txtAdresa.getText(), 
-							Integer.parseInt(txtTelefon.getText()), txtEmail.getText(), txtAdresaKancelarije.getText(), txtLicna.getText(), titulaSt, zvanjeSt);
+					
+					String datumRodj = txtDatum.getText();
+					DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+					
+					ProfesoriController.getInstance().addProfesor(txtIme.getText(), txtPrezime.getText(), LocalDate.parse(txtDatum.getText(), formatiran), txtAdresa.getText(), 
+							txtTelefon.getText(), txtEmail.getText(), txtAdresaKancelarije.getText(), txtLicna.getText(), titulaSt, zvanjeSt);
 					setVisible(false);
 				}
 				

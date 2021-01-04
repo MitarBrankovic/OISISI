@@ -1,6 +1,8 @@
 package controller;
 
 
+import java.time.LocalDate;
+
 /* REFERENCIRAN KOD: pojedini delovi koda preuzeti sa vezbi 5
 */
 
@@ -24,7 +26,7 @@ private static ProfesoriController instance = null;
 	private ProfesoriController() {}
 	
 	
-	public void addProfesor(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
+	public void addProfesor(String ime, String prezime, LocalDate datumRodjenja, String adresaStanovanja, String kontaktTelefon,
 			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) 
 	{
 		BazaProfesora.getInstance().dodajProfesora(ime,prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email,adresaKancelarije, brojLicneKarte, titula, zvanje);
@@ -32,7 +34,7 @@ private static ProfesoriController instance = null;
 	}
 	
 	
-	public void editProfesor(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
+	public void editProfesor(String ime, String prezime, LocalDate datumRodjenja, String adresaStanovanja, String kontaktTelefon,
 			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
 		BazaProfesora.getInstance().izmeniProfesora(ime,prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email,adresaKancelarije, brojLicneKarte, titula, zvanje);
 		TabPane.getInstance().azurirajProfesori();	

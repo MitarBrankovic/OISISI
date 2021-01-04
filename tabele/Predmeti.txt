@@ -1,8 +1,8 @@
-eng1, Engleski 1, LETNJI, 1, 3, Masa Pavlovic
+eng1, Engleski 1, ZIMSKI, 1, 3, Ana Djordjevic
 nans, Numericki algoritmi i numericki softver, LETNJI, 3, 4, Ana Djordjevic
-fiz, Fizika, LETNJI, 3, 9, Petar Ivanovic
+fiz, Fizika, LETNJI, 3, 9, Marko Ivanovic
 pjisp, Programski jezici i strukture podataka, ZIMSKI, 1, 9, Sara Dimitrijevic
-miss, Modeliranje i simulacija sistema, LETNJI, 1, 8, Petar Cvetkovic
+miss, Modeliranje i simulacija sistema, LETNJI, 1, 8, Petarr Cvetkovic
 visp, Verovatnoca i slucajni procesi, ZIMSKI, 1, 5, Una Djordjevic
 arh, Arhitektura racunara, LETNJI, 1, 9, Una Djordjevic
 sppurv1, Sistemska programska podrska u realnom vremenu 1, LETNJI, 2, 6, Luka Markovic

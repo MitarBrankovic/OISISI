@@ -9,6 +9,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import view.AbstractTableNepolozeni;
@@ -68,8 +70,10 @@ public class BazaProfesora {
 				
 				kolone = naredni.split("\\,");
 				
-				profesori.add(new Profesor( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), Integer.parseInt(kolone[4].trim()), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[8].trim(), kolone[9].trim()));
-				tmpProfesori.add(new Profesor( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), Integer.parseInt(kolone[4].trim()), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[8].trim(), kolone[9].trim()));
+				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+				
+				profesori.add(new Profesor( kolone[0].trim(), kolone[1].trim(), LocalDate.parse(kolone[2].trim(), formatiran), kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[8].trim(), kolone[9].trim()));
+				tmpProfesori.add(new Profesor( kolone[0].trim(), kolone[1].trim(), LocalDate.parse(kolone[2].trim(), formatiran), kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[8].trim(), kolone[9].trim()));
 
 			}
 	
@@ -198,7 +202,7 @@ public class BazaProfesora {
 		
 	
 	
-	public void dodajProfesora(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
+	public void dodajProfesora(String ime, String prezime, LocalDate datumRodjenja, String adresaStanovanja, String kontaktTelefon,String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
 		this.profesori.add(new Profesor(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email, adresaKancelarije, brojLicneKarte, titula, zvanje));
 		this.tmpProfesori.add(new Profesor(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email, adresaKancelarije, brojLicneKarte, titula, zvanje));
 
@@ -243,7 +247,7 @@ public class BazaProfesora {
 	}
 	
 	
-	public void izmeniProfesora(String ime, String prezime, String datumRodjenja, String adresaStanovanja, int kontaktTelefon,
+	public void izmeniProfesora(String ime, String prezime, LocalDate datumRodjenja, String adresaStanovanja, String kontaktTelefon,
 			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
 		for(Profesor i : profesori) {
 			if(i.getBrojLicneKarte().equals(brojLicneKarte)) {
