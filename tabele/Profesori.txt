@@ -1,20 +1,20 @@
-Masa, Pavlovic, 12.11.1973., Ravanicka 29, 021246674, MasaPavlovic15@gmail.com, Bulevar patrijarha Pavla 73, 023678123, doktor nauka, vanredni profesor
-Ana, Djordjevic, 17.4.1969., Bulevar kralja Petra I 39, 021507063, AnaDjordjevic6@gmail.com, Gogoljeva 1, 617633321, doktor nauka, vanredni profesor
-Petar, Ivanovic, 14.8.1980., Bulevar oslobođenja 9, 021874350, PetarIvanovic19@gmail.com, Ravanicka 47, 947411132, magistar, redovni profesor
-Sara, Dimitrijevic, 1.10.1962., Danila Kisa 47, 021507119, SaraDimitrijevic4@gmail.com, Mise Dimitrijevica 61, 019201331, doktor nauka, vanredni profesor
-Petar, Cvetkovic, 12.5.1964., Podgoricka 60, 021209694, PetarCvetkovic8@gmail.com, Dr Ivana Ribara 75, 990733112, magistar, redovni profesor
-Una, Djordjevic, 16.2.1974., Boska Buhe 35, 021176739, UnaDjordjevic3@gmail.com, Mise Dimitrijevica 55, 557783223, doktor nauka, vanredni profesor
-Ema, Djordjevic, 5.2.1965., Tolstojeva 48, 021856300, UnaDjordjevic9@gmail.com, Dr Ivana Ribara 71, 321816132, doktor nauka, vanredni profesor
-Luka, Markovic, 11.5.1971., Resavska 41, 021694027, LukaMarkovic15@gmail.com, Brace Ribnikar 57, 891505213, magistar, redovni profesor
-Mila, Markovic, 23.3.1962., Bulevar kralja Petra I 10, 021830250, MilaMarkovic15@gmail.com, Balzakova 52, 531511321, doktor nauka, vanredni profesor
-Ognjen, Ivanovic, 23.9.1984., Bulevar patrijarha Pavla 49, 021309304, OgnjenIvanovic20@gmail.com, Gogoljeva 44, 758184123, doktor nauka, redovni profesor
-Masa, Jankovic, 8.4.1982., Bulevar cara Lazara 31, 021565099, MasaJankovic14@gmail.com, Narodnog fronta 53, 155839321, magistar, vanredni profesor
-Bogdan, Dimitrijevic, 18.4.1968., Bulevar cara Lazara 37, 021185404, BogdanDimitrijevic6@gmail.com, Bulevar Jase Tomica 100, 139863222, doktor nauka, redovni profesor
-Filip, Pavlovic, 8.8.1962., Bulevar kneza Milosa 3, 021433753, FilipPavlovic3@gmail.com, Bulevar vojvode Stepe 86, 809651111, doktor nauka, vanredni profesor
-Lazar, Kostic, 23.11.1974., Dr Sime Milosevica 33, 021942119, LazarKostic5@gmail.com, Bulevar Evrope 94, 434939321, magistar, vanredni profesor
-Luka, Djordjevic, 23.6.1971., Dr Sime Milosevica 94, 021107563, LukaDjordjevic9@gmail.com, Vojvodjanska 83, 838397111, doktor nauka, vanredni profesor
-Andrej, Jovanovic, 1.1.1984., Podgoricka 79, 021986475, AndrejJovanovic2@gmail.com, Sekspirova 24, 672331133, doktor nauka, vanredni profesor
-Una, Milosevic, 15.2.1984., Drage Spasic 80, 021488280, UnaMilosevic2@gmail.com, Bulevar kneza Milosa 51, 864527311, magistar, redovni profesor
-Lazar, Tomic, 7.3.1973., Danila Kisa 74, 021787834, LazarTomic11@gmail.com, Suboticki bulevar 73, 947057222, doktor nauka, vanredni profesor
-Kosta, Kovacevic, 24.2.1969., Bulevar Jase Tomica 30, 021678850, KostaKovacevic1@gmail.com, Lasla Gala 90, 508479132, magistar, vanredni profesor
-Sofija, Todorovic, 7.7.1978., Dragise Brašovana 62, 021128880, SofijaTodorovic12@gmail.com, Vojvode Knicanina 48, 283700213, doktor nauka, redovni profesor
+Masa, Pavlovic, 12.11.1973., Ravanicka 29, 21246674, MasaPavlovic15@gmail.com, Bulevar patrijarha Pavla 73, 023678123, doktor nauka, vanredni profesor
+Ana, Djordjevic, 17.4.1969., Bulevar kralja Petra I 39, 21507063, AnaDjordjevic6@gmail.com, Gogoljeva 1, 617633321, doktor nauka, vanredni profesor
+Petar, Ivanovic, 14.8.1980., Bulevar oslobođenja 9, 21874350, PetarIvanovic19@gmail.com, Ravanicka 47, 947411132, magistar, redovni profesor
+Sara, Dimitrijevic, 1.10.1962., Danila Kisa 47, 21507119, SaraDimitrijevic4@gmail.com, Mise Dimitrijevica 61, 019201331, doktor nauka, vanredni profesor
+Petar, Cvetkovic, 12.5.1964., Podgoricka 60, 21209694, PetarCvetkovic8@gmail.com, Dr Ivana Ribara 75, 990733112, magistar, redovni profesor
+Una, Djordjevic, 16.2.1974., Boska Buhe 35, 21176739, UnaDjordjevic3@gmail.com, Mise Dimitrijevica 55, 557783223, doktor nauka, vanredni profesor
+Ema, Djordjevic, 5.2.1965., Tolstojeva 48, 21856300, UnaDjordjevic9@gmail.com, Dr Ivana Ribara 71, 321816132, doktor nauka, vanredni profesor
+Luka, Markovic, 11.5.1971., Resavska 41, 21694027, LukaMarkovic15@gmail.com, Brace Ribnikar 57, 891505213, magistar, redovni profesor
+Mila, Markovic, 23.3.1962., Bulevar kralja Petra I 10, 21830250, MilaMarkovic15@gmail.com, Balzakova 52, 531511321, doktor nauka, vanredni profesor
+Ognjen, Ivanovic, 23.9.1984., Bulevar patrijarha Pavla 49, 21309304, OgnjenIvanovic20@gmail.com, Gogoljeva 44, 758184123, doktor nauka, redovni profesor
+Masa, Jankovic, 8.4.1982., Bulevar cara Lazara 31, 21565099, MasaJankovic14@gmail.com, Narodnog fronta 53, 155839321, magistar, vanredni profesor
+Bogdan, Dimitrijevic, 18.4.1968., Bulevar cara Lazara 37, 21185404, BogdanDimitrijevic6@gmail.com, Bulevar Jase Tomica 100, 139863222, doktor nauka, redovni profesor
+Filip, Pavlovic, 8.8.1962., Bulevar kneza Milosa 3, 21433753, FilipPavlovic3@gmail.com, Bulevar vojvode Stepe 86, 809651111, doktor nauka, vanredni profesor
+Lazar, Kostic, 23.11.1974., Dr Sime Milosevica 33, 21942119, LazarKostic5@gmail.com, Bulevar Evrope 94, 434939321, magistar, vanredni profesor
+Luka, Djordjevic, 23.6.1971., Dr Sime Milosevica 94, 21107563, LukaDjordjevic9@gmail.com, Vojvodjanska 83, 838397111, doktor nauka, vanredni profesor
+Andrej, Jovanovic, 1.1.1984., Podgoricka 79, 21986475, AndrejJovanovic2@gmail.com, Sekspirova 24, 672331133, doktor nauka, vanredni profesor
+Una, Milosevic, 15.2.1984., Drage Spasic 80, 21488280, UnaMilosevic2@gmail.com, Bulevar kneza Milosa 51, 864527311, magistar, redovni profesor
+Lazar, Tomic, 7.3.1973., Danila Kisa 74, 21787834, LazarTomic11@gmail.com, Suboticki bulevar 73, 947057222, doktor nauka, vanredni profesor
+Kosta, Kovacevic, 24.2.1969., Bulevar Jase Tomica 30, 21678850, KostaKovacevic1@gmail.com, Lasla Gala 90, 508479132, magistar, vanredni profesor
+Sofija, Todorovic, 7.7.1978., Dragise Brašovana 62, 21128880, SofijaTodorovic12@gmail.com, Vojvode Knicanina 48, 283700213, doktor nauka, redovni profesor

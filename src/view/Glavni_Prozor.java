@@ -2,6 +2,8 @@ package view;
 
 import javax.swing.*;
 
+import controller.SerijalizacijaController;
+
 import java.awt.*;
 
 
@@ -46,7 +48,7 @@ public class Glavni_Prozor extends JFrame{
 		
 		setVisible(true);
 		
-		
+		addWindowListener(new SerijalizacijaController());
 	}
 	
 	public Glavni_Prozor getProzor() {

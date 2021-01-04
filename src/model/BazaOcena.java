@@ -91,7 +91,7 @@ public class BazaOcena {
 				ocena = Integer.parseInt(kolone[2].trim());
 				datum = kolone[3].trim();
 
-				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 				
 				for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
 					if(p.getSifraPredmeta().equals(sifra) == true) {
@@ -156,7 +156,10 @@ public class BazaOcena {
 	}
 	
 	
-
+	public ArrayList<Ocena> getOcene(){
+		return ocene;
+	}
+	
 	private String indeks;
 	public void setIndkes(String brojIndeksa) {
 		this.indeks = brojIndeksa;
