@@ -233,16 +233,32 @@ public class BazaProfesora {
 	
 	public void searchProfesor(String tekst) {
 		
+		String[] splited = tekst.split("\\s+");
+		
 		if(tekst.equals("")) {
 			this.profesori=this.tmpProfesori;
 			listaProfesora.removeAll(listaProfesora);
 		}else {
-			for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
-				if(p.getPrezime().toLowerCase().contains(tekst.toLowerCase())) {
-					listaProfesora.add(p);
+			if(splited.length == 1) {
+				for(Profesor s : BazaProfesora.getInstance().getProfesori()) {
+					if(s.getPrezime().toLowerCase().contains(splited[0].toLowerCase())) {
+						listaProfesora.add(s);
+					}
+				
+				}
+			} 
+			
+			if(splited.length == 2){
+				for(Profesor s : BazaProfesora.getInstance().getProfesori()) {
+					if(s.getPrezime().toLowerCase().contains(splited[0].toLowerCase()) 
+							&& s.getIme().toLowerCase().contains(splited[1].toLowerCase())) {
+						listaProfesora.add(s);
+					}
+				
 				}
 			}
-		BazaProfesora.getInstance().setProfesoriLista(listaProfesora);
+			BazaProfesora.getInstance().setProfesoriLista(listaProfesora);
+
 		}
 	}
 	
