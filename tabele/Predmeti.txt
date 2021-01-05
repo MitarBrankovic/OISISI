@@ -4,7 +4,7 @@ fiz, Fizika, LETNJI, 3, 9, Marko Ivanovic
 pjisp, Programski jezici i strukture podataka, ZIMSKI, 1, 9, Sara Dimitrijevic
 miss, Modeliranje i simulacija sistema, LETNJI, 1, 8, Petarr Cvetkovic
 visp, Verovatnoca i slucajni procesi, ZIMSKI, 1, 5, Una Djordjevic
-arh, Arhitektura racunara, LETNJI, 1, 9, Una Djordjevic
+arh, Arhitektura racunara, LETNJI, 1, 9, null
 sppurv1, Sistemska programska podrska u realnom vremenu 1, LETNJI, 2, 6, Luka Markovic
 eng2, Engleski 2, LETNJI, 2, 3, Mila Markovic
 ma2, Matematicka analiza 2, LETNJI, 3, 8, Ognjen Ivanovic
@@ -16,6 +16,6 @@ oisisi, Osnovi informacionih sistema i softverskog inzenjerstva, LETNJI, 3, 6, L
 mo, Metode optimizacije, LETNJI, 1, 8, Luka Djordjevic
 os, Operativni sistemi, ZIMSKI, 3, 8, Andrej Jovanovic
 bp1, Baze podataka 1, LETNJI, 1, 8, null
-sau, Sistemi automatskog upravljanja, LETNJI, 1, 7, Lazar Tomic
+sau, Sistemi automatskog upravljanja, LETNJI, 1, 7, null
 sat, Socioloski aspekti tehnickog razvoja, ZIMSKI, 3, 3, Lazar Tomic
 op, Objektno programiranje, LETNJI, 2, 8, Kosta Kovacevic

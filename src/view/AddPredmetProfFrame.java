@@ -49,7 +49,9 @@ public class AddPredmetProfFrame extends JDialog{
 		
 		ArrayList<Predmet> sviPredmeti = new ArrayList<Predmet>();
 		for(Predmet p: BazaPredmeta.getInstance().getPredmeti()) {
-			sviPredmeti.add(p);
+			if(p.getPredmetniProfesor() == null) {
+				sviPredmeti.add(p);
+			}
 		}
 
 		ArrayList<Predmet> predmetiPredaje = new ArrayList<Predmet>();

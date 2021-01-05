@@ -302,6 +302,7 @@ public class BazaProfesora {
 		}
 		
 		prof.getSpisakPredmeta().add(pred);
+		pred.setPredmetniProfesor(prof);
 	}
 	
 	public void ukloniPredmet(String sifra, String brLicne) {
@@ -321,6 +322,7 @@ public class BazaProfesora {
 		}
 		
 		prof.getSpisakPredmeta().remove(pred);
+		pred.setPredmetniProfesor(null);
 		
 	}
 	

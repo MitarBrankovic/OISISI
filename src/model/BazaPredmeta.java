@@ -188,7 +188,9 @@ public class BazaPredmeta {
 	public void izbrisiProfesoraSaPredmeta(String sifra) {
 		for(Predmet i : predmeti) {
 			if(i.getSifraPredmeta().equals(sifra)) {
+				Profesor prof = i.getPredmetniProfesor();
 				i.setPredmetniProfesor(null);
+				prof.getSpisakPredmeta().remove(i);
 				break;
 			}
 		}
@@ -196,7 +198,9 @@ public class BazaPredmeta {
 		try {
 			for(Predmet i : tmpPredmeti) {
 				if(i.getSifraPredmeta().equals(sifra)) {
+					Profesor prof = i.getPredmetniProfesor();
 					i.setPredmetniProfesor(null);
+					prof.getSpisakPredmeta().remove(i);
 					break;
 				}
 			}

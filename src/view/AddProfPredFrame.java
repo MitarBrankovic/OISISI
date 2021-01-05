@@ -77,6 +77,7 @@ public class AddProfPredFrame extends JDialog  {
 						profa = objProfesor.getImePrezime();
 						EditPredmetFrame.txtPredmetniProfesor.setText(profa);
 						predm.setPredmetniProfesor(objProfesor);
+						objProfesor.getSpisakPredmeta().add(predm);
 						setVisible(false);
 					}					
 				}

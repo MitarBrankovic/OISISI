@@ -142,7 +142,7 @@ public class EditPredmetFrame extends JDialog {
 				if(/*txtPredmetniProfesor.getText().isEmpty() ||*/ pred.getPredmetniProfesor()==null){
 					AddProfPredFrame apf = new AddProfPredFrame();
 					apf.setVisible(true);
-				}	
+				}
 			}				
 		});
 		
