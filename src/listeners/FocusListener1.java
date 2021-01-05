@@ -14,13 +14,17 @@ public class FocusListener1 implements FocusListener {
 	public void focusGained(FocusEvent arg0) {
 		JTextField txt = (JTextField) arg0.getComponent();
 		txt.setBackground(Color.WHITE);	
+	
+		if(txt.getText().equals("Unesite ponovo!")){
+			txt.setText("");
+		}
 	}
 
 	@Override
 	public void focusLost(FocusEvent arg0) {
 		
 		JTextField txt = (JTextField) arg0.getComponent();
-		txt.setBackground(Color.GRAY);
+		//txt.setBackground(Color.GRAY);
 
 		if (txt.getName().equals("tekst") || txt.getName().equals("ime")) {
 

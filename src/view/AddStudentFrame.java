@@ -8,11 +8,15 @@ import java.time.format.DateTimeFormatter;
 
 import listeners.FocusListener1;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import controller.StudentiController;
 import model.*;
 
 public class AddStudentFrame extends JDialog {
 	
+	JButton potvrdi = new JButton("Potvrdi");
 	private static final long serialVersionUID = -7995869934266012394L;
 	private StudentStatus stat;
 	
@@ -38,6 +42,25 @@ public class AddStudentFrame extends JDialog {
 		txtIme.setName("tekst");
 		txtIme.setToolTipText("npr. Nikola");
 		txtIme.addFocusListener(focus);
+		txtIme.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				praznoPolje(txtIme);
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				praznoPolje(txtIme);
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				praznoPolje(txtIme);
+			}
+			
+			
+		});
 		
 		pIme.add(lIme);
 		pIme.add(txtIme);
@@ -52,6 +75,23 @@ public class AddStudentFrame extends JDialog {
 		txtPrezime.setName("tekst");
 		txtPrezime.setToolTipText("npr. Tesla");
 		txtPrezime.addFocusListener(focus);
+		txtPrezime.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				praznoPolje(txtPrezime);
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				praznoPolje(txtPrezime);
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				praznoPolje(txtPrezime);
+			}
+		});
 		
 		pPrezime.add(lPrezime);
 		pPrezime.add(txtPrezime);
@@ -65,6 +105,23 @@ public class AddStudentFrame extends JDialog {
 		txtDatum.setName("tekst");
 		txtDatum.setToolTipText("npr. 10.07.1856.");
 		txtDatum.addFocusListener(focus);
+		txtDatum.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				praznoPolje(txtDatum);
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				praznoPolje(txtDatum);
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				praznoPolje(txtDatum);
+			}			
+		});
 		
 		pDatum.add(lDatum);
 		pDatum.add(txtDatum);
@@ -78,6 +135,23 @@ public class AddStudentFrame extends JDialog {
 		txtAdresa.setName("tekst");
 		txtAdresa.setToolTipText("npr. Futoska 10");
 		txtAdresa.addFocusListener(focus);
+		txtAdresa.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				praznoPolje(txtAdresa);
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				praznoPolje(txtAdresa);
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				praznoPolje(txtAdresa);
+			}		
+		});
 		
 		pAdresa.add(lAdresa);
 		pAdresa.add(txtAdresa);
@@ -91,6 +165,23 @@ public class AddStudentFrame extends JDialog {
 		txtTelefon.setName("tekst");
 		txtTelefon.setToolTipText("npr. 021123456");
 		txtTelefon.addFocusListener(focus);
+		txtTelefon.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				praznoPolje(txtTelefon);
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				praznoPolje(txtTelefon);
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				praznoPolje(txtTelefon);
+			}			
+		});
 		
 		pTelefon.add(lTelefon);
 		pTelefon.add(txtTelefon);
@@ -104,6 +195,23 @@ public class AddStudentFrame extends JDialog {
 		txtEmail.setName("tekst");
 		txtEmail.setToolTipText("npr. NikolaTesla@gmail.com");
 		txtEmail.addFocusListener(focus);
+		txtEmail.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				praznoPolje(txtEmail);
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				praznoPolje(txtEmail);
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				praznoPolje(txtEmail);
+			}		
+		});
 		
 		pEmail.add(lEmail);
 		pEmail.add(txtEmail);
@@ -117,6 +225,23 @@ public class AddStudentFrame extends JDialog {
 		txtIndeks.setName("tekst");
 		txtIndeks.setToolTipText("npr. RA/132");
 		txtIndeks.addFocusListener(focus);
+		txtIndeks.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				praznoPolje(txtIndeks);
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				praznoPolje(txtIndeks);
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				praznoPolje(txtIndeks);
+			}		
+		});
 		
 		pIndeks.add(lIndeks);
 		pIndeks.add(txtIndeks);
@@ -131,6 +256,26 @@ public class AddStudentFrame extends JDialog {
 		txtGodinaUpisa.setName("tekst");
 		txtGodinaUpisa.setToolTipText("npr. 2020");
 		txtGodinaUpisa.addFocusListener(focus);
+		
+		txtGodinaUpisa.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				praznoPolje(txtGodinaUpisa);
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				praznoPolje(txtGodinaUpisa);
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				praznoPolje(txtGodinaUpisa);
+			}
+			
+			
+		});
 		
 		pGodinaUpisa.add(lGodinaUpisa);
 		pGodinaUpisa.add(txtGodinaUpisa);
@@ -200,7 +345,7 @@ public class AddStudentFrame extends JDialog {
 		
 		
 		JPanel donjiPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		JButton potvrdi = new JButton("Potvrdi");
+		//JButton potvrdi = new JButton("Potvrdi");
 		JButton odustani = new JButton("Odustani");
 		odustani.addActionListener(new ActionListener() {
 			
@@ -370,4 +515,14 @@ public class AddStudentFrame extends JDialog {
 		}
 		return true;
 	}
+	
+	  public void praznoPolje(JTextField nesto) {
+		     if (nesto.getText().isEmpty() || nesto == null || nesto.getText().length()==0){
+		       potvrdi.setEnabled(false);
+		     }
+		     else {
+		    	 potvrdi.setEnabled(true);
+		    }
+
+		  }
 }

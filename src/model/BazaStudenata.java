@@ -214,15 +214,41 @@ public class BazaStudenata {
 	
 	public void searchStudent(String tekst) {
 		
+		String[] splited = tekst.split("\\s+");
+		
 		if(tekst.equals("")) {
 			this.studenti=this.tmpStudenti;
 			listaStudenata.removeAll(listaStudenata);
 		}else {
-			for(Student s : BazaStudenata.getInstance().getStudenti()) {
-				if(s.getPrezime().toLowerCase().contains(tekst.toLowerCase())) {
-					listaStudenata.add(s);
+			
+			if(splited.length == 1) {
+				for(Student s : BazaStudenata.getInstance().getStudenti()) {
+					if(s.getPrezime().toLowerCase().contains(splited[0].toLowerCase())) {
+						listaStudenata.add(s);
+					}
+				
 				}
 			}
+			
+			if(splited.length == 2) {
+				for(Student s : BazaStudenata.getInstance().getStudenti()) {
+					if(s.getPrezime().toLowerCase().contains(splited[0].toLowerCase()) && s.getIme().toLowerCase().contains(splited[1].toLowerCase())) {
+						listaStudenata.add(s);
+					}
+				
+				}
+			}
+			
+			
+			if(splited.length == 3) {
+				for(Student s : BazaStudenata.getInstance().getStudenti()) {
+					if(s.getPrezime().toLowerCase().contains(splited[0].toLowerCase()) && s.getIme().toLowerCase().contains(splited[1].toLowerCase()) && s.getBrojIndeksa().toLowerCase().contains(splited[2].toLowerCase())) {
+						listaStudenata.add(s);
+					}
+				
+				}
+			}
+
 		BazaStudenata.getInstance().setStudentiLista(listaStudenata);
 		}
 	}
