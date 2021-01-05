@@ -1,4 +1,3 @@
-eng1, Engleski 1, ZIMSKI, 1, 3, null
 nans, Numericki algoritmi i numericki softver, LETNJI, 3, 4, Ana Djordjevic
 fiz, Fizika, LETNJI, 3, 9, Marko Ivanovic
 pjisp, Programski jezici i strukture podataka, ZIMSKI, 1, 9, Sara Dimitrijevic

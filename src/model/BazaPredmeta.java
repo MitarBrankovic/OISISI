@@ -211,15 +211,43 @@ public class BazaPredmeta {
 	
 	public void izbrisiPredmet(String indeks) {
 		for(Predmet i : predmeti) {
-			if(i.getSifraPredmeta() == indeks) {
+			if(i.getSifraPredmeta().equals(indeks)) {
+				Profesor objProf = null;
+				objProf = i.getPredmetniProfesor();
+				if(objProf != null) {
+					objProf.getSpisakPredmeta().remove(i);
+				}
+				ArrayList<Ocena> oceneBrisanje = new ArrayList<Ocena>();
+				for(Ocena o : BazaOcena.getInstance().getOcene()) {
+					if(o.getPredmet().getSifraPredmeta().equals(indeks)){
+						o.getStudent().getSpisakNepolozenihPredmeta().remove(o);
+						o.getStudent().getSpisakPolozenihPredmeta().remove(o);
+						oceneBrisanje.add(o);
+					}
+				}
 				predmeti.remove(i);
+				BazaOcena.getInstance().getOcene().removeAll(oceneBrisanje);
 				break;
 			}
 		}
 		try {
 			for(Predmet i : tmpPredmeti) {
-				if(i.getSifraPredmeta() == indeks) {
+				if(i.getSifraPredmeta().equals(indeks)) {
+					Profesor objProf = null;
+					objProf = i.getPredmetniProfesor();
+					if(objProf != null) {
+						objProf.getSpisakPredmeta().remove(i);
+					}
+					ArrayList<Ocena> oceneBrisanje = new ArrayList<Ocena>();
+					for(Ocena o : BazaOcena.getInstance().getOcene()) {
+						if(o.getPredmet().getSifraPredmeta().equals(indeks)){
+							oceneBrisanje.add(o);
+							o.getStudent().getSpisakNepolozenihPredmeta().remove(o);
+							o.getStudent().getSpisakPolozenihPredmeta().remove(o);
+						}
+					}
 					tmpPredmeti.remove(i);
+					BazaOcena.getInstance().getOcene().removeAll(oceneBrisanje);
 					break;
 				}
 			}
