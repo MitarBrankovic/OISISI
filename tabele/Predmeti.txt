@@ -1,4 +1,4 @@
-eng1, Engleski 1, ZIMSKI, 1, 3, Ana Djordjevic
+eng1, Engleski 1, ZIMSKI, 1, 3, null
 nans, Numericki algoritmi i numericki softver, LETNJI, 3, 4, Ana Djordjevic
 fiz, Fizika, LETNJI, 3, 9, Marko Ivanovic
 pjisp, Programski jezici i strukture podataka, ZIMSKI, 1, 9, Sara Dimitrijevic
@@ -8,14 +8,14 @@ arh, Arhitektura racunara, LETNJI, 1, 9, Una Djordjevic
 sppurv1, Sistemska programska podrska u realnom vremenu 1, LETNJI, 2, 6, Luka Markovic
 eng2, Engleski 2, LETNJI, 2, 3, Mila Markovic
 ma2, Matematicka analiza 2, LETNJI, 3, 8, Ognjen Ivanovic
-alg, Algebra, LETNJI, 1, 9, Masa Jankovic
+alg, Algebra, LETNJI, 1, 9, null
 oet, Osnovi elektrotehnike, ZIMSKI, 3, 9, Bogdan Dimitrijevic
 lprs1, Logicko projektovanje racunarskih sistema 1, ZIMSKI, 1, 6, Filip Pavlovic
 ma1, Matematicka analiza 1, LETNJI, 3, 9, Lazar Kostic
 oisisi, Osnovi informacionih sistema i softverskog inzenjerstva, LETNJI, 3, 6, Lazar Kostic
 mo, Metode optimizacije, LETNJI, 1, 8, Luka Djordjevic
 os, Operativni sistemi, ZIMSKI, 3, 8, Andrej Jovanovic
-bp1, Baze podataka 1, LETNJI, 1, 8, Una Milosevic
+bp1, Baze podataka 1, LETNJI, 1, 8, null
 sau, Sistemi automatskog upravljanja, LETNJI, 1, 7, Lazar Tomic
 sat, Socioloski aspekti tehnickog razvoja, ZIMSKI, 3, 3, Lazar Tomic
 op, Objektno programiranje, LETNJI, 2, 8, Kosta Kovacevic

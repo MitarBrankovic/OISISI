@@ -139,7 +139,7 @@ public class EditPredmetFrame extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(txtPredmetniProfesor.getText().isEmpty()){
+				if(/*txtPredmetniProfesor.getText().isEmpty() ||*/ pred.getPredmetniProfesor()==null){
 					AddProfPredFrame apf = new AddProfPredFrame();
 					apf.setVisible(true);
 				}	
@@ -185,8 +185,11 @@ public class EditPredmetFrame extends JDialog {
 		
 		txtEspb.setText(String.valueOf(pred.getEspb()));
 		//txtPredmetniProfesor.setText(String.valueOf(pred.getPredmetniProfesor()));
-		txtPredmetniProfesor.setText(pred.getPredmetniProfesor().getImePrezime());
-		
+		if(pred.getPredmetniProfesor() == null) {
+			txtPredmetniProfesor.setText("");
+		}else {
+			txtPredmetniProfesor.setText(pred.getPredmetniProfesor().getImePrezime());
+		}
 		
 		
 		
@@ -207,7 +210,7 @@ public class EditPredmetFrame extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				if(txtSifra.getText().equals("") || txtNaziv.getText().equals("") || txtEspb.getText().equals("") || txtPredmetniProfesor.getText().equals("")) {
+				if(txtSifra.getText().equals("") || txtNaziv.getText().equals("") || txtEspb.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Niste popunili sva polja!", "",JOptionPane.ERROR_MESSAGE);
 				}else if(txtSifra.getText().matches("[a-žA-Ž0-9]+") == false) {
 						JOptionPane.showMessageDialog(null, "Sifra nije dobro uneta","",JOptionPane.ERROR_MESSAGE);
@@ -215,8 +218,6 @@ public class EditPredmetFrame extends JDialog {
 					JOptionPane.showMessageDialog(null, "Naziv nije dobro unet","",JOptionPane.ERROR_MESSAGE);	
 				}else if(isNumber(txtEspb.getText()) == false) {
 					JOptionPane.showMessageDialog(null, "ESPB nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				}else if(txtPredmetniProfesor.getText().matches("[a-žA-Ž ]*") == false) {
-					JOptionPane.showMessageDialog(null, "Profesor nije dobro unet","",JOptionPane.ERROR_MESSAGE);	
 				}else {
 
 					int god;

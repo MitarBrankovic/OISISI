@@ -71,10 +71,13 @@ public class BazaPredmeta {
 				
 				Profesor objProfesor = null;
 				String profImePrezime = kolone[5].trim();
-				
-				for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
-					if(p.getImePrezime().equals(profImePrezime) == true) {
-						objProfesor = p;
+				if(profImePrezime.contains("null")) {
+					objProfesor = null;
+				}else {
+					for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
+						if(p.getImePrezime().equals(profImePrezime) == true) {
+							objProfesor = p;
+						}
 					}
 				}
 				
@@ -83,7 +86,9 @@ public class BazaPredmeta {
 				Predmet pred = new Predmet( kolone[0].trim(), kolone[1].trim(), semestar1, Integer.parseInt(kolone[3].trim()), Integer.parseInt(kolone[4].trim()), objProfesor);
 				predmeti.add(pred);
 				tmpPredmeti.add(pred);
-				objProfesor.getSpisakPredmeta().add(pred);
+				
+				if(objProfesor != null)
+					objProfesor.getSpisakPredmeta().add(pred);
 			}
 			
 			reader.close();
@@ -187,6 +192,7 @@ public class BazaPredmeta {
 				break;
 			}
 		}
+		
 		try {
 			for(Predmet i : tmpPredmeti) {
 				if(i.getSifraPredmeta().equals(sifra)) {

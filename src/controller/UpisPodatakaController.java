@@ -45,9 +45,15 @@ public class UpisPodatakaController {
 				}else if(predmet.getSemestar() == PredmetSemestar.zimski){
 					semestar = "ZIMSKI";
 				}
+				String profesor = "";
+				if(predmet.getPredmetniProfesor() == null) {
+					profesor = "null";
+				}else {
+					profesor = predmet.getPredmetniProfesor().getImePrezime();
+				}
 				StringBuilder s = new StringBuilder("");
 				s.append(predmet.getSifraPredmeta()+", "+predmet.getNazivPredmeta()+", "+semestar+", "
-						+predmet.getGodinaStudija()+", "+ predmet.getEspb() + ", " +predmet.getPredmetniProfesor().getImePrezime());	
+						+predmet.getGodinaStudija()+", "+ predmet.getEspb() + ", " + profesor);	
 				
 				out.write(s.toString());
 				out.write("\n");
