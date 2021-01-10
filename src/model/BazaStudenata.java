@@ -13,6 +13,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import view.EditStudentFrame;
+import view.PolozeniJTable;
+
 
 public class BazaStudenata {
 
@@ -70,8 +73,6 @@ public class BazaStudenata {
 				else
 					status = StudentStatus.S;
 				
-				//datumRodj = kolone[2].split("\\.");
-				//LocalDate lDate = LocalDate.of(Integer.parseInt(datumRodj[2]), Integer.parseInt(datumRodj[1]), Integer.parseInt(datumRodj[0]));
 				datumRodj = kolone[2];
 				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern(" dd.MM.yyyy.");
 				
@@ -285,5 +286,23 @@ public class BazaStudenata {
 		}
 		
 	}
+	
+	
+	public void prosekOcena(Student s) {
+		double avg = 0;
+		int brojac = 0;
+		
+		PolozeniJTable tabelaPolozenih = EditStudentFrame.getPol();
+		
+		for(int i = 0; i< tabelaPolozenih.getRowCount();i++) {
+			avg = avg + Integer.parseInt(tabelaPolozenih.getValueAt(i, 3).toString());
+			brojac++;
+		}
+
+		double prosecnaOcena = avg/brojac;
+		
+		s.setProsecnaOcena(prosecnaOcena);
+	}
+	
 	
 }

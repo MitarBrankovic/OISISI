@@ -6,7 +6,12 @@ package listeners;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
+
 import javax.swing.JTextField;
+
+import controller.Validator;
+import view.AddStudentFrame;
 
 public class FocusListener1 implements FocusListener {
 
@@ -26,6 +31,13 @@ public class FocusListener1 implements FocusListener {
 		JTextField txt = (JTextField) arg0.getComponent();
 		//txt.setBackground(Color.GRAY);
 
+		if(txt.getName().equals("ime") || txt.getName().equals("prezime")) {
+			boolean result = Validator.checkImePre(txt.getText());
+			if(!result)
+				txt.setBackground(Color.RED);
+		}
+		
+		
 		if (txt.getName().equals("tekst") || txt.getName().equals("ime")) {
 
 			if (txt.getText().trim().equals("") || txt.getText().trim().equals("Unesite ponovo!")) {
@@ -38,4 +50,9 @@ public class FocusListener1 implements FocusListener {
 			}
 		}
 	}
+	
+	
+	//public boolean checker() {
+		//ArrayList<JLabel> labele = AddStudentFrame.getLabele();	
+	//}
 }

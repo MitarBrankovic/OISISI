@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -17,10 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
-
 import controller.NepolozeniController;
 import controller.StudentiController;
 import listeners.FocusListener1;
@@ -35,13 +32,20 @@ public class EditStudentFrame extends JDialog {
 
 	private static final long serialVersionUID = -1126183099640299201L;
 
-    double avg;
+	private static double prosecnaOcena;
+	String result;
+	double ocenan;
+	private static JLabel lAvgOcena;
+	private static JLabel lUkupnoEspb;
 	private StudentStatus studStat;
-	//private static PredmetiJTable tabelaPredmeta;
 	private static PolozeniJTable tabelaPolozenih;
 	private static NepolozeniJTable tabelaNepolozenih;
 	private static int trenutniRed;
 	
+	//vraca tabelu pomocu koje se racuna prosek ocene
+	public static PolozeniJTable getPol() {
+		return tabelaPolozenih;
+	}
 	
 	public static void azurirajNepolozene() {
 		AbstractTableNepolozeni model=(AbstractTableNepolozeni)tabelaNepolozenih.getModel();
@@ -177,25 +181,7 @@ public class EditStudentFrame extends JDialog {
 		pGodinaUpisa.add(lGodinaUpisa);
 		pGodinaUpisa.add(txtGodinaUpisa);
 
-		
-		/*
-		JRadioButton prva = new JRadioButton("1");
-		JRadioButton druga = new JRadioButton("2");
-		JRadioButton treca = new JRadioButton("3");
-		JRadioButton cetvrta = new JRadioButton("4");
-	    ButtonGroup godinaStudija = new ButtonGroup();
-	    godinaStudija.add(prva);
-	    godinaStudija.add(druga);
-	    godinaStudija.add(treca);
-	    godinaStudija.add(cetvrta);
-	    JPanel pGodinaStudija = new JPanel(new FlowLayout(FlowLayout.LEFT));
-	    JLabel lGodinaStudija = new JLabel("Godina studija*: ");
-	    pGodinaStudija.add(lGodinaStudija);
-	    pGodinaStudija.add(prva);
-	    pGodinaStudija.add(druga);
-	    pGodinaStudija.add(treca);
-	    pGodinaStudija.add(cetvrta);
-		*/
+
 		String [] lista = {"I (prva)","II (druga)","III (treca)","IV (cetvrta)"};
 		JComboBox<Object> godine = new JComboBox<Object>(lista);
 	    JPanel pGodinaStudija = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -203,18 +189,7 @@ public class EditStudentFrame extends JDialog {
 	    lGodinaStudija.setPreferredSize(dim);
 	    pGodinaStudija.add(lGodinaStudija);
 	    pGodinaStudija.add(godine);
-		
-		
-		/*JRadioButton budzet = new JRadioButton("Budzet");
-		JRadioButton samofinansiranje = new JRadioButton("Samofinansiranje");
-	    ButtonGroup status = new ButtonGroup();
-	    status.add(budzet);
-	    status.add(samofinansiranje);
-	    JPanel pStatus = new JPanel(new FlowLayout(FlowLayout.LEFT));
-	    JLabel lStatus = new JLabel("Status*: ");
-	    pStatus.add(lStatus);
-	    pStatus.add(budzet);
-	    pStatus.add(samofinansiranje);*/
+
 
 	    
 		String [] lista2 = {"Budžet","Samofinansiranje"};
@@ -276,12 +251,6 @@ public class EditStudentFrame extends JDialog {
 		
 		BazaOcena.getInstance().setIndkes(st.getBrojIndeksa());
 		
-		/*DefaultListModel<String> tx = new DefaultListModel<String>();
-		int k = 0;
-		for(Ocena o : st.getSpisakPolozenihPredmeta()) {
-			tx.add(k++,o.getPredmet().getSifraPredmeta());
-		}*/
-		
 		
 		JPanel donjiPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JButton potvrdi = new JButton("Potvrdi");
@@ -290,7 +259,6 @@ public class EditStudentFrame extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//EditStudentFrame.getInstance().setVisible(false);
 				setVisible(false);
 			}	
 		});
@@ -317,8 +285,6 @@ public class EditStudentFrame extends JDialog {
 					JOptionPane.showMessageDialog(null, "Email nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 				}else if(txtIndeks.getText().matches("[A-Ž]+[0-9]+/[0-9]+") == false) {
 					JOptionPane.showMessageDialog(null, "Indeks nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				//}else if(validDate(txtGodinaUpisa.getText()) == false){
-					//JOptionPane.showMessageDialog(null, "Datum upisa nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 				}else {
 					int god;
 					String godina = godine.getSelectedItem().toString();
@@ -339,16 +305,15 @@ public class EditStudentFrame extends JDialog {
 					}else if(status1.equals("Samofinansiranje")) {
 						studStat = StudentStatus.S;
 					}
-					
-					//String[] datumRodj = txtDatum.getText().split("\\.");
-					//LocalDate lDate = LocalDate.of(Integer.parseInt(datumRodj[2]), Integer.parseInt(datumRodj[1]), Integer.parseInt(datumRodj[0]));
+
 					
 					String datumRodj = txtDatum.getText();
 					DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 					
 					StudentiController.getInstance().editStudent(txtIme.getText(), txtPrezime.getText(),LocalDate.parse(datumRodj, formatiran), txtAdresa.getText(),txtIndeks.getText(), txtTelefon.getText(),
-							txtEmail.getText(),Integer.parseInt(txtGodinaUpisa.getText()),god, studStat, avg);
+							txtEmail.getText(),Integer.parseInt(txtGodinaUpisa.getText()),god, studStat, prosecnaOcena);
 					setVisible(false);
+					TabPane.getInstance().azurirajStudenti();
 				}				
 			}
 		});
@@ -388,10 +353,7 @@ public class EditStudentFrame extends JDialog {
 		
 		JPanel ponistiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		ponistiPanel.setPreferredSize(new Dimension(450,50));					//malo je neprakticno
-		//JSeparator sep = new JSeparator();
-		//sep.setPreferredSize(new Dimension(50, 1));
 		JButton ponistiButton = new JButton("Ponisti ocenu");
-		//ponistiPanel.add(sep);
 		
 		ponistiButton.addActionListener(new ActionListener() {
 			
@@ -408,7 +370,12 @@ public class EditStudentFrame extends JDialog {
 							Predmet pred = ocen.getPredmet();
 							
 							StudentiController.getInstance().ponistiOcenu(stud.getBrojIndeksa(), pred.getSifraPredmeta());
-						//NepolozeniController.getInstance().removeNepolozeni(NepolozeniJTable.getInstance().getSelectedRow());
+							BazaStudenata.getInstance().prosekOcena(stud);
+							String result = String.format("%.2f", stud.getProsecnaOcena());
+							EditStudentFrame.getAvgOcena().setText(result);
+							EditStudentFrame.izracunajUkupnoEspb();
+							setProsOcena(stud.getProsecnaOcena()); 
+							TabPane.getInstance().azurirajStudenti();	
 						}
 						
 					}				
@@ -426,15 +393,12 @@ public class EditStudentFrame extends JDialog {
 		prosecnaOcenaPanel.setPreferredSize(new Dimension(450,50));
 		JLabel lProsecnaOcena = new JLabel("Prosecna Ocena: ");
 		lProsecnaOcena.setPreferredSize(dim);
+
 		
-		double sum = 0;
-		for(int i = 0; i< tabelaPolozenih.getRowCount();i++) {
-			sum = sum + Integer.parseInt(tabelaPolozenih.getValueAt(i, 3).toString());
-		}
-		avg = sum / tabelaPolozenih.getRowCount();
-		//String avg1 = String.valueOf(avg);
-		String result = String.format("%.2f", avg);
-		JLabel lAvgOcena = new JLabel(result);
+		result = String.format("%.2f", st.getProsecnaOcena());
+		lAvgOcena = new JLabel(result);
+ 
+		ocenan = st.getProsecnaOcena();
 		
 		prosecnaOcenaPanel.add(lProsecnaOcena);
 		prosecnaOcenaPanel.add(lAvgOcena);
@@ -442,18 +406,17 @@ public class EditStudentFrame extends JDialog {
 		
 		JPanel ukupnoEspbPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		ukupnoEspbPanel.setPreferredSize(new Dimension(450,50));
-		JLabel lUkupnoEspb = new JLabel("Ukupno ESPB: ");
-		lUkupnoEspb.setPreferredSize(dim);
+		JLabel lTekstUkupnoEspb = new JLabel("Ukupno ESPB: ");
+		lTekstUkupnoEspb.setPreferredSize(dim);
 		
-		double sum1 = 0;
-		for(int i = 0; i< tabelaPolozenih.getRowCount();i++) {
-			sum1 = sum1 + Integer.parseInt(tabelaPolozenih.getValueAt(i, 2).toString());
-		}
-		String ukupnoEspb = String.valueOf(sum1);
-		JLabel lUkupEspb = new JLabel(ukupnoEspb);
 		
+		
+		lUkupnoEspb = new JLabel();
+		izracunajUkupnoEspb();
+		
+		
+		ukupnoEspbPanel.add(lTekstUkupnoEspb);
 		ukupnoEspbPanel.add(lUkupnoEspb);
-		ukupnoEspbPanel.add(lUkupEspb);
 		
 		
 		Box boxProsecni = Box.createVerticalBox();
@@ -506,6 +469,7 @@ public class EditStudentFrame extends JDialog {
 					}else {
 						UpisOceneFrame uof = new UpisOceneFrame();
 						uof.setVisible(true);
+						
 					}				
 					
 			}
@@ -522,8 +486,7 @@ public class EditStudentFrame extends JDialog {
 					if(option == JOptionPane.YES_OPTION) {
 				
 					NepolozeniController.getInstance().removeNepolozeni(NepolozeniJTable.getInstance().getSelectedRow());
-					//setVisible(false);
-					//StudentiController.getInstance().removeStudent(StudentiJTable.getInstance().getSelectedRow());
+					
 					}
 				}catch (Exception e) {
 					JOptionPane.showMessageDialog(null, "Morate selektovati predmet!","",JOptionPane.ERROR_MESSAGE);
@@ -624,6 +587,22 @@ public class EditStudentFrame extends JDialog {
 		}
 		return true;
 	}
+	
+	public static JLabel getAvgOcena() {
+		return lAvgOcena;		
+	}
 
+	public static void izracunajUkupnoEspb() {
+		int sum1 = 0;
+		for(int i = 0; i< tabelaPolozenih.getRowCount();i++) {
+			sum1 = sum1 + Integer.parseInt(tabelaPolozenih.getValueAt(i, 2).toString());
+		}
+		lUkupnoEspb.setText(String.valueOf(sum1));
+	}
+
+	public static void setProsOcena(double ocena) {
+		prosecnaOcena = Math.round(ocena*100.0)/100.0;
+	}
+	
 }
 

@@ -16,7 +16,7 @@ import model.*;
 
 public class AddStudentFrame extends JDialog {
 	
-	JButton potvrdi = new JButton("Potvrdi");
+	private static JButton potvrdi = new JButton("Potvrdi");
 	private static final long serialVersionUID = -7995869934266012394L;
 	private StudentStatus stat;
 	
@@ -39,7 +39,7 @@ public class AddStudentFrame extends JDialog {
 		lIme.setPreferredSize(dim);
 		JTextField txtIme = new JTextField();
 		txtIme.setPreferredSize(dim);
-		txtIme.setName("tekst");
+		txtIme.setName("ime");
 		txtIme.setToolTipText("npr. Nikola");
 		txtIme.addFocusListener(focus);
 		txtIme.getDocument().addDocumentListener(new DocumentListener() {
@@ -72,7 +72,7 @@ public class AddStudentFrame extends JDialog {
 		lPrezime.setPreferredSize(dim);
 		JTextField txtPrezime = new JTextField();
 		txtPrezime.setPreferredSize(dim);
-		txtPrezime.setName("tekst");
+		txtPrezime.setName("prezime");
 		txtPrezime.setToolTipText("npr. Tesla");
 		txtPrezime.addFocusListener(focus);
 		txtPrezime.getDocument().addDocumentListener(new DocumentListener() {
@@ -524,5 +524,11 @@ public class AddStudentFrame extends JDialog {
 		    	 potvrdi.setEnabled(true);
 		    }
 
-		  }
+	 }
+	  
+	 public static JButton getPotvrdi() {
+		 return potvrdi;	 
+	 }
+	 
+	 
 }

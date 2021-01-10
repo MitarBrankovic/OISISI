@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -17,10 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import controller.PredmetController;
 import controller.StudentiController;
-import listeners.FocusListener1;
 import model.BazaOcena;
 import model.BazaStudenata;
 import model.Ocena;
@@ -36,7 +32,6 @@ public class UpisOceneFrame extends JDialog{
 		setTitle("Upis ocene");
 		setSize(300, 250);
 		setModal(true);
-		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
@@ -116,7 +111,13 @@ public class UpisOceneFrame extends JDialog{
 				
 				if(validDate(datum)) {
 					StudentiController.getInstance().upisiOcenu(stud.getBrojIndeksa(), pred.getSifraPredmeta(), ocena1, LocalDate.parse(datum, formatiran));
-					setVisible(false);			
+					setVisible(false);
+					BazaStudenata.getInstance().prosekOcena(stud);
+					String result = String.format("%.2f", stud.getProsecnaOcena());
+					EditStudentFrame.getAvgOcena().setText(result);
+					EditStudentFrame.izracunajUkupnoEspb();
+					EditStudentFrame.setProsOcena(stud.getProsecnaOcena()); 
+					TabPane.getInstance().azurirajStudenti();	
 				}else {
 					JOptionPane.showMessageDialog(null, "Datum nije dobro unet!","",JOptionPane.ERROR_MESSAGE);
 
