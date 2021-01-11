@@ -13,6 +13,8 @@ import model.Ocena;
 import model.Predmet;
 import model.PredmetSemestar;
 import model.Profesor;
+import model.ProfesorTitula;
+import model.ProfesorZvanje;
 import model.Student;
 import model.StudentStatus;
 
@@ -83,7 +85,26 @@ public class UpisPodatakaController {
 		}
 		try {
 			for (Profesor profesor : profesori) {
+				String titula = null;
+				String zvanje = null;
 				
+				if(profesor.getTitula() == ProfesorTitula.dr)
+					titula = "DR";
+				else if(profesor.getTitula() == ProfesorTitula.prof_dr)
+					titula = "PROF_DR";
+				else if(profesor.getTitula() == ProfesorTitula.BSc)
+					titula = "BSC";
+				else if(profesor.getTitula() == ProfesorTitula.MSc)
+					titula = "MSC";
+				
+				if(profesor.getZvanje() == ProfesorZvanje.redovni_profesor)
+					zvanje = "REDOVNI_PROFESOR";
+				else if(profesor.getZvanje() == ProfesorZvanje.vanredni_profesor)
+					zvanje = "VANREDNI_PROFESOR";
+				else if(profesor.getZvanje() == ProfesorZvanje.docent)
+					zvanje = "DOCENT";
+				else if(profesor.getZvanje() == ProfesorZvanje.asistent)
+					zvanje = "ASISTENT";
 				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 
 				
@@ -95,7 +116,7 @@ public class UpisPodatakaController {
 				s.append(profesor.getBrojLicneKarte() + ", " + profesor.getIme() + ", " + profesor.getPrezime() + ", " + 
 						profesor.getDatumRodjenja().format(formatiran) + ", "+ profesor.getAdresaStanovanja() + ", " + 
 						profesor.getKontaktTelefon() + ", " + profesor.getEmail()+ ", " + profesor.getAdresaKancelarije() + ", " + 
-						profesor.getTitula() + ", " + profesor.getZvanje());
+						titula + ", " + zvanje);
 				
 				out.write(s.toString());
 				out.write("\n");

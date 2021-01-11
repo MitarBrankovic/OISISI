@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import model.BazaProfesora;
 import model.BazaStudenata;
 import model.Profesor;
+import model.ProfesorTitula;
+import model.ProfesorZvanje;
 import model.Student;
 import view.EditProfesorFrame;
 import view.TabPane;
@@ -27,7 +29,7 @@ private static ProfesoriController instance = null;
 	
 	
 	public void addProfesor(String ime, String prezime, LocalDate datumRodjenja, String adresaStanovanja, String kontaktTelefon,
-			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) 
+			String email, String adresaKancelarije, String brojLicneKarte, ProfesorTitula titula, ProfesorZvanje zvanje) 
 	{
 		BazaProfesora.getInstance().dodajProfesora(ime,prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email,adresaKancelarije, brojLicneKarte, titula, zvanje);
 		TabPane.getInstance().azurirajProfesori();
@@ -35,7 +37,7 @@ private static ProfesoriController instance = null;
 	
 	
 	public void editProfesor(String ime, String prezime, LocalDate datumRodjenja, String adresaStanovanja, String kontaktTelefon,
-			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
+			String email, String adresaKancelarije, String brojLicneKarte, ProfesorTitula titula, ProfesorZvanje zvanje) {
 		BazaProfesora.getInstance().izmeniProfesora(ime,prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email,adresaKancelarije, brojLicneKarte, titula, zvanje);
 		TabPane.getInstance().azurirajProfesori();	
 	}

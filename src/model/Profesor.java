@@ -13,13 +13,15 @@ public class Profesor {
 	String email;
 	String adresaKancelarije;
 	String brojLicneKarte;
-	String titula;		//enum?
-	String zvanje;		//enum?
+	//String titula;		//enum?
+	ProfesorTitula titula;
+	ProfesorZvanje zvanje;
+	//String zvanje;		//enum?
 	ArrayList<Predmet> spisakPredmeta;	//spisak predmeta na kojima je profesor
 	
 	
 	public Profesor(String ime, String prezime, LocalDate datumRodjenja, String adresaStanovanja, String kontaktTelefon,
-			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
+			String email, String adresaKancelarije, String brojLicneKarte, ProfesorTitula titula, ProfesorZvanje zvanje) {
 		super();
 		this.prezime = prezime;
 		this.ime = ime;
@@ -124,19 +126,19 @@ public class Profesor {
 		this.brojLicneKarte = brojLicneKarte;
 	}
 
-	public String getTitula() {
+	public ProfesorTitula getTitula() {
 		return titula;
 	}
 
-	public void setTitula(String titula) {
+	public void setTitula(ProfesorTitula titula) {
 		this.titula = titula;
 	}
 
-	public String getZvanje() {
+	public ProfesorZvanje getZvanje() {
 		return zvanje;
 	}
 
-	public void setZvanje(String zvanje) {
+	public void setZvanje(ProfesorZvanje zvanje) {
 		this.zvanje = zvanje;
 	}
 

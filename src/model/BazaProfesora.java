@@ -70,10 +70,30 @@ public class BazaProfesora {
 				
 				kolone = naredni.split("\\,");
 				
+				ProfesorTitula titula = null;
+				if(kolone[8].trim().equals("DR"))
+					titula = ProfesorTitula.dr;
+				else if(kolone[8].trim().equals("PROF_DR"))
+					titula = ProfesorTitula.prof_dr;
+				else if(kolone[8].trim().equals("BSC"))
+					titula = ProfesorTitula.BSc;
+				else if(kolone[8].trim().equals("MSC"))
+					titula = ProfesorTitula.MSc;
+				
+				ProfesorZvanje zvanje = null;
+				if(kolone[9].trim().equals("REDOVNI_PROFESOR"))
+					zvanje = ProfesorZvanje.redovni_profesor;
+				else if(kolone[9].trim().equals("VANREDNI_PROFESOR"))
+					zvanje = ProfesorZvanje.vanredni_profesor;
+				else if(kolone[9].trim().equals("DOCENT"))
+					zvanje = ProfesorZvanje.docent;
+				else if(kolone[9].trim().equals("ASISTENT"))
+					zvanje = ProfesorZvanje.asistent;
+				
 				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 				
-				profesori.add(new Profesor( kolone[1].trim(), kolone[2].trim(), LocalDate.parse(kolone[3].trim(), formatiran), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[0].trim(), kolone[8].trim(), kolone[9].trim()));
-				tmpProfesori.add(new Profesor( kolone[1].trim(), kolone[2].trim(), LocalDate.parse(kolone[3].trim(), formatiran), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[0].trim(), kolone[8].trim(), kolone[9].trim()));
+				profesori.add(new Profesor( kolone[1].trim(), kolone[2].trim(), LocalDate.parse(kolone[3].trim(), formatiran), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[0].trim(), titula, zvanje));
+				tmpProfesori.add(new Profesor( kolone[1].trim(), kolone[2].trim(), LocalDate.parse(kolone[3].trim(), formatiran), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[0].trim(), titula, zvanje));
 				
 				
 				}
@@ -127,9 +147,23 @@ public class BazaProfesora {
 		case 2:
 			return profesori.getPrezime();
 		case 3:
-			return profesori.getTitula();
+			if(profesori.getTitula() == ProfesorTitula.dr)
+				return "DR";
+			else if(profesori.getTitula() == ProfesorTitula.prof_dr)
+				return "PROF_DR";
+			else if(profesori.getTitula() == ProfesorTitula.BSc)
+				return "BSC";
+			else if(profesori.getTitula() == ProfesorTitula.MSc)
+				return "MSC";
 		case 4:
-			return profesori.getZvanje();
+			if(profesori.getZvanje() == ProfesorZvanje.redovni_profesor)
+				return "REDOVNI_PROFESOR";
+			else if(profesori.getZvanje() == ProfesorZvanje.vanredni_profesor)
+				return "VANREDNI_PROFESOR";
+			else if(profesori.getZvanje() == ProfesorZvanje.docent)
+				return "DOCENT";
+			else if(profesori.getZvanje() == ProfesorZvanje.asistent)
+				return "ASISTENT";
 		
 		default:
 			return null;
@@ -203,7 +237,7 @@ public class BazaProfesora {
 		
 	
 	
-	public void dodajProfesora(String ime, String prezime, LocalDate datumRodjenja, String adresaStanovanja, String kontaktTelefon,String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
+	public void dodajProfesora(String ime, String prezime, LocalDate datumRodjenja, String adresaStanovanja, String kontaktTelefon,String email, String adresaKancelarije, String brojLicneKarte, ProfesorTitula titula, ProfesorZvanje zvanje) {
 		this.profesori.add(new Profesor(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email, adresaKancelarije, brojLicneKarte, titula, zvanje));
 		this.tmpProfesori.add(new Profesor(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email, adresaKancelarije, brojLicneKarte, titula, zvanje));
 
@@ -265,7 +299,7 @@ public class BazaProfesora {
 	
 	
 	public void izmeniProfesora(String ime, String prezime, LocalDate datumRodjenja, String adresaStanovanja, String kontaktTelefon,
-			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
+			String email, String adresaKancelarije, String brojLicneKarte, ProfesorTitula titula, ProfesorZvanje zvanje) {
 		for(Profesor i : profesori) {
 			if(i.getBrojLicneKarte().equals(brojLicneKarte)) {
 				i.setIme(ime);

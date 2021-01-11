@@ -23,12 +23,18 @@ import controller.ProfesoriController;
 import listeners.FocusListener1;
 import model.BazaProfesora;
 import model.BazaStudenata;
+import model.PredmetSemestar;
 import model.Profesor;
+import model.ProfesorTitula;
+import model.ProfesorZvanje;
 import model.Student;
 
 public class AddProfesorFrame extends JDialog{
 
 	private static final long serialVersionUID = 7316982662937273530L;
+	
+	private ProfesorTitula tit;
+	private ProfesorZvanje zva;
 	
 	public AddProfesorFrame() {
 		/*setVisible je stavljen u komentar zato sto istu funkciju pozivamo u MenuKonfiguracija/Toolbar
@@ -147,7 +153,7 @@ public class AddProfesorFrame extends JDialog{
 		pLicna.add(lLicna);
 		pLicna.add(txtLicna);
 		
-		String [] lista1 = {"Doktor nauka", "Magistar"};
+		String [] lista1 = {"DR", "PROF_DR", "BSc", "MSc"};
 		JComboBox<Object> titula = new JComboBox<Object>(lista1);
 	    JPanel pTitula = new JPanel(new FlowLayout(FlowLayout.LEFT));
 	    JLabel lTitula = new JLabel("Titula*: ");
@@ -156,7 +162,7 @@ public class AddProfesorFrame extends JDialog{
 	    pTitula.add(titula);
 	    
 	    
-	    String [] lista2 = {"Redovni profesor", "Vandredni profesor"};
+	    String [] lista2 = {"REDOVNI_PROFESOR", "VANREDNI_PROFESOR", "DOCENT", "ASISTENT"};
 		JComboBox<Object> zvanje = new JComboBox<Object>(lista2);
 	    JPanel pZvanje = new JPanel(new FlowLayout(FlowLayout.LEFT));
 	    JLabel lZvanje = new JLabel("Zvanje*: ");
@@ -219,14 +225,37 @@ public class AddProfesorFrame extends JDialog{
 				}*/else if(vecPostoji){
 					JOptionPane.showMessageDialog(null, "Profesor vec postoji","",JOptionPane.ERROR_MESSAGE);
 				}else {
-					String titulaSt = titula.getSelectedItem().toString();
-					String zvanjeSt = zvanje.getSelectedItem().toString();
+					//String titulaSt = titula.getSelectedItem().toString();
+					//String zvanjeSt = zvanje.getSelectedItem().toString();
 					
 					String datumRodj = txtDatum.getText();
 					DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 					
+					String titula1 = titula.getSelectedItem().toString();
+					if(titula1.equals("DR")) {
+						tit = ProfesorTitula.dr;
+					}else if(titula1.equals("PROF_DR")) {
+						tit = ProfesorTitula.prof_dr;
+					}else if(titula1.equals("BSc")) {
+						tit = ProfesorTitula.BSc;
+					}else if(titula1.equals("MSc")) {
+						tit = ProfesorTitula.MSc;
+					}
+					
+					String zvanje1 = zvanje.getSelectedItem().toString();
+					if(zvanje1.equals("REDOVNI_PROFESOR")) {
+						zva = ProfesorZvanje.redovni_profesor;
+					}else if(zvanje1.equals("VANREDNI_PROFESOR")) {
+						zva = ProfesorZvanje.vanredni_profesor;
+					}else if(zvanje1.equals("DOCENT")) {
+						zva = ProfesorZvanje.docent;
+					}else if(zvanje1.equals("ASISTENT")) {
+						zva = ProfesorZvanje.asistent;
+					}
+					
+					
 					ProfesoriController.getInstance().addProfesor(txtIme.getText(), txtPrezime.getText(), LocalDate.parse(txtDatum.getText(), formatiran), txtAdresa.getText(), 
-							txtTelefon.getText(), txtEmail.getText(), txtAdresaKancelarije.getText(), txtLicna.getText(), titulaSt, zvanjeSt);
+							txtTelefon.getText(), txtEmail.getText(), txtAdresaKancelarije.getText(), txtLicna.getText(), tit, zva);
 					setVisible(false);
 				}
 				
