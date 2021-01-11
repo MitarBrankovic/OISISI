@@ -63,19 +63,19 @@ public class BazaPredmeta {
 				kolone = naredni.split("\\,");
 				
 				PredmetSemestar semestar1;
-				if(kolone[2].trim().equals("ZIMSKI"))
+				if(kolone[5].trim().equals("ZIMSKI"))
 					semestar1 = PredmetSemestar.zimski;
 				else
 					semestar1 = PredmetSemestar.letnji;
 				
 				
 				Profesor objProfesor = null;
-				String profImePrezime = kolone[5].trim();
-				if(profImePrezime.contains("null")) {
+				String profLicnaKarta = kolone[4].trim();
+				if(profLicnaKarta.contains("null")) {
 					objProfesor = null;
 				}else {
 					for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
-						if(p.getImePrezime().equals(profImePrezime) == true) {
+						if(p.getBrojLicneKarte().equals(profLicnaKarta) == true) {
 							objProfesor = p;
 						}
 					}
@@ -83,7 +83,7 @@ public class BazaPredmeta {
 				
 				
 				
-				Predmet pred = new Predmet( kolone[0].trim(), kolone[1].trim(), semestar1, Integer.parseInt(kolone[3].trim()), Integer.parseInt(kolone[4].trim()), objProfesor);
+				Predmet pred = new Predmet( kolone[0].trim(), kolone[1].trim(), semestar1, Integer.parseInt(kolone[2].trim()), Integer.parseInt(kolone[3].trim()), objProfesor);
 				predmeti.add(pred);
 				tmpPredmeti.add(pred);
 				

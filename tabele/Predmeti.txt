@@ -1,21 +1,30 @@
-eng1, Engleski 1, ZIMSKI, 1, 3, Masala Pavlovic
-nans, Numericki algoritmi i numericki softver, LETNJI, 3, 4, Ana Djordjevic
-fiz, Fizika, LETNJI, 3, 9, Marko Ivanovic
-pjisp, Programski jezici i strukture podataka, ZIMSKI, 1, 9, Sara Dimitrijevic
-miss, Modeliranje i simulacija sistema, LETNJI, 1, 8, Petarr Cvetkovic
-visp, Verovatnoca i slucajni procesi, ZIMSKI, 1, 5, Una Djordjevic
-arh, Arhitektura racunara, LETNJI, 1, 9, Una Djordjevic
-sppurv1, Sistemska programska podrska u realnom vremenu 1, LETNJI, 2, 6, Luka Markovic
-eng2, Engleski 2, LETNJI, 2, 3, Mila Markovic
-ma2, Matematicka analiza 2, LETNJI, 3, 8, null
-alg, Algebra, LETNJI, 1, 9, Masa Jankovic
-oet, Osnovi elektrotehnike, ZIMSKI, 3, 9, Bogdan Dimitrijevic
-lprs1, Logicko projektovanje racunarskih sistema 1, ZIMSKI, 1, 6, Filip Pavlovic
-ma1, Matematicka analiza 1, LETNJI, 3, 9, Lazar Kostic
-oisisi, Osnovi informacionih sistema i softverskog inzenjerstva, LETNJI, 3, 6, null
-mo, Metode optimizacije, LETNJI, 1, 8, Luka Djordjevic
-os, Operativni sistemi, ZIMSKI, 3, 8, Andrej Jovanovic
-bp1, Baze podataka 1, LETNJI, 1, 8, Una Milosevic
-sau, Sistemi automatskog upravljanja, LETNJI, 1, 7, Lazar Tomic
-sat, Socioloski aspekti tehnickog razvoja, ZIMSKI, 3, 3, Lazar Tomic
-op, Objektno programiranje, LETNJI, 2, 8, null
+p1, osnove programiranja, 1, 7, 321321321, ZIMSKI
+p2, statistika, 3, 8, 321321321, LETNJI
+p3, algoritmi i strukture podataka, 2, 9, 321321321, LETNJI
+p4, LPRS, 3, 7,	321321321, ZIMSKI
+p5, matematika, 1, 11, null, LETNJI
+p6, xml i web servisi, 4, 6, null, LETNJI
+p7, Metode optimizacije, 3, 6, null, ZIMSKI
+p8, osnove elektortehnike, 1, 11, 001001001, LETNJI
+p9, Sociologija, 1, 10, 001001001, ZIMSKI
+p10, Filozofija, 1, 4, 001001001, ZIMSKI
+p11, ORT, 2, 7, null, LETNJI
+p12, NANS, 2, 5, 002002002, LETNJI
+p13, Organizacija podataka, 2, 7, 002002002, ZIMSKI
+p14, Baze podataka, 2, 6, 002002002, ZIMSKI
+p15, paralelno programiranje, 2, 8, 559585632, ZIMSKI
+p16, konkurentno programiranje, 2, 9, 559585632, LETNJI
+p17, Operativni sistemi, 2, 8, null, LETNJI
+p18, Algebra, 1, 15, null, ZIMSKI
+p19, Verovatnoca, 3, 14, null, LETNJI
+ps20, Upravljacki sistemi, 3, 8, null, LETNJI
+ps21, Osnovi elektronike, 2, 7, null, ZIMSKI
+ps22, Slucajni procesi, 4, 9, null, LETNJI
+ps23, Racunarstvo visokih performansi, 4, 10, null, LETNJI
+p24, Analiza 1, 1, 20, null, ZIMSKI
+it25, Informaciona bezbednost, 4, 9, 004004004, LETNJI
+it26, Elektronsko placanje, 3, 8, 005005005, ZIMSKI
+it27, Distribuirani sistemi, 4, 6, 006006006, ZIMSKI
+p28, Projektovanje softvera, 3, 5, 005005005, ZIMSKI
+p29, Informacioni sistemi, 4, 6, 004004004, ZIMSKI
+p30, Masinsko ucenje, 4, 7, null, LETNJI

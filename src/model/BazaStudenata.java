@@ -68,18 +68,18 @@ public class BazaStudenata {
 				kolone = naredni.split("\\,");
 				
 				StudentStatus status;
-				if(kolone[9].trim().equals("B"))
+				if(kolone[8].trim().equals("B"))
 					status = StudentStatus.B;
 				else
 					status = StudentStatus.S;
 				
-				datumRodj = kolone[2];
-				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern(" dd.MM.yyyy.");
+				datumRodj = kolone[4];
+				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 				
-				studenti.add(new Student( kolone[0].trim(), kolone[1].trim(), LocalDate.parse(datumRodj, formatiran), kolone[3].trim(), kolone[4].trim(), kolone[5].trim(),
-						kolone[6].trim(), Integer.parseInt(kolone[7].trim()), Integer.parseInt(kolone[8].trim()), status, Double.parseDouble(kolone[10].trim())));
-				tmpStudenti.add(new Student( kolone[0].trim(), kolone[1].trim(), LocalDate.parse(datumRodj, formatiran), kolone[3].trim(), kolone[4].trim(), kolone[5].trim(),
-						kolone[6].trim(), Integer.parseInt(kolone[7].trim()), Integer.parseInt(kolone[8].trim()), status, Double.parseDouble(kolone[10].trim())));
+				studenti.add(new Student( kolone[1].trim(), kolone[2].trim(), LocalDate.parse(datumRodj, formatiran), kolone[5].trim(), kolone[0].trim(), kolone[6].trim(),
+						kolone[7].trim(), Integer.parseInt(kolone[9].trim()), Integer.parseInt(kolone[3].trim()), status, Double.parseDouble(kolone[10].trim())));
+				tmpStudenti.add(new Student( kolone[1].trim(), kolone[2].trim(), LocalDate.parse(datumRodj, formatiran), kolone[5].trim(), kolone[0].trim(), kolone[6].trim(),
+						kolone[7].trim(), Integer.parseInt(kolone[9].trim()), Integer.parseInt(kolone[3].trim()), status, Double.parseDouble(kolone[10].trim())));
 			}
 			
 			reader.close();

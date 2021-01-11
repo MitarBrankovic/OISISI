@@ -5,23 +5,15 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.ArrayList;
-
-//import java.awt.BorderLayout;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-//import javax.swing.JFrame;
-//import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
-
 import controller.PredmetController;
 import controller.ProfesoriController;
 import controller.StudentiController;
-import model.BazaStudenata;
-import model.Student;
 
 public class Toolbar extends JToolBar{
 
@@ -165,7 +157,7 @@ public class Toolbar extends JToolBar{
 		
 		add(Box.createHorizontalGlue());
 		
-		searchArea = new JTextField(50);
+		searchArea = new JTextField(30);
 		searchArea.setPreferredSize(new Dimension(200,25));
 		searchArea.setMaximumSize(searchArea.getPreferredSize());
 		add(searchArea);

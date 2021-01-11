@@ -85,9 +85,8 @@ public class BazaOcena {
 				Predmet objPredmet = null;
 				Student objStudent = null;
 				
-				
-				sifra = kolone[0].trim();
-				indeks = kolone[1].trim();
+				indeks = kolone[0].trim();
+				sifra = kolone[1].trim();
 				ocena = Integer.parseInt(kolone[2].trim());
 				datum = kolone[3].trim();
 
