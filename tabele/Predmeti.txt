@@ -1,7 +1,7 @@
 p1, osnove programiranja, 1, 7, 321321321, ZIMSKI
 p2, statistika, 3, 8, 321321321, LETNJI
 p3, algoritmi i strukture podataka, 2, 9, 321321321, LETNJI
-p4, LPRS, 3, 7,	321321321, ZIMSKI
+p4, LPRS, 3, 7, 321321321, ZIMSKI
 p5, matematika, 1, 11, null, LETNJI
 p6, xml i web servisi, 4, 6, null, LETNJI
 p7, Metode optimizacije, 3, 6, null, ZIMSKI

@@ -49,12 +49,14 @@ public class UpisPodatakaController {
 				if(predmet.getPredmetniProfesor() == null) {
 					profesor = "null";
 				}else {
-					profesor = predmet.getPredmetniProfesor().getImePrezime();
+					profesor = predmet.getPredmetniProfesor().getBrojLicneKarte();
 				}
 				StringBuilder s = new StringBuilder("");
-				s.append(predmet.getSifraPredmeta()+", "+predmet.getNazivPredmeta()+", "+semestar+", "
+				/*s.append(predmet.getSifraPredmeta()+", "+predmet.getNazivPredmeta()+", "+semestar+", "
 						+predmet.getGodinaStudija()+", "+ predmet.getEspb() + ", " + profesor);	
-				
+				*/
+				s.append(predmet.getSifraPredmeta()+", "+predmet.getNazivPredmeta()+", "+predmet.getGodinaStudija()+", "
+						+predmet.getEspb()+", "+ profesor + ", " + semestar);
 				out.write(s.toString());
 				out.write("\n");
 			}		
@@ -86,10 +88,14 @@ public class UpisPodatakaController {
 
 				
 				StringBuilder s = new StringBuilder("");
-				s.append(profesor.getIme() + ", " + profesor.getPrezime() + ", " + profesor.getDatumRodjenja().format(formatiran) + ", "
+				/*s.append(profesor.getIme() + ", " + profesor.getPrezime() + ", " + profesor.getDatumRodjenja().format(formatiran) + ", "
 						+ profesor.getAdresaStanovanja() + ", " + profesor.getKontaktTelefon() + ", " + profesor.getEmail()
 						+ ", " + profesor.getAdresaKancelarije() + ", " + profesor.getBrojLicneKarte() + ", " + profesor.getTitula()
-						+ ", " + profesor.getZvanje());	
+						+ ", " + profesor.getZvanje());	*/
+				s.append(profesor.getBrojLicneKarte() + ", " + profesor.getIme() + ", " + profesor.getPrezime() + ", " + 
+						profesor.getDatumRodjenja().format(formatiran) + ", "+ profesor.getAdresaStanovanja() + ", " + 
+						profesor.getKontaktTelefon() + ", " + profesor.getEmail()+ ", " + profesor.getAdresaKancelarije() + ", " + 
+						profesor.getTitula() + ", " + profesor.getZvanje());
 				
 				out.write(s.toString());
 				out.write("\n");
@@ -127,9 +133,14 @@ public class UpisPodatakaController {
 				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 
 				StringBuilder s = new StringBuilder("");
-				s.append(student.getIme() + ", " + student.getPrezime() + ", " + student.getDatumRodjenja().format(formatiran) + ", " + student.getAdresa()
+				/*s.append(student.getIme() + ", " + student.getPrezime() + ", " + student.getDatumRodjenja().format(formatiran) + ", " + student.getAdresa()
 				 + ", " + student.getBrojIndeksa() + ", " + student.getKontakt() + ", " + student.getEmail() + ", " + student.getGodinaUpisa()
-				 + ", " + student.getTrenutnaGodina() + ", " + status + ", " + student.getProsecnaOcena());	
+				 + ", " + student.getTrenutnaGodina() + ", " + status + ", " + student.getProsecnaOcena());	*/
+				
+				s.append(student.getBrojIndeksa() + ", " + student.getIme() + ", " + student.getPrezime() + ", " + 
+						student.getTrenutnaGodina() + ", " + student.getDatumRodjenja().format(formatiran)
+						+ ", " + student.getAdresa() + ", " + student.getKontakt() + ", " + student.getEmail() + ", " + status
+						+ ", " + student.getGodinaUpisa() + ", " + student.getProsecnaOcena());
 				
 				out.write(s.toString());
 				out.write("\n");
@@ -166,7 +177,7 @@ public class UpisPodatakaController {
 
 				//}
 				StringBuilder s = new StringBuilder("");
-				s.append(ocena.getPredmet().getSifraPredmeta() + ", " + ocena.getStudent().getBrojIndeksa() + ", " + 
+				s.append(ocena.getStudent().getBrojIndeksa() + ", " + ocena.getPredmet().getSifraPredmeta() + ", " + 
 						ocena.getVrednostOcene() + ", " + ocena.getDatumPolaganja().format(formatiran));	
 				
 				out.write(s.toString());

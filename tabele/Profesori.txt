@@ -1,20 +1,19 @@
-Masala, Pavlovic, 12.11.1973., Ravanicka 29, 21246674, MasaPavlovic15@gmail.com, Bulevar patrijarha Pavla 73, 023678123, Doktor nauka, Redovni profesor
-Ana, Djordjevic, 17.04.1969., Bulevar kralja Petra I 39, 21507063, AnaDjordjevic6@gmail.com, Gogoljeva 1, 617633321, doktor nauka, vanredni profesor
-Marko, Ivanovic, 14.08.1980., Bulevar oslobođenja 9, 21874350, PetarIvanovic19@gmail.com, Ravanicka 47, 947411132, Doktor nauka, Redovni profesor
-Sara, Dimitrijevic, 01.10.1962., Danila Kisa 47, 21507119, SaraDimitrijevic4@gmail.com, Mise Dimitrijevica 61, 019201331, doktor nauka, vanredni profesor
-Petarr, Cvetkovic, 12.05.1964., Podgoricka 60, 21209694, PetarCvetkovic8@gmail.com, Dr Ivana Ribara 75, 990733112, Doktor nauka, Redovni profesor
-Una, Djordjevic, 16.02.1974., Boska Buhe 35, 21172312, UnaDjordjevic3@gmail.com, Mise Dimitrijevica 55, 557783223, Doktor nauka, Redovni profesor
-Ema, Djordjevic, 05.02.1965., Tolstojeva 48, 21856300, UnaDjordjevic9@gmail.com, Dr Ivana Ribara 71, 321816132, doktor nauka, vanredni profesor
-Luka, Markovic, 11.05.1971., Resavska 41, 123213123, LukaMarkovic15@gmail.com, Brace Ribnikar 57, 891505213, Doktor nauka, Redovni profesor
-Mila, Markovic, 23.03.1962., Bulevar kralja Petra I 10, 21830250, MilaMarkovic15@gmail.com, Balzakova 52, 531511321, doktor nauka, vanredni profesor
-Ognjen, Ivanovic, 23.09.1984., Bulevar patrijarha Pavla 49, 21309304, OgnjenIvanovic20@gmail.com, Gogoljeva 44, 758184123, doktor nauka, redovni profesor
-Masa, Jankovic, 08.04.1982., Bulevar cara Lazara 31, 21565099, MasaJankovic14@gmail.com, Narodnog fronta 53, 155839321, magistar, vanredni profesor
-Bogdan, Dimitrijevic, 18.04.1968., Bulevar cara Lazara 37, 21185404, BogdanDimitrijevic6@gmail.com, Bulevar Jase Tomica 100, 139863222, doktor nauka, redovni profesor
-Filip, Pavlovic, 08.08.1962., Bulevar kneza Milosa 3, 21433753, FilipPavlovic3@gmail.com, Bulevar vojvode Stepe 86, 809651111, doktor nauka, vanredni profesor
-Lazar, Kostic, 23.11.1974., Dr Sime Milosevica 33, 21942119, LazarKostic5@gmail.com, Bulevar Evrope 94, 434939321, magistar, vanredni profesor
-Luka, Djordjevic, 23.06.1971., Dr Sime Milosevica 94, 21107563, LukaDjordjevic9@gmail.com, Vojvodjanska 83, 838397111, doktor nauka, vanredni profesor
-Andrej, Jovanovic, 01.01.1984., Podgoricka 79, 21986475, AndrejJovanovic2@gmail.com, Sekspirova 24, 672331133, doktor nauka, vanredni profesor
-Una, Milosevic, 15.02.1984., Drage Spasic 80, 21488280, UnaMilosevic2@gmail.com, Bulevar kneza Milosa 51, 864527311, magistar, redovni profesor
-Lazar, Tomic, 07.03.1973., Danila Kisa 74, 21787834, LazarTomic11@gmail.com, Suboticki bulevar 73, 947057222, doktor nauka, vanredni profesor
-Kosta, Kovacevic, 24.02.1969., Bulevar Jase Tomica 30, 21678850, KostaKovacevic1@gmail.com, Lasla Gala 90, 508479132, magistar, vanredni profesor
-Sofija, Todorovic, 07.07.1978., Dragise Brašovana 62, 21128880, SofijaTodorovic12@gmail.com, Vojvode Knicanina 48, 283700213, doktor nauka, redovni profesor
+123123123, Milos, Nikolic, 12.12.1965., Temerinska 15-Novi Sad, 021356785, milos.nikolic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 600, PROF_DR, REDOVNI_PROFESOR
+321321321, Nikola, Mirkovic, 01.01.1978., Jovana Cvjića 25-Subotica, 021368456, nikola.mirkovic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 601, PROF_DR, REDOVNI_PROFESOR
+456456456, Ilija, Petkovic, 03.09.1988., Gogoljeva 1-Novi Sad, 021215314, ilija.petkovic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 602, DR, VANREDNI_PROFESOR
+789789789, Mitar, Petrovic, 25.07.1976., Marka Kraljevića 102-Beograd, 021884640, mitar.petrovic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 603, DR, VANREDNI_PROFESOR
+001001001, Vasa, Micic, 14.02.1970., Tolstojeva 55-Novi Sad, 021212114, vasa.micic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 604, DR, DOCENT
+002002002, Srdjan, Miletic, 20.04.1966., Šekspirova 12-Novi Sad, 021978225, srdjan.miletic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 605, DR, DOCENT
+559585632, Branislav, Mihajlovic, 28.06.1980., Jovana Subotića 99-Novi Sad, 021778323, branislav.mihajlovic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 606, PROF_DR, REDOVNI_PROFESOR
+334968855, Marko, Marković, 31.01.1985., Mirka Markovića 101-Kraljevo, 021899659, marko.markovic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 607, PROF_DR, REDOVNI_PROFESOR
+073070365, Miloš, Milaković, 21.09.1975., Braće Jugović 1-Kragujevac, 021122326, milos.milakovic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 608, DR, VANREDNI_PROFESOR
+006003786, Lazar, Bratić, 13.11.1973., Jovanke Orleanke 3-Niš, 021156326, lazar.bratic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 609, DR, VANREDNI_PROFESOR
+158496152, Ljeposava, Dražić, 11.08.1964., Vojvode Stepe 1100-Beograd, 021888156, ljeposava.drazic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 610, DR, DOCENT
+777348595, Miroljub, Dragić, 02.03.1959., Miše Ljubibratiće 123-Aleksandrovac, 021456125, miroljub.dragic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 611, DR, DOCENT
+721254363, Bogdan, Rekavić, 23.06.1977., Resavska 12-Beograd, 021886455, bogdan.rekavic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 612, DR, VANREDNI_PROFESOR
+225533448, Stanka, Milić, 03.03.1990., Vidakovićeva 90-Novi Sad, 021945255, stanka.milic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 613, DR, DOCENT
+111555888, Milica, Vuković, 18.10.1967., Nikolićeva 12-Novi Sad, 021746659, milica.vukovic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 614, PROF_DR, VANREDNI_PROFESOR
+003003003, Miša, Mišić, 20.10.1969., Šojićeva 10-Subotica, 021489326, misa.misic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 615, DR, DOCENT
+004004004, Branko, Maricic, 18.01.1973., Nikole Tesle 25-Sombor, 021487265, branko.maricic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 616, PROF_DR, DOCENT
+005005005, Branislav, Lukovic, 08.04.1982., Živojina Mišića 7-Apatin, 021159478, branislav.lukovic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 617, DR, REDOVNI_PROFESOR
+006006006, Branimir, Obradovic, 07.01.1979., Stari šor 18-Sremska Mitrovica, 021922333, branimir.obradovic@mailinator.com, Dositeja Obradovića 6-Novi Sad-NTP 618, PROF_DR, DOCENT

@@ -74,7 +74,7 @@ public class BazaStudenata {
 					status = StudentStatus.S;
 				
 				datumRodj = kolone[4];
-				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern(" dd.MM.yyyy.");
 				
 				studenti.add(new Student( kolone[1].trim(), kolone[2].trim(), LocalDate.parse(datumRodj, formatiran), kolone[5].trim(), kolone[0].trim(), kolone[6].trim(),
 						kolone[7].trim(), Integer.parseInt(kolone[9].trim()), Integer.parseInt(kolone[3].trim()), status, Double.parseDouble(kolone[10].trim())));

@@ -72,10 +72,11 @@ public class BazaProfesora {
 				
 				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 				
-				profesori.add(new Profesor( kolone[0].trim(), kolone[1].trim(), LocalDate.parse(kolone[2].trim(), formatiran), kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[8].trim(), kolone[9].trim()));
-				tmpProfesori.add(new Profesor( kolone[0].trim(), kolone[1].trim(), LocalDate.parse(kolone[2].trim(), formatiran), kolone[3].trim(), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[8].trim(), kolone[9].trim()));
-
-			}
+				profesori.add(new Profesor( kolone[1].trim(), kolone[2].trim(), LocalDate.parse(kolone[3].trim(), formatiran), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[0].trim(), kolone[8].trim(), kolone[9].trim()));
+				tmpProfesori.add(new Profesor( kolone[1].trim(), kolone[2].trim(), LocalDate.parse(kolone[3].trim(), formatiran), kolone[4].trim(), kolone[5].trim(), kolone[6].trim(), kolone[7].trim(), kolone[0].trim(), kolone[8].trim(), kolone[9].trim()));
+				
+				
+				}
 	
 			reader.close();
 		
