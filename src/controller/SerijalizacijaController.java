@@ -36,6 +36,11 @@ public class SerijalizacijaController implements WindowListener{
 			frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		}else {
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+			
+			BazaStudenata.getInstance().restart();
+			BazaProfesora.getInstance().restart();
+			BazaPredmeta.getInstance().restart();
+			
 			UpisPodatakaController.getInstance().savePredmet(BazaPredmeta.getInstance().getPredmeti());
 			UpisPodatakaController.getInstance().saveProfesori(BazaProfesora.getInstance().getProfesori());
 			UpisPodatakaController.getInstance().saveStudenti(BazaStudenata.getInstance().getStudenti());

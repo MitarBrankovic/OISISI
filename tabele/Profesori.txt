@@ -16,4 +16,4 @@
 003003003, Miša, Mišić, 20.10.1969., Šojićeva 10 Subotica, 021489326, misa.misic@mailinator.com, Dositeja Obradovića 6 Novi Sad NTP 615, DR, DOCENT
 004004004, Branko, Maricic, 18.01.1973., Nikole Tesle 25 Sombor, 021487265, branko.maricic@mailinator.com, Dositeja Obradovića 6 Novi Sad NTP 616, PROF_DR, DOCENT
 005005005, Branislav, Lukovic, 08.04.1982., Živojina Mišića 7 Apatin, 021159478, branislav.lukovic@mailinator.com, Dositeja Obradovića 6 Novi Sad NTP 617, DR, REDOVNI_PROFESOR
-006006006, Branimir, Obradovic, 07.01.1979., Stari šor 18 Sremska Mitrovica, 021922333, branimir.obradovic@mailinator.com, Dositeja Obradovića 6 Novi Sad NTP 618, DR, ASISTENT
+006006006, Milutin, Obradovic, 07.01.1979., Stari šor 18 Sremska Mitrovica, 021922333, branimir.obradovic@mailinator.com, Dositeja Obradovića 6 Novi Sad NTP 618, DR, REDOVNI_PROFESOR

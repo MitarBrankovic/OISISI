@@ -93,7 +93,9 @@ public class BazaStudenata {
 	}
 	
 	public void restart() {
-		studenti = tmpStudenti;
+		//studenti = tmpStudenti;
+		this.studenti=this.tmpStudenti;
+		listaStudenata.removeAll(listaStudenata);
 	}
 	
 	
@@ -218,8 +220,9 @@ public class BazaStudenata {
 		String[] splited = tekst.split("\\s+");
 		
 		if(tekst.equals("")) {
-			this.studenti=this.tmpStudenti;
-			listaStudenata.removeAll(listaStudenata);
+			//this.studenti=this.tmpStudenti;
+			//listaStudenata.removeAll(listaStudenata);
+			restart();
 		}else {
 			
 			if(splited.length == 1) {

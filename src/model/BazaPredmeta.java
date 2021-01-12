@@ -102,7 +102,9 @@ public class BazaPredmeta {
 	}
 	
 	public void restart() {
-		predmeti = tmpPredmeti;
+		//predmeti = tmpPredmeti;
+		this.predmeti=this.tmpPredmeti;
+		listaPredmeta.removeAll(listaPredmeta);
 	}
 	
 	public ArrayList<Predmet> getSviPredmeti() {
@@ -263,8 +265,9 @@ public class BazaPredmeta {
 	public void searchPredmet(String tekst) {
 		
 		if(tekst.equals("")) {
-			this.predmeti=this.tmpPredmeti;
-			listaPredmeta.removeAll(listaPredmeta);
+			//this.predmeti=this.tmpPredmeti;
+			//listaPredmeta.removeAll(listaPredmeta);
+			restart();
 		}else {
 			for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
 				if(p.getNazivPredmeta().toLowerCase().contains(tekst.toLowerCase())) {

@@ -109,7 +109,9 @@ public class BazaProfesora {
 	}
 	
 	public void restart() {
-		profesori = tmpProfesori;
+		//profesori = tmpProfesori;
+		this.profesori=this.tmpProfesori;
+		listaProfesora.removeAll(listaProfesora);
 	}
 	
 	public ArrayList<Profesor> getProfesori() {
@@ -270,8 +272,9 @@ public class BazaProfesora {
 		String[] splited = tekst.split("\\s+");
 		
 		if(tekst.equals("")) {
-			this.profesori=this.tmpProfesori;
-			listaProfesora.removeAll(listaProfesora);
+			//this.profesori=this.tmpProfesori;
+			//listaProfesora.removeAll(listaProfesora);
+			restart();
 		}else {
 			if(splited.length == 1) {
 				for(Profesor s : BazaProfesora.getInstance().getProfesori()) {
