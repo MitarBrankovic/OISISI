@@ -158,10 +158,6 @@ public class AddPredmetFrame extends JDialog{
 					}
 					
 					
-					if(txtPredmetniProfesor.getText().equals("")) {
-						
-					}
-					
 					String semestar1 = semestri.getSelectedItem().toString();
 					if(semestar1.equals("Letnji")) {
 						sem = PredmetSemestar.letnji;

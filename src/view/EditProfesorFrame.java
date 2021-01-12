@@ -236,12 +236,16 @@ public class EditProfesorFrame extends JDialog{
 							JOptionPane.showMessageDialog(null, "Ime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);
 					}else if(txtPrezime.getText().matches("[A-Ž][a-ž]+") == false) {
 						JOptionPane.showMessageDialog(null, "Prezime nije dobro uneto","",JOptionPane.ERROR_MESSAGE);	
+					}else if(txtAdresa.getText().trim().matches("[a-žA-Ž0-9 ]*") == false) {
+						JOptionPane.showMessageDialog(null, "Adresa nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 					}else if(validDate(txtDatum.getText()) == false) {
 						JOptionPane.showMessageDialog(null, "Datum nije dobro unet","",JOptionPane.ERROR_MESSAGE);		
 					}else if(isNumber(txtTelefon.getText()) == false) {
 						JOptionPane.showMessageDialog(null, "Broj telefona nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 					}else if(txtEmail.getText().matches("[a-žA-Ž0-9.]+@[a-žA-Ž0-9.]+") == false) {
 						JOptionPane.showMessageDialog(null, "Email nije dobro unet","",JOptionPane.ERROR_MESSAGE);
+					}else if(txtAdresaKancelarije.getText().trim().matches("[a-žA-Ž0-9 ]*") == false) {
+						JOptionPane.showMessageDialog(null, "Adresa kancelarije nije uneta kako treba!","",JOptionPane.ERROR_MESSAGE);
 					}else if(txtLicna.getText().length() != 9) {
 						JOptionPane.showMessageDialog(null, "Broj lične karte nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 					}else if(isNumber(txtLicna.getText()) == false){
