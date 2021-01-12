@@ -306,6 +306,12 @@ public class EditStudentFrame extends JDialog {
 						studStat = StudentStatus.S;
 					}
 
+					BazaStudenata.getInstance().prosekOcena(st);
+					String result = String.format("%.2f", st.getProsecnaOcena());
+					EditStudentFrame.getAvgOcena().setText(result);
+					EditStudentFrame.izracunajUkupnoEspb();
+					setProsOcena(st.getProsecnaOcena()); 
+					TabPane.getInstance().azurirajStudenti();	
 					
 					String datumRodj = txtDatum.getText();
 					DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
@@ -365,16 +371,16 @@ public class EditStudentFrame extends JDialog {
 					}else {
 						int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da uklonite ocenu?","Ponistavanje ocene",JOptionPane.YES_NO_OPTION);
 						if(option == JOptionPane.YES_OPTION) {
-							Student stud = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
+							//Student stud = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
 							Ocena ocen = new Ocena(BazaOcena.getInstance().getRowPolozeni(PolozeniJTable.getInstance().getSelectedRow()));
 							Predmet pred = ocen.getPredmet();
 							
-							StudentiController.getInstance().ponistiOcenu(stud.getBrojIndeksa(), pred.getSifraPredmeta());
-							BazaStudenata.getInstance().prosekOcena(stud);
-							String result = String.format("%.2f", stud.getProsecnaOcena());
+							StudentiController.getInstance().ponistiOcenu(st.getBrojIndeksa(), pred.getSifraPredmeta());
+							BazaStudenata.getInstance().prosekOcena(st);
+							String result = String.format("%.2f", st.getProsecnaOcena());
 							EditStudentFrame.getAvgOcena().setText(result);
 							EditStudentFrame.izracunajUkupnoEspb();
-							setProsOcena(stud.getProsecnaOcena()); 
+							setProsOcena(st.getProsecnaOcena()); 
 							TabPane.getInstance().azurirajStudenti();	
 						}
 						
@@ -394,7 +400,7 @@ public class EditStudentFrame extends JDialog {
 		JLabel lProsecnaOcena = new JLabel("Prosecna Ocena: ");
 		lProsecnaOcena.setPreferredSize(dim);
 
-		
+		BazaStudenata.getInstance().prosekOcena(st);
 		result = String.format("%.2f", st.getProsecnaOcena());
 		lAvgOcena = new JLabel(result);
  

@@ -22,12 +22,9 @@ import javax.swing.JTextField;
 import controller.ProfesoriController;
 import listeners.FocusListener1;
 import model.BazaProfesora;
-import model.BazaStudenata;
-import model.PredmetSemestar;
 import model.Profesor;
 import model.ProfesorTitula;
 import model.ProfesorZvanje;
-import model.Student;
 
 public class AddProfesorFrame extends JDialog{
 

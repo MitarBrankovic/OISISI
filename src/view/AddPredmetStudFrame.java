@@ -2,9 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,7 +30,7 @@ public class AddPredmetStudFrame extends JDialog{
 	public AddPredmetStudFrame() {
 		
 		setTitle("Dodavanje predmeta");
-		setSize(300, 450);
+		setSize(300, 500);
 		setModal(true);
 		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -82,8 +80,6 @@ public class AddPredmetStudFrame extends JDialog{
 		
 		
 		JPanel donjiPanel = new JPanel();
-		//donjiPanel.setPreferredSize(new Dimension(450,50));
-		//donjiPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		JButton dodaj = new JButton("Dodaj");
 		JButton odustani = new JButton("Odustani");
 		

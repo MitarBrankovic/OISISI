@@ -369,9 +369,6 @@ public class AddStudentFrame extends JDialog {
 					}
 				}
 				
-				//String[] datumRodj = txtDatum.getText().split("\\.");
-				//LocalDate lDate = LocalDate.of(Integer.parseInt(datumRodj[2]), Integer.parseInt(datumRodj[1]), Integer.parseInt(datumRodj[0]));
-				
 				
 				if(txtIme.getText().equals("") || txtPrezime.getText().equals("") || txtDatum.getText().equals("") || txtAdresa.getText().equals("") || 
 						txtTelefon.getText().equals("") || txtEmail.getText().equals("") || txtIndeks.getText().equals("") || txtGodinaUpisa.getText().equals(""))  {
@@ -390,8 +387,6 @@ public class AddStudentFrame extends JDialog {
 					JOptionPane.showMessageDialog(null, "Email nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 				}else if(txtIndeks.getText().matches("[A-Ž]+[0-9]+/[0-9]+") == false) {
 					JOptionPane.showMessageDialog(null, "Indeks nije dobro unet","",JOptionPane.ERROR_MESSAGE);
-				//}else if(isNumber(txtGodinaUpisa.getText()) == false){
-					//JOptionPane.showMessageDialog(null, "Godina upisa nije dobro unet","",JOptionPane.ERROR_MESSAGE);
 				}else if(vecPostoji){
 					JOptionPane.showMessageDialog(null, "Vec postoji student sa istim indeksom","",JOptionPane.ERROR_MESSAGE);
 				}else {

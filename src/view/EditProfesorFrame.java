@@ -20,20 +20,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
-import controller.NepolozeniController;
 import controller.PredmetiProfesorController;
 import controller.ProfesoriController;
-import controller.StudentiController;
 import listeners.FocusListener1;
-import model.BazaPredmeta;
 import model.BazaProfesora;
-import model.BazaStudenata;
 import model.Predmet;
 import model.Profesor;
 import model.ProfesorTitula;
 import model.ProfesorZvanje;
-import model.Student;
-import model.StudentStatus;
 
 public class EditProfesorFrame extends JDialog{
 

@@ -15,16 +15,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import controller.NepolozeniController;
 import controller.PredmetiProfesorController;
-import model.BazaOcena;
 import model.BazaPredmeta;
 import model.BazaProfesora;
-import model.BazaStudenata;
-import model.Ocena;
 import model.Predmet;
 import model.Profesor;
-import model.Student;
 
 public class AddPredmetProfFrame extends JDialog{
 
