@@ -109,18 +109,7 @@ public class BazaProfesora {
 	}
 	
 	public void restart() {
-		//profesori = tmpProfesori;
-		//this.profesori=this.tmpProfesori;
-		/*for(Profesor p : tmpProfesori) {
-			for(Profesor p1 : listaProfesora) {
-				if(p.getBrojLicneKarte().equals(p1.brojLicneKarte)) {
-					//tmpProfesori.remove(p);
-					//tmpProfesori.add(p1);
-					int index = tmpProfesori.indexOf(p);
-					tmpProfesori.set(index, p1);
-				}
-			}
-		}*/
+	
 		tmpProfesori = azurirajPomocnuListu(tmpProfesori, profesori);
 		
 		profesori = tmpProfesori;
@@ -143,7 +132,7 @@ public class BazaProfesora {
 		return profesori;
 	}
 	
-	public ArrayList<Profesor> getSviProfesori() {
+	public ArrayList<Profesor> getTmpProfesori() {
 		return tmpProfesori;
 	}
 	
@@ -265,7 +254,6 @@ public class BazaProfesora {
 	
 	public void dodajProfesora(String ime, String prezime, LocalDate datumRodjenja, String adresaStanovanja, String kontaktTelefon,String email, String adresaKancelarije, String brojLicneKarte, ProfesorTitula titula, ProfesorZvanje zvanje) {
 		this.profesori.add(new Profesor(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email, adresaKancelarije, brojLicneKarte, titula, zvanje));
-		//this.tmpProfesori.add(new Profesor(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email, adresaKancelarije, brojLicneKarte, titula, zvanje));
 		tmpProfesori = azurirajPomocnuListu(tmpProfesori, profesori);
 	}
 	
@@ -293,13 +281,11 @@ public class BazaProfesora {
 	ArrayList<Profesor> listaProfesora = new ArrayList<Profesor>();
 	
 	public void searchProfesor(String tekst) {
-		//this.tmpProfesori = new ArrayList<Profesor>();
-		//tmpProfesori = profesori;
+
 		String[] splited = tekst.split("\\s+");
 		
 		if(tekst.equals("")) {
-			//this.profesori=this.tmpProfesori;
-			//listaProfesora.removeAll(listaProfesora);
+
 			restart();
 		}else {
 			if(splited.length == 1) {
@@ -344,25 +330,7 @@ public class BazaProfesora {
 			}
 		}
 		tmpProfesori = azurirajPomocnuListu(tmpProfesori, profesori);
-		/*try {
-			for(Profesor i : tmpProfesori) {
-				if(i.getBrojLicneKarte().equals(brojLicneKarte)) {
-					i.setIme(ime);
-					i.setPrezime(prezime);
-					i.setDatumRodjenja(datumRodjenja);
-					i.setAdresaStanovanja(adresaStanovanja);
-					i.setKontaktTelefon(kontaktTelefon);
-					i.setEmail(email);
-					i.setAdresaKancelarije(adresaKancelarije);
-					i.setBrojLicneKarte(brojLicneKarte);
-					i.setTitula(titula);
-					i.setZvanje(zvanje);
 
-				}
-			}
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-		}*/
 	}
 	
 	public void dodajPredmet(String sifra, String brLicne) {

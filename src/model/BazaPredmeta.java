@@ -70,6 +70,8 @@ public class BazaPredmeta {
 				
 				
 				Profesor objProfesor = null;
+				Profesor objTmpProfesor = null;
+
 				String profLicnaKarta = kolone[4].trim();
 				if(profLicnaKarta.contains("null")) {
 					objProfesor = null;
@@ -77,6 +79,11 @@ public class BazaPredmeta {
 					for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
 						if(p.getBrojLicneKarte().equals(profLicnaKarta) == true) {
 							objProfesor = p;
+						}
+					}
+					for(Profesor p : BazaProfesora.getInstance().getTmpProfesori()) {
+						if(p.getBrojLicneKarte().equals(profLicnaKarta) == true) {
+							objTmpProfesor = p;
 						}
 					}
 				}
@@ -87,9 +94,11 @@ public class BazaPredmeta {
 				predmeti.add(pred);
 				tmpPredmeti.add(pred);
 				
-				if(objProfesor != null)
+				if(objProfesor != null) {
 					objProfesor.getSpisakPredmeta().add(pred);
-			}
+					objTmpProfesor.getSpisakPredmeta().add(pred);
+				}
+		}
 			
 			reader.close();
 		} catch(IOException exception) {
@@ -102,17 +111,7 @@ public class BazaPredmeta {
 	}
 	
 	public void restart() {
-		//predmeti = tmpPredmeti;
-		//this.predmeti=this.tmpPredmeti;
 		
-		/*for(Predmet p : tmpPredmeti) {
-			for(Predmet p1 : listaPredmeta) {
-				if(p.getSifraPredmeta().equals(p1.getSifraPredmeta())) {
-					int index = tmpPredmeti.indexOf(p);
-					tmpPredmeti.set(index, p1);
-				}
-			}
-		}*/
 		tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
 		
 		predmeti = tmpPredmeti;
@@ -180,7 +179,6 @@ public class BazaPredmeta {
 	
 	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, Profesor predmetniProfesor) {
 		this.predmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
-		//this.tmpPredmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
 		tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
 	}
 	
@@ -198,20 +196,7 @@ public class BazaPredmeta {
 		}
 		tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
 
-		/*try {
-			for (Predmet i : tmpPredmeti) {
-				if (i.getSifraPredmeta().equals(sifraPredmeta)) {
-					i.setSifraPredmeta(sifraPredmeta);
-					i.setNazivPredmeta(nazivPredmeta);
-					i.setSemestar(sem);
-					i.setGodinaStudija(godinaStudija);
-					i.setEspb(espb);
-					i.setPredmetniProfesor(predmetniProfesor);				
-				}
-			}
-		}catch (Exception e) {
-			System.out.println(e.getMessage());
-		}*/
+		
 	}
 	
 	public void izbrisiProfesoraSaPredmeta(String sifra) {
@@ -225,18 +210,7 @@ public class BazaPredmeta {
 		}
 		tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
 
-		/*try {
-			for(Predmet i : tmpPredmeti) {
-				if(i.getSifraPredmeta().equals(sifra)) {
-					Profesor prof = i.getPredmetniProfesor();
-					i.setPredmetniProfesor(null);
-					prof.getSpisakPredmeta().remove(i);
-					break;
-				}
-			}
-		}catch (Exception e) {
-			System.out.println(e.getMessage());
-		}*/
+		
 	}
 	
 	public void izbrisiPredmet(String indeks) {
@@ -262,30 +236,7 @@ public class BazaPredmeta {
 		}
 		tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
 
-		/*try {
-			for(Predmet i : tmpPredmeti) {
-				if(i.getSifraPredmeta().equals(indeks)) {
-					Profesor objProf = null;
-					objProf = i.getPredmetniProfesor();
-					if(objProf != null) {
-						objProf.getSpisakPredmeta().remove(i);
-					}
-					ArrayList<Ocena> oceneBrisanje = new ArrayList<Ocena>();
-					for(Ocena o : BazaOcena.getInstance().getOcene()) {
-						if(o.getPredmet().getSifraPredmeta().equals(indeks)){
-							oceneBrisanje.add(o);
-							o.getStudent().getSpisakNepolozenihPredmeta().remove(o);
-							o.getStudent().getSpisakPolozenihPredmeta().remove(o);
-						}
-					}
-					tmpPredmeti.remove(i);
-					BazaOcena.getInstance().getOcene().removeAll(oceneBrisanje);
-					break;
-				}
-			}
-		}catch (Exception e) {
-			System.out.println(e.getMessage());
-		}*/
+		
 	}
 	
 
@@ -295,8 +246,7 @@ public class BazaPredmeta {
 	public void searchPredmet(String tekst) {
 		
 		if(tekst.equals("")) {
-			//this.predmeti=this.tmpPredmeti;
-			//listaPredmeta.removeAll(listaPredmeta);
+
 			restart();
 		}else {
 			for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
