@@ -5,9 +5,6 @@ package controller;
 
 import model.BazaOcena;
 import model.Ocena;
-import model.Predmet;
-import model.PredmetSemestar;
-import model.Student;
 import view.EditStudentFrame;
 
 public class NepolozeniController {

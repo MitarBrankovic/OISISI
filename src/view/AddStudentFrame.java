@@ -5,11 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import listeners.FocusListener1;
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 import controller.StudentiController;
 import model.*;
@@ -21,13 +18,10 @@ public class AddStudentFrame extends JDialog {
 	private StudentStatus stat;
 	
 	public AddStudentFrame() {
-		/*setVisible je stavljen u komentar zato sto istu funkciju pozivamo u MenuKonfiguracija/Toolbar
-		 *  pa da ne bi iskakala dva prozora, a da omogucimo da dijalog bude modalan*/
 		
 		setTitle("Dodavanje Studenta");
 		setSize(400, 500);
 		setModal(true);
-		//setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		new BorderLayout();
@@ -42,25 +36,7 @@ public class AddStudentFrame extends JDialog {
 		txtIme.setName("ime");
 		txtIme.setToolTipText("npr. Nikola");
 		txtIme.addFocusListener(focus);
-		txtIme.getDocument().addDocumentListener(new DocumentListener() {
 
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				praznoPolje(txtIme);
-			}
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				praznoPolje(txtIme);
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				praznoPolje(txtIme);
-			}
-			
-			
-		});
 		
 		pIme.add(lIme);
 		pIme.add(txtIme);
@@ -75,23 +51,7 @@ public class AddStudentFrame extends JDialog {
 		txtPrezime.setName("prezime");
 		txtPrezime.setToolTipText("npr. Tesla");
 		txtPrezime.addFocusListener(focus);
-		txtPrezime.getDocument().addDocumentListener(new DocumentListener() {
 
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				praznoPolje(txtPrezime);
-			}
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				praznoPolje(txtPrezime);
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				praznoPolje(txtPrezime);
-			}
-		});
 		
 		pPrezime.add(lPrezime);
 		pPrezime.add(txtPrezime);
@@ -105,23 +65,7 @@ public class AddStudentFrame extends JDialog {
 		txtDatum.setName("tekst");
 		txtDatum.setToolTipText("npr. 10.07.1856.");
 		txtDatum.addFocusListener(focus);
-		txtDatum.getDocument().addDocumentListener(new DocumentListener() {
 
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				praznoPolje(txtDatum);
-			}
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				praznoPolje(txtDatum);
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				praznoPolje(txtDatum);
-			}			
-		});
 		
 		pDatum.add(lDatum);
 		pDatum.add(txtDatum);
@@ -135,23 +79,7 @@ public class AddStudentFrame extends JDialog {
 		txtAdresa.setName("tekst");
 		txtAdresa.setToolTipText("npr. Futoska 10");
 		txtAdresa.addFocusListener(focus);
-		txtAdresa.getDocument().addDocumentListener(new DocumentListener() {
 
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				praznoPolje(txtAdresa);
-			}
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				praznoPolje(txtAdresa);
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				praznoPolje(txtAdresa);
-			}		
-		});
 		
 		pAdresa.add(lAdresa);
 		pAdresa.add(txtAdresa);
@@ -165,23 +93,7 @@ public class AddStudentFrame extends JDialog {
 		txtTelefon.setName("tekst");
 		txtTelefon.setToolTipText("npr. 021123456");
 		txtTelefon.addFocusListener(focus);
-		txtTelefon.getDocument().addDocumentListener(new DocumentListener() {
 
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				praznoPolje(txtTelefon);
-			}
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				praznoPolje(txtTelefon);
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				praznoPolje(txtTelefon);
-			}			
-		});
 		
 		pTelefon.add(lTelefon);
 		pTelefon.add(txtTelefon);
@@ -195,23 +107,7 @@ public class AddStudentFrame extends JDialog {
 		txtEmail.setName("tekst");
 		txtEmail.setToolTipText("npr. NikolaTesla@gmail.com");
 		txtEmail.addFocusListener(focus);
-		txtEmail.getDocument().addDocumentListener(new DocumentListener() {
 
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				praznoPolje(txtEmail);
-			}
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				praznoPolje(txtEmail);
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				praznoPolje(txtEmail);
-			}		
-		});
 		
 		pEmail.add(lEmail);
 		pEmail.add(txtEmail);
@@ -223,25 +119,9 @@ public class AddStudentFrame extends JDialog {
 		JTextField txtIndeks = new JTextField();
 		txtIndeks.setPreferredSize(dim);
 		txtIndeks.setName("tekst");
-		txtIndeks.setToolTipText("npr. RA/132");
+		txtIndeks.setToolTipText("npr. RA132/2021");
 		txtIndeks.addFocusListener(focus);
-		txtIndeks.getDocument().addDocumentListener(new DocumentListener() {
 
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				praznoPolje(txtIndeks);
-			}
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				praznoPolje(txtIndeks);
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				praznoPolje(txtIndeks);
-			}		
-		});
 		
 		pIndeks.add(lIndeks);
 		pIndeks.add(txtIndeks);
@@ -257,48 +137,13 @@ public class AddStudentFrame extends JDialog {
 		txtGodinaUpisa.setToolTipText("npr. 2020");
 		txtGodinaUpisa.addFocusListener(focus);
 		
-		txtGodinaUpisa.getDocument().addDocumentListener(new DocumentListener() {
 
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				praznoPolje(txtGodinaUpisa);
-			}
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				praznoPolje(txtGodinaUpisa);
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				praznoPolje(txtGodinaUpisa);
-			}
-			
-			
-		});
 		
 		pGodinaUpisa.add(lGodinaUpisa);
 		pGodinaUpisa.add(txtGodinaUpisa);
 
+
 		
-		/*
-		JRadioButton prva = new JRadioButton("1");
-		JRadioButton druga = new JRadioButton("2");
-		JRadioButton treca = new JRadioButton("3");
-		JRadioButton cetvrta = new JRadioButton("4");
-	    ButtonGroup godinaStudija = new ButtonGroup();
-	    godinaStudija.add(prva);
-	    godinaStudija.add(druga);
-	    godinaStudija.add(treca);
-	    godinaStudija.add(cetvrta);
-	    JPanel pGodinaStudija = new JPanel(new FlowLayout(FlowLayout.LEFT));
-	    JLabel lGodinaStudija = new JLabel("Godina studija*: ");
-	    pGodinaStudija.add(lGodinaStudija);
-	    pGodinaStudija.add(prva);
-	    pGodinaStudija.add(druga);
-	    pGodinaStudija.add(treca);
-	    pGodinaStudija.add(cetvrta);
-		*/
 		String [] lista = {"I (prva)","II (druga)","III (treca)","IV (cetvrta)"};
 		JComboBox<Object> godine = new JComboBox<Object>(lista);
 	    JPanel pGodinaStudija = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -307,17 +152,6 @@ public class AddStudentFrame extends JDialog {
 	    pGodinaStudija.add(lGodinaStudija);
 	    pGodinaStudija.add(godine);
 		
-		
-		/*JRadioButton budzet = new JRadioButton("Budzet");
-		JRadioButton samofinansiranje = new JRadioButton("Samofinansiranje");
-	    ButtonGroup status = new ButtonGroup();
-	    status.add(budzet);
-	    status.add(samofinansiranje);
-	    JPanel pStatus = new JPanel(new FlowLayout(FlowLayout.LEFT));
-	    JLabel lStatus = new JLabel("Status*: ");
-	    pStatus.add(lStatus);
-	    pStatus.add(budzet);
-	    pStatus.add(samofinansiranje);*/
 
 	    
 		String [] lista2 = {"Budžet","Samofinansiranje"};
@@ -327,21 +161,7 @@ public class AddStudentFrame extends JDialog {
 	    lStatus.setPreferredSize(dim);
 	    pStatus.add(lStatus);
 	    pStatus.add(status);
-		
-		
-		/*JPanel pProsek = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel lProsek = new JLabel("Prosek*: ");
-		lProsek.setPreferredSize(dim);
-		JTextField txtProsek = new JTextField();
-		txtProsek.setPreferredSize(dim);
-		txtProsek.setName("tekst");
-		txtProsek.setToolTipText("npr. 9.11");
-		txtProsek.addFocusListener(focus);
-		
-		pProsek.add(lProsek);
-		pProsek.add(txtProsek);*/
-		
-		
+			
 		
 		
 		JPanel donjiPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -441,7 +261,6 @@ public class AddStudentFrame extends JDialog {
 		boxStudent.add(pGodinaUpisa);
 		boxStudent.add(pGodinaStudija);
 		boxStudent.add(pStatus);
-		//boxStudent.add(pProsek);
 		boxStudent.add(Box.createGlue());
 		
 		add(boxStudent, BorderLayout.CENTER);

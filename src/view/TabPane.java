@@ -1,5 +1,9 @@
 package view;
 
+import java.io.File;
+
+import javax.swing.ImageIcon;
+
 //import java.awt.BorderLayout;
 //import java.awt.Color;
 
@@ -48,9 +52,15 @@ public class TabPane extends JTabbedPane {
 		
 		BazaOcena.getInstance();
 		
-		addTab("Studenti", skrolStudenti);
-		addTab("Profesori", skrolProfesori);
-		addTab("Predmeti", skrolPredmeti);
+		
+		ImageIcon studIcon = new ImageIcon( "images" + File.separator + "stud.png");
+		ImageIcon profIcon = new ImageIcon( "images" + File.separator + "prof.png");
+		ImageIcon predIcon = new ImageIcon( "images" + File.separator + "pred.png");
+		
+		
+		addTab("Studenti", studIcon , skrolStudenti);
+		addTab("Profesori", profIcon , skrolProfesori);
+		addTab("Predmeti", predIcon, skrolPredmeti);
 		
 		addChangeListener(new ChangeListener() {
 			

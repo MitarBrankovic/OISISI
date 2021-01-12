@@ -26,7 +26,9 @@ public class HelpFrame extends JFrame {
 		ukrasniPanel.setPreferredSize(new Dimension(100,20));
 		
 		TextArea tekst = new TextArea();
-		tekst.setText("Deo projekta pripremljen za drugu kontrolnu tacku \r\n" + 
+		tekst.setText("NAPOMENA: potrebno je resetovati search(obrisati tekst iz polja i ponovo pritisnuti dugme search kako bi se resetovala tabela) pre nego sto se izadje iz programa na X(na taj nacin se vrsi serijalizacija)\r\n" + 
+				"File->Close predstavlja izlaz iz programa nakon kojeg se izmenjeni podaci nece sacuvati\r\n" + 
+				"\r\n" + 
 				"\r\n" + 
 				"Glavni prozor se sastoji iz: MenuBar, Toolbar, TabPane(sastoji se iz 3 taba na kojem se nalaze tabele) i StatusBar-a.\r\n" + 
 				"MenuBar kao i Toolbar ima opcije za dodavanje/izmenu/brisanje entiteta unutar tabela u zavisnosti od izabranog taba, a menuBar ima dodatne opcije za otvaranje help/about dijaloga.\r\n" + 
@@ -38,8 +40,7 @@ public class HelpFrame extends JFrame {
 				"\r\n" + 
 				"1. STUDENT ENTITET:\r\n" + 
 				"1.1) Prikaz studenata\r\n" + 
-				"Tabela sa informacijama o studentima se nalazi u tabu 'Studenti'. Klikom na naziv svake od kolona moguce je vrsiti opadajuce ili rastuce sortiranje prema vrednosti izabrane kolone.\r\n"
-				+ " Takodje, moguce je vrsiti promenu redosleda kolona klikom na naziv kolone i prevlacenjem iste na mesto neke druge kolone.\r\n" + 
+				"Tabela sa informacijama o studentima se nalazi u tabu 'Studenti'. Klikom na naziv svake od kolona moguce je vrsiti opadajuce ili rastuce sortiranje prema vrednosti izabrane kolone. Takodje, moguce je vrsiti promenu redosleda kolona klikom na naziv kolone i prevlacenjem iste na mesto neke druge kolone.\r\n" + 
 				"1.2) Dodavanje studenata(CTRL+N na tabu 'Studenti')\r\n" + 
 				"Dijalog za dodavanje studenta je moguce otvoriti preko prvog dugmeta na toolbar-u ili u meniju File->New\r\n" + 
 				"Potrebno je odgovarajuce popuniti sva polja. Postoje zastite za svako polje da li je pravilno popunjeno, takodje nije moguce dodati studenta sa indeksom koji vec postoji u tabeli. \r\n" + 
@@ -50,18 +51,20 @@ public class HelpFrame extends JFrame {
 				"Adresa: Futoska 10\r\n" + 
 				"Telefon: 021123456\r\n" + 
 				"Email: nikolatesla@gmail.com\r\n" + 
-				"Indeks: RA/132\r\n" + 
+				"Indeks: RA132/2021\r\n" + 
 				"Godina Upisa: 2020\r\n" + 
 				"i odabrati neka polja iz comboBoxa(Status i GodinaStudija). Nakon toga je potrebno pritisnuti dugme 'Potvrdi' kako bi se student dodao u tabelu.\r\n" + 
 				"1.3)Izmena studenta(CTRL+E na tabu 'Studenti')\r\n" + 
-				"Potrebno je kliknuti na nekog studenta i pritisnuti drugo dugme na toolbaru ili Edit->Edit. Izmena ima zastite slicne kao i za dodavanje studenta. Ovaj dijalog se sastoji iz 3 taba: prvi('Informacije'), drugi('Polozeni'), treci('Nepolozeni').\r\n"
-				+ " Na trecem tabu mozemo dodavati(dugme 'Dodaj') odnosno brisati('Obrisi') predmete koji nisu polzeni, takodje mozemo da im damo ocenu(dugme 'Pologanje') i upisemo uh u tabelu polozenih. Studentu se ne moze dodati predmet koji je na visoj godini od godine studija studenta.\r\n"
-				+ " U okviru taba 'Polozeni' postoji tabela sa polozenim predmetima za koje se racuna prosecna ocena i ukupan ESPB. Moguce je ponistiti ocenu(dugme 'Ponisti ocenu' na tabu 'Polozeni') od nekog predmeta i tada ce se taj predmet prebaciti iz tabele polozenih u tabelu nepolozenih.\r\n"
-				+ " Nakon sto se promeni stanje ove dve tabele prosecna ocena studenta ce se promeniti tek nakon sto je pritisnuto dugme 'Potvrdi' na tabu 'Informacije'.\r\n" + 
+				"Potrebno je kliknuti na nekog studenta i pritisnuti drugo dugme na toolbaru ili Edit->Edit. Izmena ima zastite slicne kao i za dodavanje studenta. Ovaj dijalog se sastoji iz 3 taba: prvi('Informacije'), drugi('Polozeni'), treci('Nepolozeni'). Na trecem tabu mozemo dodavati(dugme 'Dodaj') odnosno brisati('Obrisi') predmete koji nisu polzeni, takodje mozemo da im damo ocenu(dugme 'Pologanje') i upisemo uh u tabelu polozenih. Studentu se ne moze dodati predmet koji je na visoj godini od godine studija studenta. U okviru taba 'Polozeni' postoji tabela sa polozenim predmetima za koje se racuna prosecna ocena i ukupan ESPB. Moguce je ponistiti ocenu(dugme 'Ponisti ocenu' na tabu 'Polozeni') od nekog predmeta i tada ce se taj predmet prebaciti iz tabele polozenih u tabelu nepolozenih. Nakon sto se promeni stanje ove dve tabele prosecna ocena studenta ce se promeniti tek nakon sto je pritisnuto dugme 'Potvrdi' na tabu 'Informacije'.\r\n" + 
 				"Za dugme 'Polaganje' i 'Ponisti ocenu' je potrebnu izabrati predmet nad kojim zelite da se izvrsi akcija.\r\n" + 
 				"Onemogucena je izmena indeksa i proseka u tabu 'Informacije'.\r\n" + 
 				"1.4)Brisanje sudenta(CTRL+D na tabu 'Studenti')\r\n" + 
 				"Potrebno je kliknuti na nekog studenta i pritisnuti trece dugme na toolbaru ili Edit->Delete\r\n" + 
+				"1.5)Pretraga\r\n" + 
+				"Potrebno je uneti deo ili celo:-prezime\r\n" + 
+				"		  	       -prezime i ime\r\n" + 
+				"		 	       -prezime, ime i indeks\r\n" + 
+				"Nakon unosa potrebno je obrisati tekst iz polja i ponovo pritisnuti dugme search kako bi se resetovala tabela.\r\n" + 
 				"\r\n" + 
 				"2. PROFESOR ENTITET\r\n" + 
 				"2.1)Prikaz profesora\r\n" + 
@@ -84,6 +87,10 @@ public class HelpFrame extends JFrame {
 				"****NEZAVRSENO****\r\n" + 
 				"2.4)Brisanje profesora(CTRL+D na tabu 'Profesori')\r\n" + 
 				"Potrebno je kliknuti na nekog profesora i pritisnuti trece dugme na toolbaru ili Edit->Delete\r\n" + 
+				"2.5)Pretraga\r\n" + 
+				"Potrebno je uneti deo ili celo:-prezime\r\n" + 
+				"		  	       -prezime i ime\r\n" + 
+				"Nakon unosa potrebno je obrisati tekst iz polja i ponovo pritisnuti dugme search kako bi se resetovala tabela.\r\n" + 
 				"\r\n" + 
 				"3.PREDMET ENTITET\r\n" + 
 				"3.1)Prikaz predmeta\r\n" + 
@@ -101,9 +108,10 @@ public class HelpFrame extends JFrame {
 				"Potrebno je kliknuti na neki predmet i pritisnuti drugo dugme na toolbaru ili Edit->Edit. Izmena ima zastite slicne kao i za dodavanje predmeta.\r\n" + 
 				"3.4)Brisanje predmeta(CTRL+N na tabu 'Predmeti')\r\n" + 
 				"Potrebno je kliknuti na neki predmet i pritisnuti trece dugme na toolbaru ili Edit->Delete\r\n" + 
+				"3.5)Pretraga\r\n" + 
+				"Potrebno je uneti deo ili celo:-naziv predmeta\r\n" + 
+				"Nakon unosa potrebno je obrisati tekst iz polja i ponovo pritisnuti dugme search kako bi se resetovala tabela.\r\n" + 
 				"\r\n" + 
-				"\r\n" + 
-				"NAPOMENA: nije uradjena pretraga, serijalizacija, i potrebno je ispraviti pojedine sitne bagove\r\n" + 
 				"\r\n" + 
 				"Na projektu rade: Mitar Brankovic i Srdjan Beric"
 				

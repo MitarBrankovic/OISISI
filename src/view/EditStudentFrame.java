@@ -161,7 +161,7 @@ public class EditStudentFrame extends JDialog {
 		txtIndeks.setPreferredSize(dim);
 		txtIndeks.setName("tekst");
 		txtIndeks.setEnabled(false);
-		txtIndeks.setToolTipText("npr. RA/123");
+		txtIndeks.setToolTipText("npr. RA132/2021");
 		txtIndeks.addFocusListener(focus);
 		
 		pIndeks.add(lIndeks);
