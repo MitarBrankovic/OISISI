@@ -1,4 +1,4 @@
-123123123, Milos, Nikolic, 12.12.1965., Temerinska 15 Novi Sad, 021356785, milos.nikolic@mailinator.com, Dositeja Obradovića 6 Novi Sad NTP 600, PROF_DR, REDOVNI_PROFESOR
+123123123, Milos, Nikolic, 12.12.1965., Temerinska 15 Novi Sad, 021356780, milos.nikolic@mailinator.com, Dositeja Obradovića 6 Novi Sad NTP 600, DR, REDOVNI_PROFESOR
 321321321, Nikola, Mirkovic, 01.01.1978., Jovana Cvjića 25 Subotica, 021368456, nikola.mirkovic@mailinator.com, Dositeja Obradovića 6 Novi Sad NTP 601, PROF_DR, REDOVNI_PROFESOR
 456456456, Ilija, Petkovic, 03.09.1988., Gogoljeva 1 Novi Sad, 021215314, ilija.petkovic@mailinator.com, Dositeja Obradovića 6 Novi Sad NTP 602, DR, VANREDNI_PROFESOR
 789789789, Mitar, Petrovic, 25.07.1976., Marka Kraljevića 102 Beograd, 021884640, mitar.petrovic@mailinator.com, Dositeja Obradovića 6 Novi Sad NTP 603, DR, VANREDNI_PROFESOR

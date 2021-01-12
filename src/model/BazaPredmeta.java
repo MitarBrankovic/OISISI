@@ -103,8 +103,32 @@ public class BazaPredmeta {
 	
 	public void restart() {
 		//predmeti = tmpPredmeti;
-		this.predmeti=this.tmpPredmeti;
+		//this.predmeti=this.tmpPredmeti;
+		
+		/*for(Predmet p : tmpPredmeti) {
+			for(Predmet p1 : listaPredmeta) {
+				if(p.getSifraPredmeta().equals(p1.getSifraPredmeta())) {
+					int index = tmpPredmeti.indexOf(p);
+					tmpPredmeti.set(index, p1);
+				}
+			}
+		}*/
+		tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
+		
+		predmeti = tmpPredmeti;
 		listaPredmeta.removeAll(listaPredmeta);
+	}
+	
+	public ArrayList<Predmet> azurirajPomocnuListu(ArrayList<Predmet> p, ArrayList<Predmet> p1){
+		for(Predmet pred : p) {
+			for(Predmet pred1 : p1) {
+				if(pred.getSifraPredmeta().equals(pred1.getSifraPredmeta())) {
+					int index = p.indexOf(pred);
+					p.set(index, pred1);
+				}
+			}
+		}
+		return p;
 	}
 	
 	public ArrayList<Predmet> getSviPredmeti() {
@@ -156,7 +180,8 @@ public class BazaPredmeta {
 	
 	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, Profesor predmetniProfesor) {
 		this.predmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
-		this.tmpPredmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
+		//this.tmpPredmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
+		tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
 	}
 	
 	
@@ -171,7 +196,9 @@ public class BazaPredmeta {
 				i.setPredmetniProfesor(predmetniProfesor);				
 			}
 		}
-		try {
+		tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
+
+		/*try {
 			for (Predmet i : tmpPredmeti) {
 				if (i.getSifraPredmeta().equals(sifraPredmeta)) {
 					i.setSifraPredmeta(sifraPredmeta);
@@ -184,7 +211,7 @@ public class BazaPredmeta {
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
-		}
+		}*/
 	}
 	
 	public void izbrisiProfesoraSaPredmeta(String sifra) {
@@ -196,8 +223,9 @@ public class BazaPredmeta {
 				break;
 			}
 		}
-		
-		try {
+		tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
+
+		/*try {
 			for(Predmet i : tmpPredmeti) {
 				if(i.getSifraPredmeta().equals(sifra)) {
 					Profesor prof = i.getPredmetniProfesor();
@@ -208,7 +236,7 @@ public class BazaPredmeta {
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
-		}
+		}*/
 	}
 	
 	public void izbrisiPredmet(String indeks) {
@@ -232,7 +260,9 @@ public class BazaPredmeta {
 				break;
 			}
 		}
-		try {
+		tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
+
+		/*try {
 			for(Predmet i : tmpPredmeti) {
 				if(i.getSifraPredmeta().equals(indeks)) {
 					Profesor objProf = null;
@@ -255,7 +285,7 @@ public class BazaPredmeta {
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
-		}
+		}*/
 	}
 	
 

@@ -160,7 +160,7 @@ public class EditProfesorFrame extends JDialog{
 		JTextField txtLicna = new JTextField();
 		txtLicna.setPreferredSize(dim);
 		txtLicna.setName("tekst");
-		txtLicna.setToolTipText("npr. 523951");
+		txtLicna.setToolTipText("npr. 523951123");
 		txtLicna.addFocusListener(focus);
 		
 		pLicna.add(lLicna);
@@ -252,8 +252,7 @@ public class EditProfesorFrame extends JDialog{
 						JOptionPane.showMessageDialog(null, "Licna karta sadrzi slova","",JOptionPane.ERROR_MESSAGE);
 					}
 					else {
-						//String titulaSt = titula.getSelectedItem().toString();
-						String zvanjeSt = zvanje.getSelectedItem().toString();
+
 						
 						String titula1 = titula.getSelectedItem().toString();
 						if(titula1.equals("DR")) {
@@ -278,7 +277,6 @@ public class EditProfesorFrame extends JDialog{
 							zva = ProfesorZvanje.asistent;
 						}
 						
-						String datumRodj = txtDatum.getText();
 						DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 
 						ProfesoriController.getInstance().editProfesor(txtIme.getText(), txtPrezime.getText(), LocalDate.parse(txtDatum.getText(), formatiran), txtAdresa.getText(), 
