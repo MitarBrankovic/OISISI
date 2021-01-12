@@ -185,7 +185,6 @@ public class EditProfesorFrame extends JDialog{
 	    
 	    trenutniRed = ProfesoriJTable.getInstance().getSelectedRow();
 	    String profEdit = (String)ProfesoriJTable.getInstance().getValueAt(trenutniRed, 0);
-	    
 		Profesor pr = ProfesoriController.getInstance().nadjiProfesora(profEdit);
 	    
 		
@@ -332,10 +331,11 @@ public class EditProfesorFrame extends JDialog{
 				try {	
 					int option =JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da uklonite predmet?","Uklanjanje predmeta?",JOptionPane.YES_NO_OPTION);
 					if(option == JOptionPane.YES_OPTION) {
-						Profesor prof = new Profesor(BazaProfesora.getInstance().getRow(ProfesoriJTable.getInstance().getSelectedRow()));
+						//Profesor prof = new Profesor(BazaProfesora.getInstance().getRow(ProfesoriJTable.getInstance().getSelectedRow()));
+						
 						Predmet predm = new Predmet(BazaProfesora.getInstance().getRowProfesoriPredmet(ProfesorPredmetiJTable.getInstance().getSelectedRow()));
 
-						PredmetiProfesorController.getInstance().ukloniPredmet(predm.getSifraPredmeta(), prof.getBrojLicneKarte());
+						PredmetiProfesorController.getInstance().ukloniPredmet(predm.getSifraPredmeta(), pr.getBrojLicneKarte());
 
 					}
 				}catch (Exception exc) {
@@ -433,6 +433,11 @@ public class EditProfesorFrame extends JDialog{
 			}
 		}
 		return true;
+	}
+	
+	
+	static public int getTrenutniRed() {
+		return trenutniRed;
 	}
 
 }

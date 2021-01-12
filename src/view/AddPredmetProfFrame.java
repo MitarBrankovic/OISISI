@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import controller.PredmetiProfesorController;
+import controller.ProfesoriController;
 import model.BazaPredmeta;
 import model.BazaProfesora;
 import model.Predmet;
@@ -25,6 +26,9 @@ public class AddPredmetProfFrame extends JDialog{
 
 	
 	private static final long serialVersionUID = 2896692937498337149L;
+	
+	private static int trenutniRed;
+
 	
 	public AddPredmetProfFrame() {
 		setTitle("Dodavanje predmeta");
@@ -38,7 +42,12 @@ public class AddPredmetProfFrame extends JDialog{
 		new BorderLayout();
 
 		DefaultListModel<String> lista = new DefaultListModel<String>();
-	    Profesor pr = new Profesor(BazaProfesora.getInstance().getRow(ProfesoriJTable.getInstance().getSelectedRow()));
+	    
+		
+		trenutniRed = EditProfesorFrame.getTrenutniRed();
+	    String profEdit = (String)ProfesoriJTable.getInstance().getValueAt(trenutniRed, 0);
+		Profesor pr = ProfesoriController.getInstance().nadjiProfesora(profEdit);
+		//Profesor pr = new Profesor(BazaProfesora.getInstance().getRow(ProfesoriJTable.getInstance().getSelectedRow()));
 		int i = 0;
 		
 		
