@@ -288,6 +288,7 @@ public class BazaProfesora {
 
 			restart();
 		}else {
+			restart();
 			if(splited.length == 1) {
 				for(Profesor s : BazaProfesora.getInstance().getProfesori()) {
 					if(s.getPrezime().toLowerCase().contains(splited[0].toLowerCase())) {

@@ -11,6 +11,14 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
 public class PredmetiJTable extends JTable{
+	@Override
+	public Class<?> getColumnClass(int column) {
+		// TODO Auto-generated method stub
+		if(column == 5)
+			return Integer.class;
+		return super.getColumnClass(column);
+	}
+
 	/**
 	 * 
 	 */

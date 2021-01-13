@@ -179,7 +179,9 @@ public class BazaPredmeta {
 	
 	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, Profesor predmetniProfesor) {
 		this.predmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
-		tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
+		this.tmpPredmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
+
+		//tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
 	}
 	
 	
@@ -234,9 +236,28 @@ public class BazaPredmeta {
 				break;
 			}
 		}
-		tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
+		//tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
 
-		
+		for(Predmet i : tmpPredmeti) {
+			if(i.getSifraPredmeta().equals(indeks)) {
+				Profesor objProf = null;
+				objProf = i.getPredmetniProfesor();
+				if(objProf != null) {
+					objProf.getSpisakPredmeta().remove(i);
+				}
+				ArrayList<Ocena> oceneBrisanje = new ArrayList<Ocena>();
+				for(Ocena o : BazaOcena.getInstance().getOcene()) {
+					if(o.getPredmet().getSifraPredmeta().equals(indeks)){
+						o.getStudent().getSpisakNepolozenihPredmeta().remove(o);
+						o.getStudent().getSpisakPolozenihPredmeta().remove(o);
+						oceneBrisanje.add(o);
+					}
+				}
+				tmpPredmeti.remove(i);
+				BazaOcena.getInstance().getOcene().removeAll(oceneBrisanje);
+				break;
+			}
+		}
 	}
 	
 
@@ -249,6 +270,7 @@ public class BazaPredmeta {
 
 			restart();
 		}else {
+			restart();
 			for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
 				if(p.getNazivPredmeta().toLowerCase().contains(tekst.toLowerCase())) {
 					listaPredmeta.add(p);

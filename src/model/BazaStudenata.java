@@ -224,7 +224,6 @@ public class BazaStudenata {
 			//listaStudenata.removeAll(listaStudenata);
 			restart();
 		}else {
-			
 			if(splited.length == 1) {
 				for(Student s : BazaStudenata.getInstance().getStudenti()) {
 					if(s.getPrezime().toLowerCase().contains(splited[0].toLowerCase())) {
