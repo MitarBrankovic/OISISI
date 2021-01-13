@@ -13,7 +13,6 @@ import model.*;
 
 public class AddStudentFrame extends JDialog {
 	
-	private static JButton potvrdi = new JButton("Potvrdi");
 	private static final long serialVersionUID = -7995869934266012394L;
 	private StudentStatus stat;
 	
@@ -165,7 +164,7 @@ public class AddStudentFrame extends JDialog {
 		
 		
 		JPanel donjiPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		//JButton potvrdi = new JButton("Potvrdi");
+		JButton potvrdi = new JButton("Potvrdi");
 		JButton odustani = new JButton("Odustani");
 		odustani.addActionListener(new ActionListener() {
 			
@@ -327,21 +326,6 @@ public class AddStudentFrame extends JDialog {
 			}
 		}
 		return true;
-	}
-	
-	  public void praznoPolje(JTextField nesto) {
-		     if (nesto.getText().isEmpty() || nesto == null || nesto.getText().length()==0){
-		       potvrdi.setEnabled(false);
-		     }
-		     else {
-		    	 potvrdi.setEnabled(true);
-		    }
-
-	 }
-	  
-	 public static JButton getPotvrdi() {
-		 return potvrdi;	 
-	 }
-	 
+	} 
 	 
 }

@@ -28,6 +28,7 @@ public class BazaOcena {
 	
 	
 	private ArrayList<Ocena> ocene;
+	private ArrayList<Ocena> tmpOcene;
 	private List<String> kolonePolozeni;
 	private List<String> koloneNepolozeni;
 	
@@ -58,6 +59,7 @@ public class BazaOcena {
 	
 	private void initOcene(){
 		this.ocene = new ArrayList<Ocena>();
+		this.tmpOcene = new ArrayList<Ocena>();
 
 		
 		String kolone[] = null;
@@ -84,6 +86,8 @@ public class BazaOcena {
 				
 				Predmet objPredmet = null;
 				Student objStudent = null;
+				Predmet objTmpPredmet = null;
+				Student objTmpStudent = null;
 				
 				indeks = kolone[0].trim();
 				sifra = kolone[1].trim();
@@ -92,9 +96,25 @@ public class BazaOcena {
 
 				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 				
+				if(datum.equals("null")) {
+					datum = "11.11.1111.";
+				}
+				
 				for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
 					if(p.getSifraPredmeta().equals(sifra) == true) {
 						objPredmet = p;
+					}
+				}
+				
+				for(Student s : BazaStudenata.getInstance().getStudenti()) {
+					if(s.getBrojIndeksa().equals(indeks) == true) {
+						objTmpStudent = s;
+					}
+				}
+				
+				for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+					if(p.getSifraPredmeta().equals(sifra) == true) {
+						objTmpPredmet = p;
 					}
 				}
 				
@@ -107,6 +127,8 @@ public class BazaOcena {
 				
 				Ocena objOcena = new Ocena(objStudent, objPredmet, ocena, LocalDate.parse(datum, formatiran));
 				ocene.add(objOcena);
+				Ocena objTmpOcena = new Ocena(objTmpStudent, objTmpPredmet, ocena, LocalDate.parse(datum, formatiran));
+				tmpOcene.add(objTmpOcena);
 				
 			}
 			reader.close();
@@ -133,11 +155,48 @@ public class BazaOcena {
 			s.setSpisakPolozenihPredmeta(spisakPolozenihStudent);
 		}
 		
+		for(Student s : BazaStudenata.getInstance().getSviStudenti()) {
+			ArrayList<Ocena> spisakPolozenihStudent = new ArrayList<Ocena>();
+			ArrayList<Ocena> spisakNepolozenihStudent = new ArrayList<Ocena>();
+
+			for(Ocena o : tmpOcene) {
+				if(o.getStudent() == s) {
+					if(o.getVrednostOcene() > 5) {
+						spisakPolozenihStudent.add(o);
+					}else {
+						spisakNepolozenihStudent.add(o);
+					}
+				}
+				
+			}
+			s.setSpisakNepolozenihPredmeta(spisakNepolozenihStudent);
+			s.setSpisakPolozenihPredmeta(spisakPolozenihStudent);
+		}
+		
+		
 		for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
 			List<Student> spisakStudentiPolozili = new ArrayList<Student>();
 			List<Student> spisakStudentiNisuPolozili = new ArrayList<Student>();
 			
 			for(Ocena o : ocene) {
+				if(o.getPredmet() == p) {
+					if(o.getVrednostOcene() > 5) {
+						spisakStudentiPolozili.add(o.getStudent());
+					}else {
+						spisakStudentiNisuPolozili.add(o.getStudent());
+					}
+				}
+				
+			}
+			p.setStudentiNisuPolozili(spisakStudentiNisuPolozili);
+			p.setStudentiPolozili(spisakStudentiPolozili);
+		}	
+		
+		for(Predmet p : BazaPredmeta.getInstance().getSviPredmeti()) {
+			List<Student> spisakStudentiPolozili = new ArrayList<Student>();
+			List<Student> spisakStudentiNisuPolozili = new ArrayList<Student>();
+			
+			for(Ocena o : tmpOcene) {
 				if(o.getPredmet() == p) {
 					if(o.getVrednostOcene() > 5) {
 						spisakStudentiPolozili.add(o.getStudent());
@@ -263,16 +322,7 @@ public class BazaOcena {
 		}
 	}
 	
-	public void dodajNepolozeni(String indeks, String sifra) { //String sifraPred, String naziv, int espb, int godina, PredmetSemestar semestar
-			/*for(Predmet pred: BazaPredmeta.getInstance().getPredmeti()) {
-				if(pred.getSifraPredmeta().equals(indeks)) {
-					pred.setNazivPredmeta(naziv);
-					pred.setEspb(espb);
-					pred.setGodinaStudija(godina);
-					pred.setSemestar(semestar);
-				}
-				
-			}*/
+	public void dodajNepolozeni(String indeks, String sifra) { 
 		Student st = new Student();
 		Predmet pr = new Predmet();
 	

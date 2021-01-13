@@ -197,9 +197,16 @@ public class UpisPodatakaController {
 				//	date =(String) ocena.getDatumPolaganja().format(formatiran);
 
 				//}
+				String datum = null;
+				if(ocena.getDatumPolaganja().format(formatiran).equals("11.11.1111.")) {
+					datum = "null";
+				}else {
+					datum = ocena.getDatumPolaganja().format(formatiran).toString();		
+				}
+				
 				StringBuilder s = new StringBuilder("");
 				s.append(ocena.getStudent().getBrojIndeksa() + ", " + ocena.getPredmet().getSifraPredmeta() + ", " + 
-						ocena.getVrednostOcene() + ", " + ocena.getDatumPolaganja().format(formatiran));	
+						ocena.getVrednostOcene() + ", " + datum);	
 				
 				out.write(s.toString());
 				out.write("\n");

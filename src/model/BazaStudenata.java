@@ -166,8 +166,7 @@ public class BazaStudenata {
 	
 	public void dodajStudenta(String ime, String prezime, LocalDate datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
 		this.studenti.add(new Student(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status,  5));
-		//this.tmpStudenti.add(new Student(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status,  5));
-		//tmpStudenti = azurirajPomocnuListu(tmpStudenti, studenti);
+		tmpStudenti = azurirajPomocnuListu(tmpStudenti, studenti);
 	}
 
 
@@ -187,25 +186,7 @@ public class BazaStudenata {
 				i.setProsecnaOcena(prosecnaOcena);
 			}
 		}
-		/*try {
-			for (Student i : tmpStudenti) {
-				if (i.getBrojIndeksa().equals(indeks)) {
-					i.setIme(ime);
-					i.setPrezime(prezime);
-					i.setDatumRodjenja(datumRodjenja);
-					i.setAdresa(adresa);
-					i.setBrojIndeksa(indeks);
-					i.setKontakt(kontakt);
-					i.setEmail(mail);
-					i.setGodinaUpisa(godinaUpisa);
-					i.setTrenutnaGodina(trenutnaGodina);
-					i.setStatus(status);
-					i.setProsecnaOcena(prosecnaOcena);
-				}
-			}
-		}catch (Exception e) {
-			System.out.println(e.getMessage());
-		}*/
+
 		tmpStudenti = azurirajPomocnuListu(tmpStudenti, studenti);
 	}
 	
@@ -236,10 +217,10 @@ public class BazaStudenata {
 		String[] splited = tekst.split("\\s+");
 		
 		if(tekst.equals("")) {
-			//this.studenti=this.tmpStudenti;
-			//listaStudenata.removeAll(listaStudenata);
 			restart();
 		}else {
+			restart();
+			
 			if(splited.length == 1) {
 				for(Student s : BazaStudenata.getInstance().getStudenti()) {
 					if(s.getPrezime().toLowerCase().contains(splited[0].toLowerCase())) {
@@ -287,6 +268,7 @@ public class BazaStudenata {
 				}
 			}
 		}
+		tmpStudenti = azurirajPomocnuListu(tmpStudenti, studenti);
 	}
 	
 	public void ponistiOcenu(String indeks, String sifraPredmeta) {
@@ -302,6 +284,7 @@ public class BazaStudenata {
 				}
 			}
 		}
+		tmpStudenti = azurirajPomocnuListu(tmpStudenti, studenti);
 		
 	}
 	

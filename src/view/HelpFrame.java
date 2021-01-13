@@ -26,8 +26,7 @@ public class HelpFrame extends JFrame {
 		ukrasniPanel.setPreferredSize(new Dimension(100,20));
 		
 		TextArea tekst = new TextArea();
-		tekst.setText("NAPOMENA: potrebno je resetovati search(obrisati tekst iz polja i ponovo pritisnuti dugme search kako bi se resetovala tabela) pre nego sto se izadje iz programa na X(na taj nacin se vrsi serijalizacija)\r\n" + 
-				"File->Close predstavlja izlaz iz programa nakon kojeg se izmenjeni podaci nece sacuvati\r\n" + 
+		tekst.setText("NAPOMENA: File->Close predstavlja izlaz iz programa nakon kojeg se izmenjeni podaci nece sacuvati\r\n" + 
 				"\r\n" + 
 				"\r\n" + 
 				"Glavni prozor se sastoji iz: MenuBar, Toolbar, TabPane(sastoji se iz 3 taba na kojem se nalaze tabele) i StatusBar-a.\r\n" + 

@@ -179,9 +179,9 @@ public class BazaPredmeta {
 	
 	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, PredmetSemestar sem, int godinaStudija, int espb, Profesor predmetniProfesor) {
 		this.predmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
-		this.tmpPredmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
+		//this.tmpPredmeti.add(new Predmet( sifraPredmeta,  nazivPredmeta,  sem,  godinaStudija,  espb,  predmetniProfesor));
 
-		//tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
+		tmpPredmeti = azurirajPomocnuListu(tmpPredmeti, predmeti);
 	}
 	
 	
