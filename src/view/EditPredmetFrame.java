@@ -281,6 +281,10 @@ public class EditPredmetFrame extends JDialog {
 		}
 	}
 	
+	public static int getTrenutniRed() {
+		return trenutniRed;
+	}
+	
 	//public void setProfa(String profa1) {
 		//profa = profa1;
 	//}

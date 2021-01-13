@@ -610,5 +610,8 @@ public class EditStudentFrame extends JDialog {
 		prosecnaOcena = Math.round(ocena*100.0)/100.0;
 	}
 	
+	public static int getTrenutniRed() {
+		return trenutniRed;
+	}
 }
 

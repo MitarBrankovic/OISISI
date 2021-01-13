@@ -25,7 +25,7 @@ import model.Student;
 
 public class UpisOceneFrame extends JDialog{
 
-	
+	private static int trenutniRed;
 	private static final long serialVersionUID = 6008224411842683502L;
 
 	public UpisOceneFrame() {
@@ -82,7 +82,13 @@ public class UpisOceneFrame extends JDialog{
 		pDatum.add(lDatum);
 		pDatum.add(txtDatum);
 	    
-		Student stud = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
+		
+		//trenutniRed = StudentiJTable.getInstance().getSelectedRow();
+		trenutniRed = EditStudentFrame.getTrenutniRed();
+		String editStud = (String)StudentiJTable.getInstance().getValueAt(trenutniRed, 0);
+		Student stud = StudentiController.getInstance().nadjiStudenta(editStud);
+		//Student stud = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
+		
 		Ocena ocen = new Ocena(BazaOcena.getInstance().getRowNepolozeni(NepolozeniJTable.getInstance().getSelectedRow()));
 		Predmet pred = ocen.getPredmet();
 		txtSifra.setText(pred.getSifraPredmeta());

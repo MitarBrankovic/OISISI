@@ -93,9 +93,23 @@ public class BazaStudenata {
 	}
 	
 	public void restart() {
-		//studenti = tmpStudenti;
-		this.studenti=this.tmpStudenti;
+
+		tmpStudenti = azurirajPomocnuListu(tmpStudenti, studenti);
+		
+		studenti = tmpStudenti;
 		listaStudenata.removeAll(listaStudenata);
+	}
+	
+	public ArrayList<Student> azurirajPomocnuListu(ArrayList<Student> s, ArrayList<Student> s1) {
+		for(Student stud : s) {
+			for(Student stud1 : s1) {
+				if(stud.getBrojIndeksa().equals(stud1.brojIndeksa)) {
+					int index = s.indexOf(stud);
+					s.set(index, stud1);
+				}
+			}
+		}
+		return s;
 	}
 	
 	
@@ -152,7 +166,8 @@ public class BazaStudenata {
 	
 	public void dodajStudenta(String ime, String prezime, LocalDate datumRodjenja, String adresa, String indeks, String kontakt,String mail, int godinaUpisa, int trenutnaGodina, StudentStatus status, double prosecnaOcena) {
 		this.studenti.add(new Student(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status,  5));
-		this.tmpStudenti.add(new Student(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status,  5));
+		//this.tmpStudenti.add(new Student(ime,prezime, datumRodjenja, adresa, indeks, kontakt,mail, godinaUpisa, trenutnaGodina, status,  5));
+		//tmpStudenti = azurirajPomocnuListu(tmpStudenti, studenti);
 	}
 
 
@@ -172,7 +187,7 @@ public class BazaStudenata {
 				i.setProsecnaOcena(prosecnaOcena);
 			}
 		}
-		try {
+		/*try {
 			for (Student i : tmpStudenti) {
 				if (i.getBrojIndeksa().equals(indeks)) {
 					i.setIme(ime);
@@ -190,7 +205,8 @@ public class BazaStudenata {
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
-		}
+		}*/
+		tmpStudenti = azurirajPomocnuListu(tmpStudenti, studenti);
 	}
 	
 	

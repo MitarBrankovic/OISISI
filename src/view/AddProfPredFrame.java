@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import model.BazaPredmeta;
+import controller.PredmetController;
 import model.BazaProfesora;
 import model.Predmet;
 import model.Profesor;
@@ -22,7 +22,8 @@ import model.Profesor;
 public class AddProfPredFrame extends JDialog  {
 
 	private static final long serialVersionUID = -5279959474378525518L;
-
+	private static int trenutniRed;
+	
 	Profesor objProfesor = null;
 	public static String profa = null;
 	
@@ -37,7 +38,11 @@ public class AddProfPredFrame extends JDialog  {
 		
 		new BorderLayout();
 
-		Predmet predm = new Predmet(BazaPredmeta.getInstance().getRow(PredmetiJTable.getInstance().getSelectedRow()));
+		//Predmet predm = new Predmet(BazaPredmeta.getInstance().getRow(PredmetiJTable.getInstance().getSelectedRow()));
+		trenutniRed = EditPredmetFrame.getTrenutniRed();
+		String editPred = (String)PredmetiJTable.getInstance().getValueAt(trenutniRed, 0);
+		Predmet predm = PredmetController.getInstance().nadjiPredmet(editPred);
+		
 		
 		DefaultListModel<String> lista = new DefaultListModel<String>();
 		int i=0;

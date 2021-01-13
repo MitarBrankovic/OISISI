@@ -237,7 +237,6 @@ public class AddStudentFrame extends JDialog {
 							txtTelefon.getText(),txtEmail.getText(),Integer.parseInt(txtGodinaUpisa.getText()),god, stat, 5);
 					
 					setVisible(false);
-					dispose();
 				}
 			}
 			

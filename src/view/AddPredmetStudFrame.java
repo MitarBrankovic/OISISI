@@ -16,15 +16,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import controller.NepolozeniController;
+import controller.StudentiController;
 import model.BazaOcena;
 import model.BazaPredmeta;
-import model.BazaStudenata;
 import model.Predmet;
 import model.Student;
 import model.Ocena;
 
 public class AddPredmetStudFrame extends JDialog{
 
+	private static int trenutniRed;
 	private static final long serialVersionUID = -3315128639685663235L;
 
 	public AddPredmetStudFrame() {
@@ -40,7 +41,11 @@ public class AddPredmetStudFrame extends JDialog{
 		new BorderLayout();
 
 		DefaultListModel<String> lista = new DefaultListModel<String>();
-		Student stud = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
+		
+		trenutniRed = EditStudentFrame.getTrenutniRed();
+		String editStud = (String)StudentiJTable.getInstance().getValueAt(trenutniRed, 0);
+		Student stud = StudentiController.getInstance().nadjiStudenta(editStud);
+		//Student stud = new Student(BazaStudenata.getInstance().getRow(StudentiJTable.getInstance().getSelectedRow()));
 		int i = 0;
  
 		
