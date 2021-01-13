@@ -4,7 +4,6 @@ package view;
 */
 
 import javax.swing.table.AbstractTableModel;
-
 import model.BazaStudenata;
 
 
@@ -36,5 +35,13 @@ public class AbstractTableStudenti  extends AbstractTableModel{
 		return BazaStudenata.getInstance().getColumnName(column);
 	}
 
+	@Override
+	public Class<?> getColumnClass(int columnIndex) {
+		// TODO Auto-generated method stub
+		if(BazaStudenata.getInstance().getStudenti().isEmpty()) {
+			return Object.class;
+		}
+		return getValueAt(0, columnIndex).getClass();
+	}
 
 }

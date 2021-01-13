@@ -140,7 +140,7 @@ public class BazaStudenata {
 		return this.studenti.get(rowIndex);
 	}
 
-	public String getValueAt(int row, int column) {
+	public Object getValueAt(int row, int column) {
 		Student student = this.studenti.get(row);
 		switch (column) {
 		case 0:
@@ -150,14 +150,14 @@ public class BazaStudenata {
 		case 2:
 			return student.getPrezime();
 		case 3:
-			return Integer.toString(student.getTrenutnaGodina());
+			return student.getTrenutnaGodina();
 		case 4:
 			if(student.getStatus() == StudentStatus.B)
 				return "Budzet";
 			else if (student.getStatus() == StudentStatus.S)
 				return "Samofinansiranje";
 		case 5:
-			return Double.toString(student.getProsecnaOcena());
+			return student.getProsecnaOcena();
 		default:
 			return null;
 		}
