@@ -20,6 +20,15 @@ public class AbstractTablePredmeti extends AbstractTableModel{
 	}
 	
 	@Override
+	public Class<?> getColumnClass(int columnIndex) {
+		// TODO Auto-generated method stub
+		if(BazaPredmeta.getInstance().getPredmeti().isEmpty()) {
+			return Object.class;
+		}
+		return getValueAt(0, columnIndex).getClass();
+	}
+
+	@Override
 	public int getColumnCount() {
 		return BazaPredmeta.getInstance().getColumnCount();
 	}

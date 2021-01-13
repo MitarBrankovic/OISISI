@@ -154,7 +154,7 @@ public class BazaPredmeta {
 		return this.predmeti.get(rowIndex);
 	}
 	
-	public String getValueAt(int row, int column) {
+	public Object getValueAt(int row, int column) {
 		Predmet predmet = this.predmeti.get(row);
 		switch (column) {		
 		case 0:
@@ -169,9 +169,11 @@ public class BazaPredmeta {
 			else
 				return "Nepoznato";	
 		case 3:
-			return Integer.toString(predmet.getGodinaStudija());
+			return predmet.getGodinaStudija();
+			//return Integer.toString(predmet.getGodinaStudija());
 		case 4:
-			return Integer.toString(predmet.getEspb());
+			return predmet.getEspb();
+			//return Integer.toString(predmet.getEspb());
 		default:
 			return null;
 		}
