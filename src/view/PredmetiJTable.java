@@ -6,8 +6,10 @@ package view;
 import java.awt.Color;
 import java.awt.Component;
 
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 
 public class PredmetiJTable extends JTable{
@@ -26,6 +28,9 @@ public class PredmetiJTable extends JTable{
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setAutoCreateRowSorter(true);
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+		setDefaultRenderer(Integer.class, centerRenderer);
 		this.setModel(new AbstractTablePredmeti());
 	}
 
