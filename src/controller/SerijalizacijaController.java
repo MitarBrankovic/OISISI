@@ -45,6 +45,7 @@ public class SerijalizacijaController implements WindowListener{
 			UpisPodatakaController.getInstance().saveProfesori(BazaProfesora.getInstance().getProfesori());
 			UpisPodatakaController.getInstance().saveStudenti(BazaStudenata.getInstance().getStudenti());
 			UpisPodatakaController.getInstance().saveOcene(BazaOcena.getInstance().getOcene());
+			UpisPodatakaController.getInstance().saveOceneNepolozeni(BazaOcena.getInstance().getOcene());
 
 		}
 	}

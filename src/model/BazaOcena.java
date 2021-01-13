@@ -96,9 +96,9 @@ public class BazaOcena {
 
 				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 				
-				if(datum.equals("null")) {
+				/*if(datum.equals("null")) {
 					datum = "11.11.1111.";
-				}
+				}*/
 				
 				for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
 					if(p.getSifraPredmeta().equals(sifra) == true) {
@@ -135,7 +135,68 @@ public class BazaOcena {
 		}catch(IOException exception) {
 			exception.printStackTrace();
 		}
-
+		
+		
+		try {
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream("tabele" + File.separator + "NepolozeniPredmeti.txt")));
+		} catch (FileNotFoundException exception) {
+			exception.printStackTrace();
+		}
+		
+		try {
+			while((naredni = reader.readLine()) != null) {
+				if(naredni.equals(""))	continue;
+				
+				kolone = naredni.split("\\,");
+				
+				Predmet objPredmet = null;
+				Student objStudent = null;
+				Predmet objTmpPredmet = null;
+				Student objTmpStudent = null;
+				
+				indeks = kolone[0].trim();
+				sifra = kolone[1].trim();
+				
+				ocena = 5;
+				datum = "11.11.1111.";
+				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+				
+				
+				for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+					if(p.getSifraPredmeta().equals(sifra) == true) {
+						objPredmet = p;
+					}
+				}
+				
+				for(Student s : BazaStudenata.getInstance().getStudenti()) {
+					if(s.getBrojIndeksa().equals(indeks) == true) {
+						objTmpStudent = s;
+					}
+				}
+				
+				for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+					if(p.getSifraPredmeta().equals(sifra) == true) {
+						objTmpPredmet = p;
+					}
+				}
+				
+				for(Student s : BazaStudenata.getInstance().getStudenti()) {
+					if(s.getBrojIndeksa().equals(indeks) == true) {
+						objStudent = s;
+					}
+				}
+				
+				
+				Ocena objOcena = new Ocena(objStudent, objPredmet, ocena, LocalDate.parse(datum, formatiran));
+				ocene.add(objOcena);
+				Ocena objTmpOcena = new Ocena(objTmpStudent, objTmpPredmet, ocena, LocalDate.parse(datum, formatiran));
+				tmpOcene.add(objTmpOcena);
+				
+			}
+			reader.close();
+		}catch(IOException exception) {
+			exception.printStackTrace();
+		}
 		
 		for(Student s : BazaStudenata.getInstance().getStudenti()) {
 			ArrayList<Ocena> spisakPolozenihStudent = new ArrayList<Ocena>();

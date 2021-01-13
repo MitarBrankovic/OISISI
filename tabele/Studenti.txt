@@ -1,4 +1,4 @@
-RA2/2020, Marko, Milosevic, 1, 12.03.2001., Karađorđeva 83 Novi Sad, 021333555, marko.milosevic@mailinator.com, B, 2020, 0.0
+RA2/2020, Marko, Milosevic, 1, 12.03.2001., Karađorđeva 83 Novi Sad, 021333555, marko.milosevic@mailinator.com, B, 2020, NaN
 RA3/2019, Marija, Milić, 2, 12.01.2000., Stražilovska 12 Novi Sad, 0215552222, marija.milic@mailinator.com, S, 2019, 10.0
 RA3/2017, Nikola, Nikolic, 1, 30.08.2001., Knez Mihajlova 16 Beograd, 021135463, nikola.nikolic@mailinator.com, B, 2017, 0.0
 RA134/2015, Pera, Peric, 3, 07.06.1995., Gogoljeva 3 Novi Sad, 021903463, pera.peric@mailinator.com, S, 2015, 9.0

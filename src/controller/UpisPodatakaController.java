@@ -54,9 +54,7 @@ public class UpisPodatakaController {
 					profesor = predmet.getPredmetniProfesor().getBrojLicneKarte();
 				}
 				StringBuilder s = new StringBuilder("");
-				/*s.append(predmet.getSifraPredmeta()+", "+predmet.getNazivPredmeta()+", "+semestar+", "
-						+predmet.getGodinaStudija()+", "+ predmet.getEspb() + ", " + profesor);	
-				*/
+				
 				s.append(predmet.getSifraPredmeta()+", "+predmet.getNazivPredmeta()+", "+predmet.getGodinaStudija()+", "
 						+predmet.getEspb()+", "+ profesor + ", " + semestar);
 				out.write(s.toString());
@@ -109,10 +107,7 @@ public class UpisPodatakaController {
 
 				
 				StringBuilder s = new StringBuilder("");
-				/*s.append(profesor.getIme() + ", " + profesor.getPrezime() + ", " + profesor.getDatumRodjenja().format(formatiran) + ", "
-						+ profesor.getAdresaStanovanja() + ", " + profesor.getKontaktTelefon() + ", " + profesor.getEmail()
-						+ ", " + profesor.getAdresaKancelarije() + ", " + profesor.getBrojLicneKarte() + ", " + profesor.getTitula()
-						+ ", " + profesor.getZvanje());	*/
+				
 				s.append(profesor.getBrojLicneKarte() + ", " + profesor.getIme() + ", " + profesor.getPrezime() + ", " + 
 						profesor.getDatumRodjenja().format(formatiran) + ", "+ profesor.getAdresaStanovanja() + ", " + 
 						profesor.getKontaktTelefon() + ", " + profesor.getEmail()+ ", " + profesor.getAdresaKancelarije() + ", " + 
@@ -150,13 +145,10 @@ public class UpisPodatakaController {
 					status = "S";
 				}
 				
-				//DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 
 				StringBuilder s = new StringBuilder("");
-				/*s.append(student.getIme() + ", " + student.getPrezime() + ", " + student.getDatumRodjenja().format(formatiran) + ", " + student.getAdresa()
-				 + ", " + student.getBrojIndeksa() + ", " + student.getKontakt() + ", " + student.getEmail() + ", " + student.getGodinaUpisa()
-				 + ", " + student.getTrenutnaGodina() + ", " + status + ", " + student.getProsecnaOcena());	*/
+				
 				
 				s.append(student.getBrojIndeksa() + ", " + student.getIme() + ", " + student.getPrezime() + ", " + 
 						student.getTrenutnaGodina() + ", " + student.getDatumRodjenja().format(formatiran)
@@ -190,26 +182,53 @@ public class UpisPodatakaController {
 			for (Ocena ocena : ocene) {
 				DateTimeFormatter formatiran = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 				
-				//String date = null;
-				//if(ocena.getStudent().getBrojIndeksa() == null) {
-				//	date = "null";
-				//}else {
-				//	date =(String) ocena.getDatumPolaganja().format(formatiran);
-
-				//}
+				
 				String datum = null;
-				if(ocena.getDatumPolaganja().format(formatiran).equals("11.11.1111.")) {
-					datum = "null";
-				}else {
+				
+				if(ocena.getVrednostOcene()!=5) {
 					datum = ocena.getDatumPolaganja().format(formatiran).toString();		
+	
+					StringBuilder s = new StringBuilder("");
+					s.append(ocena.getStudent().getBrojIndeksa() + ", " + ocena.getPredmet().getSifraPredmeta() + ", " + 
+							ocena.getVrednostOcene() + ", " + datum);	
+					
+					out.write(s.toString());
+					out.write("\n");
 				}
+			}		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			if(out != null)
+				try {
+					out.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		}
+	}
+	
+	public void saveOceneNepolozeni(ArrayList<Ocena> ocene) {
+		BufferedWriter out = null;
+		try {
+			out = new BufferedWriter(new FileWriter("tabele" + File.separator + "NepolozeniPredmeti.txt"));
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			for (Ocena ocena : ocene) {
 				
-				StringBuilder s = new StringBuilder("");
-				s.append(ocena.getStudent().getBrojIndeksa() + ", " + ocena.getPredmet().getSifraPredmeta() + ", " + 
-						ocena.getVrednostOcene() + ", " + datum);	
 				
-				out.write(s.toString());
-				out.write("\n");
+				if(ocena.getVrednostOcene() == 5) {
+				
+					StringBuilder s = new StringBuilder("");
+					s.append(ocena.getStudent().getBrojIndeksa() + ", " + ocena.getPredmet().getSifraPredmeta());	
+					
+					out.write(s.toString());
+					out.write("\n");
+					
+				}
 			}		
 		} catch (IOException e) {
 			e.printStackTrace();
