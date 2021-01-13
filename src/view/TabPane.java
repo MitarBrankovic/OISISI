@@ -14,6 +14,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import model.BazaOcena;
+import model.BazaPredmeta;
+import model.BazaProfesora;
+import model.BazaStudenata;
 
 
 
@@ -66,10 +69,14 @@ public class TabPane extends JTabbedPane {
 			
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				// TODO Auto-generated method stub
-				//System.out.println("Tab: " + getSelectedIndex());
+
 				stanje = getSelectedIndex();
-				//System.out.println(stanje);
+				BazaStudenata.getInstance().restart();
+				BazaProfesora.getInstance().restart();
+				BazaPredmeta.getInstance().restart();
+				azurirajPredmeti();
+				azurirajProfesori();
+				azurirajStudenti();
 			}
 		});
 		}

@@ -25,13 +25,7 @@ public class EditPredmetFrame extends JDialog {
 
 	private static final long serialVersionUID = 9105513801690139962L;
 	private static int trenutniRed;
-	/*private static EditPredmetFrame instance = null;
-    public static EditPredmetFrame getInstance() {
-        if (instance == null) {
-            instance = new EditPredmetFrame();
-        }
-        return instance;
-    }*/
+	
 	public String profa = null;
 	private PredmetSemestar sem;
 	public static JTextField txtPredmetniProfesor;
@@ -285,7 +279,5 @@ public class EditPredmetFrame extends JDialog {
 		return trenutniRed;
 	}
 	
-	//public void setProfa(String profa1) {
-		//profa = profa1;
-	//}
+	
 }
